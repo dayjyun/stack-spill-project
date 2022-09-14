@@ -35,8 +35,9 @@ router.post("/", validateSignup, async (req, res) => {
   });
 });
 
+// test route
 router.get("/test", (req, res) => {
-  res.send("Welcome To My App 👋🏼");
+  res.send("Welcome To Users 👋🏼");
 });
 
 module.exports = router;

@@ -47,4 +47,9 @@ router.delete("/", (_req, res) => {
   return res.json({ message: "success" });
 });
 
+// test route
+router.get("/test", (req, res) => {
+  res.send("Welcome To session 👋🏼");
+});
+
 module.exports = router;
