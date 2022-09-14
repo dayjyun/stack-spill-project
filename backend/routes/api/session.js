@@ -49,7 +49,7 @@ router.delete("/", (_req, res) => {
 
 // test route
 router.get("/test", (req, res) => {
-  res.send("Welcome To session 👋🏼");
+  res.send("Welcome To Session! 👋🏼");
 });
 
 module.exports = router;
