@@ -31,10 +31,6 @@ export const login = (user) => async (dispatch) => {
     }),
   });
 
-  if (!response.ok) {
-    return null;
-  }
-
   const data = await response.json();
   dispatch(setUser(data));
   return response;
@@ -43,11 +39,7 @@ export const login = (user) => async (dispatch) => {
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
-
-  if (data.id) {
-    dispatch(setUser(data.user));
-  }
-
+  dispatch(setUser(data.user));
   return response;
 };
 
@@ -61,7 +53,7 @@ export const signup = (user) => async (dispatch) => {
       username,
       email,
       password,
-      // profileImage
+      // profileImage,
     }),
   });
   const data = await response.json();
