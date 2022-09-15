@@ -3,7 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 
 router.use("/session", sessionRouter);
-router.use("/users", usersRouter);
+router.use(usersRouter);
 
 //=============== Test Routes ============================//
 // GET /api/set-token-cookie
@@ -12,7 +12,7 @@ const { User } = require("../../db/models");
 router.get("/set-token-cookie", async (_req, res) => {
   const user = await User.findOne({
     where: {
-      username: "Demo-lition"
+      username: "demo"
     }
   });
   setTokenCookie(res, user);
