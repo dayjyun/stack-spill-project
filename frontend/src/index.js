@@ -8,10 +8,14 @@ import configureStore from "./store";
 
 const store = configureStore();
 
+import { restoreCSRF, csrfFetch } from "./store/csrf";
+
 if (process.env.NODE_ENV !== "production") {
+  restoreCSRF();
+
+  window.csrfFetch = csrfFetch;
   window.store = store;
 }
-
 function Root() {
   return (
     <Provider store={store}>
