@@ -1,4 +1,3 @@
-// backend/routes/api/users.js
 const express = require("express");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User } = require("../../db/models");
@@ -8,7 +7,6 @@ const { validateSignup } = require("../../utils/validation");
 //================== Sign up ==========================//
 router.post("/signup", validateSignup, async (req, res) => {
   const { firstName, lastName, email, password, username } = req.body;
-  const user = await User.signup({ firstName, lastName, email, username, password }); // removed profileImage
   const checkEmail = await User.findOne({ where: { email }})
   const checkUsername = await User.findOne({ where: { username } })
 
@@ -19,16 +17,25 @@ router.post("/signup", validateSignup, async (req, res) => {
     throw error;
   }
 
-  if(checkUsername){
+  if (checkUsername) {
     let error = new Error("User already exists")
     error.status = 403;
     error.errors = ["User with that username already exists"];
     throw error;
   }
 
-  await setTokenCookie(res, user);
+  const user = await User.signup({
+    firstName,
+    lastName,
+    email,
+    username,
+    password,
+    // profileImage
+  })
 
-  return res.json({ user });
+  const token = await setTokenCookie(res, user);
+
+  return res.json({ ...user.toSafeObject(), token });
 });
 
 // test route
