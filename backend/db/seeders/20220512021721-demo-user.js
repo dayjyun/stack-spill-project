@@ -6,29 +6,29 @@ module.exports = {
     return queryInterface.bulkInsert("Users", [
       // 1
       {
-        // firstName: "Demo",
-        // lastName: "One",
+        firstName: "Demo",
+        lastName: "One",
         email: "demo@user.io",
         username: "demo",
-        // profileImage: "",
+        profileImage: "Image URL",
         hashedPassword: bcrypt.hashSync("password"),
       },
       // 2
       {
-        // firstName: "Demo",
-        // lastName: "Two",
+        firstName: "Demo",
+        lastName: "Two",
         email: "demo2@user.io",
         username: "demo2",
-        // profileImage: "",
+        profileImage: "Image Url",
         hashedPassword: bcrypt.hashSync("password"),
       },
       // 3
       {
-        // firstName: "Demo",
-        // lastName: "Three",
+        firstName: "Demo",
+        lastName: "Three",
         email: "demo3@user.io",
         username: "demo3",
-        // profileImage: "",
+        profileImage: "Image URL",
         hashedPassword: bcrypt.hashSync("password"),
       },
     ]);

@@ -42,7 +42,7 @@ router.post("/login", validateLogin, async (req, res, next) => {
 // Log out
 router.delete("/logout", (_req, res) => {
   res.clearCookie("token");
-  return res.json({ message: "success" });
+  return res.json({ message: "Logout successful" });
 });
 
 // Restore session user
