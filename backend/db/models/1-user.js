@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       User.hasMany(models.Question, { foreignKey: "userId" });
+      User.hasMany(models.Answer, { foreignKey: "userId" });
     }
   }
 
