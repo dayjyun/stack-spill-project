@@ -3,21 +3,8 @@ const express = require("express");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
+const { validateLogin } = require("../../utils/validation");
 const router = express.Router();
-
-//=======================================//
-const validateLogin = [
-  check("credential")
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage("Please provide a valid email or username."),
-  check("password")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a password."),
-  handleValidationErrors
-];
-
 
 // =============  Log in =================//
 router.post("/login", validateLogin, async (req, res, next) => {
@@ -29,15 +16,14 @@ router.post("/login", validateLogin, async (req, res, next) => {
     const err = new Error("Login failed");
     err.status = 401;
     err.title = "Login failed";
-    err.errors = ["The provided credentials were invalid."];
+    // err.errors = ["The provided credentials were invalid."];
     return next(err);
   }
 
-  await setTokenCookie(res, user);
+  const token = await setTokenCookie(res, user);
 
-  return res.json({ ...user.toSafeObject(), user });
+  return res.json({ ...user.toSafeObject(), token });
 });
-
 
 // Log out
 router.delete("/logout", (_req, res) => {
@@ -46,18 +32,14 @@ router.delete("/logout", (_req, res) => {
 });
 
 // Restore session user
-router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
-    const { user } = req;
-    if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
-    } else return res.json({});
-  }
-);
+router.get("/", restoreUser, (req, res) => {
+  const { user } = req;
+  if (user) {
+    return res.json({
+      user: user.toSafeObject(),
+    });
+  } else return res.json({});
+});
 
 // test route
 router.get("/session/test", (req, res) => {

@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           [Op.or]: {
             username: credential,
-            email: credential
-          }
-        }
+            email: credential,
+          },
+        },
       });
       if (user && user.validatePassword(password)) {
         return await User.scope("currentUser").findByPk(user.id);
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         lastName,
         username,
         email,
-        hashedPassword
+        hashedPassword,
       });
       return await User.scope("currentUser").findByPk(user.id);
     }
@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Characters need to be alphabetical",
           },
           len: [1, 100],
-        }
+        },
       },
       username: {
         type: DataTypes.STRING,
@@ -80,44 +80,44 @@ module.exports = (sequelize, DataTypes) => {
             if (Validator.isEmail(value)) {
               throw new Error("Cannot be an email.");
             }
-          }
-        }
+          },
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
-          len: [3, 256]
-        }
+          len: [3, 256],
+        },
       },
       hashedPassword: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [60, 60]
-        }
+          len: [60, 60],
+        },
       },
       profileImage: {
         type: DataTypes.STRING,
-      }
+      },
     },
     {
       sequelize,
       modelName: "User",
       defaultScope: {
         attributes: {
-          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
-        }
+          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"],
+        },
       },
       scopes: {
         currentUser: {
-          attributes: { exclude: ["hashedPassword"] }
+          attributes: { exclude: ["hashedPassword"] },
         },
         loginUser: {
-          attributes: {}
-        }
-      }
+          attributes: {},
+        },
+      },
     }
   );
   return User;
