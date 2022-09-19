@@ -15,9 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       return User.scope("currentUser").findByPk(id);
     }
 
-    static associate(models) {
-      // define association here
-    }
     static async login({ credential, password }) {
       const { Op } = require("sequelize");
       const user = await User.scope("loginUser").findOne({
@@ -43,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
         hashedPassword,
       });
       return await User.scope("currentUser").findByPk(user.id);
+    }
+
+    static associate(models) {
+      User.hasMany(models.Question, { foreignKey: "userId" });
     }
   }
 
