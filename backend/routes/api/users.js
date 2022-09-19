@@ -7,6 +7,12 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const validateSignup = [
+  check("firstName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide your first name"),
+  check("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide your last name"),
   check("email")
     .exists({ checkFalsy: true })
     .isEmail()
@@ -25,7 +31,7 @@ const validateSignup = [
 
 //================== Sign up ==========================//
 router.post("/signup", validateSignup, async (req, res) => {
-  const { email, password, username } = req.body;
+  const { firstName, lastName, email, password, username } = req.body;
   const user = await User.signup({ firstName, lastName, email, username, password }); // removed profileImage
 
   await setTokenCookie(res, user);
