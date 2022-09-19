@@ -101,9 +101,9 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60],
         },
       },
-      profileImage: {
-        type: DataTypes.STRING,
-      },
+      // profileImage: {
+      //   type: DataTypes.STRING,
+      // },
     },
     {
       sequelize,

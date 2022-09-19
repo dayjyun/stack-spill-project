@@ -30,9 +30,9 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
-      profileImage: {
-        type: Sequelize.STRING,
-      },
+      // profileImage: {
+      //   type: Sequelize.STRING,
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
