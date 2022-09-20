@@ -1,6 +1,6 @@
 const express = require("express");
 const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
-const { User } = require("../db/models");
+const { User, Question } = require("../db/models");
 const router = express.Router();
 
 // Get Current User
@@ -35,11 +35,25 @@ router.get("/", async (req, res) => {
 
 
 // Edit A User
+// router.put('/:userId', async (req, res) => {
+//   const { userId } = req.params;
+//   const user = User.findByPk(userId)
 
+//   if (user) {
+//     if (user.id == )
+        // how to get current session user?
+//   }
+// })
 
 
 // Get All Questions of a User
-
+router.get('/:userId/questions', requireAuth, async (req, res) => {
+  const { userId } = req.params;
+  const Questions = await Question.findAll({
+    where: { userId: userId }
+  })
+  res.json({ Questions })
+})
 
 
 // Get ALl Answers of a User
