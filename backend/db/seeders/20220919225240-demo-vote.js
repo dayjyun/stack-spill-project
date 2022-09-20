@@ -40,7 +40,7 @@ module.exports = {
         questionId: 2,
       },
       {
-        // 7 // demo 3 upVotes ANSWER 3
+        // 7 // demo 3 upVotes ANSWER 3, for QUESTION 3
         userId: 3,
         vote: true,
         answerId: 3,
