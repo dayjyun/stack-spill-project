@@ -20,7 +20,19 @@ module.exports = {
       questionId: 3,
       body: "Answer to question 3. Belongs to user 1, Demo",
       userId: 1
-    }
+    },
+    {
+      // 4
+      questionId: 1,
+      body: "This is the second answer for question 1 by demo user 3",
+      userId: 3,
+    },
+    {
+      // 5
+      questionId: 2,
+      body: "Answer to question 2 by demo user 1",
+      userId: 1,
+    },
    ])
   },
 
