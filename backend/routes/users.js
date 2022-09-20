@@ -1,10 +1,10 @@
 const express = require("express");
+const router = express.Router();
 const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
 const { User, Question, Answer } = require("../db/models");
-const router = express.Router();
 
 // Get Current User
-router.get("/me", restoreUser, (req, res) => {
+router.get("/me", requireAuth, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
