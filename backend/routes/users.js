@@ -10,7 +10,7 @@ router.get("/me", restoreUser, (req, res) => {
     return res.json({
       me: user.toSafeObject(),
     });
-  } else return res.json({});
+  } else return res.json("Not logged in");
 });
 
 
