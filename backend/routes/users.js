@@ -54,7 +54,10 @@ router.get('/:userId/questions', async (req, res) => {
   })
 
   if (Questions.length === 0) {
-    res.json({Questions: ["User has no questions"]})
+    // res.json({Questions: ["User has not asked any questions"]})
+    const error = new Error("User has not asked any questions")
+    error.status = 404;
+    throw error;
   }
 
   res.json({ Questions })
@@ -68,8 +71,11 @@ router.get('/:userId/answers', async(req, res) => {
     where: { userId: userId }
   })
 
-  if (Answer.length === 0) {
-    res.json({Answers: ["User has not answered any questions"]})
+  if (Answers.length === 0) {
+    // res.json({Answers: ["User has not answered any questions"]})
+    const error = new Error("User has not answered any questions")
+    error.status = 404;
+    throw error;
   }
 
   res.json({ Answers })
