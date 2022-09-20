@@ -18,7 +18,7 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
-// api/users.js
+// api/session.js
 const validateSignup = [
   check("firstName")
     .exists({ checkFalsy: true })

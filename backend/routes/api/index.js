@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const sessionRouter = require("./session.js");
-const usersRouter = require("./users.js");
+const usersRouter = require("../users.js");
 
 router.use(sessionRouter);
-router.use(usersRouter);
+// router.use(usersRouter);
 
 //=============== Test Routes ============================//
 // GET /api/set-token-cookie
