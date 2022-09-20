@@ -52,6 +52,11 @@ router.get('/:userId/questions', requireAuth, async (req, res) => {
   const Questions = await Question.findAll({
     where: { userId: userId }
   })
+
+  if (Questions.length === 0) {
+    res.json({Questions: ["User has no questions"]})
+  }
+
   res.json({ Questions })
 })
 
