@@ -34,9 +34,11 @@ router.post("/signup", validateSignup, async (req, res) => {
   })
 
   const token = await setTokenCookie(res, user);
-
   return res.json({ ...user.toSafeObject(), token });
 });
+
+
+// Get All Users
 
 // test route
 router.get("/test", (req, res) => {

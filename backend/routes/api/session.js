@@ -30,7 +30,7 @@ router.delete("/logout", (_req, res) => {
   return res.json({ message: "Logout successful" });
 });
 
-// Restore session user
+// Restore session user // Get Current User
 router.get("/", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
