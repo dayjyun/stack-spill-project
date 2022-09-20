@@ -8,7 +8,7 @@ router.get("/me", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
-      me: user.toSafeObject(),
+      Me: user.toSafeObject(),
     });
   } else return res.json("Not logged in");
 });
