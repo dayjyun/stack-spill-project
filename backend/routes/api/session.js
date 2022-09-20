@@ -81,4 +81,53 @@ router.get("/session/test", (req, res) => {
   res.send("Welcome To Session! 👋🏼");
 });
 
+// ==================== Fetch Requests ================== //
+
+// LOGIN
+// fetch("/api/login", {
+//   method: "post",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+//   body: JSON.stringify({
+//     password: "password",
+//     credential: "demo",
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+// LOGOUT
+// fetch("/api/logout", {
+//   method: "delete",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+// SIGNUP
+// fetch("/api/signup", {
+//   method: "post",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+//   body: JSON.stringify({
+//     firstName: "testF",
+//     lastName: "testL",
+//     username: "test",
+//     email: "test@user.io",
+//     password: "password",
+//     // credential: "demo",
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
 module.exports = router;

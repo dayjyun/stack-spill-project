@@ -1,6 +1,6 @@
 const express = require("express");
 const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
-const { User, Question } = require("../db/models");
+const { User, Question, Answer } = require("../db/models");
 const router = express.Router();
 
 // Get Current User
@@ -47,7 +47,7 @@ router.get("/", async (req, res) => {
 
 
 // Get All Questions of a User
-router.get('/:userId/questions', requireAuth, async (req, res) => {
+router.get('/:userId/questions', async (req, res) => {
   const { userId } = req.params;
   const Questions = await Question.findAll({
     where: { userId: userId }
@@ -61,6 +61,18 @@ router.get('/:userId/questions', requireAuth, async (req, res) => {
 })
 
 
-// Get ALl Answers of a User
+// Get All Answers of a User
+router.get('/:userId/answers', async(req, res) => {
+  const { userId } = req.params;
+  const Answers = await Answer.findAll({
+    where: { userId: userId }
+  })
+
+  if (Answer.length === 0) {
+    res.json({Answers: ["User has not answered any questions"]})
+  }
+
+  res.json({ Answers })
+})
 
 module.exports = router;
