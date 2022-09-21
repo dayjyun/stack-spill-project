@@ -36,6 +36,29 @@ router.get("/", async (req, res) => {
   res.json(questions);
 });
 
+
+// Create a Vote for a Question
+router.post('/:questionId/votes', requireAuth, async (req, res) => {
+    const { user } = req;
+    const { questionId } = req.params;
+    const { vote } = req.body;
+    const question = await Question.findByPk(questionId)
+
+    if (question) {
+        const newVote = await Vote.create({
+            userId: user.id,
+            vote,
+            questionId,
+        })
+        res.status(201)
+        res.json(newVote)
+    } else {
+        const error = new Error('Question Not Found');
+        error.status = 404;
+        throw error;
+    }
+})
+
 // Create an Answer
 router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
   const { user } = req;
