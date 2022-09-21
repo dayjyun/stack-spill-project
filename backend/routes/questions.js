@@ -17,6 +17,7 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
+
 // Get All Questions
 router.get("/", async (req, res) => {
   const Questions = await Question.findAll({
@@ -24,6 +25,7 @@ router.get("/", async (req, res) => {
   });
   res.json({ Questions });
 });
+
 
 // Create A Question
 router.post("/", requireAuth, validateQuestion, async (req, res) => {
@@ -38,6 +40,7 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
   res.status(201);
   res.json(question);
 });
+
 
 // Edit A Question
 router.put("/:questionId", requireAuth, async (req, res) => {
@@ -64,6 +67,7 @@ router.put("/:questionId", requireAuth, async (req, res) => {
     throw error;
   }
 });
+
 
 // Delete A Question
 router.delete("/:questionId", requireAuth, async (req, res) => {

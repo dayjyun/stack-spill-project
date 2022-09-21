@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 
 
 // Create an Answer
-
+router.post('/')
 
 
 // Edit Answer
