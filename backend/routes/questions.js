@@ -4,15 +4,12 @@ const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
 const { validateQuestion, validateAnswer } = require("../utils/validation");
 
-// Get All Votes for Question
-router.get('/:questionId/votes', async (req, res) => {
-    const { questionId } = req.params;
-
-})
-
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
   const { questionId } = req.params;
+  const upVote = await Vote.count({ where: { questionId, vote: true } });
+  const downVote = await Vote.count({ where: { questionId, vote: false } });
+  const numVotes = upVote - downVote;
   const question = await Question.findByPk(questionId, {
     include: [
       {
@@ -27,6 +24,7 @@ router.get("/:questionId", async (req, res) => {
     error.status = 404;
     throw error;
   }
+  question.dataValues.votes = numVotes;
   res.json(question);
 });
 
