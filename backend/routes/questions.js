@@ -47,7 +47,7 @@ router.put("/:questionId", requireAuth, async (req, res) => {
   const question = await Question.findByPk(questionId);
 
   if (question) {
-    if (question.id === user.id) {
+    if (question.userId === user.id) {
       await question.update({
         title,
         body,
