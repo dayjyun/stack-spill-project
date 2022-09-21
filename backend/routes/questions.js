@@ -1,8 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { Question, Answer } = require("../db/models");
+const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
 const { validateQuestion, validateAnswer } = require("../utils/validation");
+
+// Get All Votes for Question
+router.get('/:questionId/votes', async (req, res) => {
+    const { questionId } = req.params;
+
+})
 
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
@@ -26,14 +32,13 @@ router.get("/:questionId", async (req, res) => {
 
 // Get All Questions
 router.get("/", async (req, res) => {
-  const Questions = await Question.findAll({
+  const questions = await Question.findAll({
     order: [["createdAt", "DESC"]],
   });
-  res.json({ Questions });
+  res.json(questions);
 });
 
 // Create an Answer
-// answer validator
 router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
   const { user } = req;
   const { questionId } = req.params;

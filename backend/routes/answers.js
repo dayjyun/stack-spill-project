@@ -19,10 +19,10 @@ router.get("/:answerId", async (req, res) => {
 
 // Get All Answers //! Not included in Wiki
 router.get("/", async (req, res) => {
-  const Answers = await Answer.findAll({
+  const answers = await Answer.findAll({
     order: [["createdAt", "DESC"]],
   });
-  res.json({ Answers });
+  res.json(answers);
 });
 
 

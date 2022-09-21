@@ -29,8 +29,8 @@ router.get('/:userId', async (req, res) => {
 
 // Get All Users
 router.get("/", async (req, res) => {
-  const Users = await User.findAll();
-  res.json({ Users })
+  const users = await User.findAll();
+  res.json(users)
 })
 
 
@@ -49,30 +49,30 @@ router.get("/", async (req, res) => {
 // Get All Questions of a User
 router.get('/:userId/questions', async (req, res) => {
   const { userId } = req.params;
-  const Questions = await Question.findAll({
+  const questions = await Question.findAll({
     where: { userId: userId }
   })
 
-  if (Questions.length === 0) {
-    res.json({Questions: ["User has not asked any questions"]})
+  if (questions.length === 0) {
+    res.json({questions: ["User has not asked any questions"]})
   }
 
-  res.json({ Questions })
+  res.json(questions)
 })
 
 
 // Get All Answers of a User
 router.get('/:userId/answers', async(req, res) => {
   const { userId } = req.params;
-  const Answers = await Answer.findAll({
+  const answers = await Answer.findAll({
     where: { userId: userId }
   })
 
-  if (Answers.length === 0) {
-    res.json({Answers: ["User has not answered any questions"]})
+  if (answers.length === 0) {
+    res.json({answers: ["User has not answered any questions"]})
   }
 
-  res.json({ Answers })
+  res.json(answers)
 })
 
 module.exports = router;
