@@ -36,29 +36,52 @@ router.get("/", async (req, res) => {
   res.json(questions);
 });
 
+// ==================== Votes ==================== //
 
 // Create a Vote for a Question
-router.post('/:questionId/votes', requireAuth, async (req, res) => {
-    const { user } = req;
-    const { questionId } = req.params;
-    const { vote } = req.body;
-    const question = await Question.findByPk(questionId)
+router.post("/:questionId/votes", requireAuth, async (req, res) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const { vote } = req.body;
+  const question = await Question.findByPk(questionId);
 
-    if (question) {
-        const newVote = await Vote.create({
-            userId: user.id,
-            vote,
-            questionId,
-        })
-        res.status(201)
-        res.json(newVote)
-    } else {
-        const error = new Error('Question Not Found');
-        error.status = 404;
-        throw error;
-    }
-})
+  if (question) {
+    const newVote = await Vote.create({
+      userId: user.id,
+      vote,
+      questionId,
+    });
+    res.status(201);
+    res.json(newVote);
+  } else {
+    const error = new Error("Question Not Found");
+    error.status = 404;
+    throw error;
+  }
+});
 
+
+// Delete A Vote
+router.delete("/:questionId/votes", requireAuth, async (req, res) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const question = await Question.findByPk(questionId);
+  const userVote = await Vote.findOne({ where: { userId: user.id }});
+
+  if (question) {
+    await userVote.destroy();
+    res.json({
+      message: "Successfully deleted vote",
+      statusCode: 200,
+    });
+  } else {
+    const error = new Error("Question not found");
+    error.status = 404;
+    throw error;
+  }
+});
+
+// ==================== Votes ==================== //
 
 // Create an Answer
 router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
@@ -96,7 +119,6 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
   res.json(question);
 });
 
-
 // Edit A Question
 router.put("/:questionId", requireAuth, async (req, res) => {
   const { user } = req;
@@ -122,7 +144,6 @@ router.put("/:questionId", requireAuth, async (req, res) => {
     throw error;
   }
 });
-
 
 // Delete A Question
 router.delete("/:questionId", requireAuth, async (req, res) => {
