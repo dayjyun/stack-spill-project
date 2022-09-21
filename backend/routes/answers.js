@@ -16,6 +16,16 @@ router.get('/:answerId', async (req, res) => {
 })
 
 
+// Get All Answers
+router.get('/', async (req, res) => {
+    const Answers = await Answer.findAll({
+        order: [[ 'createdAt', 'DESC' ]]
+    })
+    res.json({ Answers })
+})
+
+
+
 // Create an Answer
 
 
