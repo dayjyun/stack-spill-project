@@ -18,7 +18,7 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
-// api/users.js
+// api/session.js
 const validateSignup = [
   check("firstName")
     .exists({ checkFalsy: true })
@@ -58,8 +58,32 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
+
+// api/questions
+const validateQuestion = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please provide a title for your question"),
+  check("body")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please provide details about your question"),
+  handleValidationErrors
+]
+
+const validateAnswer = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please provide a detailed answer"),
+  handleValidationErrors
+]
+
 module.exports = {
   handleValidationErrors,
   validateSignup,
   validateLogin,
+  validateQuestion,
+  validateAnswer,
 };

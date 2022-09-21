@@ -20,6 +20,12 @@ module.exports = {
         title: "Third Demo Question",
         body: "This is the section that belongs to the third question made by demo user 3",
         userId: 3,
+      },
+      {
+        // 4
+        title: "Demo Question 2.0",
+        body: "This is the second question belonging to demo user",
+        userId: 1,
       }
     ]);
   },
