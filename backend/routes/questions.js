@@ -39,13 +39,21 @@ router.get("/", async (req, res) => {
 // ==================== Votes ==================== //
 
 // Get Votes for a Question
-router.get('/:questionId/votes', async (req, res) => {
-    const { questionId } = req.params;
+router.get("/:questionId/votes", async (req, res) => {
+  const { questionId } = req.params;
+  const question = await Question.findByPk(questionId);
+
+  if (question) {
     const votes = await Vote.findAll({
-        where: { questionId }
-    })
-    res.json(votes)
-})
+      where: { questionId },
+    });
+    res.json(votes);
+  } else {
+    const error = new Error("Question not found")
+    error.status = 404;
+    throw error;
+  }
+});
 
 // Create a Vote for a Question
 router.post("/:questionId/votes", requireAuth, async (req, res) => {
