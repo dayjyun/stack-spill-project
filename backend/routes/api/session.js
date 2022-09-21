@@ -6,7 +6,7 @@ const { check } = require("express-validator");
 const { validateLogin, validateSignup } = require("../../utils/validation");
 const router = express.Router();
 
-// =============  Log in =================//
+// Log in
 router.post("/login", validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
@@ -32,7 +32,7 @@ router.delete("/logout", (_req, res) => {
 });
 
 
-//================== Sign up ==========================//
+// Sign up
 router.post("/signup", validateSignup, async (req, res) => {
   const { firstName, lastName, email, password, username } = req.body;
   const checkEmail = await User.findOne({ where: { email }})
@@ -58,28 +58,12 @@ router.post("/signup", validateSignup, async (req, res) => {
     email,
     username,
     password,
-    // profileImage
   })
 
   const token = await setTokenCookie(res, user);
   return res.json({ ...user.toSafeObject(), token });
 });
 
-
-// // Restore session user // Get Current User
-// router.get("/", restoreUser, (req, res) => {
-//   const { user } = req;
-//   if (user) {
-//     return res.json({
-//       user: user.toSafeObject(),
-//     });
-//   } else return res.json({});
-// });
-
-// test route
-router.get("/session/test", (req, res) => {
-  res.send("Welcome To Session! 👋🏼");
-});
 
 // ==================== Fetch Requests ================== //
 

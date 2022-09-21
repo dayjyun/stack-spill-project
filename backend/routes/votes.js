@@ -3,7 +3,7 @@ const router = express.Router();
 const { Vote } = require('../db/models')
 const { requireAuth } = require('../utils/auth')
 
-// Get All Votes //! Not in Wiki
+// Get All Votes
 router.get('/', async(req, res) => {
     const votes = await Vote.findAll({
         order: [[ "createdAt", "DESC" ]]
