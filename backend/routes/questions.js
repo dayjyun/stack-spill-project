@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Question } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
+const { validateQuestion } = require("../utils/validation");
 
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
@@ -16,19 +17,16 @@ router.get("/:questionId", async (req, res) => {
   res.json({ Query });
 });
 
-
 // Get All Questions
 router.get("/", async (req, res) => {
   const Questions = await Question.findAll({
-    order: [['createdAt', 'DESC']]
+    order: [["createdAt", "DESC"]],
   });
   res.json({ Questions });
 });
 
-
 // Create A Question
-// need a validator for title and body
-router.post("/", requireAuth, async (req, res) => {
+router.post("/", requireAuth, validateQuestion, async (req, res) => {
   const { user } = req;
   const { title, body } = req.body;
   const question = await Question.create({
@@ -41,13 +39,31 @@ router.post("/", requireAuth, async (req, res) => {
   res.json(question);
 });
 
-
 // Edit A Question
-router.put('/:questionId', requireAuth, async (req, res) => {
-    const { user } = req;
-    const { questionId } = req.params;
-})
+router.put("/:questionId", requireAuth, async (req, res) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const { title, body } = req.body;
+  const question = await Question.findByPk(questionId);
 
+  if (question) {
+    if (question.id === user.id) {
+      await question.update({
+        title,
+        body,
+      });
+      res.json(question)
+    } else {
+      const error = new Error("Unauthorized");
+      error.status = 403;
+      throw error;
+    }
+  } else {
+    const error = new Error("Question not found");
+    error.status = 404;
+    throw error;
+  }
+});
 
 // Delete A Question
 
