@@ -1,13 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { Question } = require("../db/models");
+const { Question, Answer } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
-const { validateQuestion } = require("../utils/validation");
+const { validateQuestion, validateAnswer } = require("../utils/validation");
 
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
   const { questionId } = req.params;
-  const question = await Question.findByPk(questionId);
+  const question = await Question.findByPk(questionId, {
+    include: [
+      {
+        model: Answer,
+        attributes: ["id", "userId", "questionId", "body"],
+      },
+    ],
+  });
 
   if (!question) {
     const error = new Error("Question not found");
@@ -17,7 +24,6 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
-
 // Get All Questions
 router.get("/", async (req, res) => {
   const Questions = await Question.findAll({
@@ -26,6 +32,28 @@ router.get("/", async (req, res) => {
   res.json({ Questions });
 });
 
+// Create an Answer
+// answer validator
+router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const { body } = req.body;
+  const question = await Question.findByPk(questionId);
+
+  if (question) {
+    const answer = await Answer.create({
+      userId: user.id,
+      questionId,
+      body,
+    });
+    res.status(201);
+    res.json(answer);
+  } else {
+    const error = new Error("Question not found");
+    error.status = 404;
+    throw error;
+  }
+});
 
 // Create A Question
 router.post("/", requireAuth, validateQuestion, async (req, res) => {
@@ -40,7 +68,6 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
   res.status(201);
   res.json(question);
 });
-
 
 // Edit A Question
 router.put("/:questionId", requireAuth, async (req, res) => {
@@ -67,7 +94,6 @@ router.put("/:questionId", requireAuth, async (req, res) => {
     throw error;
   }
 });
-
 
 // Delete A Question
 router.delete("/:questionId", requireAuth, async (req, res) => {

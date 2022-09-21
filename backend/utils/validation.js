@@ -72,9 +72,17 @@ const validateQuestion = [
   handleValidationErrors
 ]
 
+const validateAnswer = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("Please provide a detailed answer")
+]
+
 module.exports = {
   handleValidationErrors,
   validateSignup,
   validateLogin,
   validateQuestion,
+  validateAnswer,
 };
