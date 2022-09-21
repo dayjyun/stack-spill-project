@@ -59,6 +59,7 @@ router.post('/:questionId/votes', requireAuth, async (req, res) => {
     }
 })
 
+
 // Create an Answer
 router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
   const { user } = req;
@@ -95,6 +96,7 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
   res.json(question);
 });
 
+
 // Edit A Question
 router.put("/:questionId", requireAuth, async (req, res) => {
   const { user } = req;
@@ -120,6 +122,7 @@ router.put("/:questionId", requireAuth, async (req, res) => {
     throw error;
   }
 });
+
 
 // Delete A Question
 router.delete("/:questionId", requireAuth, async (req, res) => {
