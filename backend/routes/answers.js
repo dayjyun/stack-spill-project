@@ -53,5 +53,28 @@ router.put("/:answerId", requireAuth, async (req, res) => {
 
 
 // Delete Answer
+router.delete('/:answerId', requireAuth, async (req, res) => {
+    const { user } = req;
+    const { answerId } = req.params;
+    const answer = await Answer.findByPk(answerId)
+
+    if (answer) {
+        if (answer.userId === user.id) {
+            await answer.destroy()
+            res.json({
+                message: "Successfully deleted answer",
+                statusCode: 200,
+            })
+        } else {
+            const error = new Error("Unauthorized");
+            error.status = 403;
+            throw error;
+        }
+    } else {
+        const error = new Error("Answer not found")
+        error.status = 404;
+        throw error;
+    }
+})
 
 module.exports = router;
