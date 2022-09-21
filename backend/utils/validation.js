@@ -76,7 +76,8 @@ const validateAnswer = [
   check("body")
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage("Please provide a detailed answer")
+    .withMessage("Please provide a detailed answer"),
+  handleValidationErrors
 ]
 
 module.exports = {
