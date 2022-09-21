@@ -7,14 +7,14 @@ const { validateQuestion } = require("../utils/validation");
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
   const { questionId } = req.params;
-  const Query = await Question.findByPk(questionId);
+  const question = await Question.findByPk(questionId);
 
-  if (!Query) {
+  if (!question) {
     const error = new Error("Question not found");
     error.status = 404;
     throw error;
   }
-  res.json({ Query });
+  res.json(question);
 });
 
 // Get All Questions
