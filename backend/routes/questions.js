@@ -69,6 +69,7 @@ router.delete("/:questionId/votes", requireAuth, async (req, res) => {
   const userVote = await Vote.findOne({ where: { userId: user.id }});
 
   if (question) {
+    // verify that the vote belongs to question
     await userVote.destroy();
     res.json({
       message: "Successfully deleted vote",
