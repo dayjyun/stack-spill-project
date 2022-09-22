@@ -32,11 +32,11 @@ const getCurrentQuestion = (question) => {
 }
 
 export const getQuestion = (questionId) => async (dispatch) => {
-    const currentQuestion = await fetch(`/api/questions/${questionId}`)
+    const specificQuestion = await fetch(`/api/questions/${questionId}`)
 
-    if (currentQuestion.ok) {
-      const resCurrentQuestion = currentQuestion.json();
-      dispatch(getCurrentQuestion(resCurrentQuestion));
+    if (specificQuestion.ok) {
+      const resSpecificQuestion = specificQuestion.json();
+      dispatch(getCurrentQuestion(resSpecificQuestion));
     }
 }
 

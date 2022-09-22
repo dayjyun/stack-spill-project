@@ -32,11 +32,11 @@ const getCurrentAnswer = (answer) => {
 }
 
 export const getAnswer = (answerId) => async (dispatch) => {
-    const currentAnswer = await fetch(`/api/answers/${answerId}`)
+    const specificAnswer = await fetch(`/api/answers/${answerId}`)
 
-    if (currentAnswer.ok) {
-      const resCurrentAnswer = currentAnswer.json();
-      dispatch(getCurrentAnswer(resCurrentAnswer));
+    if (specificAnswer.ok) {
+      const resSpecificAnswer = specificAnswer.json();
+      dispatch(getCurrentAnswer(resSpecificAnswer));
     }
 }
 
