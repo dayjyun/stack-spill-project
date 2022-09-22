@@ -59,12 +59,12 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
     const { questionId } = req.params;
     const { vote } = req.body;
     const question = await Question.findByPk(questionId);
-    const voted = await Vote.findOne({
+    const currentVote = await Vote.findOne({
       where: { userId: user.id, questionId },
     });
 
     if (question) {
-      if (!voted) {
+      if (!currentVote) {
         const newVote = await Vote.create({
           userId: user.id,
           vote,
@@ -73,9 +73,11 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
         res.status(201);
         res.json(newVote);
       } else {
-        const error = new Error("Already voted");
-        error.status = 405;
-        throw error;
+        await currentVote.update({
+          vote,
+        })
+        res.status(201)
+        res.json(currentVote)
       }
     } else {
       const error = new Error("Question Not Found");
