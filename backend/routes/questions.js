@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
-const { validateQuestion, validateAnswer, validateVote } = require("../utils/validation");
+const {
+  validateQuestion,
+  validateAnswer,
+  validateVote,
+} = require("../utils/validation");
 
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {
@@ -20,7 +24,6 @@ router.get("/:questionId/votes", async (req, res) => {
     throw error;
   }
 });
-
 
 // Get Question from an ID
 router.get("/:questionId", async (req, res) => {
@@ -46,7 +49,6 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
-
 // Get All Questions
 router.get("/", async (req, res) => {
   const questions = await Question.findAll({
@@ -55,29 +57,36 @@ router.get("/", async (req, res) => {
   res.json(questions);
 });
 
-
 // Create a Vote for a Question
-router.post("/:questionId/votes", requireAuth, validateVote, async (req, res) => {
-  const { user } = req;
-  const { questionId } = req.params;
-  const { vote } = req.body;
-  const question = await Question.findByPk(questionId);
-
-  if (question) {
-    const newVote = await Vote.create({
-      userId: user.id,
-      vote,
-      questionId,
+router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) => {
+    const { user } = req;
+    const { questionId } = req.params;
+    const { vote } = req.body;
+    const question = await Question.findByPk(questionId);
+    const voted = await Vote.findOne({
+      where: { userId: user.id, questionId },
     });
-    res.status(201);
-    res.json(newVote);
-  } else {
-    const error = new Error("Question Not Found");
-    error.status = 404;
-    throw error;
-  }
-});
 
+    if (question) {
+      if (!voted) {
+        const newVote = await Vote.create({
+          userId: user.id,
+          vote,
+          questionId,
+        });
+        res.status(201);
+        res.json(newVote);
+      } else {
+        const error = new Error("Already voted");
+        throw error;
+      }
+    } else {
+      const error = new Error("Question Not Found");
+      error.status = 404;
+      throw error;
+    }
+  }
+);
 
 // Create an Answer
 router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
@@ -101,7 +110,6 @@ router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
   }
 });
 
-
 // Create A Question
 router.post("/", requireAuth, validateQuestion, async (req, res) => {
   const { user } = req;
@@ -116,6 +124,34 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
   res.json(question);
 });
 
+// Edit a vote
+router.put("/:questionId/votes", requireAuth, async (req, res) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const { vote } = req.body;
+  const question = await Question.findByPk(questionId);
+  const voted = await Vote.findOne({
+    where: { userId: user.id, questionId },
+  });
+  console.log(voted);
+
+  if (question) {
+    if (voted) {
+      const updatedVote = await Vote.update({
+        vote,
+      });
+      res.json(updatedVote);
+    } else {
+      const error = new Error("Vote not found");
+      error.status = 404;
+      throw error;
+    }
+  } else {
+    const error = new Error("Question not found");
+    error.status = 404;
+    throw error;
+  }
+});
 
 // Edit A Question
 router.put("/:questionId", requireAuth, async (req, res) => {
@@ -143,7 +179,6 @@ router.put("/:questionId", requireAuth, async (req, res) => {
   }
 });
 
-
 // Delete A Vote
 router.delete("/:questionId/votes", requireAuth, async (req, res) => {
   const { user } = req;
@@ -154,18 +189,23 @@ router.delete("/:questionId/votes", requireAuth, async (req, res) => {
   });
 
   if (question) {
-    await userVote.destroy();
-    res.json({
-      message: "Successfully deleted vote",
-      statusCode: 200,
-    });
+    if (userVote) {
+      await userVote.destroy();
+      res.json({
+        message: "Successfully deleted vote",
+        statusCode: 200,
+      });
+    } else {
+      const error = new Error("Vote not found");
+      error.status = 404;
+      throw error;
+    }
   } else {
     const error = new Error("Question not found");
     error.status = 404;
     throw error;
   }
 });
-
 
 // Delete A Question
 router.delete("/:questionId", requireAuth, async (req, res) => {

@@ -82,7 +82,7 @@ const validateAnswer = [
 
 const validateVote = [
   check("vote")
-    .exists({ checkFalsy: true })
+    .exists({ checkFalsy: false })
     .notEmpty()
     .withMessage("Please provide a vote"),
   handleValidationErrors
