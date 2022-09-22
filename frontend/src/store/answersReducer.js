@@ -49,12 +49,12 @@ const addAnswer = (answer) => {
 }
 
 export const createAnswer = (answerData) => async (dispatch) => {
-    const { body } = answerData
+    const { body, questionId } = answerData
     const formData = new FormData()
 
     formData.append('body', body)
 
-    const newAnswer = await csrfFetch(`/api/answers`, {
+    const newAnswer = await csrfFetch(`/api/questions/${questionId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

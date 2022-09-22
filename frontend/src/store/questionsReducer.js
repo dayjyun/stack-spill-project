@@ -48,7 +48,7 @@ const addQuestion = (question) => {
     }
 }
 
-export const createQuestion = (questionData) =>  async (dispatch) => {
+export const createQuestion = (questionData) => async (dispatch) => {
     const { title, body } = questionData;
     const formData = new FormData();
 
