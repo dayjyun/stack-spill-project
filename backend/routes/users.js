@@ -41,9 +41,6 @@ router.put('/:userId', requireAuth, async (req, res) => {
   const { firstName, lastName, username, email } = req.body;
   const userInfo = await User.findByPk(userId)
 
-  console.log(user.id)
-  console.log(userInfo.id)
-
   if (userInfo) {
     if (userInfo.id === user.id) {
       await userInfo.update({
