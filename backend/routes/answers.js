@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
+const { validateVote } = require("../utils/validation");
 
 // Get Votes for a Answer
 router.get("/:answerId/votes", async (req, res) => {
@@ -48,7 +49,7 @@ router.get("/", async (req, res) => {
 
 
 // Create a Vote for a Answer
-router.post("/:answerId/votes", requireAuth, async (req, res) => {
+router.post("/:answerId/votes", requireAuth, validateVote, async (req, res) => {
   const { user } = req;
   const { answerId } = req.params;
   const { vote } = req.body;
