@@ -130,17 +130,16 @@ router.put("/:questionId/votes", requireAuth, async (req, res) => {
   const { questionId } = req.params;
   const { vote } = req.body;
   const question = await Question.findByPk(questionId);
-  const voted = await Vote.findOne({
+  const currentVote = await Vote.findOne({
     where: { userId: user.id, questionId },
   });
-  console.log(voted);
 
   if (question) {
-    if (voted) {
-      const updatedVote = await Vote.update({
+    if (currentVote) {
+      await currentVote.update({
         vote,
       });
-      res.json(updatedVote);
+      res.json(currentVote);
     } else {
       const error = new Error("Vote not found");
       error.status = 404;
