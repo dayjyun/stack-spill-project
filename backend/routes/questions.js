@@ -138,9 +138,13 @@ router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => 
       });
       res.json(currentVote);
     } else {
-      const error = new Error("Vote not found");
-      error.status = 404;
-      throw error;
+      const newVote = await Vote.create({
+        userId: user.id,
+        vote,
+        questionId,
+      })
+      res.status(201)
+      res.json(newVote)
     }
   } else {
     const error = new Error("Question not found");
