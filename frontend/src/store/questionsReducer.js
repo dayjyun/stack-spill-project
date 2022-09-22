@@ -32,11 +32,11 @@ const getCurrentQuestion = (question) => {
 }
 
 export const getQuestion = (questionId) => async (dispatch) => {
-    const question = await fetch(`/api/questions/${questionId}`)
+    const currentQuestion = await fetch(`/api/questions/${questionId}`)
 
-    if (question.ok) {
-        const resQuestion = question.json()
-        dispatch(getCurrentQuestion(resQuestion))
+    if (currentQuestion.ok) {
+      const resCurrentQuestion = currentQuestion.json();
+      dispatch(getCurrentQuestion(resCurrentQuestion));
     }
 }
 
@@ -78,16 +78,16 @@ const updateQuestion = (question) => {
 }
 
 export const editQuestion = (question) => async (dispatch) => {
-    const updatedQuestion = await csrfFetch(`/api/questions/${question.id}`, {
+    const questionEdit = await csrfFetch(`/api/questions/${question.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(question)
     })
-    if(updatedQuestion.ok) {
-        const resQuestion = await updatedQuestion.json()
-        dispatch(updateQuestion(resQuestion))
+    if (questionEdit.ok) {
+      const resQuestionEdit = await questionEdit.json();
+      dispatch(updateQuestion(resQuestionEdit));
     }
 }
 
@@ -100,11 +100,11 @@ const removeQuestion = (id) => {
 }
 
 export const deleteQuestion = (questionId) => async (dispatch) => {
-    const question = await csrfFetch(`/api/questions/${questionId}`, {
+    const questionDelete = await csrfFetch(`/api/questions/${questionId}`, {
         method: "DELETE",
     })
-    if (question.ok) {
-        dispatch(removeQuestion(questionId))
+    if (questionDelete.ok) {
+      dispatch(removeQuestion(questionId));
     }
 }
 

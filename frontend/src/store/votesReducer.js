@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_ALL_VOTES = 'votes/getAllVotes'
 const GET_VOTE = 'votes/getVote'
 const CREATE_VOTE = 'votes/createVote'
+const EDIT_VOTE = 'votes/editVote'
 const DELETE_VOTE = 'votes/deleteVote'
 
 // get all votes
@@ -96,6 +97,43 @@ export const createAnswerVote = (voteData, answerId) => async (dispatch) => {
     }
 }
 
+// edit vote
+const updateVote = (vote) => {
+    return {
+        type: EDIT_VOTE,
+        vote
+    }
+}
+
+export const editQuestionVote = (question) => async (dispatch) => {
+    const updatedVote = await csrfFetch(`/api/questions/${question.id}/votes`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(question)
+    })
+    if (updatedVote.ok) {
+        const resVote = await updatedVote.json()
+        dispatch(updateVote(resVote))
+    }
+}
+
+
+export const editAnswerVote = (answer) => async (dispatch) => {
+    const updatedVote = await csrfFetch(`/api/answers/${answer.id}/votes`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(answer)
+    })
+    if (updatedVote.ok) {
+        const resVote = await updateVote.json()
+        dispatch(updateVote(resVote))
+    }
+}
+
 // delete vote
 const removeVote = (id) => {
     return {
@@ -105,20 +143,20 @@ const removeVote = (id) => {
 }
 
 export const deleteQuestionVote = (questionId) => async (dispatch) => {
-    const question = await csrfFetch(`/api/questions/${questionId}/votes`, {
+    const questionVote = await csrfFetch(`/api/questions/${questionId}/votes`, {
         method: "DELETE",
     })
-    if (question.ok) {
-        dispatch(removeVote(questionId))
+    if (questionVote.ok) {
+      dispatch(removeVote(questionId));
     }
 }
 
 export const deleteAnswerVote = (answerId) => async (dispatch) => {
-    const answer = await csrfFetch(`/api/answers/${answerId}/votes`, {
+    const answerVote = await csrfFetch(`/api/answers/${answerId}/votes`, {
         method: "DELETE"
     })
-    if (answer.ok) {
-        dispatch(removeVote(answerId))
+    if (answerVote.ok) {
+      dispatch(removeVote(answerId));
     }
 }
 
