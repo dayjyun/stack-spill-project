@@ -80,10 +80,19 @@ const validateAnswer = [
   handleValidationErrors
 ]
 
+const validateVote = [
+  check("vote")
+    .exists({ checkFalsy: false })
+    .notEmpty()
+    .withMessage("Please provide a vote"),
+  handleValidationErrors
+]
+
 module.exports = {
   handleValidationErrors,
   validateSignup,
   validateLogin,
   validateQuestion,
   validateAnswer,
+  validateVote,
 };
