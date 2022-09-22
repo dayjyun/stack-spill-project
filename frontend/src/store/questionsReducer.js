@@ -91,6 +91,7 @@ export const editQuestion = (question) => async (dispatch) => {
     }
 }
 
+// delete question
 const removeQuestion = (id) => {
     return {
         type: DELETE_QUESTION,
