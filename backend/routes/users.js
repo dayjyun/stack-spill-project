@@ -35,15 +35,35 @@ router.get("/", async (req, res) => {
 
 
 // Edit A User
-// router.put('/:userId', async (req, res) => {
-//   const { userId } = req.params;
-//   const user = User.findByPk(userId)
+router.put('/:userId', requireAuth, async (req, res) => {
+  const { user } = req;
+  const { userId } = req.params;
+  const { firstName, lastName, username, email } = req.body;
+  const userInfo = await User.findByPk(userId)
 
-//   if (user) {
-//     if (user.id == )
-        // how to get current session user?
-//   }
-// })
+  console.log(user.id)
+  console.log(userInfo.id)
+
+  if (userInfo) {
+    if (userInfo.id === user.id) {
+      await userInfo.update({
+        firstName,
+        lastName,
+        username,
+        email,
+      })
+      res.json(userInfo)
+    } else {
+      const error = new Error("Unauthorized")
+      error.status = 403;
+      throw error;
+    }
+  } else {
+    const error = new Error("User not found")
+    error.status = 404;
+    throw error;
+  }
+})
 
 
 // Get All Questions of a User
