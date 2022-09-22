@@ -2,11 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
-const {
-  validateQuestion,
-  validateAnswer,
-  validateVote,
-} = require("../utils/validation");
+const { validateQuestion, validateAnswer, validateVote, } = require("../utils/validation");
 
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {
@@ -78,6 +74,7 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
         res.json(newVote);
       } else {
         const error = new Error("Already voted");
+        error.status = 405;
         throw error;
       }
     } else {

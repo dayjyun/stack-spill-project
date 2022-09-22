@@ -21,7 +21,6 @@ router.get("/:answerId/votes", async (req, res) => {
   }
 });
 
-
 // Get Answer using ID
 router.get("/:answerId", async (req, res) => {
   const { answerId } = req.params;
@@ -47,22 +46,30 @@ router.get("/", async (req, res) => {
   res.json(answers);
 });
 
-
 // Create a Vote for a Answer
 router.post("/:answerId/votes", requireAuth, validateVote, async (req, res) => {
   const { user } = req;
   const { answerId } = req.params;
   const { vote } = req.body;
   const answer = await Answer.findByPk(answerId);
+  const voted = await Vote.findOne({
+    where: { userId: user.id, answerId }
+  })
 
   if (answer) {
-    const newVote = await Vote.create({
-      userId: user.id,
-      vote,
-      answerId,
-    });
-    res.status(201);
-    res.json(newVote);
+    if (!voted) {
+      const newVote = await Vote.create({
+        userId: user.id,
+        vote,
+        answerId,
+      });
+      res.status(201);
+      res.json(newVote);
+    } else {
+      const error = new Error("Already voted")
+      error.status = 405;
+      throw error
+    }
   } else {
     const error = new Error("Answer Not Found");
     error.status = 404;
@@ -70,6 +77,37 @@ router.post("/:answerId/votes", requireAuth, validateVote, async (req, res) => {
   }
 });
 
+// Edit a vote
+router.put('/:answerId/votes', requireAuth, validateVote, async (req, res) => {
+  const { user } = req;
+  const { answerId } = req.params;
+  const { vote } = req.body;
+  const answer = await Answer.findByPk(answerId)
+  const currentVote = await Vote.findOne({
+    where: { userId: user.id, answerId }
+  })
+
+  if (answer) {
+    if (currentVote) {
+      await currentVote.update({
+        vote,
+      })
+      res.json(currentVote)
+    } else {
+      const newVote = await Vote.create({
+        userId: user.id,
+        vote,
+        answerId,
+      })
+      res.status(201)
+      res.json(newVote)
+    }
+  } else {
+    const error = new Error("Question not found")
+    error.status = 404;
+    throw error;
+  }
+})
 
 // Edit Answer
 router.put("/:answerId", requireAuth, async (req, res) => {
@@ -96,7 +134,6 @@ router.put("/:answerId", requireAuth, async (req, res) => {
   }
 });
 
-
 // Delete A Vote
 router.delete("/:answerId/votes", requireAuth, async (req, res) => {
   const { user } = req;
@@ -116,7 +153,6 @@ router.delete("/:answerId/votes", requireAuth, async (req, res) => {
     throw error;
   }
 });
-
 
 // Delete Answer
 router.delete("/:answerId", requireAuth, async (req, res) => {
