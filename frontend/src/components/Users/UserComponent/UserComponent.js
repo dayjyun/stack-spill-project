@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUser } from '../../../store/usersReducer';
-import './User.css'
+import "./UserComponent.css";
 
-function User() {
+function UserComponent() {
     const dispatch = useDispatch()
     const { userId } = useParams();
     const allUsers = Object.values(useSelector(state => state.users))
@@ -21,4 +21,4 @@ function User() {
     );
 }
 
-export default User;
+export default UserComponent;
