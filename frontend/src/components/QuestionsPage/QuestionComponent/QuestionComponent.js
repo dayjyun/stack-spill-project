@@ -13,18 +13,15 @@ function QuestionComponent() {
   const allQuestions = Object.values(useSelector((state) => state.questions));
   const question = allQuestions.filter((question) => question.id == questionId)[0];
   const allUsers = Object.values(useSelector(state => state.users))
-  const user = allUsers.filter(user => user.id == question.userId)[0]
-  console.log("username:", user.username)
-  console.log("question.userId:", question.userId)
+  const user = allUsers.filter(user => user.id == question?.userId)[0]
 
   useEffect(() => {
-    // dispatch(getUser(userId))
     dispatch(getQuestion(questionId));
   }, [dispatch]);
 
   return (
     <>
-      <div id='question-card'>
+      <div key={question?.id} id='question-card'>
         <h1 id="question-title">{question?.title}</h1>
         <h3 id="question-body">{question?.body}</h3>
         <h3>By {user?.username}</h3>
