@@ -4,7 +4,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
 const { User, Question, Answer } = require("../db/models");
 
 // Get Current User
-router.get("/me", (req, res) => { //! removed requireAuth
+router.get("/me", requireAuth, (req, res) => { //! removed requireAuth
   const { user } = req;
   if (user) {
     return res.json({
