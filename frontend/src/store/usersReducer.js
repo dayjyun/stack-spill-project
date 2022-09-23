@@ -16,7 +16,7 @@ export const getAllUsers = () => async (dispatch) => {
   const allUsers = await fetch('/api/users')
 
   if (allUsers.ok) {
-    const resAllUsers = allUsers.json()
+    const resAllUsers = await allUsers.json()
     dispatch(getAll(resAllUsers))
   }
 }

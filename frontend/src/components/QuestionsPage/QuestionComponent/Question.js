@@ -5,15 +5,15 @@ import { getQuestion } from '../../../store/questionsReducer'
 import './Question.css'
 
 function Question() {
-    // const dispatch = useDispatch()
-    // const { questionId } = useParams()
-    // const allQuestions = Object.values(useSelector(state => state.questions))
-    // const question = allQuestions[+questionId]
-    // console.log(allQuestions)
+    const dispatch = useDispatch()
+    const { questionId } = useParams()
+    const allQuestions = Object.values(useSelector(state => state.questions))
+    const question = allQuestions[+questionId]
+    console.log(question)
 
-    // useEffect(() => {
-    //     dispatch(getQuestion())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getQuestion())
+    }, [dispatch])
 
     return (
         <>

@@ -31,6 +31,7 @@ function Navigation({ isLoaded }) {
         {/* Pop Out Side Menu: Questions, Users */}
         <NavLink exact to="/">Home</NavLink>
         <NavLink to='/about'>About</NavLink>
+        <NavLink to='/users'>Users</NavLink>
         {/* <h1>Search Bar</h1> */}
         {/* Dark Mode Button */}
         {isLoaded && sessionLinks}

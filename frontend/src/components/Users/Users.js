@@ -9,13 +9,15 @@ function Users() {
   console.log(allUsers);
 
   useEffect(() => {
-    dispatch(getAllUsers);
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   return (
     <>
       {allUsers.map((user) => (
-        <li key={user.id}>user.username</li>
+        <div key={user?.id}>
+          <li>{user?.username}</li>
+        </div>
       ))}
     </>
   );
