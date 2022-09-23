@@ -14,7 +14,6 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        <h1>Inside Home Page</h1>
       </>
     );
   } else {
@@ -29,11 +28,9 @@ function Navigation({ isLoaded }) {
   return (
     <ul>
       <li>
-        {/* Pop Out Menu: Questions, Users */}
-        {/* About Button */}
-        <NavLink exact to="/">
-          Home
-        </NavLink>
+        {/* Pop Out Side Menu: Questions, Users */}
+        <NavLink exact to="/">Home</NavLink>
+        <NavLink to='/about'>About</NavLink>
         {/* <h1>Search Bar</h1> */}
         {/* Dark Mode Button */}
         {isLoaded && sessionLinks}

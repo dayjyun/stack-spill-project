@@ -2,6 +2,25 @@
 
 }
 
+#questions-container {
+
+}
+
+#question-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    margin: 1rem 5rem;
+    cursor: pointer;
+}
+
+#question-card:hover {
+    background-color: aliceblue;
+}
+
 #question-title {
     color: blue
 }
