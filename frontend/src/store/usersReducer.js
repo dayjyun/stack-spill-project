@@ -60,7 +60,7 @@ export const editUser = (user) => async (dispatch) => {
   }
 }
 
-let initialState = { user: null };
+let initialState = {};
 
 const usersReducer = (state = initialState, action) => {
   let newState;
