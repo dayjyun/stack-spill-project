@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
-import { getUser } from "../../../store/usersReducer";
 import AnswersComponent from "../AnswersComponent/Answers";
 import "./QuestionComponent.css";
 
