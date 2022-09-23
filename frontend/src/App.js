@@ -7,6 +7,7 @@ import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Question from "./components/QuestionsPage/QuestionComponent/Question";
+import User from "./components/Users/UserComponent/User";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/about'>
             <AboutPage />
+          </Route>
+          <Route path='/users/:userId'>
+            <User />
           </Route>
           <Route exact path='/users'>
             <Users />
