@@ -35,7 +35,7 @@ export const getAnswer = (answerId) => async (dispatch) => {
     const specificAnswer = await fetch(`/api/answers/${answerId}`)
 
     if (specificAnswer.ok) {
-      const resSpecificAnswer = specificAnswer.json();
+      const resSpecificAnswer = await specificAnswer.json();
       dispatch(getCurrentAnswer(resSpecificAnswer));
     }
 }

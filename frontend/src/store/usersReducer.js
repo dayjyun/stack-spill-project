@@ -33,7 +33,7 @@ export const getUser = (userId) => async (dispatch) => {
   const specificUser = await fetch(`/api/users/${userId}`)
 
   if (specificUser.ok) {
-    const resSpecificUser = specificUser.json();
+    const resSpecificUser = await specificUser.json();
     dispatch(getSpecificUser(resSpecificUser));
   }
 }
@@ -55,7 +55,7 @@ export const editUser = (user) => async (dispatch) => {
     body: JSON.stringify(user)
   })
   if (userEdit.ok) {
-    const resUserEdit = userEdit.json()
+    const resUserEdit = await userEdit.json()
     dispatch(updateUser(resUserEdit))
   }
 }

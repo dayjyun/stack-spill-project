@@ -35,7 +35,7 @@ export const getQuestionVote = (questionId) => async (dispatch) => {
     const questionVote = await fetch(`/api/questions/${questionId}/votes`)
 
     if (questionVote.ok) {
-        const resQuestionVote = questionVote.json()
+        const resQuestionVote = await questionVote.json()
         dispatch(getCurrentVote(resQuestionVote))
     }
 }
@@ -91,7 +91,7 @@ export const createAnswerVote = (voteData, answerId) => async (dispatch) => {
         body: JSON.stringify(formData)
     })
     if(newVote.ok) {
-        const resNewVote = newVote.json()
+        const resNewVote = await newVote.json()
         dispatch(addVote(resNewVote))
         return resNewVote
     }
