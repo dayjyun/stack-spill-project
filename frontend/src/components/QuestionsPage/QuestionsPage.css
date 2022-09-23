@@ -12,8 +12,9 @@
     flex-direction: column;
     border: 1px solid lightgray;
     border-radius: 1rem;
-    padding: 1.2rem;
-    margin: 1rem 5rem;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.507);
+    padding: 1.5rem;
+    margin: .6rem 5rem;
     cursor: pointer;
 }
 

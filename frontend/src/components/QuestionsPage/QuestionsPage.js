@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
+import Question from "./QuestionComponent/Question";
 import "./QuestionsPage.css";
 
 function QuestionsPage() {
@@ -20,7 +21,7 @@ function QuestionsPage() {
           <NavLink
             key={question.id}
             id="question-card"
-            to={{ pathname: `/questions/{question?.id}` }}
+            to={{ pathname: `/questions/${question?.id}` }}
           >
             <div id="question-title">{question?.title}</div>
             <div id="question-body">{question?.body}</div>

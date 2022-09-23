@@ -5,6 +5,7 @@ import * as sessionActions from "./store/sessionReducer";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
+import AboutPage from "./components/AboutPage/AboutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <QuestionsPage />
+          </Route>
+          <Route path='/about'>
+            <AboutPage />
           </Route>
           <Route exact path='/users'>
             <Users />
