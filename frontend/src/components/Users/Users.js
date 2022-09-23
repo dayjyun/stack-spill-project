@@ -14,13 +14,14 @@ function Users() {
 
   return (
     <>
-    <ul>
-
-      {allUsers.map((user) => (
-        <div key={user?.id}>
-          <Link to={`/users/${user?.id}`}>{user?.username}</Link>
-        </div>
-      ))}
+      <h1>Users</h1>
+      {/* Search Bar for Users */}
+      <ul>
+        {allUsers.map((user) => (
+          <div key={user?.id}>
+            <Link to={`/users/${user?.id}`}>{user?.username}</Link>
+          </div>
+        ))}
       </ul>
     </>
   );
