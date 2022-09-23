@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
+import { Link } from "react-router-dom";
+import * as sessionActions from "../../store/sessionReducer";
+import EditUserModal from "../EditUserModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -35,8 +37,14 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <li>{user?.username}</li>
+          <li>{user?.email}</li>
+          {/* <li>
+            <EditUserModal />
+          </li> */}
+          <Link to={`/users/${user?.id}`}>
+            <button>Profile</button>
+          </Link>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
