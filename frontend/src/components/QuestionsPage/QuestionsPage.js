@@ -14,17 +14,17 @@ function QuestionsPage() {
   }, [dispatch]);
 
   return (
-    <div id="questions-page-component">
+    <div id="all-questions-page-component">
       <h1>All Questions</h1>
-      <div id="questions-container">
+      <div id="all-questions-container">
         {allQuestions.map((question) => (
           <NavLink
             key={question?.id}
-            id="question-card"
+            id="all-questions-card"
             to={{ pathname: `/questions/${question?.id}` }}
           >
-            <div id="question-title">{question?.title}</div>
-            <div id="question-body">{question?.body}</div>
+            <div id="all-questions-title">{question?.title}</div>
+            <div id="all-questions-body">{question?.body}</div>
           </NavLink>
         ))}
       </div>

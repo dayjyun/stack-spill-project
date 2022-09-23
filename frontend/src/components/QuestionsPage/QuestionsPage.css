@@ -1,12 +1,12 @@
-#questions-page-component {
+#all-questions-page-component {
 
 }
 
-#questions-container {
+#all-questions-container {
 
 }
 
-#question-card {
+#all-questions-card {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -18,10 +18,10 @@
     cursor: pointer;
 }
 
-#question-card:hover {
+#all-questions-card:hover {
     background-color: aliceblue;
 }
 
-#question-title {
+#all-questions-title {
     color: blue
 }

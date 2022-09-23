@@ -35,7 +35,7 @@ export const getQuestion = (questionId) => async (dispatch) => {
     const specificQuestion = await fetch(`/api/questions/${questionId}`)
 
     if (specificQuestion.ok) {
-      const resSpecificQuestion = specificQuestion.json();
+      const resSpecificQuestion = await specificQuestion.json();
       dispatch(getCurrentQuestion(resSpecificQuestion));
     }
 }
