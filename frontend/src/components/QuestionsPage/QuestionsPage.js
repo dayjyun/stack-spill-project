@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
-import Question from "./QuestionComponent/Question";
 import "./QuestionsPage.css";
 
 function QuestionsPage() {

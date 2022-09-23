@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
-import "./Question.css";
+import { getAllAnswers } from "../../../store/answersReducer";
+import "./QuestionComponent.css";
+import AnswersComponent from "../AnswersComponent/Answers";
 
-function Question() {
+function QuestionComponent() {
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const allQuestions = Object.values(useSelector((state) => state.questions));
@@ -18,10 +20,13 @@ function Question() {
     <>
       <div>
         <h1 id="question-title">{question?.title}</h1>
-        <p id="question-body">{question?.body}</p>
+        <h3 id="question-body">{question?.body}</h3>
+      </div>
+      <div >
+        <AnswersComponent questionId={questionId}/>
       </div>
     </>
   );
 }
 
-export default Question;
+export default QuestionComponent;

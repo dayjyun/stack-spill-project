@@ -2,7 +2,7 @@
 
 /* font size and font family */
 
-ul {
+ul, li {
     list-style: none;
 }
 

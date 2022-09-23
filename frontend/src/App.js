@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
-import Question from "./components/QuestionsPage/QuestionComponent/Question";
+import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import User from "./components/Users/UserComponent/User";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path='/questions/:questionId'>
-            <Question />
+            <QuestionComponent />
           </Route>
           <Route exact path='/'>
             <QuestionsPage />
