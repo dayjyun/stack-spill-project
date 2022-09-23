@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllUsers } from "../../store/usersReducer";
 import "./Users.css";
 
 function Users() {
   const dispatch = useDispatch();
   const allUsers = Object.values(useSelector((state) => state.users));
-  console.log(allUsers);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -14,11 +14,14 @@ function Users() {
 
   return (
     <>
-      {allUsers.map((user, i) => (
-        <div key={i}>
-          <li>{user?.username}</li>
+    <ul>
+
+      {allUsers.map((user) => (
+        <div key={user?.id}>
+          <Link to={`/users/${user?.id}`}>{user?.username}</Link>
         </div>
       ))}
+      </ul>
     </>
   );
 }
