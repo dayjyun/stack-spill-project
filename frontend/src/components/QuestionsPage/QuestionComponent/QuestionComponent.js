@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
-import AnswersComponent from "../AnswersComponent/Answers";
+import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
 function QuestionComponent() {
@@ -22,10 +22,15 @@ function QuestionComponent() {
       <div key={question?.id} id="question-card">
         <h1 id="question-title">{question?.title}</h1>
         <h3 id="question-body">{question?.body}</h3>
-        By <Link to={`/users/${userQuestion?.id}`}>{userQuestion?.username}</Link>
+        <div>
+          By{" "}
+          <Link to={`/users/${userQuestion?.id}`}>
+            {userQuestion?.username}
+          </Link>
+        </div>
       </div>
       <div>
-        <AnswersComponent questionId={questionId} allUsers={allUsers}/>
+        <AnswersComponent questionId={questionId} allUsers={allUsers} />
       </div>
     </>
   );

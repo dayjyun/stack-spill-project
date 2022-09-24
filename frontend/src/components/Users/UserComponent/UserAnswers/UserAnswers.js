@@ -12,6 +12,7 @@ function UserAnswers() {
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const userAnswers = allAnswers.filter((answer) => answer?.userId == userId);
   const allQuestions = Object.values(useSelector((state) => state.questions));
+
   let answeredQuestions = [];
 
   for (let i = 0; i < allQuestions.length; i++) {
@@ -25,7 +26,7 @@ function UserAnswers() {
   }
 
   useEffect(() => {
-    dispatch(getUser(userId));
+    // dispatch(getUser(userId));
     dispatch(getAllAnswers());
     dispatch(getAllQuestions());
   }, [dispatch]);

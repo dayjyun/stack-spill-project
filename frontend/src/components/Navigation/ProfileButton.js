@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
-import EditUserModal from "../EditUserModal";
+import EditUserModal from "../EditUserModal/EditUserModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();

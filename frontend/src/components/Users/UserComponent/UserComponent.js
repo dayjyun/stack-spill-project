@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { getAllQuestions } from "../../../store/questionsReducer";
+import { NavLink, useParams } from "react-router-dom";
+// import { getAllQuestions } from "../../../store/questionsReducer";
 import { getUser } from "../../../store/usersReducer";
 import "./UserComponent.css";
 
@@ -27,8 +27,10 @@ function UserComponent() {
           <div>{question?.body}</div>
         </div>
       ))} */}
-      <Link to={`/users/${userId}/questions`}>Questions</Link>
-      <Link to={`/users/${userId}/answers`}>Answers</Link>
+      <div id='user-component-navlinks'>
+        <NavLink to={`/users/${userId}/questions`}>Questions</NavLink>
+        <NavLink to={`/users/${userId}/answers`}>Answers</NavLink>
+      </div>
     </>
   );
 }
