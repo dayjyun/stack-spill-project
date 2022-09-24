@@ -34,7 +34,7 @@ router.delete("/logout", (_req, res) => {
 
 // Sign up
 router.post("/signup", validateSignup, async (req, res) => {
-  const { firstName, lastName, email, password, username } = req.body;
+  const { firstName, lastName, email, password, username, profileImage } = req.body;
   const checkEmail = await User.findOne({ where: { email }})
   const checkUsername = await User.findOne({ where: { username } })
 
@@ -58,6 +58,7 @@ router.post("/signup", validateSignup, async (req, res) => {
     email,
     username,
     password,
+    profileImage,
   })
 
   const token = await setTokenCookie(res, user);
