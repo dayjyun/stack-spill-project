@@ -8,7 +8,7 @@ import "./UserComponent.css";
 function UserComponent() {
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   const allUsers = Object.values(useSelector((state) => state.users));
   const user = allUsers.filter((user) => user.id == userId)[0];
 
@@ -16,12 +16,11 @@ function UserComponent() {
     dispatch(getUser(userId));
   }, [dispatch, userId]);
 
-  let editButton
+  let editButton;
 
-    if (sessionUser?.id == user?.id) {
-      editButton = <EditUserModal />
-    }
-
+  if (sessionUser?.id == user?.id) {
+    editButton = <EditUserModal />;
+  }
 
   return (
     <>
@@ -29,7 +28,9 @@ function UserComponent() {
         <img id="user-component-image" src={user?.profileImage} />
         <div id="user-component-details">
           <h1>{user?.username}</h1>
-          <h3>{user?.firstName} {user?.lastName}</h3>
+          <h3>
+            {user?.firstName} {user?.lastName}
+          </h3>
         </div>
         {editButton}
       </div>
