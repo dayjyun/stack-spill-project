@@ -43,7 +43,7 @@ router.put('/:userId', requireAuth, async (req, res) => {
 
   if (userInfo) {
     if (userInfo.id === user.id) {
-      await userInfo.update({
+      let updatedUser = await userInfo.update({
         firstName,
         lastName,
         username,
@@ -51,7 +51,7 @@ router.put('/:userId', requireAuth, async (req, res) => {
         password,
         profileImage,
       });
-      res.json(userInfo)
+      res.json(updatedUser)
     } else {
       const error = new Error("Unauthorized")
       error.status = 403;

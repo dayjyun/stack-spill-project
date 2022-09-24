@@ -82,14 +82,14 @@ const updateUser = (user) => {
   }
 }
 
-export const editUser = (user) => async (dispatch) => {
-  const userEdit = await csrfFetch(`/api/users/${user.id}`, {
+export const editUser = (userData) => async (dispatch) => {
+  const userEdit = await csrfFetch(`/api/users/${userData?.id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(user)
-  })
+    body: JSON.stringify(userData),
+  });
   if (userEdit.ok) {
     const resUserEdit = await userEdit.json()
     dispatch(updateUser(resUserEdit))

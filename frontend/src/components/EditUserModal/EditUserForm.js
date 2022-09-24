@@ -10,27 +10,24 @@ function EditUserForm({ setShowModal }) {
   const [lastName, setLastName] = useState(sessionUser?.lastName);
   const [email, setEmail] = useState(sessionUser?.email);
   const [username, setUsername] = useState(sessionUser?.username);
-  const [profileImage, setProfileImage] = useState("");
-  const [password, setPassword] = useState("");
+  // const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
+  // const [password, setPassword] = useState("");
 
-
-  const handelUserEditForm = (e) => {
-    e.preventDefault()
-
+  const handelUserEditForm = () => {
     dispatch(
       editUser({
-        userId: sessionUser?.id,
+        id: +sessionUser?.id,
         firstName,
         lastName,
         email,
         username,
-        profileImage,
-        password,
+        // profileImage,
+        // password,
       })
     ).then(() => {
       setShowModal(false)
     })
-  };
+  }
 
   const handleCancelButton = (e) => {
     e.preventDefault()
@@ -71,22 +68,22 @@ function EditUserForm({ setShowModal }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </label>
-      <label>
+      {/* <label>
         Password
         <input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <label>
+      </label> */}
+      {/* <label>
         Profile Image
         <input
           type="text"
           value={profileImage}
           onChange={(e) => setProfileImage(e.target.value)}
         />
-      </label>
+      </label> */}
       <button type="submit">Save</button>
       <button onClick={handleCancelButton}>Cancel</button>
     </form>

@@ -7,7 +7,6 @@ const REMOVE_USER = "session/removeUser";
 // const GET_USER = 'users/getUser'
 // const EDIT_USER = 'users/editUser'
 
-
 // actions
 const setUser = (user) => {
   return {
