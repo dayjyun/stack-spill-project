@@ -25,6 +25,7 @@ function AnswersComponent({ questionId }) {
             <div id="answer-body">{answer?.body}</div>
             By{" "}
             <Link to={`/users/${answer?.userId}`}>
+              <img id='answers-component-user-profileImage' src={allUsers?.find((user) => user?.id == answer?.userId).profileImage} />
               {allUsers?.find((user) => user?.id == answer?.userId).username}
             </Link>
           </div>

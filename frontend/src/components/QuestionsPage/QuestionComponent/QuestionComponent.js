@@ -25,6 +25,7 @@ function QuestionComponent() {
         <div>
           By{" "}
           <Link to={`/users/${userQuestion?.id}`}>
+            <img id='question-component-user-profileImage' src={userQuestion?.profileImage} />
             {userQuestion?.username}
           </Link>
         </div>

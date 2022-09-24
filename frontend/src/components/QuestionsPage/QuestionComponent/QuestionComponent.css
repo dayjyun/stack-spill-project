@@ -1,3 +1,8 @@
 #question-card {
     border: 2px solid black;
 }
+
+#question-component-user-profileImage {
+    max-height: 2rem;
+    max-width: 2rem;
+}
