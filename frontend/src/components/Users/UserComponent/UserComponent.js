@@ -12,7 +12,6 @@ function UserComponent() {
   const user = allUsers.filter((user) => user.id == userId)[0];
   const allQuestions = Object.values(useSelector((state) => state.questions));
   const userQuestions = allQuestions.filter((questions) => questions.userId == userId);
-  console.log(userQuestions);
 
   useEffect(() => {
     dispatch(getAllQuestions());
