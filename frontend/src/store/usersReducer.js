@@ -117,7 +117,7 @@ const usersReducer = (state = initialState, action) => {
     case GET_USER_QUESTIONS:
       initialState = { ...state }
       action.list.forEach(question => {
-        initialState[question.id] = question;
+        initialState[action.question.id] = action.question;
       })
       return initialState
 

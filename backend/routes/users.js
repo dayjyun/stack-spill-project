@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
 router.put('/:userId', requireAuth, async (req, res) => {
   const { user } = req;
   const { userId } = req.params;
-  const { firstName, lastName, username, email, profileImage } = req.body;
+  const { firstName, lastName, username, email, profileImage, password } = req.body;
   const userInfo = await User.findByPk(userId)
 
   if (userInfo) {
@@ -48,6 +48,7 @@ router.put('/:userId', requireAuth, async (req, res) => {
         lastName,
         username,
         email,
+        password,
         profileImage,
       });
       res.json(userInfo)

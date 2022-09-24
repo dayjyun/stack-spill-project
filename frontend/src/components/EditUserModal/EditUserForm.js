@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../store/usersReducer";
-import "./EditUser.css";
+import "./EditUserForm.css";
 
 function EditUserForm({ setShowModal }) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ function EditUserForm({ setShowModal }) {
   const [username, setUsername] = useState(sessionUser?.username);
   const [profileImage, setProfileImage] = useState("");
   const [password, setPassword] = useState("");
+
 
   const handelUserEditForm = (e) => {
     e.preventDefault()
@@ -43,7 +44,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={firstName}
-          // placeholder
           onChange={(e) => setFirstName(e.target.value)}
         />
       </label>
@@ -52,7 +52,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={lastName}
-          // placeholder
           onChange={(e) => setLastName(e.target.value)}
         />
       </label>
@@ -61,7 +60,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={email}
-          // placeholder
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
@@ -70,7 +68,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={username}
-          // placeholder
           onChange={(e) => setUsername(e.target.value)}
         />
       </label>
@@ -79,7 +76,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={password}
-          // placeholder
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
@@ -88,7 +84,6 @@ function EditUserForm({ setShowModal }) {
         <input
           type="text"
           value={profileImage}
-          // placeholder
           onChange={(e) => setProfileImage(e.target.value)}
         />
       </label>
