@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../store/usersReducer";
 import "./EditUser.css";
 
-function EditUserForm() {
+function EditUserForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState(sessionUser?.firstName);
@@ -14,8 +14,11 @@ function EditUserForm() {
   const [password, setPassword] = useState("");
 
   const handelUserEditForm = (e) => {
+    e.preventDefault()
+
     dispatch(
       editUser({
+        userId: sessionUser?.id,
         firstName,
         lastName,
         email,
@@ -23,8 +26,15 @@ function EditUserForm() {
         profileImage,
         password,
       })
-    );
+    ).then(() => {
+      setShowModal(false)
+    })
   };
+
+  const handleCancelButton = (e) => {
+    e.preventDefault()
+    setShowModal(false)
+  }
 
   return (
     <form onSubmit={handelUserEditForm} id="edit-user-form">
@@ -70,7 +80,7 @@ function EditUserForm() {
           type="text"
           value={password}
           // placeholder
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <label>
@@ -79,10 +89,11 @@ function EditUserForm() {
           type="text"
           value={profileImage}
           // placeholder
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setProfileImage(e.target.value)}
         />
       </label>
       <button type="submit">Save</button>
+      <button onClick={handleCancelButton}>Cancel</button>
     </form>
   );
 }

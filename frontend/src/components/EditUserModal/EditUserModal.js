@@ -10,7 +10,7 @@ function EditUserModal() {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditUserForm />
+          <EditUserForm setShowModal={setShowModal} />
         </Modal>
       )}
     </>
