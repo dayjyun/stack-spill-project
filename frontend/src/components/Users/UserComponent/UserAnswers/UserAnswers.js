@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
 import { getAllQuestions } from "../../../../store/questionsReducer";
-import { getUser, getUserAnswers } from "../../../../store/usersReducer";
+import { getUser } from "../../../../store/usersReducer";
 import "./UserAnswers.css";
 
 // Returns all questions where user has answered in.
-// userAnswers = user.id == answer.userId
+// * userAnswers = user.id == answer.userId (USERANSWERS)
 // question.id == answer.questionId(userAnswers)
 
 function UserAnswers() {
@@ -16,8 +16,20 @@ function UserAnswers() {
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const userAnswers = allAnswers.filter((answer) => answer?.userId == userId); //array {2}
   const allQuestions = Object.values(useSelector((state) => state.questions)); //array {4}
-  const questions = allQuestions.filter(question => question?.id == userAnswers[0])
-  console.log(userAnswers)
+  //   const questions = allQuestions.filter((question) => question?.id == userAnswers);
+  let res = [];
+
+  for (let i = 0; i < allQuestions.length; i++) {
+    let questions = allQuestions[i];
+    for (let j = 0; j < userAnswers.length; j++) {
+      let answers = userAnswers[j];
+      if (answers.questionId == questions.id) {
+        res.push(questions);
+      }
+    }
+  }
+
+  console.log(res);
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -27,25 +39,10 @@ function UserAnswers() {
 
   return (
     <>
-      {/* {allQuestions?.map((question) => (
-          <div key={question?.id}>
-              {userAnswers?.find((answer) => answer?.questionId == question?.id)}
-          </div>
-        ))} */}
-      {/* {userAnswers?.map((answer) => (
-        <div key={answer?.id}>
-          {allQuestions?.find((question) => question?.id == answer?.questionId)}
-        </div>
-      ))} */}
-      {/* <div>
-        {allQuestions.filter((question) => (
-          <div>
-            {userAnswers.find((answer) => question.id == answer?.questionId)}
-          </div>
-        ))}
-        here
-      </div> */}
       <h3>User Answers</h3>
+      {res.map(x => (
+        <div>{x?.title}</div>
+      ))}
     </>
   );
 }
