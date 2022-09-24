@@ -8,6 +8,8 @@ import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import UserComponent from "./components/Users/UserComponent/UserComponent";
+import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
+import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,12 @@ function App() {
           </Route>
           <Route path='/about'>
             <AboutPage />
+          </Route>
+          <Route path='/users/:userId/questions'>
+            <UserQuestions />
+          </Route>
+          <Route path='/users/:userId/answers'>
+            <UserAnswers />
           </Route>
           <Route path='/users/:userId'>
             <UserComponent />

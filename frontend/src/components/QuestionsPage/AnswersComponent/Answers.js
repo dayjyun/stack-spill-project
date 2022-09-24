@@ -10,11 +10,9 @@ function AnswersComponent({ questionId }) {
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const answers = allAnswers.filter((answer) => answer?.questionId == questionId);
   const allUsers = Object.values(useSelector((state) => state.users));
-  // const userAnswer = allUsers.filter((user) => user.id == answers?.userId);
 
   useEffect(() => {
     dispatch(getAllUsers());
-    // dispatch(getUser(userAnswer));
     dispatch(getAllAnswers());
   }, [dispatch]);
 
