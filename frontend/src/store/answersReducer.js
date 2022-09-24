@@ -69,20 +69,20 @@ export const createAnswer = (answerData) => async (dispatch) => {
 }
 
 // edit answer
-const updateAnswer = (answerId) => {
+const updateAnswer = (answer) => {
     return {
         type: EDIT_ANSWER,
-        answerId
+        answer
     }
 }
 
-export const editAnswer = (answer) => async (dispatch) => {
-    const answerEdit = await csrfFetch(`/api/answers/${answer.id}`, {
+export const editAnswer = (answerData) => async (dispatch) => {
+    const answerEdit = await csrfFetch(`/api/answers/${answerData?.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(answer)
+        body: JSON.stringify(answerData)
     })
     if (answerEdit.ok) {
       const resAnswerEdit = await answerEdit.json();

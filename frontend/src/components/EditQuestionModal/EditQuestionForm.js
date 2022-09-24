@@ -10,7 +10,7 @@ function EditQuestionForm({ setShowModal, questionId }) {
   const [title, setTitle] = useState(question?.title);
   const [body, setBody] = useState(question?.body);
 
-  const handleQuestionSubmit = (e) => {
+  const handelQuestionEdit = (e) => {
     e.preventDefault();
 
     dispatch(
@@ -30,7 +30,7 @@ function EditQuestionForm({ setShowModal, questionId }) {
   };
 
   return (
-    <form onSubmit={handleQuestionSubmit} id='edit-question-form'>
+    <form onSubmit={handelQuestionEdit} id='edit-question-form'>
       <label>
         Title
         <input

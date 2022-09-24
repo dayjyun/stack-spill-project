@@ -40,7 +40,7 @@ function QuestionComponent() {
         </div>
       </div>
       <div>
-        <AnswersComponent questionId={questionId} allUsers={allUsers} />
+        <AnswersComponent questionId={questionId} allUsers={allUsers}/>
       </div>
     </>
   );
