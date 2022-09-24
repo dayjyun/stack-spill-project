@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editAnswer } from "../../store/answersReducer";
+import { deleteAnswer, editAnswer } from "../../store/answersReducer";
 import "./EditAnswerForm.css";
 
 function EditAnswerForm({ setShowModal, answerId, questionId }) {
@@ -27,8 +27,15 @@ function EditAnswerForm({ setShowModal, answerId, questionId }) {
     setShowModal(false);
   };
 
+  const handleDeleteButton = e => {
+    e.preventDefault()
+    setShowModal(false)
+    dispatch(deleteAnswer(+answerId))
+    alert("Answer deleted")
+  }
+
   return (
-    <form onSubmit={handleAnswerEdit} id='edit-answer-form'>
+    <form onSubmit={handleAnswerEdit} id="edit-answer-form">
       <label>
         Body
         <input
@@ -37,8 +44,13 @@ function EditAnswerForm({ setShowModal, answerId, questionId }) {
           onChange={(e) => setBody(e.target.value)}
         />
       </label>
-      <button type="submit">Save</button>
-      <button onClick={handleCancelButton}>Cancel</button>
+      <div id="edit-answer-buttons">
+        <button type="submit">Save</button>
+        <button onClick={handleCancelButton}>Cancel</button>
+      </div>
+      <div>
+        <button onClick={handleDeleteButton} id='edit-answer-delete'>Delete</button>
+      </div>
     </form>
   );
 }

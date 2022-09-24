@@ -98,7 +98,7 @@ const removeAnswer = (id) => {
     }
 }
 
-export const deleteQuestion = (answerId) => async (dispatch) => {
+export const deleteAnswer = (answerId) => async (dispatch) => {
     const answerDelete = await csrfFetch(`/api/answers/${answerId}`, {
         method: "DELETE",
     })
