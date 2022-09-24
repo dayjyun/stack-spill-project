@@ -8,6 +8,7 @@ function EditUserForm() {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
+    const [profileImage, setProfileImage] = useState('')
 
     return (
       <form>
@@ -43,6 +44,15 @@ function EditUserForm() {
           <input
             type="text"
             value={username}
+            // placeholder
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <label>
+          Profile Image
+          <input
+            type="text"
+            value={profileImage}
             // placeholder
             onChange={(e) => setUsername(e.target.value)}
           />

@@ -1,4 +1,8 @@
 #user-component-navlinks > a {
-    border: 2px solid red;
+    border: 2px solid lightgray;
     padding: 1rem;
+}
+
+#user-component-navlinks > a:hover {
+    background-color: lightgray;
 }
