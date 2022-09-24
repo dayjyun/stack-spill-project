@@ -9,9 +9,14 @@ ul, li {
 a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 body {
     margin: 0;
     padding: 0;
+}
+
+button {
+    cursor: pointer;
 }

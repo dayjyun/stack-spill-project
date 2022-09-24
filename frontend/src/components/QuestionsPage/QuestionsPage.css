@@ -15,7 +15,6 @@
     box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.507);
     padding: 1.5rem;
     margin: .6rem 5rem;
-    cursor: pointer;
 }
 
 #all-questions-card:hover {

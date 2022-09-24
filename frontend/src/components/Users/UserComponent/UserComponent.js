@@ -10,7 +10,6 @@ function UserComponent() {
   const sessionUser = useSelector(state => state.session.user)
   const allUsers = Object.values(useSelector((state) => state.users));
   const user = allUsers.filter((user) => user.id == userId)[0];
-  console.log("sessionUser",sessionUser.id)
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -18,7 +17,7 @@ function UserComponent() {
 
   let editButton
 
-    if (sessionUser.id == user.id) {
+    if (sessionUser?.id == user?.id) {
       editButton = <button>Edit Profile</button>
     }
 
