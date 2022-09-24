@@ -5,6 +5,10 @@
 }
 
 #navigation-navlinks > a {
-    /* border: 2px solid black; */
+    border: 1px solid lightgray;
     padding: .2rem;
+}
+
+#navigation-navlinks > a:hover {
+    background-color: lightgray;
 }

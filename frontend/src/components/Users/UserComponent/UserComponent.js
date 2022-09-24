@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getUser } from "../../../store/usersReducer";
+import EditUserModal from "../../EditUserModal/EditUserModal";
 import "./UserComponent.css";
 
 function UserComponent() {
@@ -18,7 +19,7 @@ function UserComponent() {
   let editButton
 
     if (sessionUser?.id == user?.id) {
-      editButton = <button>Edit Profile</button>
+      editButton = <EditUserModal />
     }
 
 

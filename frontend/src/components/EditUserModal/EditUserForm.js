@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { editUser } from '../../store/usersReducer'
 import './EditUser.css'
 
 function EditUserForm() {
-    const currUser = useSelector(state => state.session.user)
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [username, setUsername] = useState('')
+  const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
+    const [firstName, setFirstName] = useState(sessionUser?.firstName)
+    const [lastName, setLastName] = useState(sessionUser?.lastName)
+    const [email, setEmail] = useState(sessionUser?.email)
+    const [username, setUsername] = useState(sessionUser?.username)
     const [profileImage, setProfileImage] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handelUserEditForm = (e) => {
+      dispatch(editUser({
+        firstName,
+        lastName,
+        email,
+        username,
+        profileImage,
+        password,
+      }))
+    }
 
     return (
-      <form>
+      <form onSubmit={handelUserEditForm} id='edit-user-form'>
         <label>
           First Name
           <input
@@ -44,6 +58,15 @@ function EditUserForm() {
           <input
             type="text"
             value={username}
+            // placeholder
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="text"
+            value={password}
             // placeholder
             onChange={(e) => setUsername(e.target.value)}
           />
