@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editQuestion } from "../../store/questionsReducer";
+import { deleteQuestion, editQuestion } from "../../store/questionsReducer";
 import "./EditQuestionForm.css";
 
 function EditQuestionForm({ setShowModal, questionId }) {
@@ -29,6 +29,13 @@ function EditQuestionForm({ setShowModal, questionId }) {
     setShowModal(false);
   };
 
+  const handleDeleteButton = e => {
+    e.preventDefault()
+    setShowModal(false)
+    dispatch(deleteQuestion(+questionId))
+    alert('Question deleted')
+  }
+
   return (
     <form onSubmit={handelQuestionEdit} id='edit-question-form'>
       <label>
@@ -47,8 +54,13 @@ function EditQuestionForm({ setShowModal, questionId }) {
           onChange={(e) => setBody(e.target.value)}
         />
       </label>
+      <div id='edit-question-buttons'>
       <button type="submit">Save</button>
       <button onClick={handleCancelButton}>Cancel</button>
+      </div>
+      <div>
+        <button onClick={handleDeleteButton} id='edit-question-delete'>Delete</button>
+      </div>
     </form>
   );
 }
