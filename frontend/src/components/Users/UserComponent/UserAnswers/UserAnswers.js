@@ -1,35 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
 import { getAllQuestions } from "../../../../store/questionsReducer";
 import { getUser } from "../../../../store/usersReducer";
 import "./UserAnswers.css";
 
-// Returns all questions where user has answered in.
-// * userAnswers = user.id == answer.userId (USERANSWERS)
-// question.id == answer.questionId(userAnswers)
-
 function UserAnswers() {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const allAnswers = Object.values(useSelector((state) => state.answers));
-  const userAnswers = allAnswers.filter((answer) => answer?.userId == userId); //array {2}
-  const allQuestions = Object.values(useSelector((state) => state.questions)); //array {4}
-  //   const questions = allQuestions.filter((question) => question?.id == userAnswers);
-  let res = [];
+  const userAnswers = allAnswers.filter((answer) => answer?.userId == userId);
+  const allQuestions = Object.values(useSelector((state) => state.questions));
+  let answeredQuestions = [];
 
   for (let i = 0; i < allQuestions.length; i++) {
     let questions = allQuestions[i];
     for (let j = 0; j < userAnswers.length; j++) {
       let answers = userAnswers[j];
       if (answers.questionId == questions.id) {
-        res.push(questions);
+        answeredQuestions.push(questions);
       }
     }
   }
-
-  console.log(res);
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -40,8 +33,15 @@ function UserAnswers() {
   return (
     <>
       <h3>User Answers</h3>
-      {res.map(x => (
-        <div>{x?.title}</div>
+      {answeredQuestions.map((question) => (
+        <NavLink
+          key={question?.id}
+          id="user-answers-card"
+          to={{ pathname: `/questions/${question?.id}` }}
+        >
+          <div id='user-questions-title'>{question?.title}</div>
+          <div id='user-questions-body'>{question?.body}</div>
+        </NavLink>
       ))}
     </>
   );
