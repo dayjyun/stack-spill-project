@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
-import { getAllUsers, getUser } from "../../../store/usersReducer";
+import { getAllUsers } from "../../../store/usersReducer";
 import "./Answers.css";
 
 function AnswersComponent({ questionId }) {
