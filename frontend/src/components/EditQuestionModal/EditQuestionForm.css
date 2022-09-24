@@ -1,6 +1,14 @@
 #edit-question-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#edit-question-buttons {
+  display: flex;
+}
+
+#edit-question-delete {
+  background-color: red;
 }
