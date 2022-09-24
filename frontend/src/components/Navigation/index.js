@@ -26,15 +26,17 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
+    <ul id='navigation-bar'>
       <li>
         {/* Pop Out Side Menu: Questions, Users */}
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='/users'>Users</NavLink>
+        <div id="navigation-navlinks">
+          <NavLink exact to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/users">Users</NavLink>
+          {isLoaded && sessionLinks}
+        </div>
         {/* <h1>Search Bar</h1> */}
         {/* Dark Mode Button */}
-        {isLoaded && sessionLinks}
       </li>
     </ul>
   );

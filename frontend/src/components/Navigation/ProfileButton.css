@@ -1,0 +1,6 @@
+#profile-button-image {
+    max-height: 3rem;
+    max-width: 3rem;
+    outline: none;
+    /* object-fit: cover; */
+}

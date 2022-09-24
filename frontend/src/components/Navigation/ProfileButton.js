@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
 import EditUserModal from "../EditUserModal/EditUserModal";
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+        {/* <i className="fas fa-user-circle" /> */}
+        <img id='profile-button-image' src={user?.profileImage}/>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

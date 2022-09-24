@@ -1,3 +1,17 @@
+#user-component-info {
+    display: flex;
+}
+
+#user-component-details {
+    display: flex;
+}
+
+#user-component-image {
+    object-fit: cover;
+    max-height: 2rem;
+    max-width: 2rem;
+}
+
 #user-component-navlinks > a {
     border: 2px solid lightgray;
     padding: 1rem;

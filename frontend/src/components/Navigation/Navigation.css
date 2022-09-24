@@ -1,0 +1,10 @@
+#navigation-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navigation-navlinks > a {
+    /* border: 2px solid black; */
+    padding: .2rem;
+}
