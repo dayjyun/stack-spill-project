@@ -59,16 +59,15 @@ const addVote = (vote) => {
 
 export const createQuestionVote = (voteData, questionId) => async (dispatch) => {
     const { vote } = voteData
-    const formData = new FormData()
-
-    formData.append('vote', vote)
 
     const newVote = await csrfFetch(`/api/questions/${questionId}/votes`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+            vote
+        })
     })
     if (newVote.ok) {
         const resNewVote = await newVote.json()
@@ -79,16 +78,15 @@ export const createQuestionVote = (voteData, questionId) => async (dispatch) => 
 
 export const createAnswerVote = (voteData, answerId) => async (dispatch) => {
     const { vote } = voteData
-    const formData = new FormData()
-
-    formData.append('vote', vote)
 
     const newVote = await csrfFetch(`/api/answers/${answerId}/votes`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+            vote
+        })
     })
     if(newVote.ok) {
         const resNewVote = await newVote.json()
@@ -163,23 +161,26 @@ export const deleteAnswerVote = (answerId) => async (dispatch) => {
 let initialState = {}
 
 export default function voteReducer(state = initialState, action) {
-    switch(action.type) {
-        case GET_ALL_VOTES:
-            initialState = { ...state }
-            action.list.forEach(vote => {
-                initialState[vote.id] = vote
-            })
-            return initialState
+    switch (action.type) {
+      case GET_ALL_VOTES:
+        initialState = { ...state };
+        action.list.forEach((vote) => {
+          initialState[vote.id] = vote;
+        });
+        return initialState;
 
-        case GET_VOTE:
-            return { ...state, [action.vote.id]: action.vote }
+      case GET_VOTE:
+        return { ...state, [action.vote.id]: action.vote };
 
-        case DELETE_VOTE:
-            const removeVoteState = { ...state }
-            delete removeVoteState[action.id]
-            return removeVoteState
+      case EDIT_VOTE:
+        return { ...state, [action.vote.id]: action.vote };
 
-        default:
-            return state
+      case DELETE_VOTE:
+        const removeVoteState = { ...state };
+        delete removeVoteState[action.id];
+        return removeVoteState;
+
+      default:
+        return state;
     }
 }
