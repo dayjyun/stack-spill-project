@@ -12,9 +12,18 @@ function QuestionsPage() {
     dispatch(getAllQuestions());
   }, [dispatch]);
 
+  let allQuestionsNum
+
+  if (allQuestions.length == 1) {
+    allQuestionsNum = <h3>{allQuestions.length} Question</h3>
+  } else {
+    allQuestionsNum = <h3>{allQuestions.length} Questions</h3>
+  }
+
   return (
     <div id="all-questions-page-component">
       <h1>All Questions</h1>
+      {allQuestionsNum}
       <div id="all-questions-container">
         {allQuestions.map((question) => (
           <NavLink
