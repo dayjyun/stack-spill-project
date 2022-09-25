@@ -50,17 +50,17 @@ const addAnswer = (answer) => {
 
 export const createAnswer = (answerData) => async (dispatch) => {
     const { body, questionId } = answerData
-    const formData = new FormData()
-
-    formData.append('body', body)
 
     const newAnswer = await csrfFetch(`/api/questions/${questionId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: formData
+        body: JSON.stringify({
+            body
+        })
     })
+
     if (newAnswer.ok) {
         const resNewAnswer = await newAnswer.json()
         dispatch(addAnswer(resNewAnswer))
@@ -110,26 +110,29 @@ export const deleteAnswer = (answerId) => async (dispatch) => {
 let initialState = {}
 
 export default function answerReducer(state = initialState, action) {
-    switch(action.type) {
-        case GET_ALL_ANSWERS:
-            initialState = { ...state }
-            action.list.forEach(answer => {
-                initialState[answer.id] = answer
-            })
-            return initialState
+    switch (action.type) {
+      case GET_ALL_ANSWERS:
+        initialState = { ...state };
+        action.list.forEach((answer) => {
+          initialState[answer.id] = answer;
+        });
+        return initialState;
 
-        case GET_ANSWER:
-            return { ...state, [action.answer.id]: action.answer }
+      case GET_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        case EDIT_ANSWER:
-            return { ...state, [action.answer.id]: action.answer }
+      case CREATE_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        case DELETE_ANSWER:
-            const removeAnswerState = { ...state }
-            delete removeAnswerState[action.id]
-            return removeAnswerState
+      case EDIT_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        default:
-            return state
+      case DELETE_ANSWER:
+        const removeAnswerState = { ...state };
+        delete removeAnswerState[action.id];
+        return removeAnswerState;
+
+      default:
+        return state;
     }
 }

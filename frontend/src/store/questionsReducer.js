@@ -50,18 +50,6 @@ const addQuestion = (question) => {
 
 export const createQuestion = (questionData) => async (dispatch) => {
     const { title, body } = questionData;
-    const formData = new FormData();
-
-    // formData.append('title', title)
-    // formData.append('body', body)
-
-    // const newQuestion = await csrfFetch(`/api/questions`, {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: formData
-    // })
 
     const newQuestion = await csrfFetch(`/api/questions`, {
         method: "POST",

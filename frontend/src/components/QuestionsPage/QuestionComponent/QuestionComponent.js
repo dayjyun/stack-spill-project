@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
+import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
@@ -42,6 +43,7 @@ function QuestionComponent() {
       <div>
         <AnswersComponent questionId={questionId} allUsers={allUsers}/>
       </div>
+      <CreateAnswerForm questionId={questionId}/>
     </>
   );
 }
