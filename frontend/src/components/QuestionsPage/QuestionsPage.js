@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
+import CreateQuestionButton from "../CreateComponents/CreateQuestion/CreateQuestionButton";
 import "./QuestionsPage.css";
 
 function QuestionsPage() {
@@ -12,17 +13,20 @@ function QuestionsPage() {
     dispatch(getAllQuestions());
   }, [dispatch]);
 
-  let allQuestionsNum
+  let allQuestionsNum;
 
   if (allQuestions.length == 1) {
-    allQuestionsNum = <h3>{allQuestions.length} Question</h3>
+    allQuestionsNum = <h3>{allQuestions.length} Question</h3>;
   } else {
-    allQuestionsNum = <h3>{allQuestions.length} Questions</h3>
+    allQuestionsNum = <h3>{allQuestions.length} Questions</h3>;
   }
 
   return (
     <div id="all-questions-page-component">
-      <h1>All Questions</h1>
+      <div id='all-questions-top'>
+        <h1>All Questions</h1>
+        <CreateQuestionButton />
+      </div>
       {allQuestionsNum}
       <div id="all-questions-container">
         {allQuestions.map((question) => (

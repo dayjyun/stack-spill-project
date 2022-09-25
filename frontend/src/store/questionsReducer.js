@@ -52,16 +52,28 @@ export const createQuestion = (questionData) => async (dispatch) => {
     const { title, body } = questionData;
     const formData = new FormData();
 
-    formData.append('title', title)
-    formData.append('body', body)
+    // formData.append('title', title)
+    // formData.append('body', body)
+
+    // const newQuestion = await csrfFetch(`/api/questions`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: formData
+    // })
 
     const newQuestion = await csrfFetch(`/api/questions`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
-        body: formData
+        body: JSON.stringify({
+            title,
+            body
+        })
     })
+
     if (newQuestion.ok) {
         const resNewQuestion = await newQuestion.json()
         dispatch(addQuestion(resNewQuestion))
@@ -120,6 +132,9 @@ export default function questionReducer(state = initialState, action) {
             return initialState
 
         case GET_QUESTION:
+            return { ...state, [action.question.id]: action.question }
+
+        case CREATE_QUESTION:
             return { ...state, [action.question.id]: action.question }
 
         case EDIT_QUESTION:

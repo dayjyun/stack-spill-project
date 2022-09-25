@@ -48,8 +48,8 @@ router.put('/:userId', requireAuth, async (req, res) => {
         lastName,
         username,
         email,
-        password,
-        profileImage,
+        // password,
+        // profileImage,
       });
       res.json(updatedUser)
     } else {

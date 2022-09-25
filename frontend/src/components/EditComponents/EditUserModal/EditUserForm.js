@@ -13,9 +13,9 @@ function EditUserForm({ setShowModal }) {
   // const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
   // const [password, setPassword] = useState("");
 
-  const handelUserEditForm = () => {
-    dispatch(
-      editUser({
+  const handelUserEditForm = (e) => {
+
+    dispatch(editUser({
         id: +sessionUser?.id,
         firstName,
         lastName,

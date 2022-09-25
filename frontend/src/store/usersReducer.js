@@ -83,7 +83,7 @@ const updateUser = (user) => {
 }
 
 export const editUser = (userData) => async (dispatch) => {
-  const userEdit = await csrfFetch(`/api/users/${userData?.id}`, {
+  const userEdit = await csrfFetch(`/api/users/${userData.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

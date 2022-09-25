@@ -1,3 +1,8 @@
+#all-questions-top {
+    display: flex;
+    align-items: center;
+}
+
 #all-questions-card {
     display: flex;
     justify-content: center;

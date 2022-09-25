@@ -10,6 +10,7 @@ import QuestionComponent from "./components/QuestionsPage/QuestionComponent/Ques
 import UserComponent from "./components/Users/UserComponent/UserComponent";
 import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
 import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
+import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/questions/ask'>
+            <CreateQuestionForm />
+          </Route>
           <Route path='/questions/:questionId'>
             <QuestionComponent />
           </Route>
