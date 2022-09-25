@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
 import { getAllUsers } from "../../../store/usersReducer";
-import EditAnswerModal from "../../EditAnswerModal/EditAnswerModal";
+import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
 import "./AnswersComponent.css";
 
 function AnswersComponent({ questionId }) {

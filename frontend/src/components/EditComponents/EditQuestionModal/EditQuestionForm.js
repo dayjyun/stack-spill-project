@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteQuestion, editQuestion } from "../../store/questionsReducer";
+import { deleteQuestion, editQuestion } from "../../../store/questionsReducer";
 import "./EditQuestionForm.css";
 
 function EditQuestionForm({ setShowModal, questionId }) {

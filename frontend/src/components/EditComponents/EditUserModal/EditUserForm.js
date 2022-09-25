@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../store/usersReducer";
+import { editUser } from "../../../store/usersReducer";
 import "./EditUserForm.css";
 
 function EditUserForm({ setShowModal }) {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAnswer, editAnswer } from "../../store/answersReducer";
+import { deleteAnswer, editAnswer } from "../../../store/answersReducer";
 import "./EditAnswerForm.css";
 
 function EditAnswerForm({ setShowModal, answerId, questionId }) {

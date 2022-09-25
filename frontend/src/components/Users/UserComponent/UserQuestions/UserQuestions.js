@@ -7,8 +7,6 @@ import "./UserQuestions.css";
 function UserQuestions() {
   const dispatch = useDispatch();
   const { userId } = useParams();
-  // const allUsers = Object.values(useSelector(state => state.users))
-  // const currUser = allUsers.filter(user => user.id == userId)[0]
   const allQuestions = Object.values(useSelector((state) => state.questions));
   const userQuestions = allQuestions.filter(
     (questions) => questions.userId == userId
@@ -18,9 +16,17 @@ function UserQuestions() {
     dispatch(getAllQuestions());
   }, [dispatch]);
 
+  let numQuestion
+
+  if (userQuestions.length == 1) {
+    numQuestion = <h3>{userQuestions.length} Question</h3>;
+  } else {
+    numQuestion = <h3>{userQuestions.length} Questions</h3>;
+  }
+
   return (
     <>
-      <h3>User Questions</h3>
+      {numQuestion}
       <div id='user-questions-container'>
         {userQuestions.map((question) => (
           <NavLink

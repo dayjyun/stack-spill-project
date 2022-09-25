@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
-import EditQuestionModal from "../../EditQuestionModal/EditQuestionModal";
+import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
 import { getAllQuestions } from "../../../../store/questionsReducer";
-import { getUser } from "../../../../store/usersReducer";
 import "./UserAnswers.css";
 
 function UserAnswers() {
@@ -12,6 +11,11 @@ function UserAnswers() {
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const userAnswers = allAnswers.filter((answer) => answer?.userId == userId);
   const allQuestions = Object.values(useSelector((state) => state.questions));
+
+  useEffect(() => {
+    dispatch(getAllAnswers());
+    dispatch(getAllQuestions());
+  }, [dispatch]);
 
   let answeredQuestions = [];
 
@@ -25,15 +29,17 @@ function UserAnswers() {
     }
   }
 
-  useEffect(() => {
-    // dispatch(getUser(userId));
-    dispatch(getAllAnswers());
-    dispatch(getAllQuestions());
-  }, [dispatch]);
+  let numAnswer
+
+  if (answeredQuestions.length == 1) {
+    numAnswer = <h3>{answeredQuestions.length} Answer</h3>
+  } else {
+    numAnswer = <h3>{answeredQuestions.length} Answers</h3>;
+  }
 
   return (
     <>
-      <h3>User Answers</h3>
+      {numAnswer}
       {answeredQuestions.map((question) => (
         <NavLink
           key={question?.id}
