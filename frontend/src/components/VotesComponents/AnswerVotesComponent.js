@@ -17,11 +17,13 @@ function AnswerVotesComponent({ answerId }) {
     let voteCount = 0;
 
     answerVotes.map(vote => {
-        if (vote?.vote === true) {
-            voteCount += 1
-        } else if (vote?.vote === false) {
-            voteCount -= 1
-        }
+        // if (vote?.vote === true) {
+        //     voteCount += 1
+        // } else if (vote?.vote === false) {
+        //     voteCount -= 1
+        // }
+
+        vote?.vote === true ? voteCount += 1 : voteCount -= 1
     })
 
     return (

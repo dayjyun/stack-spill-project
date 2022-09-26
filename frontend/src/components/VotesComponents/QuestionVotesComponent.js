@@ -21,14 +21,17 @@ function QuestionVotesComponent({ questionId }) {
 //   let falseVotes = {}
 
   questionVotes.map((vote) => {
-    if (vote?.vote === true) {
-      voteCount += 1;
-    //   trueVotes.push(vote?.userId)
-    // trueVotes[vote?.userId] = vote?.userId
-    } else if (vote?.vote === false) {
-      voteCount -= 1;
-    //   falseVotes.push(vote?.userId)
-    }
+    // if (vote?.vote === true) {
+    //   voteCount += 1;
+    // //   trueVotes.push(vote?.userId)
+    // // trueVotes[vote?.userId] = vote?.userId
+    // } else if (vote?.vote === false) {
+    //   voteCount -= 1;
+    // //   falseVotes.push(vote?.userId)
+    // }
+
+    vote?.vote === true ? voteCount += 1 : voteCount -= 1
+
   });
 
   return (
