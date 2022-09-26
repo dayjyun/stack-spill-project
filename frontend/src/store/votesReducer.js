@@ -117,7 +117,7 @@ export const editQuestionVote = (question) => async (dispatch) => {
 
 
 export const editAnswerVote = (answer) => async (dispatch) => {
-    const updatedVote = await csrfFetch(`/api/answers/${answer.id}/votes`, {
+    const updatedVote = await csrfFetch(`/api/answers/${answer.answerId}/votes`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -125,7 +125,7 @@ export const editAnswerVote = (answer) => async (dispatch) => {
         body: JSON.stringify(answer)
     })
     if (updatedVote.ok) {
-        const resVote = await updateVote.json()
+        const resVote = await updatedVote.json()
         dispatch(updateVote(resVote))
     }
 }

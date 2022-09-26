@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllVotes } from '../../store/votesReducer';
+import EditAnswerVote from '../EditComponents/EditVotes/EdtiAnswerVote';
 import './AnswerVotesComponent.css'
 
 function AnswerVotesComponent({ answerId }) {
@@ -20,8 +21,7 @@ function AnswerVotesComponent({ answerId }) {
 
     return (
       <>
-        <button>UP</button> {/* EditAnswerVote */}
-        <button>DOWN</button> {/* EditAnswerVote */}
+        <EditAnswerVote answerId={answerId}/>
         <h1>{voteCount} Votes</h1>
       </>
     );
