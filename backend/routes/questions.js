@@ -73,11 +73,14 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
         res.status(201);
         res.json(newVote);
       } else {
-        await currentVote.update({
-          vote,
-        })
-        res.status(201)
-        res.json(currentVote)
+        // await currentVote.update({
+        //   vote,
+        // })
+        // res.status(201)
+        // res.json(currentVote)
+        const error = new Error("Vote already exists")
+        error.status = 404;
+        throw error;
       }
     } else {
       const error = new Error("Question Not Found");
@@ -140,13 +143,16 @@ router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => 
       });
       res.json(currentVote);
     } else {
-      const newVote = await Vote.create({
-        userId: user.id,
-        vote,
-        questionId,
-      })
-      res.status(201)
-      res.json(newVote)
+      // const newVote = await Vote.create({
+      //   userId: user.id,
+      //   vote,
+      //   questionId,
+      // })
+      // res.status(201)
+      // res.json(newVote)
+      const error = new Error('Vote not found')
+      error.status = 404
+      throw error;
     }
   } else {
     const error = new Error("Question not found");
