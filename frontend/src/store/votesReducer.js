@@ -65,9 +65,7 @@ export const createQuestionVote = (voteData, questionId) => async (dispatch) => 
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            vote
-        })
+        body: JSON.stringify({vote})
     })
     if (newVote.ok) {
         const resNewVote = await newVote.json()
@@ -104,7 +102,7 @@ const updateVote = (vote) => {
 }
 
 export const editQuestionVote = (question) => async (dispatch) => {
-    const updatedVote = await csrfFetch(`/api/questions/${question.id}/votes`, {
+    const updatedVote = await csrfFetch(`/api/questions/${question.questionId}/votes`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
