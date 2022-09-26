@@ -11,7 +11,8 @@ import UserComponent from "./components/Users/UserComponent/UserComponent";
 import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
 import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
-import VotesComponent from "./components/VotesComponents/VotesComponent";
+import QuestionVotesComponent from "./components/VotesComponents/QuestionVotesComponent";
+import AnswerVotesComponent from "./components/VotesComponents/AnswerVotesComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,31 +27,34 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/votes'>
-            <VotesComponent />
+          <Route path="/votes/questions">
+            <QuestionVotesComponent />
           </Route>
-          <Route path='/questions/ask'>
+          <Route path='/votes/answers'>
+            <AnswerVotesComponent />
+          </Route>
+          <Route path="/questions/ask">
             <CreateQuestionForm />
           </Route>
-          <Route path='/questions/:questionId'>
+          <Route path="/questions/:questionId">
             <QuestionComponent />
           </Route>
-          <Route exact path='/'>
+          <Route exact path="/">
             <QuestionsPage />
           </Route>
-          <Route path='/about'>
+          <Route path="/about">
             <AboutPage />
           </Route>
-          <Route path='/users/:userId/questions'>
+          <Route path="/users/:userId/questions">
             <UserQuestions />
           </Route>
-          <Route path='/users/:userId/answers'>
+          <Route path="/users/:userId/answers">
             <UserAnswers />
           </Route>
-          <Route path='/users/:userId'>
+          <Route path="/users/:userId">
             <UserComponent />
           </Route>
-          <Route exact path='/users'>
+          <Route exact path="/users">
             <Users />
           </Route>
         </Switch>

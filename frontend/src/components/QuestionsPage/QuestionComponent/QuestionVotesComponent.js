@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
-import QuestionVotesComponent from "../../VotesComponents/VotesComponent";
+import QuestionVotesComponent from "../../VotesComponents/QuestionVotesComponent";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 

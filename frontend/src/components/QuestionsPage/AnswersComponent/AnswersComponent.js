@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
 import { getAllUsers } from "../../../store/usersReducer";
 import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
+import AnswerVotesComponent from "../../VotesComponents/AnswerVotesComponent";
 import "./AnswersComponent.css";
 
 function AnswersComponent({ questionId }) {
@@ -19,6 +20,7 @@ function AnswersComponent({ questionId }) {
   }, [dispatch]);
 
   let userAnswerEdit;
+  let answerId;
 
   answers.map((answer) => {
     if (answer?.userId == sessionUser?.id) {
@@ -34,7 +36,9 @@ function AnswersComponent({ questionId }) {
         <h2 id="answers-number-text">{answers?.length} Answers</h2>
         <div>
           {answers?.map((answer) => (
+            // AnswerVotesComponent answerId={answer?.id}
             <div key={answer?.id} id="answer-details">
+              <AnswerVotesComponent answerId={answer?.id}/>
               <div id="answer-body">{answer?.body}</div>
               By{" "}
               <Link to={`/users/${answer?.userId}`}>
