@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
+import QuestionVotesComponent from "../../VotesComponents/VotesComponent";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
@@ -12,9 +13,9 @@ function QuestionComponent() {
   const { questionId } = useParams();
   const sessionUser = useSelector(state => state.session.user)
   const allQuestions = Object.values(useSelector((state) => state.questions));
-  const question = allQuestions.filter((question) => question.id == questionId)[0];
+  const question = allQuestions.find((question) => question.id == questionId);
   const allUsers = Object.values(useSelector(state => state.users))
-  const currentUser = allUsers.filter(user => user.id == question?.userId)[0]
+  const currentUser = allUsers.find(user => user.id == question?.userId)
 
   useEffect(() => {
     dispatch(getQuestion(questionId));
@@ -25,15 +26,10 @@ function QuestionComponent() {
     userQuestionEdit = <EditQuestionModal questionId={questionId}/>
   }
 
-  let questionVotes
-  if (questionId) {
-    
-  }
-
   return (
     <>
       <div key={question?.id} id="question-card">
-        {/* VotesComponent */}
+        <QuestionVotesComponent questionId={questionId}/>
         <h1 id="question-title">{question?.title}</h1>
         <h3 id="question-body">{question?.body}</h3>
         {userQuestionEdit}
