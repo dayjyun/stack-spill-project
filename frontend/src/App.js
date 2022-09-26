@@ -11,6 +11,7 @@ import UserComponent from "./components/Users/UserComponent/UserComponent";
 import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
 import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
+import VotesComponent from "./components/VotesComponents/VotesComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/votes'>
+            <VotesComponent />
+          </Route>
           <Route path='/questions/ask'>
             <CreateQuestionForm />
           </Route>

@@ -21,14 +21,19 @@ function QuestionComponent() {
   }, [dispatch]);
 
   let userQuestionEdit;
-
   if (sessionUser?.id == question?.userId) {
     userQuestionEdit = <EditQuestionModal questionId={questionId}/>
+  }
+
+  let questionVotes
+  if (questionId) {
+    
   }
 
   return (
     <>
       <div key={question?.id} id="question-card">
+        {/* VotesComponent */}
         <h1 id="question-title">{question?.title}</h1>
         <h3 id="question-body">{question?.body}</h3>
         {userQuestionEdit}

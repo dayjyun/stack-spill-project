@@ -18,7 +18,7 @@ export const getAllVotes = () => async (dispatch) => {
     const allVotes = await fetch('/api/votes')
 
     if (allVotes.ok) {
-        const resAllVotes = allVotes.json()
+        const resAllVotes = await allVotes.json()
         dispatch(getAll(resAllVotes))
     }
 }
