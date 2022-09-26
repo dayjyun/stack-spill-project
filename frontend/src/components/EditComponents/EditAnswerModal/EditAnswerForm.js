@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAnswer, editAnswer } from "../../../store/answersReducer";
+import { deleteAnswer, editAnswer, getAnswer } from "../../../store/answersReducer";
 import "./EditAnswerForm.css";
 
-function EditAnswerForm({ setShowModal, answerId, questionId }) {
+function EditAnswerForm({ setShowModal, answerId }) {
   const dispatch = useDispatch();
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const answer = allAnswers.filter((answer) => answer?.id == answerId)[0];

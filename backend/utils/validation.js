@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
 const { check } = require("express-validator");
+const { Answer } = require('../db/models')
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -80,6 +81,23 @@ const validateAnswer = [
   handleValidationErrors
 ]
 
+const validateOneAnswer = async (req, res, next) => {
+  const { user } = req;
+  const { questionId } = req.params;
+  const answer = await Answer.findOne({
+    where: {
+      userId: user.id,
+      questionId,
+    },
+  });
+  if (answer) {
+    const error = new Error("Answer already exists");
+    error.status = 400;
+    throw error;
+  }
+  next();
+};
+
 const validateVote = [
   check("vote")
     .exists({ checkFalsy: false })
@@ -94,5 +112,6 @@ module.exports = {
   validateLogin,
   validateQuestion,
   validateAnswer,
+  validateOneAnswer,
   validateVote,
 };
