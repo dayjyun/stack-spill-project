@@ -8,6 +8,7 @@ import {
   getQuestionVote,
 } from "../../../store/votesReducer";
 import CreateQuestionVote from "../../CreateComponents/CreateVote/CreateQuestionVote";
+import './EditVote.css'
 
 function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
@@ -65,8 +66,8 @@ function EditQuestionVote({ questionId }) {
 
   return (
     <>
-      <button onClick={handleUpVote}>UP</button>
-      <button onClick={handleDownVote}>DOWN</button>
+      <button id='edit-questionv-vote-up' onClick={handleUpVote}>UP</button>
+      <button id='edit-question-vote-down' onClick={handleDownVote}>DOWN</button>
     </>
   );
 }

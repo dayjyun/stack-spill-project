@@ -1,0 +1,8 @@
+/* Edit Question Vote */
+#edit-question-vote-up.active {
+    background-color: red;
+}
+
+#edit-question-vote-down.active {
+    background-color: red;
+}

@@ -35,40 +35,41 @@ function EditUserForm({ setShowModal }) {
   }
 
   return (
-    <form onSubmit={handelUserEditForm} id="edit-user-form">
-      <label>
-        First Name
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </label>
-      <label>
-        Last Name
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </label>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      {/* <label>
+    <>
+      <form onSubmit={handelUserEditForm} id="edit-user-form">
+        <label>
+          First Name
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </label>
+        <label>
+          Email
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Username
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        {/* <label>
         Password
         <input
           type="text"
@@ -76,7 +77,7 @@ function EditUserForm({ setShowModal }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label> */}
-      {/* <label>
+        {/* <label>
         Profile Image
         <input
           type="text"
@@ -84,9 +85,12 @@ function EditUserForm({ setShowModal }) {
           onChange={(e) => setProfileImage(e.target.value)}
         />
       </label> */}
-      <button type="submit">Save</button>
-      <button onClick={handleCancelButton}>Cancel</button>
-    </form>
+      <div id='edit-user-form-buttons'>
+        <button id='eufb-save' type="submit">Save</button>
+        <button onClick={handleCancelButton}>Cancel</button>
+      </div>
+      </form>
+    </>
   );
 }
 

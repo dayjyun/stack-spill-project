@@ -1,8 +1,21 @@
+#user-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #user-component-info {
     display: flex;
     justify-content: center;
     /* align-items: center; */
     margin: 0 8rem;
+}
+
+#user-component-image {
+    object-fit: cover;
+    max-height: 12rem;
+    max-width: 12rem;
+    border-radius: 50%;
 }
 
 #user-component-details {
@@ -11,14 +24,14 @@
     align-items: center;
     flex-direction: column;
     padding: 0 1rem;
-    /* border: 2px solid red; */
 }
 
-#user-component-image {
-    object-fit: cover;
-    max-height: 12rem;
-    max-width: 12rem;
-    border-radius: 50%;
+#user-component-edit-profile-button {}
+
+#user-component-navlinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #user-component-navlinks > a {

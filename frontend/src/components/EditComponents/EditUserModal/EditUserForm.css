@@ -1,6 +1,12 @@
+
 #edit-user-form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 2rem;
+}
+
+#edit-user-form-buttons > button{
+  margin: 0 2rem;
 }
