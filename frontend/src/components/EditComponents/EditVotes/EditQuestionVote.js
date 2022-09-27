@@ -70,8 +70,6 @@ function EditQuestionVote({ questionId }) {
 }
 export default EditQuestionVote;
 
-
-
   // const handleUpArrow = (e) => {
   //   e.preventDefault();
 
