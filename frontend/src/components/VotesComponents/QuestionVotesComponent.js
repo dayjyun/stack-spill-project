@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVotes } from "../../store/votesReducer";
+import { getAllVotes, getQuestionVote } from "../../store/votesReducer";
 import EditQuestionVote from "../EditComponents/EditVotes/EditQuestionVote";
 import "./QuestionVotesComponent.css";
 
@@ -11,7 +11,8 @@ function QuestionVotesComponent({ questionId }) {
 
   useEffect(() => {
     dispatch(getAllVotes());
-  }, [dispatch]);
+    dispatch(getQuestionVote(questionId))
+  }, [dispatch, questionId]);
 
 
   let questionVoteCount = 0;

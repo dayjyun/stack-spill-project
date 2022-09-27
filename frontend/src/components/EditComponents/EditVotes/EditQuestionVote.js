@@ -19,8 +19,8 @@ function EditQuestionVote({ questionId }) {
   const [downVote, setDownVote] = useState(false)
 
   useEffect(() => {
-    // dispatch(getAllVotes());
-    // dispatch(getQuestionVote(questionId))
+    dispatch(getAllVotes());
+    dispatch(getQuestionVote(questionId))
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };
