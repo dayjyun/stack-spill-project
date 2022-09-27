@@ -17,12 +17,10 @@ function EditQuestionVote({ questionId }) {
   const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false)
-  console.log({userVote});
-
 
   useEffect(() => {
     // dispatch(getAllVotes());
-    dispatch(getQuestionVote(questionId))
+    // dispatch(getQuestionVote(questionId))
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };
