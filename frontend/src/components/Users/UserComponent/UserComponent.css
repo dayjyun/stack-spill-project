@@ -1,15 +1,20 @@
 #user-component-info {
     display: flex;
+    justify-content: center;
+    /* align-items: center; */
 }
 
 #user-component-details {
     display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #user-component-image {
     object-fit: cover;
-    max-height: 2rem;
-    max-width: 2rem;
+    max-height: 12rem;
+    max-width: 12rem;
+    border-radius: 50%;
 }
 
 #user-component-navlinks > a {
