@@ -150,11 +150,17 @@ router.delete("/:answerId/votes", requireAuth, async (req, res) => {
   const userVote = await Vote.findOne({ where: { userId: user.id, answerId } });
 
   if (answer) {
-    await userVote.destroy();
-    res.json({
-      message: "Successfully deleted vote",
-      statusCode: 200,
-    });
+    if (userVote) {
+      await userVote.destroy();
+      res.json({
+        message: "Successfully deleted vote",
+        statusCode: 200,
+      });
+    } else {
+      const error = new Error("Vote not found")
+      error.status = 404
+      throw error
+    }
   } else {
     const error = new Error("Answer not found");
     error.status = 404;

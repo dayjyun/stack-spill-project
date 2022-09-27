@@ -14,20 +14,20 @@ function QuestionVotesComponent({ questionId }) {
   }, [dispatch]);
 
 
-  let voteCount = 0;
+  let questionVoteCount = 0;
 //   let trueVotes = []
 //   let falseVotes = []
 //   let trueVotes = {}
 //   let falseVotes = {}
 
   questionVotes.map((vote) => {
-    vote?.vote === true ? voteCount += 1 : voteCount -= 1
+    vote?.vote === true ? questionVoteCount += 1 : questionVoteCount -= 1
   });
 
   return (
     <>
-      <EditQuestionVote questionId={questionId}/>
-      <h1>{voteCount} Votes</h1>
+      <EditQuestionVote questionId={questionId} />
+      <h2>{questionVoteCount} Votes</h2>
     </>
   );
 }

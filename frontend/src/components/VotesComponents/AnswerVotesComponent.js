@@ -13,16 +13,16 @@ function AnswerVotesComponent({ answerId }) {
         dispatch(getAllVotes())
     }, [dispatch])
 
-    let voteCount = 0;
+    let answerVoteCount = 0;
 
     answerVotes.map(vote => {
-        vote?.vote === true ? voteCount += 1 : voteCount -= 1
+        vote?.vote === true ? answerVoteCount += 1 : answerVoteCount -= 1
     })
 
     return (
       <>
         <EditAnswerVote answerId={answerId}/>
-        <h1>{voteCount} Votes</h1>
+        <h2>{answerVoteCount} Votes</h2>
       </>
     );
 }

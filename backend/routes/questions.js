@@ -192,9 +192,7 @@ router.delete("/:questionId/votes", requireAuth, async (req, res) => {
   const { user } = req;
   const { questionId } = req.params;
   const question = await Question.findByPk(questionId);
-  const userVote = await Vote.findOne({
-    where: { userId: user.id, questionId },
-  });
+  const userVote = await Vote.findOne({ where: { userId: user.id, questionId } });
 
   if (question) {
     if (userVote) {

@@ -5,13 +5,9 @@ import { createQuestionVote } from "../../../store/votesReducer";
 function CreateQuestionVote({ questionId }) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+    const allQuestions = Object.values(useSelector(state => state.questions))
+    const question = allQuestions.find(question => question?.id == questionId)
 
-    useEffect(() => {
-        dispatch(createQuestionVote({
-            questionId,
-            vote,
-        }))
-    })
 }
 
 export default CreateQuestionVote;

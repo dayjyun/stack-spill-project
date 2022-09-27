@@ -36,7 +36,6 @@ function AnswersComponent({ questionId }) {
         <h2 id="answers-number-text">{answers?.length} Answers</h2>
         <div>
           {answers?.map((answer) => (
-            // AnswerVotesComponent answerId={answer?.id}
             <div key={answer?.id} id="answer-details">
               <AnswerVotesComponent answerId={answer?.id}/>
               <div id="answer-body">{answer?.body}</div>

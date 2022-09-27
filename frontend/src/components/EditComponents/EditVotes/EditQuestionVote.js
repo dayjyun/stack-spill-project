@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editQuestionVote, getAllVotes } from "../../../store/votesReducer";
+import {
+  deleteQuestionVote,
+  editQuestionVote,
+  getAllVotes,
+} from "../../../store/votesReducer";
+import CreateQuestionVote from "../../CreateComponents/CreateVote/CreateQuestionVote";
 
 function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
@@ -14,47 +19,55 @@ function EditQuestionVote({ questionId }) {
     dispatch(getAllVotes());
   }, [dispatch]);
 
-  const handleUpArrow = (e) => {
-    e.preventDefault();
+  if (userVote) {
+    const handleUpArrow = (e) => {
+      e.preventDefault();
 
-    dispatch(
-      editQuestionVote({
-        userId: sessionUser?.id,
-        vote: true,
-        questionId: userVote?.questionId,
-      })
+      dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: true,
+          questionId: userVote?.questionId,
+        })
+      );
+      // vote === false ? setVote(true) : setVote('')
+    };
+
+    const handleDownArrow = (e) => {
+      e.preventDefault();
+      dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: false,
+          questionId: userVote?.questionId,
+        })
+      );
+      //   vote === true ? setVote(false) : setVote("");
+    };
+
+    const handleVoteClick = (e) => {
+      e.preventDefault();
+      // vote === true ? setVote(false) : setVote(true)
+    };
+
+    const deleteCurrentQuestionVote = (e) => {
+      e.preventDefault();
+      dispatch(deleteQuestionVote(userVote?.questionId));
+    };
+
+    return (
+      <>
+        <button onClick={handleUpArrow}>UP</button>
+        <button onClick={handleDownArrow}>DOWN</button>
+        <button onClick={deleteCurrentQuestionVote}>Delete Vote</button>
+      </>
     );
-    // vote === false ? setVote(true) : setVote('')
-  };
-
-  const handleDownArrow = (e) => {
-    e.preventDefault();
-    dispatch(
-      editQuestionVote({
-        userId: sessionUser?.id,
-        vote: false,
-        questionId: userVote?.questionId,
-      })
-    );
-    //   vote === true ? setVote(false) : setVote("");
-  };
-
-  const handleVoteClick = (e) => {
-    e.preventDefault();
-    // vote === true ? setVote(false) : setVote(true)
-  };
-
-  const deleteVote = (e) => {
-    e.preventDefault();
-    // how to delete active vote?
-  };
-
-  return (
-    <>
-      <button onClick={handleUpArrow}>UP</button>
-      <button onClick={handleDownArrow}>DOWN</button>
-    </>
-  );
+  } else {
+    return (
+      <>
+        <CreateQuestionVote questionId={questionId}/>
+      </>
+    )
+  }
 }
-
 export default EditQuestionVote;
