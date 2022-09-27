@@ -28,9 +28,11 @@ function EditQuestionVote({ questionId }) {
   }, [dispatch]);
 
   const upVoteQuestion = async () => {
-    if (userVote?.vote === true) {
+    if (userVote?.vote) {
+      console.log("0 ---------")
       await dispatch(deleteQuestionVote(questionId));
     } else {
+      console.log('1 ---------')
       await dispatch(createQuestionVote({
         userId: userVote?.userId,
         vote: true,
@@ -40,7 +42,7 @@ function EditQuestionVote({ questionId }) {
   };
 
   const downVoteQuestion = async () => {
-    if (userVote?.vote === false) {
+    if (userVote?.vote) {
       await dispatch(deleteQuestionVote(questionId));
     } else {
       await dispatch(createQuestionVote({
