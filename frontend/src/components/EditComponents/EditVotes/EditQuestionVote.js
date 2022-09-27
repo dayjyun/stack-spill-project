@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  createQuestionVote,
   deleteQuestionVote,
   editQuestionVote,
   getAllVotes,
+  getQuestionVote,
 } from "../../../store/votesReducer";
 import CreateQuestionVote from "../../CreateComponents/CreateVote/CreateQuestionVote";
 
@@ -13,61 +15,86 @@ function EditQuestionVote({ questionId }) {
   const allVotes = Object.values(useSelector((state) => state.votes));
   const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
   const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
-  const [vote, setVote] = useState(userVote?.vote);
+  const [upVote, setUpVote] = useState(false);
+  const [downVote, setDownVote] = useState(false)
+  console.log({userVote});
+
 
   useEffect(() => {
-    dispatch(getAllVotes());
+    // dispatch(getAllVotes());
+    dispatch(getQuestionVote(questionId))
+    const sessionUserQuestionVote = () => {
+      setUpVote(questionVotes?.includes(userVote?.vote));
+    };
+    sessionUserQuestionVote();
   }, [dispatch]);
 
-  if (userVote) {
-    const handleUpArrow = (e) => {
-      e.preventDefault();
+  const upVoteQuestion = async () => {
+    if (userVote?.vote === true) {
+      await dispatch(deleteQuestionVote(questionId));
+    } else {
+      await dispatch(createQuestionVote({
+        userId: userVote?.userId,
+        vote: true,
+        questionId,
+      }));
+    }
+  };
 
-      dispatch(
-        editQuestionVote({
-          userId: sessionUser?.id,
-          vote: true,
-          questionId: userVote?.questionId,
-        })
-      );
-      // vote === false ? setVote(true) : setVote('')
-    };
+  const downVoteQuestion = async () => {
+    if (userVote?.vote === false) {
+      await dispatch(deleteQuestionVote(questionId));
+    } else {
+      await dispatch(createQuestionVote({
+        userId: userVote?.userId,
+        vote: downVote,
+        questionId,
+      }));
+    }
+  };
 
-    const handleDownArrow = (e) => {
-      e.preventDefault();
-      dispatch(
-        editQuestionVote({
-          userId: sessionUser?.id,
-          vote: false,
-          questionId: userVote?.questionId,
-        })
-      );
-      //   vote === true ? setVote(false) : setVote("");
-    };
-
-    const handleVoteClick = (e) => {
-      e.preventDefault();
-      // vote === true ? setVote(false) : setVote(true)
-    };
-
-    const deleteCurrentQuestionVote = (e) => {
-      e.preventDefault();
-      dispatch(deleteQuestionVote(userVote?.questionId));
-    };
-
-    return (
-      <>
-        <button onClick={handleUpArrow}>UP</button>
-        <button onClick={handleDownArrow}>DOWN</button>
-        <button onClick={deleteCurrentQuestionVote}>Delete Vote</button>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <CreateQuestionVote questionId={questionId}/>
-      </>
-    )
+  const handleUpVote = async () => {
+    await upVoteQuestion()
+      .then(async () => setUpVote(!upVote))
   }
+
+  const handleDownVote = async () => {
+    await downVoteQuestion()
+      .then(async () => setDownVote(!downVote))
+  }
+
+  return (
+    <>
+      <button onClick={handleUpVote}>UP</button>
+      <button onClick={handleDownVote}>DOWN</button>
+    </>
+  );
 }
 export default EditQuestionVote;
+
+
+
+  // const handleUpArrow = (e) => {
+  //   e.preventDefault();
+
+  //   dispatch(
+  //     editQuestionVote({
+  //       userId: sessionUser?.id,
+  //       vote: true,
+  //       questionId: userVote?.questionId,
+  //     })
+  //   );
+  //   // vote === false ? setVote(true) : setVote('')
+  // };
+
+  // const handleDownArrow = (e) => {
+  //   e.preventDefault();
+  //   dispatch(
+  //     editQuestionVote({
+  //       userId: sessionUser?.id,
+  //       vote: false,
+  //       questionId: userVote?.questionId,
+  //     })
+  //   );
+  //   //   vote === true ? setVote(false) : setVote("");
+  // };

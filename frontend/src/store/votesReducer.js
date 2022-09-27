@@ -57,8 +57,10 @@ const addVote = (vote) => {
     }
 }
 
-export const createQuestionVote = (voteData, questionId) => async (dispatch) => {
-    const { vote } = voteData
+export const createQuestionVote = (voteData) => async (dispatch) => {
+    const { vote, questionId } = voteData
+
+    console.log(" 1 ====================================================================", questionId)
 
     const newVote = await csrfFetch(`/api/questions/${questionId}/votes`, {
         method: "POST",
@@ -67,7 +69,12 @@ export const createQuestionVote = (voteData, questionId) => async (dispatch) => 
         },
         body: JSON.stringify({vote})
     })
+    console.log(" 2 ====================================================================", questionId)
     if (newVote.ok) {
+        console.log(
+          " 3 ====================================================================",
+          questionId
+        );
         const resNewVote = await newVote.json()
         dispatch(addVote(resNewVote))
         return resNewVote

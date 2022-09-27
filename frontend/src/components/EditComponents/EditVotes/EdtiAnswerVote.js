@@ -44,7 +44,7 @@ function EditAnswerVote({ answerId }) {
       <>
         <button onClick={handleUpArrow}>UP</button>
         <button onClick={handleDownArrow}>DOWN</button>
-        <button onClick={deleteCurrentAnswerVote}>Delete Vote</button>
+        {/* <button onClick={deleteCurrentAnswerVote}>Delete Vote</button> */}
       </>
     );
 }
