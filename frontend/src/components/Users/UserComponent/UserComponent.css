@@ -13,17 +13,19 @@
 
 #user-component-image {
     object-fit: cover;
-    max-height: 12rem;
-    max-width: 12rem;
+    height: 12rem;
+    width: 12rem;
     border-radius: 50%;
 }
 
 #user-component-details {
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 0 1rem;
+    line-height: 5px;
 }
 
 #user-component-edit-profile-button {}
