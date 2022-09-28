@@ -15,7 +15,6 @@ function QuestionsPage() {
   }, [dispatch]);
 
   let allQuestionsNum;
-
   if (allQuestions.length == 1) {
     allQuestionsNum = <h3>{allQuestions.length} Question</h3>;
   } else {

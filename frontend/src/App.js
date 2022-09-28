@@ -57,6 +57,9 @@ function App() {
           <Route exact path="/users">
             <Users />
           </Route>
+          {/* <Route>
+            <h1>404 Page</h1>
+          </Route> */}
         </Switch>
       )}
     </>

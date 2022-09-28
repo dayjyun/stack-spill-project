@@ -1,0 +1,10 @@
+#signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#sf-buttons {
+    margin: 0 2rem;
+}
