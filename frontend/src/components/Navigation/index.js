@@ -30,8 +30,8 @@ function Navigation({ isLoaded }) {
       <li>
         {/* Pop Out Side Menu: Questions, Users */}
         <div id="navigation-navlinks">
-          <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
+          <NavLink id={'navigation-home'} exact to="/">Home</NavLink>
+          <NavLink id={'navigation-about'} to="/about">About</NavLink>
           <NavLink to="/users">Users</NavLink>
           {isLoaded && sessionLinks}
         </div>

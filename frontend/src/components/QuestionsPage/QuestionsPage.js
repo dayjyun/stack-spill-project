@@ -27,7 +27,9 @@ function QuestionsPage() {
         <h1>All Questions</h1>
         <CreateQuestionButton />
       </div>
-      {allQuestionsNum}
+      <div id='all-questions-num'>
+        {allQuestionsNum}
+      </div>
       <div id="all-questions-container">
         {allQuestions.map((question) => (
           <NavLink

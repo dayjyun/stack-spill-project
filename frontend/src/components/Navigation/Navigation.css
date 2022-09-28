@@ -2,13 +2,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid red;
+    /* border-top:rgb(230, 243, 255); */
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+    padding: 8px;
+
 }
 
 #navigation-navlinks > a {
     border: 1px solid lightgray;
-    padding: .2rem;
+    /* padding: .2rem; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* flex-direction: row; */
+    padding: 10px;
 }
 
 #navigation-navlinks > a:hover {
     background-color: lightgray;
+}
+
+#navigation-home.active {
+    background-color: rgb(230, 243, 255);
+}
+
+#navigation-about.active {
+    background-color: rgb(230, 243, 255);
 }
