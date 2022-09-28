@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../store/sessionReducer";
+import './DemoUserButton.css'
 
 function DemoUserButton({ credential, password, setErrors }) {
     const dispatch = useDispatch()
@@ -18,7 +19,7 @@ function DemoUserButton({ credential, password, setErrors }) {
     }
 
     return (
-        <button onClick={handleDemoUserLogin}>Demo User</button>
+        <button id='demo-user-button' onClick={handleDemoUserLogin}>Demo User</button>
     )
 }
 

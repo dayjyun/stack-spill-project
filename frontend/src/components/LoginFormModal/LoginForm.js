@@ -53,11 +53,14 @@ function LoginForm() {
         </label>
         <button type="submit">Log In</button>
       </form>
+      <div id='demo-user-button-login-form'>
+
       <DemoUserButton
         credential={credential}
         password={password}
         setErrors={setErrors}
       />
+      </div>
     </>
   );
 }

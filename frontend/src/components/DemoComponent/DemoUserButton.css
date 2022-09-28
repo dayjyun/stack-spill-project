@@ -1,0 +1,39 @@
+#demo-user-button {
+    border-radius: 5px;
+    border: none;
+    background-color: var(--background-color);
+    padding: .5em 1em;
+    position: relative;
+    background-color: lightgray;
+}
+
+#demo-user-button::before {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgb(0, 173, 43);
+    transition: transform 300ms ease-in-out;
+    transform: scale(0);
+    transform-origin: left;
+    border-radius: 5px;
+}
+
+#demo-user-button:hover::before,
+#demo-user-button:focus::before {
+    transform: scale(1);
+}
+
+#demo-user-button {
+    transition: color 300ms ease-in-out;
+    z-index: 1;
+}
+
+#demo-user-button:hover,
+#demo-user-button:focus {
+    color: white;
+}

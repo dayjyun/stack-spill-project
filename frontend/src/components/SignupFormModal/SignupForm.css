@@ -7,4 +7,11 @@
 
 #sf-buttons {
     margin: 0 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#demo-user-button-signup-form {
+    display: flex;
+    justify-content: center;
 }

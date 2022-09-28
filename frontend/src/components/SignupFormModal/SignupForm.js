@@ -48,65 +48,68 @@ function SignupForm() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          First Name
+        <div>
           <input
             type="text"
             value={firstName}
+            placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Last Name
+        </div>
+        <div>
           <input
             type="text"
             value={lastName}
+            placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Email
+        </div>
+        <div>
           <input
             type="text"
             value={email}
+            placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Username
+        </div>
+        <div>
           <input
             type="text"
             value={username}
+            placeholder='Email'
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        </div>
+        <div>
           <input
             type="password"
             value={password}
+            placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Confirm Password
+        </div>
+        <div>
           <input
             type="password"
             value={confirmPassword}
+            placeholder='Confirm Password'
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
         <button id="sf-buttons" type="submit">
           Sign Up
         </button>
       </form>
+      <div id='demo-user-button-signup-form'>
+
       <DemoUserButton />
+      </div>
     </>
   );
 }
