@@ -5,6 +5,8 @@
     padding: .5em 1em;
     position: relative;
     background-color: lightgray;
+    transition: color 200ms ease-in-out;
+    z-index: 1;
 }
 
 #demo-user-button::before {
@@ -17,23 +19,20 @@
     right: 0;
     z-index: -1;
     background-color: rgb(0, 173, 43);
-    transition: transform 300ms ease-in-out;
-    transform: scale(0);
+    transition: transform 200ms ease-in-out;
+    transform: scaleX(0);
     transform-origin: left;
     border-radius: 5px;
 }
 
 #demo-user-button:hover::before,
 #demo-user-button:focus::before {
+    border-radius: 5px;
     transform: scale(1);
-}
-
-#demo-user-button {
-    transition: color 300ms ease-in-out;
-    z-index: 1;
 }
 
 #demo-user-button:hover,
 #demo-user-button:focus {
     color: white;
+    border-radius: 5px;
 }
