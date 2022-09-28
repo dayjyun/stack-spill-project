@@ -7,6 +7,7 @@ import "./QuestionsPage.css";
 
 function QuestionsPage() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
   const allQuestions = Object.values(useSelector((state) => state.questions));
 
   useEffect(() => {
@@ -21,15 +22,18 @@ function QuestionsPage() {
     allQuestionsNum = <h3>{allQuestions.length} Questions</h3>;
   }
 
+  let createQuestionButton
+  if(sessionUser) {
+    createQuestionButton = <CreateQuestionButton />
+  }
+
   return (
     <div id="all-questions-page-component">
       <div id='all-questions-top'>
         <h1>All Questions</h1>
-        <CreateQuestionButton />
+        {createQuestionButton}
       </div>
-      <div id='all-questions-num'>
-        {allQuestionsNum}
-      </div>
+      <h3 id='all-questions-num'>{allQuestionsNum}</h3>
       <div id="all-questions-container">
         {allQuestions.map((question) => (
           <NavLink
@@ -37,7 +41,7 @@ function QuestionsPage() {
             id="all-questions-card"
             to={{ pathname: `/questions/${question?.id}` }}
           >
-            <div id="all-questions-title">{question?.title}</div>
+            <h2 id="all-questions-title">{question?.title}</h2>
             <div id="all-questions-body">{question?.body}</div>
           </NavLink>
         ))}

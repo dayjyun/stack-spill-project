@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
         <div id="navigation-navlinks">
           <NavLink id={'navigation-home'} exact to="/">Home</NavLink>
           <NavLink id={'navigation-about'} to="/about">About</NavLink>
-          <NavLink to="/users">Users</NavLink>
+          {/* <NavLink to="/users">Users</NavLink> */}
           {isLoaded && sessionLinks}
         </div>
         {/* <h1>Search Bar</h1> */}

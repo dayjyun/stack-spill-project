@@ -25,10 +25,6 @@
     background-color: lightgray;
 }
 
-#navigation-home.active {
-    background-color: rgb(230, 243, 255);
-}
-
-#navigation-about.active {
-    background-color: rgb(230, 243, 255);
+#navigation-home.active, #navigation-about.active {
+    background-color: aliceblue;
 }

@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
+    border: 2px solid red;
 }
 
 #all-questions-num {
@@ -20,6 +21,7 @@
 #all-questions-card {
     display: flex;
     justify-content: center;
+    /* align-items: center; */
     flex-direction: column;
     flex-wrap: wrap;
     border: 1px solid lightgray;
@@ -35,5 +37,5 @@
 }
 
 #all-questions-title {
-    color: blue
+    color: blue;
 }

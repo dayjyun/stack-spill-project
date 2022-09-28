@@ -1,0 +1,10 @@
+#create-question-button {
+    border: none;
+    background-color: rgb(129, 196, 255);
+    color: white;
+    padding: 15px;
+}
+
+#create-question-button:hover {
+    background-color: rgb(58, 160, 250);
+}

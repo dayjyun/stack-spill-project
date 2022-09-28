@@ -8,7 +8,7 @@ function CreateQuestionButton() {
     history.push("/questions/ask");
   };
 
-  return <button onClick={handleAskQuestionButton}>Ask Question</button>;
+  return <button id='create-question-button' onClick={handleAskQuestionButton}>Ask Question</button>;
 }
 
 export default CreateQuestionButton;
