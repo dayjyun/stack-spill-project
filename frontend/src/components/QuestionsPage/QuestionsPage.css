@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 #all-questions-num {
@@ -30,6 +30,7 @@
     padding: 1.5rem;
     margin: .6rem 0;
     width: 65%;
+    gap: 10px;
 }
 
 #all-questions-card:hover {
@@ -38,4 +39,5 @@
 
 #all-questions-title {
     color: blue;
+    margin: 0;
 }

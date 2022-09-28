@@ -4,13 +4,13 @@ const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
 const { User, Question, Answer } = require("../db/models");
 
 // Get Current User
-router.get("/me", requireAuth, (req, res) => {
+router.get("/me", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
       ...user.toSafeObject(),
     });
-  } else return res.json("Not logged in");
+  } else return res.json({});
 });
 
 

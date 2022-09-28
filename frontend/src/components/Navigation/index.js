@@ -26,9 +26,8 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul id='navigation-bar'>
-      <li>
-        {/* Pop Out Side Menu: Questions, Users */}
+    <div id='navigation-bar'>
+        {/* Side Menu: Questions, Users */}
         <div id="navigation-navlinks">
           <NavLink id={'navigation-home'} exact to="/">Home</NavLink>
           <NavLink id={'navigation-about'} to="/about">About</NavLink>
@@ -37,8 +36,7 @@ function Navigation({ isLoaded }) {
         </div>
         {/* <h1>Search Bar</h1> */}
         {/* Dark Mode Button */}
-      </li>
-    </ul>
+    </div>
   );
 }
 
