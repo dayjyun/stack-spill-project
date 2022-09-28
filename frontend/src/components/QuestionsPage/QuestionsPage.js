@@ -16,9 +16,13 @@ function QuestionsPage() {
 
   let allQuestionsNum;
   if (allQuestions.length == 1) {
-    allQuestionsNum = <h3>{allQuestions.length} Question</h3>;
+    allQuestionsNum = (
+      <h3 id="all-questions-num">{allQuestions.length} Question</h3>
+    );
   } else {
-    allQuestionsNum = <h3>{allQuestions.length} Questions</h3>;
+    allQuestionsNum = (
+      <h3 id="all-questions-num">{allQuestions.length} Questions</h3>
+    );
   }
 
   let createQuestionButton
@@ -32,7 +36,7 @@ function QuestionsPage() {
         <h1>All Questions</h1>
         {createQuestionButton}
       </div>
-      <h3 id='all-questions-num'>{allQuestionsNum}</h3>
+      {allQuestionsNum}
       <div id="all-questions-container">
         {allQuestions.map((question) => (
           <NavLink

@@ -2,9 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid red; */
-    /* border-top:rgb(230, 243, 255); */
-    /* background-color: rgb(245, 245, 245); */
     background-color: blueviolet;
     margin: 0;
     padding: 8px;
@@ -12,12 +9,9 @@
 
 #navigation-navlinks {
     border: 1px solid lightgray;
-    /* padding: .2rem; */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* flex-direction: column; */
-    /* padding: 10px 0; */
     margin: 0 10%;
     width: 75%;
 }
