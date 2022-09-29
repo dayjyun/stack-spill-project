@@ -3,15 +3,43 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-style: none;
+    outline: none;
+    padding: 0 2rem;
+}
+
+#signup-form-text-container {
+    margin-top: 1.8rem;
+}
+
+.signup-form-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding: 0 1rem;
+}
+
+#demo-user-button-signup-form {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-form-div {
+    padding: .6rem 2rem;
+}
+
+.signup-form-input {
+    /* border: 2px solid red; */
+    outline: none;
+    padding: .5rem .2rem;
+    width: 15rem;
 }
 
 #sf-buttons {
     margin: 0 2rem;
     display: flex;
     justify-content: center;
-}
-
-#demo-user-button-signup-form {
-    display: flex;
-    justify-content: center;
+    /* padding: 1rem; */
+    margin: 1rem;
 }

@@ -42,62 +42,72 @@ function SignupForm() {
 
   return (
     <>
+    <div id="signup-form-text-container">
+      <div className="signup-form-text">Create An Account</div>
+      <div className="signup-form-text">Enter Your Details Below</div>
+    </div>
       <form onSubmit={handleSubmit} id="signup-form">
-        <ul>
+        <p>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
-        </ul>
-        <div>
+        </p>
+        <div className="signup-form-div">
           <input
             type="text"
             value={firstName}
-            placeholder='First Name'
+            placeholder="First Name"
+            className="signup-form-input"
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="signup-form-div">
           <input
             type="text"
             value={lastName}
-            placeholder='Last Name'
+            placeholder="Last Name"
+            className="signup-form-input"
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="signup-form-div">
           <input
             type="text"
             value={email}
-            placeholder='Email'
+            placeholder="Email"
+            className="signup-form-input"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="signup-form-div">
           <input
             type="text"
             value={username}
-            placeholder='Email'
+            placeholder="Email"
+            className="signup-form-input"
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="signup-form-div">
           <input
             type="password"
             value={password}
-            placeholder='Password'
+            placeholder="Password"
+            className="signup-form-input"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="signup-form-div">
           <input
             type="password"
             value={confirmPassword}
-            placeholder='Confirm Password'
+            placeholder="Confirm Password"
+            className="signup-form-input"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
@@ -106,9 +116,8 @@ function SignupForm() {
           Sign Up
         </button>
       </form>
-      <div id='demo-user-button-signup-form'>
-
-      <DemoUserButton />
+      <div id="demo-user-button-signup-form">
+        <DemoUserButton />
       </div>
     </>
   );
