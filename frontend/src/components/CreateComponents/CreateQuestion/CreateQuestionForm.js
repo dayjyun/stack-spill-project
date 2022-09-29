@@ -11,11 +11,23 @@ function CreateQuestionForm() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  const wordCaps = (str) => {
+    let strArr = str.split(' ')
+    let res = []
+
+    for (let word of strArr) {
+      let cap = word.slice(0, 1).toUpperCase()
+      let fin = word.slice(1)
+      res.push(cap + fin)
+    }
+    return res.join(' ')
+  }
+
   const handleCreateQuestion = async (e) => {
     e.preventDefault();
     await dispatch(
       createQuestion({
-        title,
+        title: wordCaps(title),
         body,
       })
     ).then(() => {
