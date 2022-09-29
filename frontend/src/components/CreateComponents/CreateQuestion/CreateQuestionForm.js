@@ -12,15 +12,12 @@ function CreateQuestionForm() {
   const [body, setBody] = useState("");
 
   const wordCaps = (str) => {
-    let strArr = str.split(' ')
-    let res = []
-
-    for (let word of strArr) {
-      let cap = word.slice(0, 1).toUpperCase()
-      let fin = word.slice(1)
-      res.push(cap + fin)
-    }
-    return res.join(' ')
+    let strArr = str.split(' ').map(word => {
+      let cap = word.slice(0, 1).toUpperCase();
+      let fin = word.slice(1);
+      return `${cap}${fin}`;
+    })
+    return strArr.join(' ')
   }
 
   const handleCreateQuestion = async (e) => {
