@@ -19,15 +19,19 @@ function UserQuestions() {
   let numQuestion;
 
   if (userQuestions.length == 1) {
-    numQuestion = <h3>{userQuestions.length} Question</h3>;
+    numQuestion = (
+      <h3 id="user-questions-text">{userQuestions.length} Question</h3>
+    );
   } else {
-    numQuestion = <h3>{userQuestions.length} Questions</h3>;
+    numQuestion = (
+      <h3 id="user-questions-text">{userQuestions.length} Questions</h3>
+    );
   }
 
   return (
     <>
       <div id="user-questions-component">
-        <h2 id="user-questions-text">{numQuestion}</h2>
+        {numQuestion}
         <div id="user-questions-container">
           {userQuestions.map((question) => (
             <NavLink
@@ -35,7 +39,7 @@ function UserQuestions() {
               id="user-questions-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >
-              <div id="user-questions-title">{question?.title}</div>
+              <h2 id="user-questions-title">{question?.title}</h2>
               <div id="user-questions-body">{question?.body}</div>
             </NavLink>
           ))}

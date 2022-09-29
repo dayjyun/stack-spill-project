@@ -31,7 +31,7 @@ function QuestionsPage() {
   }
 
   return (
-    <div id="all-questions-page-component">
+    <>
       <div id="all-questions-text">
         <h1>All Questions</h1>
         {createQuestionButton}
@@ -49,7 +49,7 @@ function QuestionsPage() {
           </NavLink>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

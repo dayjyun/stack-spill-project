@@ -1,20 +1,8 @@
-#all-questions-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #all-questions-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
-    /* border: 2px solid red; */
-}
-
-#all-questions-num {
-    margin: 0 10%;
-    display: flex;
 }
 
 #all-questions-container {
@@ -24,10 +12,14 @@
     flex-direction: column;
 }
 
+#all-questions-num {
+    margin: 0 10%;
+    display: flex;
+}
+
 #all-questions-card {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
     flex-wrap: wrap;
     border: 1px solid lightgray;

@@ -16,6 +16,7 @@
     height: 12rem;
     width: 12rem;
     border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(97, 97, 97, 0.2);
 }
 
 #user-component-details {
