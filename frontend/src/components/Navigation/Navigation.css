@@ -10,9 +10,9 @@
 #navigation-navlinks {
     border: 1px solid lightgray;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    margin: 0 10%;
+    /* padding: 0 1rem; */
+    /* margin: 0 10%; */
     width: 75%;
 }
 

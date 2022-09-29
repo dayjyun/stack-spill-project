@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
-import './ProfileButton.css'
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -32,21 +32,23 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button id='profile-image-button' onClick={openMenu}>
-        <img id='profile-button-image' src={user?.profileImage}/>
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user?.username}</li>
-          <li>{user?.email}</li>
-          <Link to={`/users/${user?.id}`}>
-            <button>Profile</button>
-          </Link>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      <div id="profile-button-component">
+        <button id="profile-image-button" onClick={openMenu}>
+          <img id="profile-button-image" src={user?.profileImage} />
+        </button>
+        {showMenu && (
+          <ul className="profile-dropdown">
+            <li>{user?.username}</li>
+            <li>{user?.email}</li>
+            <Link to={`/users/${user?.id}`}>
+              <button>Profile</button>
+            </Link>
+            <li>
+              <button onClick={logout}>Log Out</button>
+            </li>
+          </ul>
+        )}
+      </div>
     </>
   );
 }
