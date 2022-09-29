@@ -35,13 +35,13 @@
     position: relative;
 }
 
-.signup-form-text {
+/* .signup-form-text {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30px;
     padding: 0 1rem;
-}
+} */
 
 .signup-form-div {
     padding: .6rem 2rem;
@@ -67,6 +67,8 @@
     margin: 1rem;
     padding: 1.03rem 2.5rem;
     position: relative;
+    box-shadow:inset 0px 1px 6px 0px #91b8b3;
+	background:linear-gradient(to bottom, rgb(129, 196, 255) 5%, rgb(21, 120, 201) 100%);
 }
 
 #sf-buttons:hover {

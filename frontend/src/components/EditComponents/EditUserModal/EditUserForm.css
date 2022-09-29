@@ -1,3 +1,23 @@
+#edit-user-form-container {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#edit-user-form-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 1.8rem;
+    padding: 0 1rem;
+    position: relative;
+}
+
 #edit-user-form {
   display: flex;
   justify-content: center;
@@ -6,6 +26,6 @@
   padding: 2rem;
 }
 
-#edit-user-form-buttons > button{
+#edit-user-form-buttons > button {
   margin: 0 2rem;
 }
