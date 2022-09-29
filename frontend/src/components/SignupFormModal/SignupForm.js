@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
 import DemoUserButton from "../DemoComponent/DemoUserButton";
+import LoginForm from "../LoginFormModal/LoginForm";
 import "./SignupForm.css";
 
 function SignupForm() {
@@ -41,12 +42,8 @@ function SignupForm() {
   };
 
   return (
-    <>
-    <div id="signup-form-text-container">
-      <div className="signup-form-text title">Stack Spill</div>
-      <div className="signup-form-text">Join Our Community</div>
-      <div className="signup-form-text">Enter Your Details Below</div>
-    </div>
+    <div id='signup-form-container'>
+      <div id="signup-form-text">Stack Spill</div>
       <form onSubmit={handleSubmit} id="signup-form">
         <p>
           {errors.map((error, idx) => (
@@ -57,7 +54,7 @@ function SignupForm() {
           <input
             type="text"
             value={firstName}
-            placeholder="First Name"
+            placeholder="Enter Your First Name"
             className="signup-form-input"
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -67,7 +64,7 @@ function SignupForm() {
           <input
             type="text"
             value={lastName}
-            placeholder="Last Name"
+            placeholder="Enter Your Last Name"
             className="signup-form-input"
             onChange={(e) => setLastName(e.target.value)}
             required
@@ -77,7 +74,7 @@ function SignupForm() {
           <input
             type="text"
             value={email}
-            placeholder="Email"
+            placeholder="Enter Your Email"
             className="signup-form-input"
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -87,7 +84,7 @@ function SignupForm() {
           <input
             type="text"
             value={username}
-            placeholder="Email"
+            placeholder="Enter Your Username"
             className="signup-form-input"
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -97,7 +94,7 @@ function SignupForm() {
           <input
             type="password"
             value={password}
-            placeholder="Password"
+            placeholder="Enter Your Password"
             className="signup-form-input"
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -107,20 +104,25 @@ function SignupForm() {
           <input
             type="password"
             value={confirmPassword}
-            placeholder="Confirm Password"
+            placeholder="Confirm Your Password"
             className="signup-form-input"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>
         <button id="sf-buttons" type="submit">
-          Sign Up
+          Sign Up!
         </button>
       </form>
+      <div id="signup-form-demo">
+        <div>
+          <h3>Try out the Demo User? </h3>
+        </div>
       <div id="demo-user-button-signup-form">
         <DemoUserButton />
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 
