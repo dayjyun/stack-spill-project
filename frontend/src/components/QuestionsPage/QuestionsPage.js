@@ -7,7 +7,7 @@ import "./QuestionsPage.css";
 
 function QuestionsPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
 
   useEffect(() => {
@@ -25,14 +25,14 @@ function QuestionsPage() {
     );
   }
 
-  let createQuestionButton
-  if(sessionUser) {
-    createQuestionButton = <CreateQuestionButton />
+  let createQuestionButton;
+  if (sessionUser) {
+    createQuestionButton = <CreateQuestionButton />;
   }
 
   return (
     <div id="all-questions-page-component">
-      <div id='all-questions-top'>
+      <div id="all-questions-text">
         <h1>All Questions</h1>
         {createQuestionButton}
       </div>

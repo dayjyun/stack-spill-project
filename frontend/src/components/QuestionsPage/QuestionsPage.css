@@ -1,4 +1,10 @@
-#all-questions-top {
+#all-questions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#all-questions-text {
     display: flex;
     justify-content: space-between;
     align-items: center;

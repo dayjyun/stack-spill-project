@@ -46,13 +46,15 @@ function App() {
             <AboutPage />
           </Route>
           <Route path="/users/:userId/questions">
-            <UserQuestions />
+            {/* <UserQuestions /> */}
           </Route>
           <Route path="/users/:userId/answers">
             <UserAnswers />
           </Route>
           <Route path="/users/:userId">
             <UserComponent />
+            <UserQuestions />
+            {/* <UserAnswers /> */}
           </Route>
           <Route exact path="/users">
             <Users />

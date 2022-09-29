@@ -16,7 +16,7 @@ function UserQuestions() {
     dispatch(getAllQuestions());
   }, [dispatch]);
 
-  let numQuestion
+  let numQuestion;
 
   if (userQuestions.length == 1) {
     numQuestion = <h3>{userQuestions.length} Question</h3>;
@@ -26,18 +26,20 @@ function UserQuestions() {
 
   return (
     <>
-      {numQuestion}
-      <div id='user-questions-container'>
-        {userQuestions.map((question) => (
-          <NavLink
-            key={question?.id}
-            id="user-questions-card"
-            to={{ pathname: `/questions/${question?.id}` }}
-          >
-            <div id="user-questions-title">{question?.title}</div>
-            <div id="user-questions-body">{question?.body}</div>
-          </NavLink>
-        ))}
+      <div id="user-questions-component">
+        <h2 id="user-questions-text">{numQuestion}</h2>
+        <div id="user-questions-container">
+          {userQuestions.map((question) => (
+            <NavLink
+              key={question?.id}
+              id="user-questions-card"
+              to={{ pathname: `/questions/${question?.id}` }}
+            >
+              <div id="user-questions-title">{question?.title}</div>
+              <div id="user-questions-body">{question?.body}</div>
+            </NavLink>
+          ))}
+        </div>
       </div>
     </>
   );
