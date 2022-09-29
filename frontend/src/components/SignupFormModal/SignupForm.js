@@ -43,7 +43,8 @@ function SignupForm() {
   return (
     <>
     <div id="signup-form-text-container">
-      <div className="signup-form-text">Create An Account</div>
+      <div className="signup-form-text title">Stack Spill</div>
+      <div className="signup-form-text">Join Our Community</div>
       <div className="signup-form-text">Enter Your Details Below</div>
     </div>
       <form onSubmit={handleSubmit} id="signup-form">

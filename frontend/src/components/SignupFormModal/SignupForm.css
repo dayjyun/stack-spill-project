@@ -30,18 +30,19 @@
 }
 
 .signup-form-input {
-    /* border: 2px solid red; */
     outline: none;
     padding: .5rem .2rem;
     width: 15rem;
 }
 
 #sf-buttons {
-    margin: 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    background-color: lightgray;
     border-radius: 5px;
-    border: none
+    border: none;
+    margin: 1rem;
+    padding: 1.03rem 2.5rem;
+    position: relative;
 }
