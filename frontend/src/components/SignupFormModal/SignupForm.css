@@ -43,11 +43,6 @@
     padding: 0 1rem;
 }
 
-#demo-user-button-signup-form {
-    display: flex;
-    justify-content: center;
-}
-
 .signup-form-div {
     padding: .6rem 2rem;
 }
@@ -76,4 +71,10 @@
 
 #sf-buttons:hover {
     background-color: rgb(58, 160, 250);
+}
+
+#demo-user-button-signup-form {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
 }
