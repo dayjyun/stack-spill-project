@@ -40,6 +40,8 @@
     margin: 0 2rem;
     display: flex;
     justify-content: center;
-    /* padding: 1rem; */
+    align-items: center;
     margin: 1rem;
+    border-radius: 5px;
+    border: none
 }
