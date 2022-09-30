@@ -24,22 +24,22 @@ function UserComponent() {
 
   return (
     <>
-    <div id='user-component'>
-      <div id="user-component-info">
-        <img id="user-component-image" src={user?.profileImage} />
-        <div id="user-component-details">
-          <h1>{user?.username}</h1>
-          <h3>
-            {user?.firstName} {user?.lastName}
-          </h3>
+      <div id="user-component">
+        <div id="user-component-info">
+          <img id="user-component-image" src={user?.profileImage} />
+          <div id="user-component-details">
+            <h1>{user?.username}</h1>
+            <h3>
+              {user?.firstName} {user?.lastName}
+            </h3>
+            {editButton}
+          </div>
         </div>
       </div>
-    </div>
       <div id="user-component-navlinks">
         <NavLink to={`/users/${userId}/questions`}>Questions</NavLink>
         <NavLink to={`/users/${userId}/answers`}>Answers</NavLink>
       </div>
-      {editButton}
     </>
   );
 }
