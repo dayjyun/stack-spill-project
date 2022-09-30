@@ -1,13 +1,21 @@
 #edit-question-votes {
-    display: flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    padding: .5rem .8rem;
+}
 
+#edit-question-vote-count {
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 #edit-question-vote-up, #edit-question-vote-down {
     border: none;
     background-color: transparent;
-    font-size: 5rem;
+    font-size: 4rem;
+
 }
 
 .fa-arrow-circle-up, .fa-arrow-circle-down {
