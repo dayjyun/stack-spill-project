@@ -9,14 +9,22 @@
     height: 3rem;
 }
 
-#navigation-navlinks {
+#navigation-navLinks {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 100%
+}
+
+#navigation-navLinks-left {
     border: 1px solid lightgray;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 0 1rem; */
+
     /* margin: 0 10%; */
-    width: 75%;
+    /* width: 75%; */
 }
 
 #navigation-navlinks > a:hover {

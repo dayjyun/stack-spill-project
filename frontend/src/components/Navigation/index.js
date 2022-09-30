@@ -28,12 +28,18 @@ function Navigation({ isLoaded }) {
   return (
     <div id="navigation-bar">
       {/* Side Menu: Questions, Users */}
-      <div id="navigation-navlinks">
-        <NavLink id={"navigation-home"} exact to="/">Home</NavLink>
-        <NavLink id={"navigation-about"} to="/about">About</NavLink>
+      <div id="navigation-navLinks">
+        <div id="navigation-navLinks-left">
+          <NavLink id={"navigation-home"} exact to="/">
+            Home
+          </NavLink>
+          <NavLink id={"navigation-about"} to="/about">
+            About
+          </NavLink>
+        </div>
         {/* <NavLink to="/users">Users</NavLink> */}
+        <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
       </div>
-        {isLoaded && sessionLinks}
       {/* <h1>Search Bar</h1> */}
       {/* Dark Mode Button */}
     </div>
