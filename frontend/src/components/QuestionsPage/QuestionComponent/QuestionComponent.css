@@ -1,15 +1,39 @@
 #question-page-component {
-    outline: 2px solid red;
+    /* outline: 2px solid red; */
     margin: 0 5rem;
 }
 
 #question-card {
-    border: 2px solid black;
+    /* background-color: rgb(236, 151, 151); */
+    /* border: 2px solid black; */
     display: flex;
+    justify-content: start;
     flex-direction: row;
+    width: 100;
+}
+
+#question-card-container {
+    width: 100%;
+}
+
+#question-user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: rgb(226, 21, 226); */
+    /* line-height: 10rem; */
+    margin-top: 5%;
 }
 
 #question-component-user-profileImage {
     max-height: 2rem;
     max-width: 2rem;
+}
+
+#question-component-user-link {
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 .4rem;
 }
