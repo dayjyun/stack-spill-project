@@ -38,9 +38,9 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </div>
         {/* <NavLink to="/users">Users</NavLink> */}
+        {/* <div>Search Bar</div> */}
         <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
       </div>
-      {/* <h1>Search Bar</h1> */}
       {/* Dark Mode Button */}
     </div>
   );

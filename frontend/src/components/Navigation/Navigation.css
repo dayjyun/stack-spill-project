@@ -17,6 +17,10 @@
     width: 100%
 }
 
+#navigation-navLinks > div > a:hover {
+    background-color: lightgray;
+}
+
 #navigation-navLinks-left {
     border: 1px solid lightgray;
     display: flex;
@@ -27,9 +31,6 @@
     /* width: 75%; */
 }
 
-#navigation-navlinks > a:hover {
-    background-color: lightgray;
-}
 
 #navigation-home.active, #navigation-about.active {
     background-color: aliceblue;
