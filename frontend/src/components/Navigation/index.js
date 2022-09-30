@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import "./Navigation.css";
+import SearchBarComponent from "../SearchBar/SearchBar";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -39,6 +40,7 @@ function Navigation({ isLoaded }) {
         </div>
         {/* <NavLink to="/users">Users</NavLink> */}
         {/* <div>Search Bar</div> */}
+       <SearchBarComponent />
         <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
       </div>
       {/* Dark Mode Button */}
