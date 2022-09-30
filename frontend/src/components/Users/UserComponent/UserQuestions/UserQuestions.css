@@ -1,8 +1,15 @@
 #user-questions-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10%;
+}
+
+#user-questions-num {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin: 0 10%;
+  margin: .025% 10%;
 }
 
 #user-questions-container {

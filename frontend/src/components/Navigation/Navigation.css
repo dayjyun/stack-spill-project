@@ -3,13 +3,16 @@
     justify-content: center;
     align-items: center;
     background-color: blueviolet;
+    /* background-color: aliceblue; */
     margin: 0;
     padding: 8px;
+    height: 3rem;
 }
 
 #navigation-navlinks {
     border: 1px solid lightgray;
     display: flex;
+    justify-content: center;
     align-items: center;
     /* padding: 0 1rem; */
     /* margin: 0 10%; */

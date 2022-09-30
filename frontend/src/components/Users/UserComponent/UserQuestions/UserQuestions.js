@@ -20,17 +20,19 @@ function UserQuestions() {
 
   if (userQuestions.length == 1) {
     numQuestion = (
-      <h3 id="user-questions-text">{userQuestions.length} Question</h3>
+      <h3 id="user-questions-num">{userQuestions.length} Question</h3>
     );
   } else {
     numQuestion = (
-      <h3 id="user-questions-text">{userQuestions.length} Questions</h3>
+      <h3 id="user-questions-num">{userQuestions.length} Questions</h3>
     );
   }
 
   return (
     <>
-      <div id="user-questions-component">
+      <div id="user-questions-text">
+        <h1>Your Questions</h1>
+      </div>
         {numQuestion}
         <div id="user-questions-container">
           {userQuestions.map((question) => (
@@ -44,7 +46,6 @@ function UserQuestions() {
             </NavLink>
           ))}
         </div>
-      </div>
     </>
   );
 }
