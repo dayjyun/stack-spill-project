@@ -4,11 +4,20 @@
 
 }
 
-
-#edit-question-vote-up.active {
-    background-color: red;
+#edit-question-vote-up, #edit-question-vote-down {
+    border: none;
+    background-color: transparent;
+    font-size: 5rem;
 }
 
-#edit-question-vote-down.active {
-    background-color: red;
+.fa-arrow-circle-up, .fa-arrow-circle-down {
+    color: lightgray;
+}
+
+.fa-arrow-circle-up.active {
+    color: rgb(0, 165, 0)
+}
+
+.fa-arrow-circle-down.active {
+    color: red
 }

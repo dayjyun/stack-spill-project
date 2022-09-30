@@ -31,6 +31,8 @@ function QuestionComponent() {
     <div id='question-page-component'>
       <div key={question?.id} id="question-card">
         <QuestionVotesComponent questionId={questionId}/>
+        <div>
+
         <h1 id="question-title">{question?.title}</h1>
         <h3 id="question-body">{question?.body}</h3>
         {userQuestionEdit}
@@ -41,6 +43,7 @@ function QuestionComponent() {
             {currentUser?.username}
           </Link>
         </div>
+          </div>
       </div>
       <div>
         <AnswersComponent questionId={questionId} allUsers={allUsers}/>

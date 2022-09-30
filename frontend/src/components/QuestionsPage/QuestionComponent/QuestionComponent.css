@@ -1,10 +1,12 @@
 #question-page-component {
-    border: 2px solid red;
+    outline: 2px solid red;
     margin: 0 5rem;
 }
 
 #question-card {
     border: 2px solid black;
+    display: flex;
+    flex-direction: row;
 }
 
 #question-component-user-profileImage {
