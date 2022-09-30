@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { getAllQuestions } from "../../store/questionsReducer";
+import { Link } from "react-router-dom";
 import "./SearchBar.css";
 
 function SearchBarComponent() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const allQuestions = Object.values(useSelector((state) => state.questions));
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState("");
