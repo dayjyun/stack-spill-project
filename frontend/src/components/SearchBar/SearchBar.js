@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
 import "./SearchBar.css";
 
@@ -11,9 +11,9 @@ function SearchBarComponent() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState("");
 
-  useEffect(() => {
-    dispatch(getAllQuestions());
-  }, [dispatch]);
+//   useEffect(() => {
+//     dispatch(getAllQuestions());
+//   }, [dispatch]);
 
   const questionResults = allQuestions.filter((question) => {
     return question?.title?.toLowerCase().includes(search.toLowerCase());
@@ -30,26 +30,26 @@ function SearchBarComponent() {
 
   const questionReturns = questionResults.map((question) => {
     return (
-      <NavLink
+      <Link
         to={`/questions/${question?.id}`}
         key={question?.id}
-        // onClick={handleSearchLink}
-        id='search-results-link'
+        onClick={() => setSearch("")}
+        className="search-results-link"
       >
-        <div id="search-results-text">
-          <div>{question?.title}</div>
+        <div className="search-results-text">
+          <div className="search-results-body">{question?.title}</div>
         </div>
-      </NavLink>
+      </Link>
     );
   });
 
   return (
     <>
-      <div id="search-bar-container">
+      <div className="search-bar-container">
         <form>
-          <div id="search-bar">
+          <div className="search-bar">
             <input
-              id="search-bar-input"
+              className="search-bar-input"
               type="text"
               placeholder="Search..."
               value={search}
@@ -59,7 +59,9 @@ function SearchBarComponent() {
             />
           </div>
         </form>
-        <div id={`search-results-box ${searchResults}`}>{questionReturns}</div>
+        <div className={`search-results-box ${searchResults}`}>
+          {questionReturns}
+        </div>
       </div>
     </>
   );
