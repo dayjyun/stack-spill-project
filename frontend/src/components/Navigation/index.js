@@ -39,7 +39,6 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </div>
         {/* <NavLink to="/users">Users</NavLink> */}
-        {/* <div>Search Bar</div> */}
        <SearchBarComponent />
         <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
       </div>

@@ -11,22 +11,9 @@ function SearchBarComponent() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState("");
 
-//   useEffect(() => {
-//     dispatch(getAllQuestions());
-//   }, [dispatch]);
-
   const questionResults = allQuestions.filter((question) => {
     return question?.title?.toLowerCase().includes(search.toLowerCase());
   });
-
-//   let handleSearchLink;
-
-//   allQuestions.map((question) => {
-//     handleSearchLink = () => {
-//       setSearch("");
-//       history.push(`/questions/${question?.id}`);
-//     };
-//   });
 
   const questionReturns = questionResults.map((question) => {
     return (
