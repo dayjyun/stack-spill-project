@@ -46,6 +46,12 @@ function EditQuestionVote({ questionId }) {
     }
   };
 
+  let questionVoteCount = 0;
+
+  questionVotes.map(vote => {
+    vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
+  })
+
   const downVoteQuestion = async () => {
     if (userVote?.vote) {
       await dispatch(deleteQuestionVote(questionId));
@@ -74,6 +80,7 @@ function EditQuestionVote({ questionId }) {
         <button id="edit-question-vote-up" onClick={handleUpVote}>
           <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
         </button>
+        <h2>{questionVoteCount}</h2>
         <button id="edit-question-vote-down" onClick={handleDownVote}>
           <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
         </button>

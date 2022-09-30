@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
+import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
 import QuestionVotesComponent from "../../VotesComponents/QuestionVotesComponent";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
@@ -30,7 +31,8 @@ function QuestionComponent() {
     <>
     <div id='question-page-component'>
       <div key={question?.id} id="question-card">
-        <QuestionVotesComponent questionId={questionId}/>
+        {/* <QuestionVotesComponent questionId={questionId}/> */}
+        <EditQuestionVote questionId={questionId}/>
         <div>
 
         <h1 id="question-title">{question?.title}</h1>
