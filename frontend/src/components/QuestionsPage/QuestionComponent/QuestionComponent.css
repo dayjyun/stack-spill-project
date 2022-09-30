@@ -1,3 +1,8 @@
+#question-page-component {
+    border: 2px solid red;
+    margin: 0 5rem;
+}
+
 #question-card {
     border: 2px solid black;
 }

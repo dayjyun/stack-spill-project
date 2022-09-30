@@ -1,4 +1,10 @@
-/* Edit Question Vote */
+#edit-question-votes {
+    display: flexbox;
+    flex-direction: column;
+
+}
+
+
 #edit-question-vote-up.active {
     background-color: red;
 }

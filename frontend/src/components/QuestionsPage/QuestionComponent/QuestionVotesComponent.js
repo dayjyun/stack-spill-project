@@ -28,6 +28,7 @@ function QuestionComponent() {
 
   return (
     <>
+    <div id='question-page-component'>
       <div key={question?.id} id="question-card">
         <QuestionVotesComponent questionId={questionId}/>
         <h1 id="question-title">{question?.title}</h1>
@@ -45,6 +46,7 @@ function QuestionComponent() {
         <AnswersComponent questionId={questionId} allUsers={allUsers}/>
       </div>
       <CreateAnswerForm questionId={questionId}/>
+    </div>
     </>
   );
 }

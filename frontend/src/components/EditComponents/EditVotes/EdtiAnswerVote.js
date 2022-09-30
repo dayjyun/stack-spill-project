@@ -11,9 +11,6 @@ function EditAnswerVote({ answerId }) {
     const [upVote, setUpVote] = useState(false)
     const [downVote, setDownVote] = useState(false)
 
-    // console.log({userVote})
-    console.log({answerId})
-
     useEffect(() => {
         // dispatch(getAllVotes())
         const sessionUserAnswerVote = () => {
