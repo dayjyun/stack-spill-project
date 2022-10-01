@@ -1,0 +1,32 @@
+#edit-question-votes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.5rem 0.8rem;
+}
+
+#edit-question-vote-count {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#edit-question-vote-up,
+#edit-question-vote-down {
+  border: none;
+  background-color: transparent;
+  font-size: 4rem;
+}
+
+.fa-arrow-circle-up,
+.fa-arrow-circle-down {
+  color: lightgray;
+}
+
+.fa-arrow-circle-up.active {
+  color: rgb(0, 165, 0);
+}
+
+.fa-arrow-circle-down.active {
+  color: red;
+}

@@ -41,14 +41,14 @@ router.post("/signup", validateSignup, async (req, res) => {
   if (checkEmail) {
     let error = new Error("User already exists")
     error.status = 403;
-    error.errors = ['User with that email already exists'];
+    error.errors = ['Email already exists'];
     throw error;
   }
 
   if (checkUsername) {
     let error = new Error("User already exists")
     error.status = 403;
-    error.errors = ["User with that username already exists"];
+    error.errors = ["Username already exists"];
     throw error;
   }
 
@@ -60,7 +60,7 @@ router.post("/signup", validateSignup, async (req, res) => {
     password,
   })
 
-  const token = await setTokenCookie(res, user);
+  let token = await setTokenCookie(res, user);
   return res.json({ ...user.toSafeObject(), token });
 });
 

@@ -4,13 +4,13 @@ const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
 const { User, Question, Answer } = require("../db/models");
 
 // Get Current User
-router.get("/me", requireAuth, (req, res) => {
+router.get("/me", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
-      me: user.toSafeObject(),
+      ...user.toSafeObject(),
     });
-  } else return res.json("Not logged in");
+  } else return res.json({});
 });
 
 
@@ -38,18 +38,20 @@ router.get("/", async (req, res) => {
 router.put('/:userId', requireAuth, async (req, res) => {
   const { user } = req;
   const { userId } = req.params;
-  const { firstName, lastName, username, email } = req.body;
+  const { firstName, lastName, username, email, profileImage, password } = req.body;
   const userInfo = await User.findByPk(userId)
 
   if (userInfo) {
     if (userInfo.id === user.id) {
-      await userInfo.update({
+      let updatedUser = await userInfo.update({
         firstName,
         lastName,
         username,
         email,
-      })
-      res.json(userInfo)
+        // password,
+        // profileImage,
+      });
+      res.json(updatedUser)
     } else {
       const error = new Error("Unauthorized")
       error.status = 403;

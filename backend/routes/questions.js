@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
-const { validateQuestion, validateAnswer, validateVote, } = require("../utils/validation");
+const { validateQuestion, validateAnswer, validateVote, validateOneAnswer, } = require("../utils/validation");
 
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {
@@ -73,11 +73,14 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
         res.status(201);
         res.json(newVote);
       } else {
-        await currentVote.update({
-          vote,
-        })
-        res.status(201)
-        res.json(currentVote)
+        // await currentVote.update({
+        //   vote,
+        // })
+        // res.status(201)
+        // res.json(currentVote)
+        const error = new Error("Vote already exists")
+        error.status = 404;
+        throw error;
       }
     } else {
       const error = new Error("Question Not Found");
@@ -88,7 +91,7 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
 );
 
 // Create an Answer
-router.post("/:questionId", requireAuth, validateAnswer, async (req, res) => {
+router.post("/:questionId", requireAuth, validateAnswer, validateOneAnswer, async (req, res) => {
   const { user } = req;
   const { questionId } = req.params;
   const { body } = req.body;
@@ -140,13 +143,16 @@ router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => 
       });
       res.json(currentVote);
     } else {
-      const newVote = await Vote.create({
-        userId: user.id,
-        vote,
-        questionId,
-      })
-      res.status(201)
-      res.json(newVote)
+      // const newVote = await Vote.create({
+      //   userId: user.id,
+      //   vote,
+      //   questionId,
+      // })
+      // res.status(201)
+      // res.json(newVote)
+      const error = new Error('Vote not found')
+      error.status = 404
+      throw error;
     }
   } else {
     const error = new Error("Question not found");
@@ -186,9 +192,7 @@ router.delete("/:questionId/votes", requireAuth, async (req, res) => {
   const { user } = req;
   const { questionId } = req.params;
   const question = await Question.findByPk(questionId);
-  const userVote = await Vote.findOne({
-    where: { userId: user.id, questionId },
-  });
+  const userVote = await Vote.findOne({ where: { userId: user.id, questionId } });
 
   if (question) {
     if (userVote) {

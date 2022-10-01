@@ -35,7 +35,7 @@ export const getAnswer = (answerId) => async (dispatch) => {
     const specificAnswer = await fetch(`/api/answers/${answerId}`)
 
     if (specificAnswer.ok) {
-      const resSpecificAnswer = specificAnswer.json();
+      const resSpecificAnswer = await specificAnswer.json();
       dispatch(getCurrentAnswer(resSpecificAnswer));
     }
 }
@@ -50,17 +50,17 @@ const addAnswer = (answer) => {
 
 export const createAnswer = (answerData) => async (dispatch) => {
     const { body, questionId } = answerData
-    const formData = new FormData()
-
-    formData.append('body', body)
 
     const newAnswer = await csrfFetch(`/api/questions/${questionId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: formData
+        body: JSON.stringify({
+            body
+        })
     })
+
     if (newAnswer.ok) {
         const resNewAnswer = await newAnswer.json()
         dispatch(addAnswer(resNewAnswer))
@@ -69,20 +69,20 @@ export const createAnswer = (answerData) => async (dispatch) => {
 }
 
 // edit answer
-const updateAnswer = (answerId) => {
+const updateAnswer = (answer) => {
     return {
         type: EDIT_ANSWER,
-        answerId
+        answer
     }
 }
 
-export const editAnswer = (answer) => async (dispatch) => {
-    const answerEdit = await csrfFetch(`/api/answers/${answer.id}`, {
+export const editAnswer = (answerData) => async (dispatch) => {
+    const answerEdit = await csrfFetch(`/api/answers/${answerData?.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(answer)
+        body: JSON.stringify(answerData)
     })
     if (answerEdit.ok) {
       const resAnswerEdit = await answerEdit.json();
@@ -98,7 +98,7 @@ const removeAnswer = (id) => {
     }
 }
 
-export const deleteQuestion = (answerId) => async (dispatch) => {
+export const deleteAnswer = (answerId) => async (dispatch) => {
     const answerDelete = await csrfFetch(`/api/answers/${answerId}`, {
         method: "DELETE",
     })
@@ -110,26 +110,29 @@ export const deleteQuestion = (answerId) => async (dispatch) => {
 let initialState = {}
 
 export default function answerReducer(state = initialState, action) {
-    switch(action.type) {
-        case GET_ALL_ANSWERS:
-            initialState = { ...state }
-            action.list.forEach(answer => {
-                initialState[answer.id] = answer
-            })
-            return initialState
+    switch (action.type) {
+      case GET_ALL_ANSWERS:
+        initialState = { ...state };
+        action.list.forEach((answer) => {
+          initialState[answer.id] = answer;
+        });
+        return initialState;
 
-        case GET_ANSWER:
-            return { ...state, [action.answer.id]: action.answer }
+      case GET_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        case EDIT_ANSWER:
-            return { ...state, [action.answer.id]: action.answer }
+      case CREATE_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        case DELETE_ANSWER:
-            const removeAnswerState = { ...state }
-            delete removeAnswerState[action.id]
-            return removeAnswerState
+      case EDIT_ANSWER:
+        return { ...state, [action.answer.id]: action.answer };
 
-        default:
-            return state
+      case DELETE_ANSWER:
+        const removeAnswerState = { ...state };
+        delete removeAnswerState[action.id];
+        return removeAnswerState;
+
+      default:
+        return state;
     }
 }
