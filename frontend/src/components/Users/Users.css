@@ -1,0 +1,15 @@
+#users-component-card {
+    padding: 1rem 0;
+    /* border: 2px solid red; */
+}
+
+#users-component-card > a{
+    display: flex;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+
+#users-component-profileImage {
+    max-height: 2rem;
+    max-width: 2rem;
+}

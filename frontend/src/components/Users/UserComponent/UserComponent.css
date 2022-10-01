@@ -1,0 +1,44 @@
+#user-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+}
+
+#user-component-info {
+    display: flex;
+    justify-content: center;
+    margin: 0 8rem;
+}
+
+#user-component-image {
+    object-fit: cover;
+    height: 12rem;
+    width: 12rem;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(97, 97, 97, 0.2);
+}
+
+#user-component-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 1rem;
+    line-height: 5px;
+}
+
+#user-component-navLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-component-navLinks > a {
+    border: 2px solid lightgray;
+    padding: 1rem;
+}
+
+#user-component-questions:hover, #user-component-answers:hover {
+    cursor: pointer;
+}

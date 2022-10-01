@@ -3,23 +3,10 @@ const express = require("express");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
+const { validateLogin, validateSignup } = require("../../utils/validation");
 const router = express.Router();
 
-//=======================================//
-const validateLogin = [
-  check("credential")
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage("Please provide a valid email or username."),
-  check("password")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a password."),
-  handleValidationErrors
-];
-
-
-// =============  Log in =================//
+// Log in
 router.post("/login", validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
@@ -29,39 +16,102 @@ router.post("/login", validateLogin, async (req, res, next) => {
     const err = new Error("Login failed");
     err.status = 401;
     err.title = "Login failed";
-    err.errors = ["The provided credentials were invalid."];
     return next(err);
   }
 
-  await setTokenCookie(res, user);
+  const token = await setTokenCookie(res, user);
 
-  return res.json({ ...user.toSafeObject(), user });
+  return res.json({ ...user.toSafeObject(), token });
 });
 
 
 // Log out
 router.delete("/logout", (_req, res) => {
   res.clearCookie("token");
-  return res.json({ message: "success" });
+  return res.json({ message: "Logout successful" });
 });
 
-// Restore session user
-router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
-    const { user } = req;
-    if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
-    } else return res.json({});
+
+// Sign up
+router.post("/signup", validateSignup, async (req, res) => {
+  const { firstName, lastName, email, password, username } = req.body;
+  const checkEmail = await User.findOne({ where: { email }})
+  const checkUsername = await User.findOne({ where: { username } })
+
+  if (checkEmail) {
+    let error = new Error("User already exists")
+    error.status = 403;
+    error.errors = ['Email already exists'];
+    throw error;
   }
-);
 
-// test route
-router.get("/session/test", (req, res) => {
-  res.send("Welcome To Session! 👋🏼");
+  if (checkUsername) {
+    let error = new Error("User already exists")
+    error.status = 403;
+    error.errors = ["Username already exists"];
+    throw error;
+  }
+
+  const user = await User.signup({
+    firstName,
+    lastName,
+    email,
+    username,
+    password,
+  })
+
+  let token = await setTokenCookie(res, user);
+  return res.json({ ...user.toSafeObject(), token });
 });
+
+
+// ==================== Fetch Requests ================== //
+
+// LOGIN
+// fetch("/api/login", {
+//   method: "post",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+//   body: JSON.stringify({
+//     password: "password",
+//     credential: "demo",
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+// LOGOUT
+// fetch("/api/logout", {
+//   method: "delete",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+// SIGNUP
+// fetch("/api/signup", {
+//   method: "post",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
+//   },
+//   body: JSON.stringify({
+//     firstName: "testF",
+//     lastName: "testL",
+//     username: "test",
+//     email: "test@user.io",
+//     password: "password",
+//     // credential: "demo",
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
 
 module.exports = router;
