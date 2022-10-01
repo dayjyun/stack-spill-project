@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/dayjyun/stack-spill-project/issues"
   },
-  "homepage": "https://github.com/dayjyun/stack-spill-project#readme"
+  "homepage": "https://github.com/dayjyun/stack-spill-project#readme",
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
 }
