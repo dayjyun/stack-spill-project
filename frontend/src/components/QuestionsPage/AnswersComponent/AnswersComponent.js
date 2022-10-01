@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
 import { getAllUsers } from "../../../store/usersReducer";
 import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
+import EditAnswerVote from "../../EditComponents/EditVotes/EdtiAnswerVote";
 import AnswerVotesComponent from "../../VotesComponents/AnswerVotesComponent";
 import "./AnswersComponent.css";
 
@@ -37,7 +38,7 @@ function AnswersComponent({ questionId }) {
         <div>
           {answers?.map((answer) => (
             <div key={answer?.id} id="answer-details">
-              <AnswerVotesComponent answerId={answer?.id}/>
+              <EditAnswerVote answerId={answer?.id}/>
               <div id="answer-body">{answer?.body}</div>
               By{" "}
               <Link to={`/users/${answer?.userId}`}>

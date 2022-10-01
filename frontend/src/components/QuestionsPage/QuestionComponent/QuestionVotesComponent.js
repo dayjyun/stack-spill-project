@@ -5,7 +5,6 @@ import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
-import QuestionVotesComponent from "../../VotesComponents/QuestionVotesComponent";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
@@ -31,7 +30,6 @@ function QuestionComponent() {
     <>
       <div id="question-page-component">
         <div key={question?.id} id="question-card">
-          {/* <QuestionVotesComponent questionId={questionId}/> */}
           <EditQuestionVote questionId={questionId} />
           <div id="question-card-container">
             <div id='question-card-text-top'>

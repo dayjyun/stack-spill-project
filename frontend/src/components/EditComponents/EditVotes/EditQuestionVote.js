@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createQuestionVote,
   deleteQuestionVote,
-  editQuestionVote,
   getAllVotes,
   getQuestionVote,
 } from "../../../store/votesReducer";
-import CreateQuestionVote from "../../CreateComponents/CreateVote/CreateQuestionVote";
-import "./EditVote.css";
+import "./EditQuestionVote.css";
 
 function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
@@ -46,12 +44,6 @@ function EditQuestionVote({ questionId }) {
     }
   };
 
-  let questionVoteCount = 0;
-
-  questionVotes.map(vote => {
-    vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
-  })
-
   const downVoteQuestion = async () => {
     if (userVote?.vote) {
       await dispatch(deleteQuestionVote(questionId));
@@ -65,6 +57,12 @@ function EditQuestionVote({ questionId }) {
       );
     }
   };
+
+  let questionVoteCount = 0;
+
+  questionVotes.map((vote) => {
+    vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
+  });
 
   const handleUpVote = async () => {
     await upVoteQuestion().then(async () => setUpVote(!upVote));
