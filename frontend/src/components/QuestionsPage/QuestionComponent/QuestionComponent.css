@@ -16,6 +16,11 @@
     width: 100%;
 }
 
+#question-card-text-top {
+    display: inline-flex;
+    align-items: center;
+}
+
 #question-user-info {
     display: flex;
     justify-content: flex-end;

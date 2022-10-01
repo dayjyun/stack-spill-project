@@ -33,8 +33,10 @@ function QuestionComponent() {
         <div key={question?.id} id="question-card">
           {/* <QuestionVotesComponent questionId={questionId}/> */}
           <EditQuestionVote questionId={questionId} />
-          <div id='question-card-container'>
-            <h1 id="question-title">{question?.title}</h1>
+          <div id="question-card-container">
+            <div id='question-card-text-top'>
+              <h1 id="question-title">{question?.title}</h1> {userQuestionEdit}
+            </div>
             <h3 id="question-body">{question?.body}</h3>
             <div id="question-user-info">
               By{" "}
@@ -48,7 +50,6 @@ function QuestionComponent() {
                 />
                 {currentUser?.username}
               </Link>
-              {userQuestionEdit}
             </div>
           </div>
         </div>
