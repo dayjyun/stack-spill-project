@@ -67,7 +67,7 @@ function EditQuestionForm({ setShowModal, questionId }) {
           <button id='eqb-cancel' onClick={handleCancelButton}>Cancel</button>
         </div>
         <div>
-          <button onClick={handleDeleteButton} id="edit-question-delete">
+          <button onClick={handleDeleteButton} id="eqb-delete">
             Delete
           </button>
         </div>
