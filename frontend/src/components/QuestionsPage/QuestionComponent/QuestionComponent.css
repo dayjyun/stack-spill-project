@@ -9,7 +9,7 @@
     display: flex;
     justify-content: start;
     flex-direction: row;
-    width: 100;
+    /* width: 100%; */
 }
 
 #question-card-container {
@@ -25,14 +25,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 5%;
     /* background-color: rgb(226, 21, 226); */
     /* line-height: 10rem; */
-    margin-top: 5%;
-}
-
-#question-component-user-profileImage {
-    max-height: 2rem;
-    max-width: 2rem;
 }
 
 #question-component-user-link {
@@ -41,4 +36,9 @@
     justify-content: start;
     align-items: center;
     padding: 0 .4rem;
+}
+
+#question-component-user-profileImage {
+    max-height: 2rem;
+    max-width: 2rem;
 }

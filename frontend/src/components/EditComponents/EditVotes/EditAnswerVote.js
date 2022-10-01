@@ -70,7 +70,7 @@ function EditAnswerVote({ answerId }) {
         <button id="edit-answer-vote-up" onClick={handleUpVote}>
           <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
         </button>
-        <div>{answerVoteCount}</div>
+        <div id='edit-answer-vote-count'>{answerVoteCount}</div>
         <button id="edit-answer-vote-down" onClick={handleDownVote}>
           <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
         </button>

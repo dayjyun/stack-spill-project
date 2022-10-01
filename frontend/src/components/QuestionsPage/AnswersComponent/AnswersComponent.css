@@ -1,11 +1,37 @@
+#answer-page-component {
+    margin: 0 5rem;
+}
+
 #answers-number-text {
     border-bottom: 2px solid black;
 }
 
-#answer-details {
+#answer-card {
     /* border: 2px solid red; */
-    padding: 0 .8rem;
-    margin: .8rem .8rem;
+    /* padding: 0 .8rem; */
+    /* margin: .8rem .8rem; */
+        display: flex;
+    justify-content: start;
+    flex-direction: row;
+    /* width: 100%; */
+}
+
+#answer-card-container {
+    width: 100%
+}
+
+#answer-user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#answer-component-user-link {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 .4rem;
 }
 
 #answers-component-user-profileImage {

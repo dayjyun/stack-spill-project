@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
-import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionVotesComponent";
+import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import UserComponent from "./components/Users/UserComponent/UserComponent";
 import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
 import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";

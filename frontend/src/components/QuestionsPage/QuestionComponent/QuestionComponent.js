@@ -51,9 +51,7 @@ function QuestionComponent() {
             </div>
           </div>
         </div>
-        <div>
-          <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        </div>
+        <AnswersComponent questionId={questionId} allUsers={allUsers} />
         <CreateAnswerForm questionId={questionId} />
       </div>
     </>
