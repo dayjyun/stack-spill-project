@@ -8,7 +8,6 @@
 #user-component-info {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     margin: 0 8rem;
 }
 
@@ -21,7 +20,6 @@
 }
 
 #user-component-details {
-    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,19 +28,19 @@
     line-height: 5px;
 }
 
-#user-component-edit-profile-button {}
+/* #user-component-edit-profile-button {} */
 
-#user-component-navlinks {
+#user-component-navLinks {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#user-component-navlinks > a {
+#user-component-navLinks > a {
     border: 2px solid lightgray;
     padding: 1rem;
 }
 
-#user-component-navlinks > a:hover {
-    background-color: lightgray;
+#user-component-questions:hover, #user-component-answers:hover {
+    cursor: pointer;
 }

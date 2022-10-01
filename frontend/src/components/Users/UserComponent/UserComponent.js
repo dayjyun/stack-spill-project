@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getUser } from "../../../store/usersReducer";
 import EditUserModal from "../../EditComponents/EditUserModal/EditUserModal";
+import UserAnswers from "./UserAnswers/UserAnswers";
+import UserQuestions from "./UserQuestions/UserQuestions";
 import "./UserComponent.css";
 
 function UserComponent() {
@@ -11,6 +13,7 @@ function UserComponent() {
   const sessionUser = useSelector((state) => state.session.user);
   const allUsers = Object.values(useSelector((state) => state.users));
   const user = allUsers.filter((user) => user.id == userId)[0];
+  const [bottomView, setBottomView ]= useState(<UserQuestions/>)
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -20,6 +23,14 @@ function UserComponent() {
 
   if (sessionUser?.id == user?.id) {
     editButton = <EditUserModal />;
+  }
+
+  const handleQuestionsClick = () => {
+    setBottomView(<UserQuestions />)
+  }
+
+  const handleAnswersClick = () => {
+    setBottomView(<UserAnswers />)
   }
 
   return (
@@ -36,10 +47,11 @@ function UserComponent() {
           </div>
         </div>
       </div>
-      <div id="user-component-navlinks">
-        <NavLink to={`/users/${userId}/questions`}>Questions</NavLink>
-        <NavLink to={`/users/${userId}/answers`}>Answers</NavLink>
+      <div id="user-component-navLinks">
+        <div id='user-component-questions' onClick={handleQuestionsClick}>Questions</div>
+        <div id='user-component-answers' onClick={handleAnswersClick}>Answers</div>
       </div>
+      <div>{bottomView}</div>
     </>
   );
 }

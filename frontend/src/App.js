@@ -27,9 +27,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/votes/questions">
+          {/* <Route path="/votes/questions">
             <QuestionVotesComponent />
-          </Route>
+          </Route> */}
           <Route path='/votes/answers'>
             <AnswerVotesComponent />
           </Route>
@@ -46,22 +46,20 @@ function App() {
             <AboutPage />
           </Route>
           <Route path="/users/:userId/questions">
-            {/* <UserQuestions /> */}
+            <UserQuestions />
           </Route>
           <Route path="/users/:userId/answers">
             <UserAnswers />
           </Route>
           <Route path="/users/:userId">
             <UserComponent />
-            <UserQuestions />
-            {/* <UserAnswers /> */}
           </Route>
           <Route exact path="/users">
             <Users />
           </Route>
-          {/* <Route>
+          <Route>
             <h1>404 Page</h1>
-          </Route> */}
+          </Route>
         </Switch>
       )}
     </>
