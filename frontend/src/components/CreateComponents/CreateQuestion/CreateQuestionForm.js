@@ -14,8 +14,8 @@ function CreateQuestionForm() {
   const wordCaps = (str) => {
     let strArr = str.split(' ').map(word => {
       let cap = word.slice(0, 1).toUpperCase();
-      let fin = word.slice(1);
-      return `${cap}${fin}`;
+      let rest = word.slice(1);
+      return `${cap}${rest}`;
     })
     return strArr.join(' ')
   }

@@ -12,13 +12,22 @@ function EditQuestionForm({ setShowModal, questionId }) {
   const [title, setTitle] = useState(question?.title);
   const [body, setBody] = useState(question?.body);
 
+  const wordCaps = (str) => {
+    let strArr = str.split(' ').map(word => {
+      let cap = word.slice(0, 1).toUpperCase()
+      let rest =  word.slice(1)
+      return `${cap}${rest}`
+    })
+    return strArr.join(' ')
+  }
+
   const handelQuestionEdit = (e) => {
     e.preventDefault();
 
     dispatch(
       editQuestion({
         id: questionId,
-        title,
+        title: wordCaps(title),
         body,
       })
     ).then(() => {
