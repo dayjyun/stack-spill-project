@@ -36,12 +36,6 @@ function EditAnswerVote({ answerId }) {
     }
   };
 
-  let answerVoteCount = 0;
-
-  answerVotes.map((vote) => {
-    vote?.vote === true ? (answerVoteCount += 1) : (answerVoteCount -= 1);
-  });
-
   const downVoteAnswer = async () => {
     if (userVote?.vote === false) {
       await dispatch(deleteAnswerVote(answerId));
@@ -52,9 +46,15 @@ function EditAnswerVote({ answerId }) {
           vote: downVote,
           answerId,
         })
-      );
-    }
-  };
+        );
+      }
+    };
+
+    let answerVoteCount = 0;
+
+    answerVotes.map((vote) => {
+      vote?.vote === true ? (answerVoteCount += 1) : (answerVoteCount -= 1);
+    });
 
   const handleUpVote = async () => {
     await upVoteAnswer().then(async () => setUpVote(!upVote));

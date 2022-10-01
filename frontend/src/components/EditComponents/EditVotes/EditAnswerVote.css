@@ -1,0 +1,19 @@
+#edit-answer-votes {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: .5rem .8rem;
+}
+
+#edit-answer-vote-count {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#edit-answer-vote-up,
+#edit-answer-vote-down {
+border: none;
+  background-color: transparent;
+  font-size: 4rem;
+}

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
 import { getAllUsers } from "../../../store/usersReducer";
 import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
-import EditAnswerVote from "../../EditComponents/EditVotes/EdtiAnswerVote";
-import AnswerVotesComponent from "../../VotesComponents/AnswerVotesComponent";
+import EditAnswerVote from "../../EditComponents/EditVotes/EditAnswerVote";
 import "./AnswersComponent.css";
 
 function AnswersComponent({ questionId }) {
