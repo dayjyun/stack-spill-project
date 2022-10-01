@@ -1,15 +1,11 @@
 #question-page-component {
-    /* outline: 2px solid red; */
     margin: 0 5rem;
 }
 
 #question-card {
-    /* background-color: rgb(236, 151, 151); */
-    /* border: 2px solid black; */
     display: flex;
     justify-content: start;
     flex-direction: row;
-    /* width: 100%; */
 }
 
 #question-card-container {
@@ -26,12 +22,9 @@
     justify-content: flex-end;
     align-items: center;
     margin-top: 5%;
-    /* background-color: rgb(226, 21, 226); */
-    /* line-height: 10rem; */
 }
 
 #question-component-user-link {
-    /* background-color: aliceblue; */
     display: flex;
     justify-content: start;
     align-items: center;

@@ -34,7 +34,7 @@ function AnswersComponent({ questionId }) {
   return (
     <>
       <div id='answer-page-component'>
-        <h2 id="answers-number-text">{answers?.length} Answers</h2>
+        <h2 id="answer-number-text">{answers?.length} Answers</h2>
           {answers?.map((answer) => (
             <div key={answer?.id} id="answer-card">
               <EditAnswerVote answerId={answer?.id} />
@@ -46,7 +46,7 @@ function AnswersComponent({ questionId }) {
                   id="answer-component-user-link"
                   to={`/users/${answer?.userId}`}>
                     <img
-                      id="answers-component-user-profileImage"
+                      id="answer-component-user-profileImage"
                       src={
                         allUsers?.find((user) => user?.id == answer?.userId)
                           ?.profileImage
