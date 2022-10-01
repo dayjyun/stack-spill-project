@@ -28,7 +28,7 @@ function CreateQuestionForm() {
         body,
       })
     ).then(() => {
-      history.push(`/users/${sessionUser?.id}/questions`);
+      history.push(`/users/${sessionUser?.id}`);
     });
 
     setTitle("");
