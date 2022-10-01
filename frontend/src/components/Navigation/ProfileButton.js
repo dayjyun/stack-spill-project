@@ -39,13 +39,19 @@ function ProfileButton({ user }) {
         {showMenu && (
           <ul className="profile-dropdown">
             <li>{user?.username}</li>
-            <li>{user?.email}</li>
-            <Link to={`/users/${user?.id}`}>
-              <button id='profile-button-profile'>Profile</button>
-            </Link>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
+            {/* <li>{user?.email}</li> */}
+            <div id='profile-button-links'>
+              <Link id="profile-button-profile-link" to={`/users/${user?.id}`}>
+                <div id="profile-button">
+                  <i class="fa-regular fa-user"></i>
+                  <div className="pb-text">Profile</div>
+                </div>
+              </Link>
+              <div id="profile-button-logout" onClick={logout}>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                <div className="pb-text">Log Out</div>
+              </div>
+            </div>
           </ul>
         )}
       </div>
