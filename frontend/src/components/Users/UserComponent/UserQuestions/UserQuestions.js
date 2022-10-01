@@ -8,9 +8,7 @@ function UserQuestions() {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const allQuestions = Object.values(useSelector((state) => state.questions));
-  const userQuestions = allQuestions.filter(
-    (questions) => questions.userId == userId
-  );
+  const userQuestions = allQuestions.filter((questions) => questions.userId == userId);
 
   useEffect(() => {
     dispatch(getAllQuestions());
@@ -19,13 +17,9 @@ function UserQuestions() {
   let numQuestion;
 
   if (userQuestions.length == 1) {
-    numQuestion = (
-      <h3 id="user-questions-num">{userQuestions.length} Question</h3>
-    );
+    numQuestion = (<h3 id="user-questions-num">{userQuestions.length} Question</h3>);
   } else {
-    numQuestion = (
-      <h3 id="user-questions-num">{userQuestions.length} Questions</h3>
-    );
+    numQuestion = (<h3 id="user-questions-num">{userQuestions.length} Questions</h3>);
   }
 
   return (

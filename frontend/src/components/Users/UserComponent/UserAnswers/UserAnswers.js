@@ -32,24 +32,29 @@ function UserAnswers() {
   let numAnswer
 
   if (answeredQuestions.length == 1) {
-    numAnswer = <h3>{answeredQuestions.length} Answer</h3>
+    numAnswer = (<h3 id="user-answers-num">{answeredQuestions.length} Answer</h3>);
   } else {
-    numAnswer = <h3>{answeredQuestions.length} Answers</h3>;
+    numAnswer = (<h3 id="user-answers-num">{answeredQuestions.length} Answers</h3>);
   }
 
   return (
     <>
+    <div id='user-answers-text'>
+      <h1>Your Answers</h1>
+    </div>
       {numAnswer}
-      {answeredQuestions.map((question) => (
-        <NavLink
-          key={question?.id}
-          id="user-answers-card"
-          to={{ pathname: `/questions/${question?.id}` }}
-        >
-          <div id='user-questions-title'>{question?.title}</div>
-          <div id='user-questions-body'>{question?.body}</div>
-        </NavLink>
+      <div id='user-answers-container'>
+        {answeredQuestions.map((question) => (
+          <NavLink
+            key={question?.id}
+            id="user-answers-card"
+            to={{ pathname: `/questions/${question?.id}` }}
+          >
+            <div id='user-questions-title'>{question?.title}</div>
+            <div id='user-questions-body'>{question?.body}</div>
+          </NavLink>
       ))}
+      </div>
     </>
   );
 }
