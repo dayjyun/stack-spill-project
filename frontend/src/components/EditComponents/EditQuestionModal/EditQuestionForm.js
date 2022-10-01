@@ -57,7 +57,6 @@ function EditQuestionForm({ setShowModal, questionId }) {
           <textarea
             type="text"
             className="edit-question-form-input eqfi-body"
-            // rows="10"
             value={body}
             onChange={(e) => setBody(e.target.value)}
           />
