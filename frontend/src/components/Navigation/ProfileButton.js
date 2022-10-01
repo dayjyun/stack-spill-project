@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
             <li>{user?.username}</li>
             <li>{user?.email}</li>
             <Link to={`/users/${user?.id}`}>
-              <button>Profile</button>
+              <button id='profile-button-profile'>Profile</button>
             </Link>
             <li>
               <button onClick={logout}>Log Out</button>
