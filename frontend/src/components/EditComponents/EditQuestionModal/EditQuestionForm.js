@@ -40,33 +40,39 @@ function EditQuestionForm({ setShowModal, questionId }) {
   };
 
   return (
-    <form onSubmit={handelQuestionEdit} id="edit-question-form">
-      <label>
-        Title
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
-      <label>
-        Body
-        <input
-          type="text"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </label>
-      <div id="edit-question-buttons">
-        <button type="submit">Save</button>
-        <button onClick={handleCancelButton}>Cancel</button>
-      </div>
-      <div>
-        <button onClick={handleDeleteButton} id="edit-question-delete">
-          Delete
-        </button>
-      </div>
-    </form>
+    <>
+    <h2 id='edit-question-form-text'>Edit Your Question</h2>
+      <form onSubmit={handelQuestionEdit} id="edit-question-form">
+        <label className="edit-question-form-label">
+          Title
+          <input
+            type="text"
+            className="edit-question-form-input eqfi-title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+        <label className="edit-question-form-label">
+          Body
+          <textarea
+            type="text"
+            className="edit-question-form-input eqfi-body"
+            // rows="10"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </label>
+        <div id="edit-question-buttons">
+          <button type="submit">Save</button>
+          <button onClick={handleCancelButton}>Cancel</button>
+        </div>
+        <div>
+          <button onClick={handleDeleteButton} id="edit-question-delete">
+            Delete
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 
