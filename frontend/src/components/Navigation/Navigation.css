@@ -1,7 +1,5 @@
 #navigation-bar {
-  /* --gradient: linear-gradient(90deg, #ce7171, #6c6ce5, #5a95ee); */
-  --gradient: linear-gradient(45deg, #C99999, #7BA1B5, #504E6D, #7e376a);
-  /* --gradient: linear-gradient(90deg, #ECA1AE, #6c6ce5, #6B7FCE); */
+  --nav-gradient: linear-gradient(45deg, #C99999, #7BA1B5, #504E6D, #7e376a);
 }
 
 #navigation-bar {
@@ -10,7 +8,7 @@
   align-items: center;
   padding: 8px;
   height: 3rem;
-  background-image: var(--gradient);
+  background-image: var(--nav-gradient);
   background-size: 500%;
   animation: navigation-bar-color 30s infinite alternate;
 }

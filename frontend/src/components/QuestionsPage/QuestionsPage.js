@@ -32,22 +32,24 @@ function QuestionsPage() {
 
   return (
     <>
-      <div id="all-questions-text">
-        <h1>All Questions</h1>
-        {createQuestionButton}
-      </div>
-      {allQuestionsNum}
-      <div id="all-questions-container">
-        {allQuestions.map((question) => (
-          <NavLink
-            key={question?.id}
-            id="all-questions-card"
-            to={{ pathname: `/questions/${question?.id}` }}
-          >
-            <h2 id="all-questions-title">{question?.title}</h2>
-            <div id="all-questions-body">{question?.body}</div>
-          </NavLink>
-        ))}
+      <div id='questions-page-container'>
+        <div id="all-questions-text">
+          <h1>All Questions</h1>
+          {createQuestionButton}
+        </div>
+        {allQuestionsNum}
+        <div id="all-questions-container">
+          {allQuestions.map((question) => (
+            <NavLink
+              key={question?.id}
+              id="all-questions-card"
+              to={{ pathname: `/questions/${question?.id}` }}
+            >
+              <h2 id="all-questions-title">{question?.title}</h2>
+              <div id="all-questions-body">{question?.body}</div>
+            </NavLink>
+          ))}
+        </div>
       </div>
     </>
   );

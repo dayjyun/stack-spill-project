@@ -1,8 +1,14 @@
+#questions-page-container {
+    margin: 0 10rem;
+    padding-bottom: 2.5rem;
+}
+
 #all-questions-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
+    margin-top: .8rem;
 }
 
 #all-questions-container {
@@ -15,6 +21,7 @@
 #all-questions-num {
     margin: 0 10%;
     display: flex;
+    margin-bottom: 1rem;
 }
 
 #all-questions-card {
