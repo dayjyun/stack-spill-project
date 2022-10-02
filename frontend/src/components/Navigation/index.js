@@ -27,6 +27,7 @@ function Navigation({ isLoaded }) {
   }
 
   return (
+
     <div id="navigation-bar">
       {/* Side Menu: Questions, Users */}
       <div id="navigation-navLinks">

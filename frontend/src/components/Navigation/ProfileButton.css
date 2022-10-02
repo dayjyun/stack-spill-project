@@ -68,8 +68,8 @@
 #profile-button-logout {
   cursor: pointer;
   display: flex;
-  /* background-color: pink; */
   width: 100%;
+  /* background-color: pink; */
 }
 
 #profile-button:hover,
