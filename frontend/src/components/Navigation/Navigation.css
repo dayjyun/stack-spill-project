@@ -1,5 +1,7 @@
 #navigation-bar {
-  --gradient: linear-gradient(90deg, #ce7171, #6c6ce5, #4781d8);
+  /* --gradient: linear-gradient(90deg, #ce7171, #6c6ce5, #5a95ee); */
+  --gradient: linear-gradient(45deg, #C99999, #7BA1B5, #504E6D, #7e376a);
+  /* --gradient: linear-gradient(90deg, #ECA1AE, #6c6ce5, #6B7FCE); */
 }
 
 #navigation-bar {
@@ -8,17 +10,18 @@
   align-items: center;
   padding: 8px;
   height: 3rem;
-  /* background-color: rgb(122, 175, 221); */
-  /* background:linear-gradient(to bottom, #bee0fd 100%, #d7edf9 5%); */
-  /* background: var(--gradient); */
   background-image: var(--gradient);
   background-size: 500%;
-  animation: navigation-bar-animation 15s infinite alternate;
+  animation: navigation-bar-color 30s infinite alternate;
 }
 
-@keyframes navigation-bar-animation {
-    0% {background-position: left;}
-    100% {background-position: right;}
+@keyframes navigation-bar-color {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
 }
 
 #navigation-navLinks {
@@ -30,10 +33,6 @@
   margin: 0 10rem;
 }
 
-#navigation-navLinks > div > a:hover {
-  background-color: lightgray;
-}
-
 #navigation-navLinks-left {
   display: flex;
   justify-content: center;
@@ -41,19 +40,24 @@
 }
 
 #navigation-navLinks-left > a {
-  border: none;
+  /* background-color: #5a95ee; */
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
 }
 
 #navigation-home,
 #navigation-about {
   padding: 1.4rem 3rem;
-  height: 1.3rem;
+  height: 1.2rem;
   margin: 0;
+  border: none;
+  color: white;
 }
 
 #navigation-home.active,
 #navigation-about.active {
   background-color: aliceblue;
+  color: black;
 }
 
 @media screen and (max-width: 768px) {
