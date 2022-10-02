@@ -39,22 +39,6 @@
   border-left: 1px solid lightgray;
 }
 
-#navigation-home {
-  height: 4rem;
-  margin: 0;
-  border: none;
-  color: white;
-  padding: 0 1rem;
-}
-
-#navigation-about {
-  padding: 1.4rem 3rem;
-  height: 1.2rem;
-  margin: 0;
-  border: none;
-  color: white;
-}
-
 #navigation-home.active,
 #navigation-about.active {
   background-color: aliceblue;
@@ -65,15 +49,24 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 4rem;
   width: 8rem;
-  /* padding: 0 2rem; */
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+#navigation-about {
+  border: none;
+  color: white;
+  height: 1.2rem;
+  margin: 0;
+  padding: 1.4rem 3rem;
 }
 
 #navigation-navLink-image {
   height: 3rem;
-}
-
-#navigation-navLink-text {
 }
 
 @media screen and (max-width: 768px) {
