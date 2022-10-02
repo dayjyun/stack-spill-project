@@ -31,7 +31,7 @@ module.exports = {
         username: "MaroonOne",
         email: "maroon@redteam.com",
         profileImage:
-          "http://img.photobucket.com/albums/v373/michygeary/roosterteeth/simmonsintro.jpg",
+          "https://stack-spill-project.s3.us-east-2.amazonaws.com/user+images/Richard+Simmons.webp",
         hashedPassword: bcrypt.hashSync("password"),
       },
       {
@@ -51,7 +51,7 @@ module.exports = {
         username: "LemonHead",
         email: "orange@redteam.com",
         profileImage:
-          "https://static.wikia.nocookie.net/rvb/images/f/f8/Grif_Title_Season_02.png",
+          "https://stack-spill-project.s3.us-east-2.amazonaws.com/user+images/Dexter+Grif.webp",
         hashedPassword: bcrypt.hashSync("password"),
       },
       {
@@ -61,7 +61,7 @@ module.exports = {
         username: "Heisenberg",
         email: "wwhitey@jpwynnehs.edu",
         profileImage:
-          "https://static.wikia.nocookie.net/breakingbad/images/e/e7/BB-S5B-Walt-590.jpg",
+          "https://stack-spill-project.s3.us-east-2.amazonaws.com/user+images/Walter+White.webp",
         hashedPassword: bcrypt.hashSync("password"),
       },
     ]);

@@ -4,10 +4,6 @@
   align-items: center;
   margin: 1.5rem 20rem;
   background-color: rgb(140, 246, 249, 0.2);
-  /* box-shadow: 1rem 1rem  1rem rgba(97, 97, 97, 1); */
-  /* box-shadow: 11px 11px 15px -1px rgba(0, 0, 0, 0.51);
-  -webkit-box-shadow: 11px 11px 15px -1px rgba(0, 0, 0, 0.51);
-  -moz-box-shadow: 11px 11px 15px -1px rgba(0, 0, 0, 0.51); */
   border-radius: 6px;
 }
 
@@ -32,6 +28,12 @@
   flex-direction: column;
   padding: 0 1rem;
   line-height: 5px;
+}
+
+#user-component-details-name {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
 }
 
 #user-component-navLinks {

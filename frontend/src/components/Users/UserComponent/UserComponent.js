@@ -40,9 +40,9 @@ function UserComponent() {
           <img id="user-component-image" src={user?.profileImage} />
           <div id="user-component-details">
             <h1>{user?.username}</h1>
-            <h3>
+            <div id='user-component-details-name'>
               {user?.firstName} {user?.lastName}
-            </h3>
+            </div>
             {editButton}
           </div>
         </div>
