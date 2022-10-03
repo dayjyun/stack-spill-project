@@ -31,10 +31,10 @@ function EditUserForm({ setShowModal }) {
     });
   };
 
-  const handleImageUpload = e => {
-    e.preventDefault()
-    setProfileImage(e.target.files[0])
-  }
+  const handleImageUpload = (e) => {
+    e.preventDefault();
+    setProfileImage(e.target.files[0]);
+  };
 
   const handleCancelButton = (e) => {
     e.preventDefault();
