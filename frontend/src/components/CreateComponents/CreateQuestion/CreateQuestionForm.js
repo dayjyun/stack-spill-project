@@ -87,7 +87,7 @@ function CreateQuestionForm() {
             type="text"
             className="create-question-form-input cqfi-title"
             value={title}
-            placeholder='We need a good attention grabber!'
+            placeholder='How about a good attention grabber!'
             onChange={(e) => setTitle(e.target.value)}
             required
           />
