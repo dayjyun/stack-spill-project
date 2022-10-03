@@ -26,6 +26,11 @@ function QuestionComponent() {
     userQuestionEdit = <EditQuestionModal questionId={questionId} />;
   }
 
+  let createAnswerComponent;
+  if(sessionUser) {
+    createAnswerComponent = <CreateAnswerForm questionId={questionId}/>
+  }
+
   return (
     <>
       <div id="question-page-component">
@@ -52,7 +57,8 @@ function QuestionComponent() {
           </div>
         </div>
         <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        <CreateAnswerForm questionId={questionId} />
+        {/* <CreateAnswerForm questionId={questionId} /> */}
+        {createAnswerComponent}
       </div>
     </>
   );
