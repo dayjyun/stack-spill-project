@@ -20,8 +20,8 @@
 }
 
 .edit-question-form-input {
-  outline: none;
   /* padding: 0.5rem 0.2rem; */
+  outline: none;
   width: 30rem;
   gap: 1rem;
   border-radius: 5px;

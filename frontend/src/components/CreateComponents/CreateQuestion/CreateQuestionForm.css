@@ -1,0 +1,45 @@
+#create-question-form-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 15rem;
+    margin-top: 1.5rem;
+    padding: 0;
+}
+
+#create-question-form-text p {
+    margin: .6rem;
+}
+
+.cqft-header {
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#create-question-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-question-form-label {
+    gap: 2rem;
+    padding: 1rem 4rem;
+}
+
+.create-question-form-input {
+    outline: none;
+    width: 40rem;
+}
+
+.cqfi-title {
+    height: 2rem;
+}
+
+.cqfi-body {
+    height: 15rem;
+}
