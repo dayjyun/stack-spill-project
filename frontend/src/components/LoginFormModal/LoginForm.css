@@ -64,6 +64,14 @@
   color: white;
 }
 
+#login-form-demo {
+    margin-top: 1rem;
+}
+
+#login-form-demo-text {
+    font-weight: 600;
+}
+
 #demo-user-button-login-form {
   display: flex;
   justify-content: center;

@@ -55,18 +55,21 @@ function LoginForm() {
               required
             />
           </div>
-          <div id='login-form-buttons'>
+          <div id="login-form-buttons">
             <button id="lfb-login" type="submit">
               Log In
             </button>
           </div>
         </form>
-        <div id="demo-user-button-login-form">
-          <DemoUserButton
-            credential={credential}
-            password={password}
-            setErrors={setErrors}
-          />
+        <div id="login-form-demo">
+          <div id='login-form-demo-text'>Try out the Demo User?</div>
+          <div id="demo-user-button-login-form">
+            <DemoUserButton
+              credential={credential}
+              password={password}
+              setErrors={setErrors}
+            />
+          </div>
         </div>
       </div>
     </>

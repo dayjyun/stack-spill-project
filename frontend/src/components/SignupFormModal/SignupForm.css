@@ -80,8 +80,15 @@
   color: white;
 }
 
+#signup-form-demo {
+    margin-top: 1rem;
+}
+
+#signup-form-demo-text {
+    font-weight: 600;
+}
+
 #demo-user-button-signup-form {
   display: flex;
   justify-content: center;
-  margin: 1rem;
 }
