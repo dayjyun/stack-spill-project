@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
             <div id='profile-button-links'>
               <Link id="profile-button-profile-link" to={`/users/${user?.id}`}>
                 <div id="profile-button">
-                  <i class="fa-regular fa-user"></i>
+                  <i className="fa-regular fa-user"></i>
                   <div className="pb-text">Profile</div>
                 </div>
               </Link>
