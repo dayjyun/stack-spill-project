@@ -43,6 +43,18 @@
   width: 20rem;
 }
 
+#eqb-save,
+#eqb-cancel,
+#eqb-delete {
+  border-radius: 5px;
+  border: none;
+  color: rgb(195, 193, 193);
+  margin: 1rem;
+  padding: 0.7rem 1.5rem;
+  position: relative;
+  box-shadow: inset 0px 1px 6px 0px #91b8b3;
+}
+
 #eqb-save {
   background: linear-gradient(
     to bottom,
@@ -67,17 +79,6 @@
   );
 }
 
-#eqb-save,
-#eqb-cancel,
-#eqb-delete {
-  border-radius: 5px;
-  border: none;
-  color: rgb(195, 193, 193);
-  margin: 1rem;
-  padding: 0.7rem 1.5rem;
-  position: relative;
-  box-shadow: inset 0px 1px 6px 0px #91b8b3;
-}
 
 #eqb-save:hover,
 #eqb-cancel:hover,

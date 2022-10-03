@@ -8,6 +8,16 @@
     flex-direction: column;
 }
 
+#signup-form-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 1.8rem;
+    padding: 0 1rem;
+    position: relative;
+}
+
 #signup-form {
     display: flex;
     justify-content: center;
@@ -25,15 +35,6 @@
     width: 18rem; */
 }
 
-#signup-form-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    margin-top: 1.8rem;
-    padding: 0 1rem;
-    position: relative;
-}
 
 /* .signup-form-text {
     display: flex;
