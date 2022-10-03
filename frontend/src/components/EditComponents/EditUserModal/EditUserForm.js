@@ -6,38 +6,45 @@ import "./EditUserForm.css";
 function EditUserForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const defaultImage =
+    "https://stack-spill-project.s3.us-east-2.amazonaws.com/stack-spill-default-profile-image.png";
   const [firstName, setFirstName] = useState(sessionUser?.firstName);
   const [lastName, setLastName] = useState(sessionUser?.lastName);
   const [email, setEmail] = useState(sessionUser?.email);
   const [username, setUsername] = useState(sessionUser?.username);
-  // const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
+  const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
   // const [password, setPassword] = useState("");
 
   const handelUserEditForm = (e) => {
-
-    dispatch(editUser({
+    dispatch(
+      editUser({
         id: +sessionUser?.id,
         firstName,
         lastName,
         email,
         username,
-        // profileImage,
+        profileImage: profileImage || defaultImage,
         // password,
       })
     ).then(() => {
-      setShowModal(false)
-    })
-  }
+      setShowModal(false);
+    });
+  };
+
+  const handleImageUpload = (e) => {
+    e.preventDefault();
+    setProfileImage(e.target.files[0]);
+  };
 
   const handleCancelButton = (e) => {
-    e.preventDefault()
-    setShowModal(false)
-  }
+    e.preventDefault();
+    setShowModal(false);
+  };
 
   return (
     <>
-      <div id='edit-user-form-container'>
-        <div id='edit-user-form-text'>Edit Profile</div>
+      <div id="edit-user-form-container">
+        <div id="edit-user-form-text">Edit Profile</div>
         <form onSubmit={handelUserEditForm} id="edit-user-form">
           <label>
             First Name
@@ -79,14 +86,14 @@ function EditUserForm({ setShowModal }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label> */}
-          {/* <label>
-        Profile Image
-        <input
-          type="text"
-          value={profileImage}
-          onChange={(e) => setProfileImage(e.target.value)}
-        />
-      </label> */}
+          <label>
+            Profile Image
+            <input
+              type="file"
+              // value={profileImage}
+              onChange={(e) => handleImageUpload(e)}
+            />
+          </label>
           <div id="edit-user-form-buttons">
             <button id="eufb-save" type="submit">
               Save
