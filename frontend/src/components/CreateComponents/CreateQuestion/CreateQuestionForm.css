@@ -4,8 +4,9 @@
     align-items: center;
     flex-direction: column;
     margin: 0 15rem;
-    margin-top: 1.5rem;
-    padding: 0;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 10px ridge #d3d3d3;
 }
 
 #create-question-form-text p {
@@ -19,11 +20,19 @@
     align-items: center;
 }
 
+#cqft-top-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 #create-question-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 1rem;
 }
 
 .create-question-form-label {
@@ -33,7 +42,7 @@
 
 .create-question-form-input {
     outline: none;
-    width: 40rem;
+    width: 50rem;
 }
 
 .cqfi-title {

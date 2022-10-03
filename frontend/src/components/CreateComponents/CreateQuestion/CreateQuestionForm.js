@@ -43,11 +43,13 @@ function CreateQuestionForm() {
     <>
       <div id="create-question-form-text">
         <div className="cqft-header">Have A Question?</div>
-        <p>
+        <p id="cqft-top-text">
           Asking a good question can sometimes be challenging. It may be tricky
           to get your point across or you may leave out information that may
-          help solve your solution. So how would you write a great question? A
-          great question isn’t always created in an instant. A great question
+          help solve your solution. So how would you write a great question?
+        </p>
+        <p id="cqft-top-text">
+          A great question isn’t always created in an instant. A great question
           takes time and critical thinking in order to get your point across.
         </p>
         <ul>
@@ -85,6 +87,7 @@ function CreateQuestionForm() {
             type="text"
             className="create-question-form-input cqfi-title"
             value={title}
+            placeholder='We need a good attention grabber!'
             onChange={(e) => setTitle(e.target.value)}
             required
           />
@@ -95,6 +98,7 @@ function CreateQuestionForm() {
             type="text"
             className="create-question-form-input cqfi-body"
             value={body}
+            placeholder='This is where the story gets interesting...'
             onChange={(e) => setBody(e.target.value)}
             required
           />
