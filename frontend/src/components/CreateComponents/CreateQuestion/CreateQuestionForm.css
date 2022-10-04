@@ -48,15 +48,18 @@
 
 .create-question-form-input {
     outline: none;
-    width: 50rem;
 }
 
 .cqfi-title {
     height: 2rem;
+    width: 49rem;
+    padding: 0 .5rem;
 }
 
 .cqfi-body {
     height: 15rem;
+    width: 48rem;
+    padding: 1rem;
 }
 
 #create-question-buttons {
