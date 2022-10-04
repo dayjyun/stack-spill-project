@@ -3,18 +3,33 @@
    display: flex;
    justify-content: space-around;
    align-items: flex-start;
+   height: 30rem;
 }
 
 #footer-info-left {
-    display: flex;
+    /* border: 2px solid lightgreen; */
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 #footer-logo-home {
+    /* border: 2px solid cyan; */
     height: 3rem;
     display: flex;
+    /* justify-content: center; */
+    padding: 0 1rem;
+}
+
+#footer-logo-image {
+    /* height: 3rem;
+    width: 3rem; */
+    display: flex;
     justify-content: center;
+}
+
+#footer-logo-text {
+    text-align: center;
 }
 
 #footer-logo-left-navLinks {
@@ -26,15 +41,4 @@
 #footer-info-left a {
     color: white;
     text-decoration: none;
-}
-
-#footer-logo-image {
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-}
-
-#footer-logo-text {
-    color: white;
 }
