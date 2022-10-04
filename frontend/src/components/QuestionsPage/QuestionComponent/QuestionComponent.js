@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { getAllAnswers } from "../../../store/answersReducer";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
@@ -16,8 +17,12 @@ function QuestionComponent() {
   const question = allQuestions.find((question) => question.id == questionId);
   const allUsers = Object.values(useSelector((state) => state.users));
   const currentUser = allUsers.find((user) => user.id == question?.userId);
+  const allAnswers = Object.values(useSelector(state => state.answers))
+  const userAnswer = allAnswers.find(answer => answer?.id == sessionUser?.id)
+  console.log(userAnswer)
 
   useEffect(() => {
+    dispatch(getAllAnswers())
     dispatch(getQuestion(questionId));
   }, [dispatch]);
 
@@ -30,6 +35,29 @@ function QuestionComponent() {
   if(sessionUser) {
     createAnswerComponent = <CreateAnswerForm questionId={questionId}/>
   }
+
+  let answerComponent;
+  // if (userAnswer?.id !== allAnswers?.userId) {
+  //   answerComponent = (
+  //     <AnswersComponent questionId={questionId} allUsers={allUsers} />
+  //   );
+  // }
+
+  allAnswers.map(answer => {
+    if(answer?.userId !== sessionUser?.id) {
+      answerComponent = (
+        <>
+        <AnswersComponent questionId={questionId} allUsers={allUsers} />
+        </>
+      );
+    }
+  })
+
+  // if (!userAnswer) {
+  //   answerComponent = (
+  //     <AnswersComponent questionId={questionId} allUsers={allUsers} />
+  //   );
+  // }
 
   return (
     <>
@@ -56,7 +84,8 @@ function QuestionComponent() {
             </div>
           </div>
         </div>
-        <AnswersComponent questionId={questionId} allUsers={allUsers} />
+        {/* <AnswersComponent questionId={questionId} allUsers={allUsers} /> */}
+        {answerComponent}
         {createAnswerComponent}
       </div>
     </>
