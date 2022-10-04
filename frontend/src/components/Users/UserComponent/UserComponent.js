@@ -35,23 +35,29 @@ function UserComponent() {
 
   return (
     <>
-      <div id="user-component">
-        <div id="user-component-info">
-          <img id="user-component-image" src={user?.profileImage} />
-          <div id="user-component-details">
-            <h1>{user?.username}</h1>
-            <div id='user-component-details-name'>
-              {user?.firstName} {user?.lastName}
+      <div id="user-page">
+        <div id="user-component">
+          <div id="user-component-info">
+            <img id="user-component-image" src={user?.profileImage} />
+            <div id="user-component-details">
+              <h1>{user?.username}</h1>
+              <div id="user-component-details-name">
+                {user?.firstName} {user?.lastName}
+              </div>
+              {editButton}
             </div>
-            {editButton}
           </div>
         </div>
+        <div id="user-component-navLinks">
+          <div id="user-component-questions" onClick={handleQuestionsClick}>
+            Questions
+          </div>
+          <div id="user-component-answers" onClick={handleAnswersClick}>
+            Answers
+          </div>
+        </div>
+        {pageToggle}
       </div>
-      <div id="user-component-navLinks">
-        <div id='user-component-questions' onClick={handleQuestionsClick}>Questions</div>
-        <div id='user-component-answers' onClick={handleAnswersClick}>Answers</div>
-      </div>
-      {pageToggle}
     </>
   );
 }

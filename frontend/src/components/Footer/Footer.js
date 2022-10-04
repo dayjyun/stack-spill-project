@@ -22,9 +22,11 @@ function Footer() {
             <NavLink to="/about">About</NavLink>
           </div>
         </div>
-        <div id='footer-info-right'>
+        <div id="footer-info-right">
           <div id="footer-my-info">
-            <h1>Me</h1>
+            <div id='footer-info-right-link'>
+              By <a href="https://github.com/dayjyun">Kevin Barrios</a>
+            </div>
           </div>
         </div>
       </div>
