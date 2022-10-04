@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllAnswers } from "../../../store/answersReducer";
 import { getAllUsers } from "../../../store/usersReducer";
+import ConvertTime from "../../ConvertTime/ConvertTime";
 import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
 import EditAnswerVote from "../../EditComponents/EditVotes/EditAnswerVote";
 import "./AnswersComponent.css";
@@ -32,44 +33,46 @@ function AnswersComponent({ questionId }) {
   });
 
   let answersNum;
-  answers?.length === 1 ? (
-    answersNum = <h2 id="answer-number-text">{answers?.length} Answer</h2>
-  ) : (
-    answersNum = <h2 id="answer-number-text">{answers?.length} Answers</h2>
-  );
+  answers?.length === 1
+    ? (answersNum = <h2 id="answer-number-text">{answers?.length} Answer</h2>)
+    : (answersNum = <h2 id="answer-number-text">{answers?.length} Answers</h2>);
 
   return (
     <>
-      <div id='answer-page-component'>
+      <div id="answer-page-component">
         {/* <h2 id="answer-number-text">{answers?.length} Answers</h2> */}
         {answersNum}
-          {answers?.map((answer) => (
-            <div key={answer?.id} id="answer-card">
-              <EditAnswerVote answerId={answer?.id} />
-              <div id="answer-card-container">
-                <div id="answer-body">{answer?.body}</div>
-                <div id="answer-user-info">
-                  By{" "}
-                  <Link
+        {answers?.map((answer) => (
+          <div key={answer?.id} id="answer-card">
+            <EditAnswerVote answerId={answer?.id} />
+            <div id="answer-card-container">
+              <div id="answer-body">{answer?.body}</div>
+              <div id="answer-user-info">
+                By{" "}
+                <Link
                   id="answer-component-user-link"
-                  to={`/users/${answer?.userId}`}>
-                    <img
-                      id="answer-component-user-profileImage"
-                      src={
-                        allUsers?.find((user) => user?.id == answer?.userId)
-                          ?.profileImage
-                      }
-                    />
-                    {
+                  to={`/users/${answer?.userId}`}
+                >
+                  <img
+                    id="answer-component-user-profileImage"
+                    src={
                       allUsers?.find((user) => user?.id == answer?.userId)
-                        ?.username
+                        ?.profileImage
                     }
-                  </Link>{" "}
-                  {answer?.userId == sessionUser?.id && userAnswerEdit}
-                </div>
+                  />
+                  {
+                    allUsers?.find((user) => user?.id == answer?.userId)
+                      ?.username
+                  }
+                </Link>{" "}
+                {answer?.userId == sessionUser?.id && userAnswerEdit}
+              </div>
+              <div id="answer-page-creation-info">
+                Posted {ConvertTime(answer?.createdAt)}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </>
   );

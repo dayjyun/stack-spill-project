@@ -46,3 +46,13 @@
   max-width: 2rem;
   margin-right: .5rem;
 }
+
+#answer-page-creation-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  color: rgb(181, 181, 181);
+  font-size: .8rem;
+  margin-bottom: .6rem;
+}

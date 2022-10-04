@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
+import ConvertTime from "../../ConvertTime/ConvertTime";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
@@ -17,8 +18,11 @@ function QuestionComponent() {
   const question = allQuestions.find((question) => question.id == questionId);
   const allUsers = Object.values(useSelector((state) => state.users));
   const currentUser = allUsers.find((user) => user.id == question?.userId);
-  const allAnswers = Object.values(useSelector(state => state.answers))
-  const answerExists = allAnswers.filter((answer) => answer?.userId == sessionUser?.id && answer?.questionId == question?.id);
+  const allAnswers = Object.values(useSelector((state) => state.answers));
+  const answerExists = allAnswers.filter(
+    (answer) =>
+      answer?.userId == sessionUser?.id && answer?.questionId == question?.id
+  );
 
   useEffect(() => {
     dispatch(getQuestion(questionId));
@@ -35,7 +39,7 @@ function QuestionComponent() {
   } else if (!sessionUser) {
     createAnswerComponent = (
       <div id="create-answer-login-button">
-        <LoginTextModal /> <div id='calb-text'>to Answer</div>
+        <LoginTextModal /> <div id="calb-text">to Answer</div>
       </div>
     );
   }
@@ -62,6 +66,9 @@ function QuestionComponent() {
                 />
                 {currentUser?.username}
               </Link>
+            </div>
+            <div id="question-page-creation-info">
+              Posted {ConvertTime(question?.createdAt)}
             </div>
           </div>
         </div>
