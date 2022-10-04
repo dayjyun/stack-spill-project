@@ -96,11 +96,11 @@ export const editUser = (userData) => async (dispatch) => {
   const userEdit = await csrfFetch(`/api/users/${userData.id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
     body: formData,
   });
-  
+
   if (userEdit.ok) {
     const resUserEdit = await userEdit.json()
     dispatch(updateUser(resUserEdit))
