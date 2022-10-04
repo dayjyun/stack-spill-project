@@ -55,6 +55,12 @@
   box-shadow: inset 0px 1px 6px 0px #91b8b3;
 }
 
+#eqb-save:hover,
+#eqb-cancel:hover,
+#eqb-delete:hover {
+  color: white;
+}
+
 #eqb-save {
   background: linear-gradient(
     to bottom,
@@ -77,11 +83,4 @@
     rgb(248, 23, 23) 5%,
     rgb(137, 10, 10) 100%
   );
-}
-
-
-#eqb-save:hover,
-#eqb-cancel:hover,
-#eqb-delete:hover {
-  color: white;
 }

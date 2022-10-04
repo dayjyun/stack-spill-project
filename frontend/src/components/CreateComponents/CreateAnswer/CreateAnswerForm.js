@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAnswer } from "../../../store/answersReducer";
+import "./CreateAnswerForm.css";
 
 function CreateAnswerForm({ questionId }) {
   const dispatch = useDispatch();
@@ -21,22 +22,34 @@ function CreateAnswerForm({ questionId }) {
 
   const handleCancelButton = (e) => {
     e.preventDefault();
+    setBody('')
   };
 
   return (
-    <form onSubmit={handleAnswerSubmit}>
-      <label>
-        Your Answer
-        <input
-          type={"text"}
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Submit</button>
-      <button onClick={handleCancelButton}>Cancel</button>
-    </form>
+    <>
+      <div id="create-answer-form-container">
+        <form onSubmit={handleAnswerSubmit} id="create-answer-form">
+          <label>
+            Your Answer
+            <input
+              className="create-answer-form-input"
+              type={"text"}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              required
+            />
+          </label>
+          <div id='create-answer-form-buttons'>
+            <button id="cafb-save" type="submit">
+              Submit
+            </button>
+            <button id="cafb-cancel" onClick={handleCancelButton}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

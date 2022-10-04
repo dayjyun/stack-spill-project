@@ -1,0 +1,31 @@
+#cafb-save,
+#cafb-cancel {
+  border-radius: 5px;
+  border: none;
+  color: rgb(195, 193, 193);
+  margin: 1rem;
+  padding: 0.7rem 1.5rem;
+  position: relative;
+  box-shadow: inset 0px 1px 6px 0px #91b8b3;
+}
+
+#cafb-save:hover,
+#cafb-cancel:hover {
+  color: white;
+}
+
+#cafb-save {
+  background: linear-gradient(
+    to bottom,
+    rgb(129, 196, 255) 5%,
+    rgb(21, 120, 201) 100%
+  );
+}
+
+#cafb-cancel {
+  background: linear-gradient(
+    to bottom,
+    rgb(213, 213, 213) 5%,
+    rgb(104, 104, 104) 100%
+  );
+}
