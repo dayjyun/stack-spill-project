@@ -1,0 +1,20 @@
+#signup-form-modal-button {
+  /* background-color: #d8eeff; */
+    background: linear-gradient(
+    to bottom,
+    rgb(129, 196, 255) 5%,
+    rgb(21, 120, 201) 100%
+  );
+  border-radius: 6px;
+  border-style: none;
+  border: 0.5px solid #0469b6;
+  box-sizing: border-box;
+  color: white;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+}
+
+#signup-form-modal-button:hover {
+  background-color: #add2f1;
+}
