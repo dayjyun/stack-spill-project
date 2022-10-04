@@ -24,7 +24,7 @@ function UserQuestions() {
 
   return (
     <>
-      <div id='user-questions'>
+      <div id="user-questions">
         <div id="user-questions-text">
           <h1>Your Questions</h1>
         </div>
@@ -37,7 +37,14 @@ function UserQuestions() {
               to={{ pathname: `/questions/${question?.id}` }}
             >
               <h2 id="user-questions-title">{question?.title}</h2>
-              <div id="user-questions-body">{question?.body}</div>
+              <div id="user-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
             </NavLink>
           ))}
         </div>
