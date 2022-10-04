@@ -37,8 +37,8 @@ function ProfileButton({ user }) {
           <img id="profile-button-image" src={user?.profileImage} />
         </button>
         {showMenu && (
-          <ul className="profile-dropdown">
-            <li>{user?.username}</li>
+          <div className="profile-dropdown">
+            <div>{user?.username}</div>
             {/* <li>{user?.email}</li> */}
             <div id='profile-button-links'>
               <Link id="profile-button-profile-link" to={`/users/${user?.id}`}>
@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
                 <div className="pb-text">Log Out</div>
               </div>
             </div>
-          </ul>
+          </div>
         )}
       </div>
     </>
