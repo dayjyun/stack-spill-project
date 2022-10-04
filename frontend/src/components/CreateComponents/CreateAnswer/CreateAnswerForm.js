@@ -29,7 +29,7 @@ function CreateAnswerForm({ questionId }) {
     <>
       <div id="create-answer-form-container">
         <form onSubmit={handleAnswerSubmit} id="create-answer-form">
-          <label>
+          <h3 className="create-answer-form-h3">
             Your Answer
             <input
               className="create-answer-form-input"
@@ -38,7 +38,7 @@ function CreateAnswerForm({ questionId }) {
               onChange={(e) => setBody(e.target.value)}
               required
             />
-          </label>
+          </h3>
           <div id='create-answer-form-buttons'>
             <button id="cafb-save" type="submit">
               Submit
