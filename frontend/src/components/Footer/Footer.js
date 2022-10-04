@@ -5,7 +5,7 @@ function Footer() {
   return (
     <>
       <div id="footer-container">
-        <div id="footer-logo-left">
+        <div id="footer-info-left">
           <div id="footer-logo-home">
             <NavLink exact to="/">
               <img
@@ -22,8 +22,10 @@ function Footer() {
             <NavLink to="/about">About</NavLink>
           </div>
         </div>
-        <div id="footer-my-info">
-          <h1>Me</h1>
+        <div id='footer-info-right'>
+          <div id="footer-my-info">
+            <h1>Me</h1>
+          </div>
         </div>
       </div>
     </>
