@@ -11,6 +11,7 @@ import UserComponent from "./components/Users/UserComponent/UserComponent";
 import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
 import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

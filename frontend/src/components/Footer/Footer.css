@@ -1,0 +1,36 @@
+#footer-container {
+   background-color: #232629;
+   display: flex;
+   justify-content: space-around;
+   align-items: flex-start;
+}
+
+#footer-logo-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-logo-home {
+    height: 3rem;
+}
+
+#footer-logo-left-navLinks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#footer-logo-left a {
+    color: white;
+    text-decoration: none;
+}
+
+#footer-logo-image {
+    height: 3rem;
+    width: 3rem
+}
+
+#footer-logo-text {
+    color: white;
+}
