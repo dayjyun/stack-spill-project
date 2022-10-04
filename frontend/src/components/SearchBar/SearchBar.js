@@ -60,7 +60,7 @@ function SearchBarComponent() {
   })
 
   searchArray = [...questionReturns, ...userReturns];
-  console.log(searchArray)
+  // console.log(searchArray)
 
   return (
     <>
