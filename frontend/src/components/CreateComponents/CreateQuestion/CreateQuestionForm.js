@@ -94,7 +94,7 @@ function CreateQuestionForm() {
         </label>
         <label className="create-question-form-label">
           Body
-          <input
+          <textarea
             type="text"
             className="create-question-form-input cqfi-body"
             value={body}

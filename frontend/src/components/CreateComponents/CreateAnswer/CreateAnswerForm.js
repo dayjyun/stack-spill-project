@@ -31,7 +31,7 @@ function CreateAnswerForm({ questionId }) {
         <form onSubmit={handleAnswerSubmit} id="create-answer-form">
           <h3 className="create-answer-form-h3">
             Your Answer
-            <input
+            <textarea
               className="create-answer-form-input"
               type={"text"}
               value={body}

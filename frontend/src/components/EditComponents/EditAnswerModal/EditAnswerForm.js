@@ -44,7 +44,7 @@ function EditAnswerForm({ setShowModal, answerId }) {
       <form onSubmit={handleAnswerEdit} id="edit-answer-form">
         <label className="edit-answer-form-label">
           Body
-          <input
+          <textarea
             type="text"
             className="edit-answer-form-input eafi-body"
             value={body}
