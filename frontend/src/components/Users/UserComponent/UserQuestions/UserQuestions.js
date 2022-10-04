@@ -24,9 +24,10 @@ function UserQuestions() {
 
   return (
     <>
-      <div id="user-questions-text">
-        <h1>Your Questions</h1>
-      </div>
+      <div id='user-questions'>
+        <div id="user-questions-text">
+          <h1>Your Questions</h1>
+        </div>
         {numQuestion}
         <div id="user-questions-container">
           {userQuestions.map((question) => (
@@ -40,6 +41,7 @@ function UserQuestions() {
             </NavLink>
           ))}
         </div>
+      </div>
     </>
   );
 }
