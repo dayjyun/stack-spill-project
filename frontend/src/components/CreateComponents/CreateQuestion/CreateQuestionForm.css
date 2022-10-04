@@ -58,3 +58,41 @@
 .cqfi-body {
     height: 15rem;
 }
+
+#create-question-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 20rem;
+}
+
+#cqb-submit,
+#cqb-cancel {
+      border-radius: 5px;
+  border: none;
+  color: rgb(195, 193, 193);
+  margin: 1rem;
+  padding: 0.7rem 1.5rem;
+  position: relative;
+  box-shadow: inset 0px 1px 6px 0px #91b8b3;
+}
+
+#cqb-submit:hover,
+#cqb-cancel:hover {
+    color: white;
+}
+
+#cqb-submit {
+  background: linear-gradient(
+    to bottom,
+    rgb(129, 196, 255) 5%,
+    rgb(21, 120, 201) 100%
+  );
+}
+
+#cqb-cancel {
+  background: linear-gradient(
+    to bottom,
+    rgb(213, 213, 213) 5%,
+    rgb(104, 104, 104) 100%
+  );
+}

@@ -87,7 +87,7 @@ function CreateQuestionForm() {
             type="text"
             className="create-question-form-input cqfi-title"
             value={title}
-            placeholder='How about a good attention grabber?'
+            placeholder="How about a good attention grabber?"
             onChange={(e) => setTitle(e.target.value)}
             required
           />
@@ -98,13 +98,15 @@ function CreateQuestionForm() {
             type="text"
             className="create-question-form-input cqfi-body"
             value={body}
-            placeholder='This is where the story gets interesting...'
+            placeholder="This is where the story gets interesting..."
             onChange={(e) => setBody(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Submit</button>
-        <button onClick={handleCancelButton}>Cancel</button>
+        <div id='create-question-buttons'>
+          <button id='cqb-submit' type="submit">Submit</button>
+          <button id='cqb-cancel' onClick={handleCancelButton}>Cancel</button>
+        </div>
       </form>
     </>
   );
