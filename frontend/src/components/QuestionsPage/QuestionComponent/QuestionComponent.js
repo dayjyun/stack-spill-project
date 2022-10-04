@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getAllAnswers } from "../../../store/answersReducer";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
@@ -18,11 +17,9 @@ function QuestionComponent() {
   const allUsers = Object.values(useSelector((state) => state.users));
   const currentUser = allUsers.find((user) => user.id == question?.userId);
   const allAnswers = Object.values(useSelector(state => state.answers))
-  const userAnswer = allAnswers.find(answer => answer?.id == sessionUser?.id)
-  console.log(userAnswer)
+  const answerExists = allAnswers.filter((answer) => answer?.userId == sessionUser?.id && answer?.questionId == question?.id);
 
   useEffect(() => {
-    dispatch(getAllAnswers())
     dispatch(getQuestion(questionId));
   }, [dispatch]);
 
@@ -32,32 +29,9 @@ function QuestionComponent() {
   }
 
   let createAnswerComponent;
-  if(sessionUser) {
-    createAnswerComponent = <CreateAnswerForm questionId={questionId}/>
+  if (answerExists.length == 0) {
+    createAnswerComponent = <CreateAnswerForm questionId={questionId} />;
   }
-
-  let answerComponent;
-  // if (userAnswer?.id !== allAnswers?.userId) {
-  //   answerComponent = (
-  //     <AnswersComponent questionId={questionId} allUsers={allUsers} />
-  //   );
-  // }
-
-  allAnswers.map(answer => {
-    if(answer?.userId !== sessionUser?.id) {
-      answerComponent = (
-        <>
-        <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        </>
-      );
-    }
-  })
-
-  // if (!userAnswer) {
-  //   answerComponent = (
-  //     <AnswersComponent questionId={questionId} allUsers={allUsers} />
-  //   );
-  // }
 
   return (
     <>
@@ -65,7 +39,7 @@ function QuestionComponent() {
         <div key={question?.id} id="question-card">
           <EditQuestionVote questionId={questionId} />
           <div id="question-card-container">
-            <div id='question-card-text-top'>
+            <div id="question-card-text-top">
               <h1 id="question-title">{question?.title}</h1> {userQuestionEdit}
             </div>
             <div id="question-body">{question?.body}</div>
@@ -84,8 +58,7 @@ function QuestionComponent() {
             </div>
           </div>
         </div>
-        {/* <AnswersComponent questionId={questionId} allUsers={allUsers} /> */}
-        {answerComponent}
+        <AnswersComponent questionId={questionId} allUsers={allUsers} />
         {createAnswerComponent}
       </div>
     </>
