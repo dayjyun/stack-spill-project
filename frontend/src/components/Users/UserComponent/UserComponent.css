@@ -38,16 +38,23 @@
 
 #user-component-navLinks {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin: 0 25rem;
+  margin-top: 2.5rem;
 }
 
-#user-component-navLinks > a {
-  border: 2px solid lightgray;
-  padding: 1rem;
-}
-
-#user-component-questions:hover,
-#user-component-answers:hover {
+#user-component-navLinks div:hover {
   cursor: pointer;
+}
+
+#user-component-navLinks div {
+  padding: 1rem;
+  background-color: rgb(237, 237, 237);
+  border-radius: 6px;
+}
+
+
+#user-component-page-toggle {
+  border: 2px solid red;
 }

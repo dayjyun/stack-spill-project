@@ -5,6 +5,7 @@ import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
+import LoginFormModal from "../../LoginFormModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
@@ -29,8 +30,14 @@ function QuestionComponent() {
   }
 
   let createAnswerComponent;
-  if (answerExists.length == 0) {
+  if (sessionUser && answerExists.length == 0) {
     createAnswerComponent = <CreateAnswerForm questionId={questionId} />;
+  } else if (!sessionUser) {
+    createAnswerComponent = (
+      <div id="create-answer-login-button">
+        <LoginFormModal /> <div id='calb-text'>to Answer</div>
+      </div>
+    );
   }
 
   return (

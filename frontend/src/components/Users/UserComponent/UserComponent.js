@@ -13,7 +13,7 @@ function UserComponent() {
   const sessionUser = useSelector((state) => state.session.user);
   const allUsers = Object.values(useSelector((state) => state.users));
   const user = allUsers.filter((user) => user.id == userId)[0];
-  const [bottomView, setBottomView ]= useState(<UserQuestions/>)
+  const [pageToggle, setPageToggle]= useState(<UserQuestions/>)
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -26,11 +26,11 @@ function UserComponent() {
   }
 
   const handleQuestionsClick = () => {
-    setBottomView(<UserQuestions />)
+    setPageToggle(<UserQuestions />)
   }
 
   const handleAnswersClick = () => {
-    setBottomView(<UserAnswers />)
+    setPageToggle(<UserAnswers />)
   }
 
   return (
@@ -51,7 +51,7 @@ function UserComponent() {
         <div id='user-component-questions' onClick={handleQuestionsClick}>Questions</div>
         <div id='user-component-answers' onClick={handleAnswersClick}>Answers</div>
       </div>
-      <div>{bottomView}</div>
+      {pageToggle}
     </>
   );
 }

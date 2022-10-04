@@ -11,6 +11,15 @@
     margin-top: .8rem;
 }
 
+#create-question-login-button {
+    display: flex;
+    align-items: center;
+}
+
+#cqlb-text {
+    padding: 0 .2rem;
+}
+
 #all-questions-container {
     display: flex;
     justify-content: center;

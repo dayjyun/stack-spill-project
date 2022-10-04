@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
 import CreateQuestionButton from "../CreateComponents/CreateQuestion/CreateQuestionButton";
+import LoginFormModal from "../LoginFormModal";
 import "./QuestionsPage.css";
 
 function QuestionsPage() {
@@ -28,6 +29,13 @@ function QuestionsPage() {
   let createQuestionButton;
   if (sessionUser) {
     createQuestionButton = <CreateQuestionButton />;
+  } else {
+   createQuestionButton = (
+     <div id='create-question-login-button'>
+       <LoginFormModal />
+       <div id='cqlb-text'>to ask a Question</div>
+     </div>
+   );
   }
 
   return (

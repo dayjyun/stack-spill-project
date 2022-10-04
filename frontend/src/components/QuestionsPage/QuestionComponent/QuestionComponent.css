@@ -40,3 +40,12 @@
     max-width: 2rem;
     margin-right: .5rem;
 }
+
+#create-answer-login-button {
+    display: flex;
+    align-items: center;
+}
+
+#calb-text {
+    padding: 0 .2rem;
+}
