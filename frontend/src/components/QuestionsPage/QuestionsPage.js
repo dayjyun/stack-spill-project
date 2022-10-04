@@ -16,31 +16,29 @@ function QuestionsPage() {
   }, [dispatch]);
 
   let allQuestionsNum;
-  if (allQuestions.length == 1) {
-    allQuestionsNum = (
-      <h3 id="all-questions-num">{allQuestions.length} Question</h3>
-    );
-  } else {
-    allQuestionsNum = (
-      <h3 id="all-questions-num">{allQuestions.length} Questions</h3>
-    );
-  }
+  allQuestions.length == 1
+    ? (allQuestionsNum = (
+        <h3 id="all-questions-num">{allQuestions.length} Question</h3>
+      ))
+    : (allQuestionsNum = (
+        <h3 id="all-questions-num">{allQuestions.length} Questions</h3>
+      ));
 
   let createQuestionButton;
   if (sessionUser) {
     createQuestionButton = <CreateQuestionButton />;
   } else {
-   createQuestionButton = (
-     <div id="create-question-login-button">
-       <LoginTextModal />
-       <div id="cqlb-text">to ask a Question</div>
-     </div>
-   );
+    createQuestionButton = (
+      <div id="create-question-login-button">
+        <LoginTextModal />
+        <div id="cqlb-text">to ask a Question</div>
+      </div>
+    );
   }
 
   return (
     <>
-      <div id='questions-page-container'>
+      <div id="questions-page-container">
         <div id="all-questions-text">
           <h1>All Questions</h1>
           {createQuestionButton}
@@ -54,7 +52,8 @@ function QuestionsPage() {
               to={{ pathname: `/questions/${question?.id}` }}
             >
               <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">{question?.body}</div>
+              {/* <div id="all-questions-body">{question?.body.split('').filter((text, i) => i < 70).join('')}...</div> */}
+              <div id="all-questions-body">{question?.body.length > 70 ? question?.body.split('').filter((text, i) => i < 70).join('') + '...' : question?.body}</div>
             </NavLink>
           ))}
         </div>

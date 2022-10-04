@@ -18,7 +18,7 @@ module.exports = {
       {
         // 3
         title: "You Ever Wonder Why We're Here?",
-        body: "I mean why are we out here, in this canyon.",
+        body: "I mean why are we out here, in this canyon?",
         userId: 3,
       },
       {
