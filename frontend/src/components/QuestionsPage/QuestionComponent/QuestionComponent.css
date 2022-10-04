@@ -1,5 +1,6 @@
 #question-page-component {
     margin: 1.2rem 15rem;
+    padding-bottom: 2.5rem;
 }
 
 #question-card {
@@ -44,8 +45,4 @@
 #create-answer-login-button {
     display: flex;
     align-items: center;
-}
-
-#calb-text {
-    padding: 0 .2rem;
 }

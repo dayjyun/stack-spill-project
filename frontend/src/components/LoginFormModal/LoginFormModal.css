@@ -1,0 +1,16 @@
+#login-form-modal-button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #03e9f4;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+#login-form-text-modal-button {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    color: #3E869F;
+    font-size: 17px;
+}

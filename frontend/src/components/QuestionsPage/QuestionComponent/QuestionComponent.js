@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
-import LoginFormModal from "../../LoginFormModal";
+import LoginTextModal from "../../LoginFormModal/LoginTextModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
@@ -35,7 +35,7 @@ function QuestionComponent() {
   } else if (!sessionUser) {
     createAnswerComponent = (
       <div id="create-answer-login-button">
-        <LoginFormModal /> <div id='calb-text'>to Answer</div>
+        <LoginTextModal /> <div id='calb-text'>to Answer</div>
       </div>
     );
   }

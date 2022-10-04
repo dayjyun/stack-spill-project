@@ -1,6 +1,6 @@
 #questions-page-container {
     margin: 0 10rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 4rem;
 }
 
 #all-questions-text {
@@ -14,10 +14,6 @@
 #create-question-login-button {
     display: flex;
     align-items: center;
-}
-
-#cqlb-text {
-    padding: 0 .2rem;
 }
 
 #all-questions-container {
