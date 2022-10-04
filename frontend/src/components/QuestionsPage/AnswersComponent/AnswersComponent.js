@@ -31,15 +31,23 @@ function AnswersComponent({ questionId }) {
     }
   });
 
+  let answersNum;
+  answers?.length === 1 ? (
+    answersNum = <h2 id="answer-number-text">{answers?.length} Answer</h2>
+  ) : (
+    answersNum = <h2 id="answer-number-text">{answers?.length} Answers</h2>
+  );
+
   return (
     <>
       <div id='answer-page-component'>
-        <h2 id="answer-number-text">{answers?.length} Answers</h2>
+        {/* <h2 id="answer-number-text">{answers?.length} Answers</h2> */}
+        {answersNum}
           {answers?.map((answer) => (
             <div key={answer?.id} id="answer-card">
               <EditAnswerVote answerId={answer?.id} />
               <div id="answer-card-container">
-                <h3 id="answer-body">{answer?.body}</h3>
+                <div id="answer-body">{answer?.body}</div>
                 <div id="answer-user-info">
                   By{" "}
                   <Link

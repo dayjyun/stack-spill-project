@@ -1,5 +1,5 @@
 #answer-page-component {
-  margin: 0 5rem;
+  margin: 1.2rem 5rem;
 }
 
 #answer-number-text {
@@ -7,10 +7,14 @@
 }
 
 #answer-card {
-    display: flex;
-    justify-content: start;
-    flex-direction: row;
-    border-bottom: 2px solid black;
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  border-radius: 6px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-bottom: 0.2px solid #e3e3e3;
+  margin: 1rem;
 }
 
 #answer-card-container {
@@ -20,13 +24,18 @@
 #answer-user-info {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
   margin-top: 5%;
+}
+
+#answer-body {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 #answer-component-user-link {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   padding: 0 0.4rem;
 }
@@ -34,4 +43,5 @@
 #answer-component-user-profileImage {
   max-height: 2rem;
   max-width: 2rem;
+  margin-right: .5rem;
 }

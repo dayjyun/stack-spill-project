@@ -40,7 +40,7 @@ function QuestionComponent() {
             <div id='question-card-text-top'>
               <h1 id="question-title">{question?.title}</h1> {userQuestionEdit}
             </div>
-            <h3 id="question-body">{question?.body}</h3>
+            <div id="question-body">{question?.body}</div>
             <div id="question-user-info">
               By{" "}
               <Link
@@ -57,7 +57,6 @@ function QuestionComponent() {
           </div>
         </div>
         <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        {/* <CreateAnswerForm questionId={questionId} /> */}
         {createAnswerComponent}
       </div>
     </>

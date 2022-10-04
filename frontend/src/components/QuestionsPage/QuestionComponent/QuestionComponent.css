@@ -1,5 +1,5 @@
 #question-page-component {
-    margin: 0 5rem;
+    margin: 1.2rem 15rem;
 }
 
 #question-card {
@@ -24,6 +24,10 @@
     margin-top: 5%;
 }
 
+#question-body {
+    font-size: 1.2rem;
+}
+
 #question-component-user-link {
     display: flex;
     justify-content: start;
@@ -34,4 +38,5 @@
 #question-component-user-profileImage {
     max-height: 2rem;
     max-width: 2rem;
+    margin-right: .5rem;
 }
