@@ -53,9 +53,6 @@ function Navigation({ isLoaded }) {
           {/* Dark Mode Button */}
         </div>
       </div>
-      <div id='navigation-footer'>
-      <Footer />
-      </div>
     </>
   );
 }
