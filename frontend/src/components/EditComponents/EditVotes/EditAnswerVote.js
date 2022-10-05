@@ -20,7 +20,7 @@ function EditAnswerVote({ answerId }) {
       setUpVote(answerVotes?.includes(userVote?.vote));
     };
     sessionUserAnswerVote();
-  }, [dispatch]);
+  }, [dispatch, allVotes]);
 
   const upVoteAnswer = async () => {
     if (userVote?.vote === true) {
