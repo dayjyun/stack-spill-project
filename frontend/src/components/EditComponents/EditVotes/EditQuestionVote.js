@@ -33,7 +33,6 @@ function EditQuestionVote({ questionId }) {
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
       await dispatch(deleteQuestionVote(+questionId));
-      // doesn't update state
     } else {
       await dispatch(
         createQuestionVote({

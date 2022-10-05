@@ -154,7 +154,8 @@ export const deleteAnswerVote = (answerId) => async (dispatch) => {
         method: "DELETE"
     })
     if (answerVote.ok) {
-      dispatch(removeVote(answerId));
+        const deletedAnswerVote = await answerVote.json()
+      dispatch(removeVote(deletedAnswerVote));
     }
 }
 
