@@ -6,6 +6,7 @@
 #app-content {
     padding-bottom: 4rem;
     max-height: 80%;
+    box-sizing: border-box;
 }
 
 #navigation-footer {
