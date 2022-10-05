@@ -8,7 +8,7 @@
   background-size: 500%;
   animation: navigation-bar-color 30s infinite alternate;
   --nav-gradient: linear-gradient(45deg, #c99999, #7ba1b5, #504e6d, #7e376a);
-  box-shadow: 0px 25px 20px -20px rgba(0,0,0,0.20);
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.2);
   /* position: fixed; */
   width: 100%;
 }
@@ -70,6 +70,15 @@
 
 #navigation-navLink-image {
   height: 3rem;
+}
+
+#navigation-footer {
+  position: relative;
+  position: absolute;
+  width: 100%;
+  bottom: 1;
+  z-index: 1;
+  margin-top: 100%
 }
 
 @media screen and (max-width: 768px) {

@@ -11,6 +11,14 @@ function CreateQuestionForm() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  const myTextArea = document.getElementsByClassName("cqfi-title");
+  const remainingCharacters = document.getElementById("title-text-count");
+  const maxChars = 250;
+
+  // myTextArea.addEventListener('input', () => {
+  //   console.log('here')
+  // })
+
   const wordCaps = (str) => {
     let strArr = str.split(" ").map((word) => {
       let cap = word.slice(0, 1).toUpperCase();
@@ -91,6 +99,7 @@ function CreateQuestionForm() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
+          <div id='title-text-count'>250 Characters Remaining</div>
         </label>
         <label className="create-question-form-label">
           Body
@@ -103,9 +112,13 @@ function CreateQuestionForm() {
             required
           />
         </label>
-        <div id='create-question-buttons'>
-          <button id='cqb-submit' type="submit">Submit</button>
-          <button id='cqb-cancel' onClick={handleCancelButton}>Cancel</button>
+        <div id="create-question-buttons">
+          <button id="cqb-submit" type="submit">
+            Submit
+          </button>
+          <button id="cqb-cancel" onClick={handleCancelButton}>
+            Cancel
+          </button>
         </div>
       </form>
     </>

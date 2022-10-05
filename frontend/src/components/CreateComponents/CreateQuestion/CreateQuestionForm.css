@@ -99,3 +99,9 @@
     rgb(104, 104, 104) 100%
   );
 }
+
+#title-text-count {
+  color: darkgray;
+  font-weight: bold;
+  text-align: right;
+}
