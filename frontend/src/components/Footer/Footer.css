@@ -4,6 +4,7 @@
    justify-content: space-around;
    align-items: flex-start;
    height: 100%;
+   margin-top: 4rem;
 }
 
 #footer-info-left {
