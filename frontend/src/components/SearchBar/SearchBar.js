@@ -80,8 +80,6 @@ function QuestionsSearchBarComponent() {
           </div>
         </form>
         <div className={`search-results-box ${searchResults}`}>
-          {/* {questionReturns} */}
-          {/* {userReturns} */}
           {searchArray}
         </div>
       </div>

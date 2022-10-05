@@ -39,11 +39,15 @@
     box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
     border: 2px solid white;
     border-radius: 6px;
+    width: 50rem;
 }
 
 .create-question-form-label {
     gap: 2rem;
     padding: 1rem 4rem;
+    width: 90%;
+    display: flex;
+    justify-content: center;
 }
 
 .create-question-form-input {
@@ -54,12 +58,14 @@
     height: 2rem;
     width: 49rem;
     padding: 0 .5rem;
+    width: 100%
 }
 
 .cqfi-body {
     height: 15rem;
     width: 48rem;
     padding: 1rem;
+    width: 100%
 }
 
 #create-question-buttons {

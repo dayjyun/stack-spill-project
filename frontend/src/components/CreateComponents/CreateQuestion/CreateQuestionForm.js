@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createQuestion } from "../../../store/questionsReducer";
@@ -11,11 +11,17 @@ function CreateQuestionForm() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const myTextArea = document.getElementsByClassName("cqfi-title");
+  // const myTextArea = document.querySelector("#cqfi-title");
   const remainingCharacters = document.getElementById("title-text-count");
   const maxChars = 250;
 
-  // myTextArea.addEventListener('input', () => {
+  // useEffect(() => {
+  //   myTextArea.addEventListener("input", () => {
+  //     console.log("here");
+  //   });
+  // }, [])
+
+  // document.querySelector('#cqfi-title').addEventListener("input", () => {
   //   console.log('here')
   // })
 
@@ -99,8 +105,9 @@ function CreateQuestionForm() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <div id='title-text-count'>250 Characters Remaining</div>
+          {/* <div id='title-text-count'>250 Characters Remaining</div> */}
         </label>
+        {}
         <label className="create-question-form-label">
           Body
           <textarea

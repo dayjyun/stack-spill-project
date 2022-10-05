@@ -8,8 +8,8 @@ import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import UserComponent from "./components/Users/UserComponent/UserComponent";
-import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
-import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
+// import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
+// import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
 import Footer from "./components/Footer/Footer";
 import './App.css'
@@ -40,12 +40,12 @@ function App() {
             <Route path="/about">
               <AboutPage />
             </Route>
-            <Route path="/users/:userId/questions">
+            {/* <Route path="/users/:userId/questions">
               <UserQuestions />
             </Route>
             <Route path="/users/:userId/answers">
               <UserAnswers />
-            </Route>
+            </Route> */}
             <Route path="/users/:userId">
               <UserComponent />
             </Route>

@@ -36,6 +36,18 @@ function QuestionsPage() {
     );
   }
 
+  const byName = () => {
+    allQuestions.sort((a, b) => {
+      if (a.title > b.title) {
+        return 1;
+      } else if (b.title > a.title) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  };
+
   return (
     <>
       <div id="questions-page-container">
@@ -44,6 +56,7 @@ function QuestionsPage() {
           {createQuestionButton}
         </div>
         {allQuestionsNum}
+        <button onClick={byName}>Sort By Name</button>
         <div id="all-questions-container">
           {allQuestions.map((question) => (
             <NavLink
@@ -52,7 +65,14 @@ function QuestionsPage() {
               to={{ pathname: `/questions/${question?.id}` }}
             >
               <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">{question?.body.length > 70 ? question?.body.split('').filter((text, i) => i < 70).join('') + '...' : question?.body}</div>
+              <div id="all-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
             </NavLink>
           ))}
         </div>
