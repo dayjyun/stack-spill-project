@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllQuestions } from "../../store/questionsReducer";
 import { getAllUsers } from "../../store/usersReducer";
 import "./SearchBar.css";
 
@@ -12,6 +13,7 @@ function QuestionsSearchBarComponent() {
   const [searchResults, setSearchResults] = useState("");
 
   useEffect(() => {
+    dispatch(getAllQuestions())
     dispatch(getAllUsers())
   }, [dispatch])
 
@@ -72,7 +74,7 @@ function QuestionsSearchBarComponent() {
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              onClick={() => setSearchResults("results-active")}
+              onKeyDown={() => setSearchResults("results-active")}
               onBlur={() => setSearchResults("")}
             />
           </div>
