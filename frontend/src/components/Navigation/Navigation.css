@@ -2,13 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
-  height: 3rem;
+  /* padding: 8px; */
+  /* height: 3rem; */
   background-image: var(--nav-gradient);
   background-size: 500%;
   animation: navigation-bar-color 30s infinite alternate;
   --nav-gradient: linear-gradient(45deg, #c99999, #7ba1b5, #504e6d, #7e376a);
   box-shadow: 0px 25px 20px -20px rgba(0,0,0,0.20);
+  /* position: fixed; */
+  width: 100%;
 }
 
 @keyframes navigation-bar-color {
