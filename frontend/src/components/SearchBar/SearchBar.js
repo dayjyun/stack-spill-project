@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllUsers } from "../../store/usersReducer";
 import "./SearchBar.css";
 
-function SearchBarComponent() {
+function QuestionsSearchBarComponent() {
   const dispatch = useDispatch();
   const allQuestions = Object.values(useSelector((state) => state.questions));
   const allUsers = Object.values(useSelector(state => state.users))
@@ -40,13 +40,13 @@ function SearchBarComponent() {
     return user?.username?.toLowerCase().includes(search.toLowerCase())
   })
 
-  const userReturns = userResults.map((user, i) => {
+  const userReturns = userResults.map((user) => {
     return (
       <Link
         to={`/users/${user?.id}`}
         onClick={() => setSearch('')}
         className='search-results-link'
-        key={Math.floor(Math.random() * 1000001)}
+        key={user?.username}
       >
         <div className="search-results-text">
           <img
@@ -60,7 +60,6 @@ function SearchBarComponent() {
   })
 
   searchArray = [...questionReturns, ...userReturns];
-  // console.log(searchArray)
 
   return (
     <>
@@ -88,4 +87,4 @@ function SearchBarComponent() {
   );
 }
 
-export default SearchBarComponent;
+export default QuestionsSearchBarComponent;
