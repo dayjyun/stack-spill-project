@@ -83,13 +83,24 @@ const updateUser = (user) => {
 }
 
 export const editUser = (userData) => async (dispatch) => {
+  const { firstName, lastName, email, username, profileImage } = userData
+  const formData = new FormData()
+
+  formData.append("firstName", firstName)
+  formData.append("lastName", lastName)
+  formData.append("email", email)
+  formData.append("username", username)
+
+  if (profileImage) formData.append("profileImage", profileImage);
+
   const userEdit = await csrfFetch(`/api/users/${userData.id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
-    body: JSON.stringify(userData),
+    body: formData,
   });
+
   if (userEdit.ok) {
     const resUserEdit = await userEdit.json()
     dispatch(updateUser(resUserEdit))

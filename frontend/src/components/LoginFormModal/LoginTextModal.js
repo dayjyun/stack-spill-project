@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
+import { LoginTextModal } from "../../context/Modal";
 import LoginForm from "./LoginForm";
 import "./LoginFormModal.css";
 
@@ -8,16 +8,17 @@ function LoginFormModal() {
 
   return (
     <>
-      <button id="login-form-modal-button" onClick={() => setShowModal(true)}>
+      <button id="login-form-text-modal-button" onClick={() => setShowModal(true)}>
         Log In
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <LoginTextModal onClose={() => setShowModal(false)}>
           <LoginForm />
-        </Modal>
+        </LoginTextModal>
       )}
     </>
   );
 }
 
 export default LoginFormModal;
+

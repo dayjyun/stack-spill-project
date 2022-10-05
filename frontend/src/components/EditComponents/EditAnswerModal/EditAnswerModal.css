@@ -1,4 +1,4 @@
-#edit-answer-modal-button {
+/* #edit-answer-modal-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +10,21 @@
   padding: 1rem 1.5rem;
   position: relative;
   box-shadow: inset 0px 1px 6px 0px #91b8b3;
-    background: linear-gradient(
+  background: linear-gradient(
     to bottom,
     rgb(222, 221, 221) 5%,
     rgb(107, 107, 107) 100%
-  );
+    );
+} */
+
+#edit-answer-modal-button {
+  border: none;
+  background-color: transparent;
+}
+
+#edit-answer-button-image {
+    background-color: transparent;
+    height: 1.1rem;
+    width: 1.1rem;
+    color: transparent;
 }

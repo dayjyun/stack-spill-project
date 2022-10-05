@@ -1,5 +1,6 @@
 #question-page-component {
-    margin: 0 5rem;
+    margin: 1.2rem 15rem;
+    padding-bottom: 2.5rem;
 }
 
 #question-card {
@@ -21,17 +22,37 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 3rem;
+}
+
+#question-body {
+    font-size: 1.2rem;
 }
 
 #question-component-user-link {
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0 .4rem;
+    padding: .4rem .4rem;
 }
 
 #question-component-user-profileImage {
     max-height: 2rem;
     max-width: 2rem;
+    margin-right: .5rem;
+}
+
+#create-answer-login-button {
+    display: flex;
+    align-items: center;
+}
+
+#question-page-creation-info {
+      display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  color: rgb(181, 181, 181);
+  font-size: .8rem;
+  margin-bottom: .6rem;
 }

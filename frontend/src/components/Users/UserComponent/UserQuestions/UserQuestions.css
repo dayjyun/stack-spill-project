@@ -1,3 +1,7 @@
+#user-questions {
+  margin: 0 5rem;
+}
+
 #user-questions-text {
     display: flex;
     justify-content: space-between;
@@ -38,6 +42,6 @@
 }
 
 #user-questions-title {
-    color: blue;
+    color: rgb(62, 134, 159);
     margin: 0;
 }

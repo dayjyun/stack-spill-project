@@ -73,11 +73,6 @@ router.post("/:questionId/votes", requireAuth, validateVote,  async (req, res) =
         res.status(201);
         res.json(newVote);
       } else {
-        // await currentVote.update({
-        //   vote,
-        // })
-        // res.status(201)
-        // res.json(currentVote)
         const error = new Error("Vote already exists")
         error.status = 404;
         throw error;
@@ -143,13 +138,6 @@ router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => 
       });
       res.json(currentVote);
     } else {
-      // const newVote = await Vote.create({
-      //   userId: user.id,
-      //   vote,
-      //   questionId,
-      // })
-      // res.status(201)
-      // res.json(newVote)
       const error = new Error('Vote not found')
       error.status = 404
       throw error;
@@ -196,8 +184,10 @@ router.delete("/:questionId/votes", requireAuth, async (req, res) => {
 
   if (question) {
     if (userVote) {
+      const deletedVote = userVote;
       await userVote.destroy();
       res.json({
+        deletedVote,
         message: "Successfully deleted vote",
         statusCode: 200,
       });

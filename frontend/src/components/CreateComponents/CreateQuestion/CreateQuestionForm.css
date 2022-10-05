@@ -1,0 +1,107 @@
+#create-question-form-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 15rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 10px ridge #d3d3d3;
+    box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
+}
+
+#create-question-form-text p {
+    margin: .6rem;
+}
+
+.cqft-header {
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cqft-top-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#create-question-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 15rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
+    border: 2px solid white;
+    border-radius: 6px;
+}
+
+.create-question-form-label {
+    gap: 2rem;
+    padding: 1rem 4rem;
+}
+
+.create-question-form-input {
+    outline: none;
+}
+
+.cqfi-title {
+    height: 2rem;
+    width: 49rem;
+    padding: 0 .5rem;
+}
+
+.cqfi-body {
+    height: 15rem;
+    width: 48rem;
+    padding: 1rem;
+}
+
+#create-question-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 20rem;
+}
+
+#cqb-submit,
+#cqb-cancel {
+      border-radius: 5px;
+  border: none;
+  color: rgb(195, 193, 193);
+  margin: 1rem;
+  padding: 0.7rem 1.5rem;
+  position: relative;
+  box-shadow: inset 0px 1px 6px 0px #91b8b3;
+}
+
+#cqb-submit:hover,
+#cqb-cancel:hover {
+    color: white;
+}
+
+#cqb-submit {
+  background: linear-gradient(
+    to bottom,
+    rgb(129, 196, 255) 5%,
+    rgb(21, 120, 201) 100%
+  );
+}
+
+#cqb-cancel {
+  background: linear-gradient(
+    to bottom,
+    rgb(213, 213, 213) 5%,
+    rgb(104, 104, 104) 100%
+  );
+}
+
+#title-text-count {
+  color: darkgray;
+  font-weight: bold;
+  text-align: right;
+}
