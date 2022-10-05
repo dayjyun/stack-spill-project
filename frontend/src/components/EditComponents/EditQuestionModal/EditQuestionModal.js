@@ -8,10 +8,20 @@ function EditQuestionModal({ questionId }) {
 
   return (
     <>
-      <button id='edit-question-modal-button' onClick={() => setShowModal(true)}>Edit</button>
+      <button id="edit-question-modal-button" onClick={() => setShowModal(true)}>
+        <img
+          id="edit-question-button-image"
+          src={
+            "https://stack-spill-project.s3.us-east-2.amazonaws.com/icons8-settings.gif"
+          }
+        />
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditQuestionForm setShowModal={setShowModal} questionId={questionId}/>
+          <EditQuestionForm
+            setShowModal={setShowModal}
+            questionId={questionId}
+          />
         </Modal>
       )}
     </>

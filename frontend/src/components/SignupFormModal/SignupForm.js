@@ -114,7 +114,7 @@ function SignupForm() {
           </button>
         </form>
         <div id="signup-form-demo">
-          <h3>Try out the Demo User? </h3>
+          <div id='signup-form-demo-text'>Try out the Demo User?</div>
           <div id="demo-user-button-signup-form">
             <DemoUserButton />
           </div>

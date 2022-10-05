@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { setTokenCookie, requireAuth, restoreUser } = require("../utils/auth");
 const { User, Question, Answer } = require("../db/models");
+const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3");
 
 // Get Current User
 router.get("/me", restoreUser, (req, res) => {
@@ -35,10 +36,11 @@ router.get("/", async (req, res) => {
 
 
 // Edit A User
-router.put('/:userId', requireAuth, async (req, res) => {
+router.put('/:userId', requireAuth, singleMulterUpload("profileImage"), async (req, res) => {
   const { user } = req;
   const { userId } = req.params;
-  const { firstName, lastName, username, email, profileImage, password } = req.body;
+  const { firstName, lastName, username, email } = req.body;
+  const profileImage = await singlePublicFileUpload(req.file)
   const userInfo = await User.findByPk(userId)
 
   if (userInfo) {
@@ -48,8 +50,8 @@ router.put('/:userId', requireAuth, async (req, res) => {
         lastName,
         username,
         email,
+        profileImage,
         // password,
-        // profileImage,
       });
       res.json(updatedUser)
     } else {

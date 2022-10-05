@@ -13,7 +13,7 @@ function UserComponent() {
   const sessionUser = useSelector((state) => state.session.user);
   const allUsers = Object.values(useSelector((state) => state.users));
   const user = allUsers.filter((user) => user.id == userId)[0];
-  const [bottomView, setBottomView ]= useState(<UserQuestions/>)
+  const [pageToggle, setPageToggle]= useState(<UserQuestions/>)
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -26,32 +26,38 @@ function UserComponent() {
   }
 
   const handleQuestionsClick = () => {
-    setBottomView(<UserQuestions />)
+    setPageToggle(<UserQuestions />)
   }
 
   const handleAnswersClick = () => {
-    setBottomView(<UserAnswers />)
+    setPageToggle(<UserAnswers />)
   }
 
   return (
     <>
-      <div id="user-component">
-        <div id="user-component-info">
-          <img id="user-component-image" src={user?.profileImage} />
-          <div id="user-component-details">
-            <h1>{user?.username}</h1>
-            <h3>
-              {user?.firstName} {user?.lastName}
-            </h3>
-            {editButton}
+      <div id="user-page">
+        <div id="user-component">
+          <div id="user-component-info">
+            <img id="user-component-image" src={user?.profileImage} />
+            <div id="user-component-details">
+              <h1>{user?.username}</h1>
+              <div id="user-component-details-name">
+                {user?.firstName} {user?.lastName}
+              </div>
+              {editButton}
+            </div>
           </div>
         </div>
+        <div id="user-component-navLinks">
+          <div id="user-component-questions" onClick={handleQuestionsClick}>
+            Questions
+          </div>
+          <div id="user-component-answers" onClick={handleAnswersClick}>
+            Answers
+          </div>
+        </div>
+        {pageToggle}
       </div>
-      <div id="user-component-navLinks">
-        <div id='user-component-questions' onClick={handleQuestionsClick}>Questions</div>
-        <div id='user-component-answers' onClick={handleAnswersClick}>Answers</div>
-      </div>
-      <div>{bottomView}</div>
     </>
   );
 }

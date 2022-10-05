@@ -132,10 +132,10 @@ export const editAnswerVote = (answer) => async (dispatch) => {
 }
 
 // delete vote
-const removeVote = (id) => {
+const removeVote = (voteData) => {
     return {
         type: DELETE_VOTE,
-        id
+        voteData
     }
 }
 
@@ -144,7 +144,8 @@ export const deleteQuestionVote = (questionId) => async (dispatch) => {
         method: "DELETE",
     })
     if (questionVote.ok) {
-      dispatch(removeVote(questionId));
+    const deletedQuestionVote = await questionVote.json()
+      dispatch(removeVote(deletedQuestionVote));
     }
 }
 
@@ -153,7 +154,8 @@ export const deleteAnswerVote = (answerId) => async (dispatch) => {
         method: "DELETE"
     })
     if (answerVote.ok) {
-      dispatch(removeVote(answerId));
+        const deletedAnswerVote = await answerVote.json()
+      dispatch(removeVote(deletedAnswerVote));
     }
 }
 
@@ -171,12 +173,15 @@ export default function voteReducer(state = initialState, action) {
       case GET_VOTE:
         return { ...state, [action.vote.id]: action.vote };
 
+      case CREATE_VOTE:
+        return { ...state, [action.vote.id]: action.vote };
+
       case EDIT_VOTE:
         return { ...state, [action.vote.id]: action.vote };
 
       case DELETE_VOTE:
-        const removeVoteState = { ...state };
-        delete removeVoteState[action.id];
+          const removeVoteState = { ...state };
+          delete removeVoteState[action.voteData.deletedVote.id];
         return removeVoteState;
 
       default:

@@ -1,8 +1,19 @@
+#questions-page-container {
+    margin: 0 10rem;
+    padding-bottom: 4rem;
+}
+
 #all-questions-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
+    margin-top: .8rem;
+}
+
+#create-question-login-button {
+    display: flex;
+    align-items: center;
 }
 
 #all-questions-container {
@@ -15,6 +26,7 @@
 #all-questions-num {
     margin: 0 10%;
     display: flex;
+    margin-bottom: 1rem;
 }
 
 #all-questions-card {
@@ -36,6 +48,6 @@
 }
 
 #all-questions-title {
-    color: blue;
+    color: rgb(62, 134, 159);
     margin: 0;
 }

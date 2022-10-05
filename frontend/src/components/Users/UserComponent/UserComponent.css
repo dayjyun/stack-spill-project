@@ -1,44 +1,64 @@
+#user-page {
+  margin-bottom: 3rem;
+}
+
 #user-component {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 20rem;
+  /* background-color: rgb(140, 246, 249, 0.2); */
+  border-radius: 6px;
 }
 
 #user-component-info {
-    display: flex;
-    justify-content: center;
-    margin: 0 8rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 8rem;
 }
 
 #user-component-image {
-    object-fit: cover;
-    height: 12rem;
-    width: 12rem;
-    border-radius: 50%;
-    box-shadow: 0 5px 10px rgba(97, 97, 97, 0.2);
+  object-fit: cover;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(97, 97, 97, 0.2);
 }
 
 #user-component-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 1rem;
-    line-height: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  line-height: 5px;
+}
+
+#user-component-details-name {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
 }
 
 #user-component-navLinks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 25rem;
+  margin-top: 2.5rem;
 }
 
-#user-component-navLinks > a {
-    border: 2px solid lightgray;
-    padding: 1rem;
+#user-component-navLinks div:hover {
+  cursor: pointer;
 }
 
-#user-component-questions:hover, #user-component-answers:hover {
-    cursor: pointer;
+#user-component-navLinks div {
+  padding: 1rem;
+  background-color: rgb(237, 237, 237);
+  border-radius: 6px;
+}
+
+
+#user-component-page-toggle {
+  border: 2px solid red;
 }

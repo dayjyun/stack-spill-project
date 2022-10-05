@@ -31,21 +31,21 @@ function EditQuestionVote({ questionId }) {
   }, [dispatch]);
 
   const upVoteQuestion = async () => {
-    if (userVote?.vote) {
-      await dispatch(deleteQuestionVote(questionId));
+    if (userVote?.vote === true) {
+      await dispatch(deleteQuestionVote(+questionId));
     } else {
       await dispatch(
         createQuestionVote({
           userId: userVote?.userId,
           vote: true,
-          questionId,
+          questionId: +questionId,
         })
       );
     }
   };
 
   const downVoteQuestion = async () => {
-    if (userVote?.vote) {
+    if (userVote?.vote === false) {
       await dispatch(deleteQuestionVote(questionId));
     } else {
       await dispatch(

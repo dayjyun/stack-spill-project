@@ -39,21 +39,30 @@ function UserAnswers() {
 
   return (
     <>
-    <div id='user-answers-text'>
-      <h1>Your Answers</h1>
-    </div>
-      {numAnswer}
-      <div id='user-answers-container'>
-        {answeredQuestions.map((question) => (
-          <NavLink
-            key={question?.id}
-            id="user-answers-card"
-            to={{ pathname: `/questions/${question?.id}` }}
-          >
-            <div id='user-questions-title'>{question?.title}</div>
-            <div id='user-questions-body'>{question?.body}</div>
-          </NavLink>
-      ))}
+      <div id="user-answers">
+        <div id="user-answers-text">
+          <h1>Your Answers</h1>
+        </div>
+        {numAnswer}
+        <div id="user-answers-container">
+          {answeredQuestions.map((question) => (
+            <NavLink
+              key={question?.id}
+              id="user-answers-card"
+              to={{ pathname: `/questions/${question?.id}` }}
+            >
+              <h2 id="user-questions-title">{question?.title}</h2>
+              <div id="user-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
+            </NavLink>
+          ))}
+        </div>
       </div>
     </>
   );

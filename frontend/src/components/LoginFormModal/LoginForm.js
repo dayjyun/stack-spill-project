@@ -27,39 +27,50 @@ function LoginForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} id="login-form">
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-      <div id='demo-user-button-login-form'>
-
-      <DemoUserButton
-        credential={credential}
-        password={password}
-        setErrors={setErrors}
-      />
+      <div id="login-form-container">
+        <div id="login-form-text">Login</div>
+        <form onSubmit={handleSubmit} id="login-form">
+          <p>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </p>
+          <div className="login-form-div">
+            <input
+              type="text"
+              value={credential}
+              placeholder="Username or Email"
+              className="login-form-input"
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </div>
+          <div className="login-form-div">
+            <input
+              type="password"
+              value={password}
+              placeholder="Password"
+              className="login-form-input"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div id="login-form-buttons">
+            <button id="lfb-login" type="submit">
+              Log In
+            </button>
+          </div>
+        </form>
+        <div id="login-form-demo">
+          <div id='login-form-demo-text'>Try out the Demo User?</div>
+          <div id="demo-user-button-login-form">
+            <DemoUserButton
+              credential={credential}
+              password={password}
+              setErrors={setErrors}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

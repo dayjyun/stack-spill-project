@@ -20,7 +20,7 @@ function EditAnswerVote({ answerId }) {
       setUpVote(answerVotes?.includes(userVote?.vote));
     };
     sessionUserAnswerVote();
-  }, [dispatch]);
+  }, [dispatch, allVotes]);
 
   const upVoteAnswer = async () => {
     if (userVote?.vote === true) {
@@ -80,27 +80,3 @@ function EditAnswerVote({ answerId }) {
 }
 
 export default EditAnswerVote;
-
-// const handleUpArrow = e => {
-//     e.preventDefault()
-
-//     dispatch(editAnswerVote({
-//         userId: sessionUser?.id,
-//         vote: true,
-//         answerId: userVote?.answerId
-//     }))
-// }
-
-// const handleDownArrow = e => {
-//     e.preventDefault()
-//     dispatch(editAnswerVote({
-//         userId: sessionUser?.id,
-//         vote: false,
-//         answerId: userVote?.answerId
-//     }))
-// }
-
-// const deleteCurrentAnswerVote = (e) => {
-//     e.preventDefault();
-//     dispatch(deleteAnswerVote(userVote?.answerId))
-// }

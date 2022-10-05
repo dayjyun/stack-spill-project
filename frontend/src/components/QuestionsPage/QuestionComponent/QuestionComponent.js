@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getQuestion } from "../../../store/questionsReducer";
+import ConvertTime from "../../ConvertTime/ConvertTime";
 import CreateAnswerForm from "../../CreateComponents/CreateAnswer/CreateAnswerForm";
 import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuestionModal";
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
+import LoginTextModal from "../../LoginFormModal/LoginTextModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
 import "./QuestionComponent.css";
 
@@ -16,6 +18,11 @@ function QuestionComponent() {
   const question = allQuestions.find((question) => question.id == questionId);
   const allUsers = Object.values(useSelector((state) => state.users));
   const currentUser = allUsers.find((user) => user.id == question?.userId);
+  const allAnswers = Object.values(useSelector((state) => state.answers));
+  const answerExists = allAnswers.filter(
+    (answer) =>
+      answer?.userId == sessionUser?.id && answer?.questionId == question?.id
+  );
 
   useEffect(() => {
     dispatch(getQuestion(questionId));
@@ -26,16 +33,27 @@ function QuestionComponent() {
     userQuestionEdit = <EditQuestionModal questionId={questionId} />;
   }
 
+  let createAnswerComponent;
+  if (sessionUser && answerExists.length == 0) {
+    createAnswerComponent = <CreateAnswerForm questionId={questionId} />;
+  } else if (!sessionUser) {
+    createAnswerComponent = (
+      <div id="create-answer-login-button">
+        <LoginTextModal /> <div id="calb-text">to Answer</div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div id="question-page-component">
         <div key={question?.id} id="question-card">
           <EditQuestionVote questionId={questionId} />
           <div id="question-card-container">
-            <div id='question-card-text-top'>
+            <div id="question-card-text-top">
               <h1 id="question-title">{question?.title}</h1> {userQuestionEdit}
             </div>
-            <h3 id="question-body">{question?.body}</h3>
+            <div id="question-body">{question?.body}</div>
             <div id="question-user-info">
               By{" "}
               <Link
@@ -49,10 +67,13 @@ function QuestionComponent() {
                 {currentUser?.username}
               </Link>
             </div>
+            <div id="question-page-creation-info">
+              Posted {ConvertTime(question?.createdAt)}
+            </div>
           </div>
         </div>
         <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        <CreateAnswerForm questionId={questionId} />
+        {createAnswerComponent}
       </div>
     </>
   );

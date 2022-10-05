@@ -21,12 +21,11 @@
   padding: 7px 16px;
   width: 15rem;
   transition: border 200ms;
-    /* position: absolute; */
-    /* z-index: -2; */
-    /* padding: 0 10rem; */
-    width: 24.5rem;
+  /* position: absolute; */
+  /* z-index: -2; */
+  /* padding: 0 10rem; */
+  width: 24.5rem;
 }
-
 
 .search-results-box {
   color: black;
@@ -73,3 +72,10 @@
   visibility: visible;
 }
 
+.search-bar-profile-pic {
+  height: 2em;
+  width: 2em;
+  object-fit: cover;
+  border-radius: 50px;
+  cursor: pointer;
+}

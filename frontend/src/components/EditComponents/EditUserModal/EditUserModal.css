@@ -1,3 +1,11 @@
 #edit-user-modal-button {
     border: none;
+    background-color: transparent;
+}
+
+#edit-user-button-image {
+    background-color: transparent;
+    height: 1.1rem;
+    width: 1.1rem;
+    color: transparent;
 }
