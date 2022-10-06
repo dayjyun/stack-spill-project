@@ -5,7 +5,6 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import SearchBarComponent from "../SearchBar/SearchBar";
-import Footer from "../Footer/Footer";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
