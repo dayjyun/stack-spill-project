@@ -51,7 +51,7 @@ function SortDelete() {
         <div key={question.id} style={{ margin: "30px" }}>
           <div>{`question: ${question.name}`}</div>
           <div>{`title: ${question.title}`}</div>
-          <div>{`Year of Release: ${question.createdAt}`}</div>
+          <div>{`createdAt: ${question.createdAt}`}</div>
         </div>
       ))}
     </div>

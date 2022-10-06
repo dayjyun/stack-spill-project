@@ -48,7 +48,8 @@ router.get("/:questionId", async (req, res) => {
 // Get All Questions
 router.get("/", async (req, res) => {
   const questions = await Question.findAll({
-    order: [["createdAt", "DESC"]],
+    // order: [["createdAt", "DESC"]],
+    order: [["title"]]
   });
   res.json(questions);
 });

@@ -12,9 +12,7 @@ function QuestionsPage() {
   const allQuestions = Object.values(useSelector((state) => state.questions));
 
   const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("quesitons");
-
-  console.log(allQuestions)
+  const [sortType, setSortType] = useState("questions");
 
   useEffect(() => {
     dispatch(getAllQuestions());
@@ -33,6 +31,9 @@ function QuestionsPage() {
 
     sortArray(sortType);
   }, [dispatch, sortType, allQuestions.length]);
+
+  console.log(allQuestions)
+  console.log({data})
 
   // useEffect(() => {
   //   const sortArray = (type) => {
