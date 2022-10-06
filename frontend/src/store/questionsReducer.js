@@ -15,7 +15,6 @@ const getAll = (list) => {
 }
 
 export const getAllQuestions = (sortType) => async (dispatch) => {
-    console.log(sortType)
     let allQuestions;
 
     if (sortType) {

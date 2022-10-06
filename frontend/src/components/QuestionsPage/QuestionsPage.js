@@ -44,35 +44,19 @@ function QuestionsPage() {
           <h1>All Questions</h1>
           {createQuestionButton}
         </div>
-        {allQuestionsNum}
-
-        <div id="questions-page-sort">
-          <select onChange={(e) => setSortType(e.target.value)}>
-            <option disabled value='sort'>Sort</option>
-            <option value="createdAt">Most Recent</option>
-            <option value="title">Title</option>
-          </select>
-          <div id="all-questions-container">
-            {allQuestions.map((question) => (
-              <NavLink
-                key={question?.id}
-                id="all-questions-card"
-                to={{ pathname: `/questions/${question?.id}` }}
-              >
-                <h2 id="all-questions-title">{question?.title}</h2>
-                <div id="all-questions-body">
-                  {question?.body.length > 70
-                    ? question?.body
-                        .split("")
-                        .filter((text, i) => i < 70)
-                        .join("") + "..."
-                    : question?.body}
-                </div>
-              </NavLink>
-            ))}
+        <div id="all-questions-num-sort">
+          {allQuestionsNum}
+          <div>
+            <select onChange={(e) => setSortType(e.target.value)}>
+              <option disabled value="sort">
+                Sort
+              </option>
+              <option value="createdAt">Most Recent</option>
+              <option value="title">A-Z</option>
+            </select>
           </div>
         </div>
-        {/* <div id="all-questions-container">
+        <div id="all-questions-container">
           {allQuestions.map((question) => (
             <NavLink
               key={question?.id}
@@ -90,10 +74,32 @@ function QuestionsPage() {
               </div>
             </NavLink>
           ))}
-        </div> */}
+        </div>
       </div>
     </>
   );
 }
 
 export default QuestionsPage;
+
+{
+  /* <div id="all-questions-container">
+          {allQuestions.map((question) => (
+            <NavLink
+              key={question?.id}
+              id="all-questions-card"
+              to={{ pathname: `/questions/${question?.id}` }}
+            >
+              <h2 id="all-questions-title">{question?.title}</h2>
+              <div id="all-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
+            </NavLink>
+          ))}
+        </div> */
+}
