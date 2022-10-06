@@ -4,6 +4,21 @@ const { Question, Answer, Vote } = require("../db/models");
 const { requireAuth } = require("../utils/auth");
 const { validateQuestion, validateAnswer, validateVote, validateOneAnswer, } = require("../utils/validation");
 
+// // Get All Questions
+router.get("/title", async (req, res) => {
+  const questions = await Question.findAll({
+    order: [[`title`]],
+  });
+  res.json(questions);
+});
+
+router.get("/createdAt", async (req, res) => {
+  const questions = await Question.findAll({
+    order: [[`createdAt`, 'desc']],
+  });
+  res.json(questions);
+});
+
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {
   const { questionId } = req.params;
@@ -45,20 +60,7 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
-// // Get All Questions
-router.get("/title", async (req, res) => {
-  const questions = await Question.findAll({
-    order: [[`title`]],
-  });
-  res.json(questions);
-});
 
-router.get("/createdAt", async (req, res) => {
-  const questions = await Question.findAll({
-    order: [[`createdAt`]],
-  });
-  res.json(questions);
-});
 
 // router.get("/", async (req, res) => {
 //   const {sortType } = req.body;
