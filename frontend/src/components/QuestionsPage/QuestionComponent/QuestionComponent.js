@@ -13,17 +13,14 @@ import "./QuestionComponent.css";
 function QuestionComponent() {
   const dispatch = useDispatch();
   let { questionId } = useParams();
-  questionId = parseInt(questionId)
+  // questionId = parseInt(questionId)
   const sessionUser = useSelector((state) => state.session?.user);
   const allQuestions = Object.values(useSelector((state) => state?.questions));
   const question = allQuestions.find((question) => question?.id === +questionId);
   const allUsers = Object.values(useSelector((state) => state?.users));
   const currentUser = allUsers.find((user) => user?.id === +question?.userId);
   const allAnswers = Object.values(useSelector((state) => state?.answers));
-  const answerExists = allAnswers.filter(
-    (answer) =>
-      answer?.userId === +sessionUser?.id && answer?.questionId === +question?.id
-  );
+  const answerExists = allAnswers.filter((answer) => answer?.userId === +sessionUser?.id && answer?.questionId === +question?.id);
 
   useEffect(() => {
     dispatch(getQuestion(+questionId));

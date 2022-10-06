@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAnswer } from "../../../store/answersReducer";
-import validator from 'validator';
+// import validator from 'validator';
 import "./CreateAnswerForm.css";
 
 function CreateAnswerForm({ questionId }) {
