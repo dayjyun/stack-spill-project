@@ -2,28 +2,29 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
-import { getAllQuestions } from "../../../../store/questionsReducer";
+import { getUserAnswers } from "../../../../store/usersReducer";
 import "./UserAnswers.css";
 
 function UserAnswers() {
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const allAnswers = Object.values(useSelector((state) => state.answers));
-  const userAnswers = allAnswers.filter((answer) => answer?.userId == userId);
-  const allQuestions = Object.values(useSelector((state) => state.questions));
+  const allAnswers = Object.values(useSelector((state) => state?.answers));
+  const userAnswers = allAnswers.filter((answer) => answer?.userId === +userId);
+  const allQuestions = Object.values(useSelector((state) => state?.questions));
 
   useEffect(() => {
+    // dispatch(getAllQuestions());
     dispatch(getAllAnswers());
-    dispatch(getAllQuestions());
-  }, [dispatch]);
+    dispatch(getUserAnswers(+userId))
+  }, [dispatch, userId]);
 
   let answeredQuestions = [];
 
-  for (let i = 0; i < allQuestions.length; i++) {
+  for (let i = 0; i < allQuestions?.length; i++) {
     let questions = allQuestions[i];
-    for (let j = 0; j < userAnswers.length; j++) {
+    for (let j = 0; j < userAnswers?.length; j++) {
       let answers = userAnswers[j];
-      if (answers.questionId == questions.id) {
+      if (answers?.questionId === +questions?.id) {
         answeredQuestions.push(questions);
       }
     }
@@ -31,10 +32,10 @@ function UserAnswers() {
 
   let numAnswer
 
-  if (answeredQuestions.length == 1) {
-    numAnswer = (<h3 id="user-answers-num">{answeredQuestions.length} Answer</h3>);
+  if (answeredQuestions.length === 1) {
+    numAnswer = (<h3 id="user-answers-num">{answeredQuestions?.length} Answer</h3>);
   } else {
-    numAnswer = (<h3 id="user-answers-num">{answeredQuestions.length} Answers</h3>);
+    numAnswer = (<h3 id="user-answers-num">{answeredQuestions?.length} Answers</h3>);
   }
 
   return (

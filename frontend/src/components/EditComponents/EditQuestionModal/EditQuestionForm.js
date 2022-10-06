@@ -44,7 +44,6 @@ function EditQuestionForm({ setShowModal, questionId }) {
     e.preventDefault();
     setShowModal(false);
     dispatch(deleteQuestion(+questionId));
-    alert("Question deleted");
     history.push('/')
   };
 

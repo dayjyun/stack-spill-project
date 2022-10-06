@@ -14,18 +14,22 @@ function Users() {
 
   return (
     <>
-      <h1>Users</h1>
-      {/* Search Bar for Users */}
-      <ul>
-        {allUsers.map((user) => (
-          <div key={user?.id} id='users-component-card'>
-            <Link to={`/users/${user?.id}`}>
-              <img id='users-component-profileImage' src={user?.profileImage}/>
-              <div>{user?.username}</div>
-            </Link>
-          </div>
-        ))}
-      </ul>
+      <div id='users-container'>
+        <h1>Users</h1>
+        <ul>
+          {allUsers.map((user) => (
+            <div key={user?.id} id="users-component-card">
+              <Link to={`/users/${user?.id}`}>
+                <img
+                  id="users-component-profileImage"
+                  src={user?.profileImage}
+                />
+                <div>{user?.username}</div>
+              </Link>
+            </div>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

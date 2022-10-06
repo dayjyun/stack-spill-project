@@ -42,8 +42,8 @@ function Navigation({ isLoaded }) {
                 />
                 <div id="navigation-navLink-text">Stack Spill</div>
               </NavLink>
-              <NavLink id={"navigation-about"} to="/about">
-                About
+              <NavLink id={"navigation-about"} to="/users">
+                Users
               </NavLink>
             </div>
             {/* <NavLink to="/users">Users</NavLink> */}
