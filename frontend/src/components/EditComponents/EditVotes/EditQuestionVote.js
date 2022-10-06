@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createQuestionVote,
   deleteQuestionVote,
-  getAllVotes,
-  getQuestionVote,
+  getAllVotes, getQuestionVote,
   editQuestionVote,
 } from "../../../store/votesReducer";
 import "./EditQuestionVote.css";
@@ -13,18 +12,14 @@ function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVotes = Object.values(useSelector((state) => state.votes));
-  const questionVotes = allVotes.filter(
-    (vote) => vote?.questionId == questionId
-  );
-  const userVote = questionVotes.find(
-    (vote) => vote?.userId == sessionUser?.id
-  );
+  const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
+  const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
 
   useEffect(() => {
     dispatch(getAllVotes());
-    dispatch(getQuestionVote(questionId));
+    // dispatch(getQuestionVote(questionId));
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };
@@ -47,7 +42,7 @@ function EditQuestionVote({ questionId }) {
 
   const downVoteQuestion = async () => {
     if (userVote?.vote === false) {
-      await dispatch(deleteQuestionVote(questionId));
+      await dispatch(deleteQuestionVote(+questionId));
     } else {
       await dispatch(
         createQuestionVote({
@@ -62,7 +57,7 @@ function EditQuestionVote({ questionId }) {
   let questionVoteCount = 0;
 
   questionVotes.map((vote) => {
-    vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
+    return vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
   });
 
   const handleUpVote = async () => {
@@ -89,7 +84,9 @@ function EditQuestionVote({ questionId }) {
           vote: false,
           questionId: +questionId,
         })
-      )
+      ).then(async ()=> {
+        setUpVote(!upVote)
+      })
     } else {
       await downVoteQuestion().then(async () => setDownVote(!downVote));
     }
