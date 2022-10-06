@@ -5,6 +5,7 @@ import {
   deleteQuestionVote,
   getAllVotes,
   getQuestionVote,
+  editQuestionVote,
 } from "../../../store/votesReducer";
 import "./EditQuestionVote.css";
 
@@ -12,12 +13,8 @@ function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVotes = Object.values(useSelector((state) => state.votes));
-  const questionVotes = allVotes.filter(
-    (vote) => vote?.questionId == questionId
-  );
-  const userVote = questionVotes.find(
-    (vote) => vote?.userId == sessionUser?.id
-  );
+  const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
+  const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
 
@@ -29,6 +26,8 @@ function EditQuestionVote({ questionId }) {
     };
     sessionUserQuestionVote();
   }, [dispatch]);
+
+  // ? ====================================================
 
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
@@ -58,6 +57,8 @@ function EditQuestionVote({ questionId }) {
     }
   };
 
+  // ? ====================================================
+
   let questionVoteCount = 0;
 
   questionVotes.map((vote) => {
@@ -65,10 +66,30 @@ function EditQuestionVote({ questionId }) {
   });
 
   const handleUpVote = async () => {
+
+    if (userVote?.vote === false) {
+      // await dispatch(
+      //   editQuestionVote({
+      //     userId: userVote?.userId,
+      //     vote: setDownVote(true),
+      //     questionId,
+      //   })
+      // );
+      await dispatch(deleteQuestionVote(questionId)).then(async() => {
+        setUpVote(!upVote);
+      })
+    }
     await upVoteQuestion().then(async () => setUpVote(!upVote));
   };
 
+
   const handleDownVote = async () => {
+    if (userVote?.vote === true) {
+      await dispatch(deleteQuestionVote(questionId)).then(async () => {
+        setUpVote(!downVote);
+      });
+    }
+
     await downVoteQuestion().then(async () => setDownVote(!downVote));
   };
 
@@ -78,7 +99,7 @@ function EditQuestionVote({ questionId }) {
         <button id="edit-question-vote-up" onClick={handleUpVote}>
           <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
         </button>
-        <div id='edit-question-vote-count'>{questionVoteCount}</div>
+        <div id="edit-question-vote-count">{questionVoteCount}</div>
         <button id="edit-question-vote-down" onClick={handleDownVote}>
           <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
         </button>
@@ -87,28 +108,3 @@ function EditQuestionVote({ questionId }) {
   );
 }
 export default EditQuestionVote;
-
-// const handleUpArrow = (e) => {
-//   e.preventDefault();
-
-//   dispatch(
-//     editQuestionVote({
-//       userId: sessionUser?.id,
-//       vote: true,
-//       questionId: userVote?.questionId,
-//     })
-//   );
-//   // vote === false ? setVote(true) : setVote('')
-// };
-
-// const handleDownArrow = (e) => {
-//   e.preventDefault();
-//   dispatch(
-//     editQuestionVote({
-//       userId: sessionUser?.id,
-//       vote: false,
-//       questionId: userVote?.questionId,
-//     })
-//   );
-//   //   vote === true ? setVote(false) : setVote("");
-// };

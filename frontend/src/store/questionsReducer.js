@@ -92,11 +92,11 @@ export const editQuestion = (question) => async (dispatch) => {
 }
 
 // delete question
-const removeQuestion = (id) => {
+const removeQuestion = (questionData) => {
     return {
-        type: DELETE_QUESTION,
-        id
-    }
+      type: DELETE_QUESTION,
+      questionData,
+    };
 }
 
 export const deleteQuestion = (questionId) => async (dispatch) => {
@@ -104,7 +104,8 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
         method: "DELETE",
     })
     if (questionDelete.ok) {
-      dispatch(removeQuestion(questionId));
+        const resDeletedQuestion = await questionDelete.json()
+      dispatch(removeQuestion(resDeletedQuestion));
     }
 }
 
@@ -130,7 +131,8 @@ export default function questionReducer(state = initialState, action) {
 
         case DELETE_QUESTION:
             const removeQuestionState = { ...state }
-            delete removeQuestionState[action.id]
+            console.log(removeQuestionState[action.questionData.deletedQuestion.id])
+            delete removeQuestionState[action.questionData.deletedQuestion.id]
             return removeQuestionState
 
         default:

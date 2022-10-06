@@ -35,7 +35,7 @@ function EditAnswerForm({ setShowModal, answerId }) {
     e.preventDefault();
     setShowModal(false);
     dispatch(deleteAnswer(+answerId));
-    alert("Answer deleted");
+    // alert("Answer deleted");
   };
 
   return (

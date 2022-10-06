@@ -211,8 +211,10 @@ router.delete("/:questionId", requireAuth, async (req, res) => {
 
   if (question) {
     if (question.userId === user.id) {
+      const deletedQuestion = question
       await question.destroy();
       res.json({
+        deletedQuestion,
         message: "Successfully deleted question",
         statusCode: 200,
       });

@@ -10,14 +10,15 @@ function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
+
   const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("albums");
+  const [sortType, setSortType] = useState("quesitons");
+
+  console.log(allQuestions)
 
   useEffect(() => {
     dispatch(getAllQuestions());
-  }, [dispatch]);
 
-  useEffect(() => {
     const sortArray = (type) => {
       const types = {
         title: "title",
@@ -31,7 +32,23 @@ function QuestionsPage() {
     };
 
     sortArray(sortType);
-  }, [sortType]);
+  }, [dispatch, sortType, allQuestions.length]);
+
+  // useEffect(() => {
+  //   const sortArray = (type) => {
+  //     const types = {
+  //       title: "title",
+  //       createdAt: "createdAt",
+  //     };
+  //     const sortProperty = types[type];
+  //     const sorted = [...allQuestions]?.sort(
+  //       (a, b) => b[sortProperty] - a[sortProperty]
+  //     );
+  //     setData(sorted);
+  //   };
+
+  //   sortArray(sortType);
+  // }, [sortType]);
 
   let allQuestionsNum;
   allQuestions.length == 1
