@@ -136,7 +136,6 @@ export default function questionReducer(state = initialState, action) {
 
         case DELETE_QUESTION:
             const removeQuestionState = { ...state }
-            console.log(removeQuestionState[action.questionData.deletedQuestion.id])
             delete removeQuestionState[action.questionData.deletedQuestion.id]
             return removeQuestionState
 
