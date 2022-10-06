@@ -15,7 +15,7 @@ function QuestionsPage() {
   const [sortType, setSortType] = useState("questions");
 
   useEffect(() => {
-    dispatch(getAllQuestions());
+    dispatch(getAllQuestions('title'));
 
     const sortArray = (type) => {
       const types = {

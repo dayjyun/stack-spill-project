@@ -45,11 +45,33 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
-// Get All Questions
+// // Get All Questions
+router.get("/title", async (req, res) => {
+  const questions = await Question.findAll({
+    order: [[`title`]],
+  });
+  res.json(questions);
+});
+
+router.get("/createdAt", async (req, res) => {
+  const questions = await Question.findAll({
+    order: [[`createdAt`]],
+  });
+  res.json(questions);
+});
+
+// router.get("/", async (req, res) => {
+//   const {sortType } = req.body;
+//   const questions = await Question.findAll({
+//     order: [["createdAt", "DESC"]],
+//   });
+//   res.json(questions);
+// });
+
 router.get("/", async (req, res) => {
   const questions = await Question.findAll({
     // order: [["createdAt", "DESC"]],
-    order: [["title"]]
+    order: [["title"]],
   });
   res.json(questions);
 });

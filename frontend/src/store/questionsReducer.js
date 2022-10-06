@@ -14,8 +14,15 @@ const getAll = (list) => {
     }
 }
 
-export const getAllQuestions = () => async (dispatch) => {
-    const allQuestions = await fetch('/api/questions')
+export const getAllQuestions = (sortType) => async (dispatch) => {
+    const allQuestions = await fetch(`/api/questions/${sortType}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        // body: JSON.stringify({sortType})
+
+    })
 
     if (allQuestions.ok) {
         const resAllQuestions = await allQuestions.json()
