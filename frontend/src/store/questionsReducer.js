@@ -14,8 +14,13 @@ const getAll = (list) => {
     }
 }
 
-export const getAllQuestions = () => async (dispatch) => {
-    const allQuestions = await fetch('/api/questions')
+export const getAllQuestions = (sortType) => async (dispatch) => {
+    const allQuestions = await fetch(`/api/questions/sort/${sortType}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
 
     if (allQuestions.ok) {
         const resAllQuestions = await allQuestions.json()
@@ -114,9 +119,9 @@ let initialState = {}
 export default function questionReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_QUESTIONS:
-            initialState = { ...state }
-            action.list.forEach(question => {
-                initialState[question.id] = question
+            initialState = {  }
+            action.list.forEach((question, i) => {
+                initialState[i] = question
             })
             return initialState
 

@@ -10,46 +10,11 @@ function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
-
-  const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("questions");
+  const [sortType, setSortType] = useState("title");
 
   useEffect(() => {
-    dispatch(getAllQuestions());
-
-    const sortArray = (type) => {
-      const types = {
-        title: "title",
-        createdAt: "createdAt",
-      };
-      const sortProperty = types[type];
-      const sorted = [...allQuestions]?.sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
-      );
-      setData(sorted);
-    };
-
-    sortArray(sortType);
+    dispatch(getAllQuestions(sortType));
   }, [dispatch, sortType, allQuestions.length]);
-
-  console.log(allQuestions)
-  console.log({data})
-
-  // useEffect(() => {
-  //   const sortArray = (type) => {
-  //     const types = {
-  //       title: "title",
-  //       createdAt: "createdAt",
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...allQuestions]?.sort(
-  //       (a, b) => b[sortProperty] - a[sortProperty]
-  //     );
-  //     setData(sorted);
-  //   };
-
-  //   sortArray(sortType);
-  // }, [sortType]);
 
   let allQuestionsNum;
   allQuestions.length == 1
@@ -83,29 +48,30 @@ function QuestionsPage() {
 
         <div id="questions-page-sort">
           <select onChange={(e) => setSortType(e.target.value)}>
-            <option value="title">title</option>
-            <option value="createdAt">createdAt</option>
+            <option disabled value='sort'>Sort</option>
+            <option value="title">Title</option>
+            <option value="createdAt">Most Recent</option>
           </select>
-
-          {data.map((question) => (
-            <NavLink
-              key={question?.id}
-              id="all-questions-card"
-              to={{ pathname: `/questions/${question?.id}` }}
-            >
-              <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">
-                {question?.body.length > 70
-                  ? question?.body
-                      .split("")
-                      .filter((text, i) => i < 70)
-                      .join("") + "..."
-                  : question?.body}
-              </div>
-            </NavLink>
-          ))}
+          <div id="all-questions-container">
+            {allQuestions.map((question) => (
+              <NavLink
+                key={question?.id}
+                id="all-questions-card"
+                to={{ pathname: `/questions/${question?.id}` }}
+              >
+                <h2 id="all-questions-title">{question?.title}</h2>
+                <div id="all-questions-body">
+                  {question?.body.length > 70
+                    ? question?.body
+                        .split("")
+                        .filter((text, i) => i < 70)
+                        .join("") + "..."
+                    : question?.body}
+                </div>
+              </NavLink>
+            ))}
+          </div>
         </div>
-        {/* <button onClick={byName}>Sort By Name</button> // ! Make button work? */}
         {/* <div id="all-questions-container">
           {allQuestions.map((question) => (
             <NavLink
