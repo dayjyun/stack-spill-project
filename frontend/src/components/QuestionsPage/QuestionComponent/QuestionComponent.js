@@ -12,32 +12,30 @@ import "./QuestionComponent.css";
 
 function QuestionComponent() {
   const dispatch = useDispatch();
-  const { questionId } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const allQuestions = Object.values(useSelector((state) => state.questions));
-  const question = allQuestions.find((question) => question.id == questionId);
-  const allUsers = Object.values(useSelector((state) => state.users));
-  const currentUser = allUsers.find((user) => user.id == question?.userId);
-  const allAnswers = Object.values(useSelector((state) => state.answers));
-  const answerExists = allAnswers.filter(
-    (answer) =>
-      answer?.userId == sessionUser?.id && answer?.questionId == question?.id
-  );
+  let { questionId } = useParams();
+  // questionId = parseInt(questionId)
+  const sessionUser = useSelector((state) => state.session?.user);
+  const allQuestions = Object.values(useSelector((state) => state?.questions));
+  const question = allQuestions.find((question) => question?.id === +questionId);
+  const allUsers = Object.values(useSelector((state) => state?.users));
+  const currentUser = allUsers.find((user) => user?.id === +question?.userId);
+  const allAnswers = Object.values(useSelector((state) => state?.answers));
+  const answerExists = allAnswers.filter((answer) => answer?.userId === +sessionUser?.id && answer?.questionId === +question?.id);
 
   useEffect(() => {
-    dispatch(getQuestion(questionId));
-  }, [dispatch]);
+    dispatch(getQuestion(+questionId));
+  }, [dispatch, questionId]);
 
   let userQuestionEdit;
-  if (sessionUser?.id == question?.userId) {
-    userQuestionEdit = <EditQuestionModal questionId={questionId} />;
+  if (sessionUser?.id === +question?.userId) {
+    userQuestionEdit = <EditQuestionModal questionId={+questionId} />;
   }
 
-  let createAnswerComponent;
-  if (sessionUser && answerExists.length == 0) {
-    createAnswerComponent = <CreateAnswerForm questionId={questionId} />;
+  let createAnswerForm;
+  if (sessionUser && answerExists?.length === 0) {
+    createAnswerForm = <CreateAnswerForm questionId={+questionId} />;
   } else if (!sessionUser) {
-    createAnswerComponent = (
+    createAnswerForm = (
       <div id="create-answer-login-button">
         <LoginTextModal /> <div id="calb-text">to Answer</div>
       </div>
@@ -62,6 +60,7 @@ function QuestionComponent() {
               >
                 <img
                   id="question-component-user-profileImage"
+                  alt='profile'
                   src={currentUser?.profileImage}
                 />
                 {currentUser?.username}
@@ -73,7 +72,7 @@ function QuestionComponent() {
           </div>
         </div>
         <AnswersComponent questionId={questionId} allUsers={allUsers} />
-        {createAnswerComponent}
+        {createAnswerForm}
       </div>
     </>
   );

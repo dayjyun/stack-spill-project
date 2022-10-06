@@ -5,6 +5,7 @@ import {
   deleteQuestionVote,
   getAllVotes,
   getQuestionVote,
+  editQuestionVote,
 } from "../../../store/votesReducer";
 import "./EditQuestionVote.css";
 
@@ -29,6 +30,8 @@ function EditQuestionVote({ questionId }) {
     };
     sessionUserQuestionVote();
   }, [dispatch]);
+
+  // ? ====================================================
 
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
@@ -58,6 +61,8 @@ function EditQuestionVote({ questionId }) {
     }
   };
 
+  // ? ====================================================
+
   let questionVoteCount = 0;
 
   questionVotes.map((vote) => {
@@ -65,11 +70,35 @@ function EditQuestionVote({ questionId }) {
   });
 
   const handleUpVote = async () => {
-    await upVoteQuestion().then(async () => setUpVote(!upVote));
+    if (userVote?.vote === false) {
+      await dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: true,
+          questionId: +questionId,
+        })
+      ).then(async () => {
+        setUpVote(!upVote);
+      });
+    } else {
+      await upVoteQuestion().then(async () => setUpVote(!upVote));
+    }
   };
 
   const handleDownVote = async () => {
-    await downVoteQuestion().then(async () => setDownVote(!downVote));
+    if (userVote?.vote === true) {
+      await dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: false,
+          questionId: +questionId,
+        })
+      ).then(async () => {
+        setUpVote(!upVote);
+      });
+    } else {
+      await downVoteQuestion().then(async () => setDownVote(!downVote));
+    }
   };
 
   return (
@@ -78,7 +107,7 @@ function EditQuestionVote({ questionId }) {
         <button id="edit-question-vote-up" onClick={handleUpVote}>
           <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
         </button>
-        <div id='edit-question-vote-count'>{questionVoteCount}</div>
+        <div id="edit-question-vote-count">{questionVoteCount}</div>
         <button id="edit-question-vote-down" onClick={handleDownVote}>
           <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
         </button>
@@ -87,28 +116,3 @@ function EditQuestionVote({ questionId }) {
   );
 }
 export default EditQuestionVote;
-
-// const handleUpArrow = (e) => {
-//   e.preventDefault();
-
-//   dispatch(
-//     editQuestionVote({
-//       userId: sessionUser?.id,
-//       vote: true,
-//       questionId: userVote?.questionId,
-//     })
-//   );
-//   // vote === false ? setVote(true) : setVote('')
-// };
-
-// const handleDownArrow = (e) => {
-//   e.preventDefault();
-//   dispatch(
-//     editQuestionVote({
-//       userId: sessionUser?.id,
-//       vote: false,
-//       questionId: userVote?.questionId,
-//     })
-//   );
-//   //   vote === true ? setVote(false) : setVote("");
-// };

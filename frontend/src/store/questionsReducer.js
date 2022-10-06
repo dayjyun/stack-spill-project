@@ -14,8 +14,19 @@ const getAll = (list) => {
     }
 }
 
-export const getAllQuestions = () => async (dispatch) => {
-    const allQuestions = await fetch('/api/questions')
+export const getAllQuestions = (sortType) => async (dispatch) => {
+    let allQuestions;
+
+    if (sortType) {
+        allQuestions = await fetch(`/api/questions/sort/${sortType}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+    } else {
+        allQuestions = await fetch('/api/questions')
+    }
 
     if (allQuestions.ok) {
         const resAllQuestions = await allQuestions.json()
@@ -92,11 +103,11 @@ export const editQuestion = (question) => async (dispatch) => {
 }
 
 // delete question
-const removeQuestion = (id) => {
+const removeQuestion = (questionData) => {
     return {
-        type: DELETE_QUESTION,
-        id
-    }
+      type: DELETE_QUESTION,
+      questionData,
+    };
 }
 
 export const deleteQuestion = (questionId) => async (dispatch) => {
@@ -104,7 +115,8 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
         method: "DELETE",
     })
     if (questionDelete.ok) {
-      dispatch(removeQuestion(questionId));
+        const resDeletedQuestion = await questionDelete.json()
+      dispatch(removeQuestion(resDeletedQuestion));
     }
 }
 
@@ -113,9 +125,9 @@ let initialState = {}
 export default function questionReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_QUESTIONS:
-            initialState = { ...state }
-            action.list.forEach(question => {
-                initialState[question.id] = question
+            initialState = {  }
+            action.list.forEach((question, i) => {
+                initialState[i] = question
             })
             return initialState
 
@@ -130,7 +142,7 @@ export default function questionReducer(state = initialState, action) {
 
         case DELETE_QUESTION:
             const removeQuestionState = { ...state }
-            delete removeQuestionState[action.id]
+            delete removeQuestionState[action.questionData.deletedQuestion.id]
             return removeQuestionState
 
         default:

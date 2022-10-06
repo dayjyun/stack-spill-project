@@ -13,7 +13,6 @@ import UserComponent from "./components/Users/UserComponent/UserComponent";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
 import Footer from "./components/Footer/Footer";
 import './App.css'
-import SortDelete from "./components/QuestionsPage/delete";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,9 +28,6 @@ function App() {
       <div id='app-content'>
         {isLoaded && (
           <Switch>
-            <Route path='/deletethis'>
-              <SortDelete />
-            </Route>
             <Route path="/questions/ask">
               <CreateQuestionForm />
             </Route>

@@ -1,23 +1,30 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAnswer } from "../../../store/answersReducer";
+// import validator from 'validator';
 import "./CreateAnswerForm.css";
 
 function CreateAnswerForm({ questionId }) {
+  // questionId = parseInt(questionId)
   const dispatch = useDispatch();
   const [body, setBody] = useState("");
 
   const handleAnswerSubmit = async (e) => {
     e.preventDefault();
+    // if (!validator.isInt(questionId)) {
+    //   alert('questionId is not a number')
+    //   return
+    // }
 
     await dispatch(
       createAnswer({
-        questionId,
+        questionId: +questionId,
         body,
       })
     ).then(() => {
       e.preventDefault();
     });
+    setBody('')
   };
 
   const handleCancelButton = (e) => {

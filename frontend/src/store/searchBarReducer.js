@@ -24,7 +24,7 @@
 //         case SEARCH_GET_ALL_USERS:
 //             initialState = { ...state };
 //             action.list.forEach(user => {
-//                 initialState[user.id] = use;
+//                 initialState[user.id] = user;
 //             })
 //             return initialState
 

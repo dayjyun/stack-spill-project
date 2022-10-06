@@ -23,10 +23,10 @@
   color: lightgray;
 }
 
-.fa-arrow-circle-up.active {
+.fa-arrow-circle-up.active, #edit-question-vote-up.active {
   color: rgb(0, 165, 0);
 }
 
-.fa-arrow-circle-down.active {
+.fa-arrow-circle-down.active, #edit-question-vote-down.active {
   color: red;
 }

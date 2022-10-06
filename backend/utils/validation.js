@@ -77,6 +77,7 @@ const validateAnswer = [
   check("body")
     .exists({ checkFalsy: true })
     .notEmpty()
+    .isLength({ min: 1 })
     .withMessage("Please provide a detailed answer"),
   handleValidationErrors
 ]
