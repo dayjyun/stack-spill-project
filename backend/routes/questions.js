@@ -9,7 +9,7 @@ const {
   validateOneAnswer,
 } = require("../utils/validation");
 
-// // Get All Questions
+// Get All Questions (sort method)
 router.get("/sort/:sortType", async (req, res) => {
   const { sortType } = req.params;
   const questions = await Question.findAll({
@@ -17,13 +17,6 @@ router.get("/sort/:sortType", async (req, res) => {
   });
   res.json(questions);
 });
-
-// router.get("/createdAt", async (req, res) => {
-//   const questions = await Question.findAll({
-//     order: [[`createdAt`, 'desc']],
-//   });
-//   res.json(questions);
-// });
 
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {
@@ -68,8 +61,7 @@ router.get("/:questionId", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const questions = await Question.findAll({
-    // order: [["createdAt", "DESC"]],
-    order: [["title"]],
+    order: [["createdAt", "DESC"]],
   });
   res.json(questions);
 });
