@@ -22,6 +22,7 @@ function Users() {
               <Link to={`/users/${user?.id}`}>
                 <img
                   id="users-component-profileImage"
+                  alt='user'
                   src={user?.profileImage}
                 />
                 <div>{user?.username}</div>

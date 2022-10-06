@@ -31,8 +31,6 @@ function EditQuestionVote({ questionId }) {
     sessionUserQuestionVote();
   }, [dispatch]);
 
-  // ? ====================================================
-
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
       await dispatch(deleteQuestionVote(+questionId));
@@ -54,14 +52,12 @@ function EditQuestionVote({ questionId }) {
       await dispatch(
         createQuestionVote({
           userId: userVote?.userId,
-          vote: downVote,
+          vote: false,
           questionId,
         })
       );
     }
   };
-
-  // ? ====================================================
 
   let questionVoteCount = 0;
 
@@ -93,9 +89,7 @@ function EditQuestionVote({ questionId }) {
           vote: false,
           questionId: +questionId,
         })
-      ).then(async () => {
-        setUpVote(!upVote);
-      });
+      )
     } else {
       await downVoteQuestion().then(async () => setDownVote(!downVote));
     }
