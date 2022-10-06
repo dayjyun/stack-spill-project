@@ -68,13 +68,6 @@ function EditQuestionVote({ questionId }) {
   const handleUpVote = async () => {
 
     if (userVote?.vote === false) {
-      // await dispatch(
-      //   editQuestionVote({
-      //     userId: userVote?.userId,
-      //     vote: setDownVote(true),
-      //     questionId,
-      //   })
-      // );
       await dispatch(deleteQuestionVote(questionId)).then(async() => {
         setUpVote(!upVote);
       })

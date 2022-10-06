@@ -48,29 +48,30 @@ function QuestionsPage() {
 
         <div id="questions-page-sort">
           <select onChange={(e) => setSortType(e.target.value)}>
-            <option value="title">title</option>
-            <option value="createdAt">createdAt</option>
+            <option disabled value='sort'>Sort</option>
+            <option value="title">Title</option>
+            <option value="createdAt">Most Recent</option>
           </select>
-
-          {allQuestions.map((question) => (
-            <NavLink
-              key={question?.id}
-              id="all-questions-card"
-              to={{ pathname: `/questions/${question?.id}` }}
-            >
-              <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">
-                {question?.body.length > 70
-                  ? question?.body
-                      .split("")
-                      .filter((text, i) => i < 70)
-                      .join("") + "..."
-                  : question?.body}
-              </div>
-            </NavLink>
-          ))}
+          <div id="all-questions-container">
+            {allQuestions.map((question) => (
+              <NavLink
+                key={question?.id}
+                id="all-questions-card"
+                to={{ pathname: `/questions/${question?.id}` }}
+              >
+                <h2 id="all-questions-title">{question?.title}</h2>
+                <div id="all-questions-body">
+                  {question?.body.length > 70
+                    ? question?.body
+                        .split("")
+                        .filter((text, i) => i < 70)
+                        .join("") + "..."
+                    : question?.body}
+                </div>
+              </NavLink>
+            ))}
+          </div>
         </div>
-        {/* <button onClick={byName}>Sort By Name</button> // ! Make button work? */}
         {/* <div id="all-questions-container">
           {allQuestions.map((question) => (
             <NavLink
