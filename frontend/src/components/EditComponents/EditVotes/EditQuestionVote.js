@@ -13,8 +13,12 @@ function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVotes = Object.values(useSelector((state) => state.votes));
-  const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
-  const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
+  const questionVotes = allVotes.filter(
+    (vote) => vote?.questionId == questionId
+  );
+  const userVote = questionVotes.find(
+    (vote) => vote?.userId == sessionUser?.id
+  );
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
 
@@ -66,24 +70,35 @@ function EditQuestionVote({ questionId }) {
   });
 
   const handleUpVote = async () => {
-
     if (userVote?.vote === false) {
-      await dispatch(deleteQuestionVote(questionId)).then(async() => {
+      await dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: true,
+          questionId: +questionId,
+        })
+      ).then(async () => {
         setUpVote(!upVote);
-      })
+      });
+    } else {
+      await upVoteQuestion().then(async () => setUpVote(!upVote));
     }
-    await upVoteQuestion().then(async () => setUpVote(!upVote));
   };
-
 
   const handleDownVote = async () => {
     if (userVote?.vote === true) {
-      await dispatch(deleteQuestionVote(questionId)).then(async () => {
-        setUpVote(!downVote);
+      await dispatch(
+        editQuestionVote({
+          userId: sessionUser?.id,
+          vote: false,
+          questionId: +questionId,
+        })
+      ).then(async () => {
+        setUpVote(!upVote);
       });
+    } else {
+      await downVoteQuestion().then(async () => setDownVote(!downVote));
     }
-
-    await downVoteQuestion().then(async () => setDownVote(!downVote));
   };
 
   return (
