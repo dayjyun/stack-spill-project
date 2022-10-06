@@ -17,12 +17,12 @@ function QuestionsPage() {
   }, [dispatch, sortType, allQuestions.length]);
 
   let allQuestionsNum;
-  allQuestions.length == 1
+  allQuestions.length === 1
     ? (allQuestionsNum = (
-        <h3 id="all-questions-num">{allQuestions.length} Question</h3>
+        <h3 id="all-questions-num">{allQuestions?.length} Question</h3>
       ))
     : (allQuestionsNum = (
-        <h3 id="all-questions-num">{allQuestions.length} Questions</h3>
+        <h3 id="all-questions-num">{allQuestions?.length} Questions</h3>
       ));
 
   let createQuestionButton;
@@ -82,7 +82,7 @@ function QuestionsPage() {
 
 export default QuestionsPage;
 
-{
+// {
   /* <div id="all-questions-container">
           {allQuestions.map((question) => (
             <NavLink
@@ -102,4 +102,4 @@ export default QuestionsPage;
             </NavLink>
           ))}
         </div> */
-}
+// }

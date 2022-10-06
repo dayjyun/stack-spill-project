@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createQuestion } from "../../../store/questionsReducer";
@@ -12,8 +12,8 @@ function CreateQuestionForm() {
   const [body, setBody] = useState("");
 
   // const myTextArea = document.querySelector("#cqfi-title");
-  const remainingCharacters = document.getElementById("title-text-count");
-  const maxChars = 250;
+  // const remainingCharacters = document.getElementById("title-text-count");
+  // const maxChars = 250;
 
   // useEffect(() => {
   //   myTextArea.addEventListener("input", () => {
@@ -50,7 +50,8 @@ function CreateQuestionForm() {
   };
 
   const handleCancelButton = () => {
-    history.push("/");
+    setTitle('')
+    setBody('')
   };
 
   return (
