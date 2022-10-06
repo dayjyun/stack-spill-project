@@ -137,7 +137,7 @@ const usersReducer = (state = initialState, action) => {
         initialState[answer.id] = answer;
       });
     return initialState;
-    
+
     default:
       return state;
   }

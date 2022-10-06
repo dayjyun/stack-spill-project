@@ -17,7 +17,7 @@ export const getUserQuestions = (userId) => async (dispatch) => {
   }
 };
 
-let initialState = {}
+let initialState = {};
 
 const userQuestionsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,9 +28,9 @@ const userQuestionsReducer = (state = initialState, action) => {
       });
       return initialState;
 
-      default:
+    default:
       return state;
   }
 };
 
-export default userQuestionsReducer
+export default userQuestionsReducer;
