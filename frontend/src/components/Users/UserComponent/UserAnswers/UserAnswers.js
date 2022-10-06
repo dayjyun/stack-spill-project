@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
-import { getAllQuestions } from "../../../../store/questionsReducer";
+import { getUserAnswers } from "../../../../store/usersReducer";
 import "./UserAnswers.css";
 
 function UserAnswers() {
@@ -13,9 +13,10 @@ function UserAnswers() {
   const allQuestions = Object.values(useSelector((state) => state?.questions));
 
   useEffect(() => {
+    // dispatch(getAllQuestions());
     dispatch(getAllAnswers());
-    dispatch(getAllQuestions());
-  }, [dispatch]);
+    dispatch(getUserAnswers(+userId))
+  }, [dispatch, userId]);
 
   let answeredQuestions = [];
 

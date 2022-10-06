@@ -20,16 +20,15 @@ export const getUserQuestions = (userId) => async (dispatch) => {
 let initialState = {}
 
 const userQuestionsReducer = (state = initialState, action) => {
-  let newState;
   switch (action.type) {
     case GET_USER_QUESTIONS:
-      initialState = {}
-      action.list.forEach(question => {
+      initialState = {};
+      action.list.forEach((question) => {
         initialState[question.id] = question;
-      })
-      return initialState
+      });
+      return initialState;
 
-    default:
+      default:
       return state;
   }
 };

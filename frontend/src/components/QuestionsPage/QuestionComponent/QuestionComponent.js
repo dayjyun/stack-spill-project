@@ -15,26 +15,26 @@ function QuestionComponent() {
   const { questionId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
-  const question = allQuestions.find((question) => question.id == questionId);
-  const allUsers = Object.values(useSelector((state) => state.users));
-  const currentUser = allUsers.find((user) => user.id == question?.userId);
+  const question = allQuestions.find((question) => question?.id === +questionId);
+  const allUsers = Object.values(useSelector((state) => state?.users));
+  const currentUser = allUsers.find((user) => user?.id === +question?.userId);
   const allAnswers = Object.values(useSelector((state) => state.answers));
   const answerExists = allAnswers.filter(
     (answer) =>
-      answer?.userId == sessionUser?.id && answer?.questionId == question?.id
+      answer?.userId === +sessionUser?.id && answer?.questionId === +question?.id
   );
 
   useEffect(() => {
-    dispatch(getQuestion(questionId));
-  }, [dispatch]);
+    dispatch(getQuestion(+questionId));
+  }, [dispatch, questionId]);
 
   let userQuestionEdit;
-  if (sessionUser?.id == question?.userId) {
+  if (sessionUser?.id === +question?.userId) {
     userQuestionEdit = <EditQuestionModal questionId={questionId} />;
   }
 
   let createAnswerComponent;
-  if (sessionUser && answerExists.length == 0) {
+  if (sessionUser && answerExists.length === 0) {
     createAnswerComponent = <CreateAnswerForm questionId={questionId} />;
   } else if (!sessionUser) {
     createAnswerComponent = (
@@ -62,6 +62,7 @@ function QuestionComponent() {
               >
                 <img
                   id="question-component-user-profileImage"
+                  alt='profile'
                   src={currentUser?.profileImage}
                 />
                 {currentUser?.username}

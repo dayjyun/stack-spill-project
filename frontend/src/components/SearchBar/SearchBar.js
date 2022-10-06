@@ -53,6 +53,7 @@ function QuestionsSearchBarComponent() {
         <div className="search-results-text">
           <img
             src={user?.profileImage}
+            alt='profile'
             className='search-bar-profile-pic'
           />
           <div className="search-bar-profile-username">{user?.username}</div>
