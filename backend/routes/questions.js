@@ -12,11 +12,18 @@ const {
 // Get All Questions (sort method)
 router.get("/sort/:sortType", async (req, res) => {
   const { sortType } = req.params;
-  const questions = await Question.findAll({
-    order: [[`${sortType}`]],
+  let questions;
+  if (sortType == 'createdAt') {
+    questions = await Question.findAll({
+      order: [['createdAt', 'DESC']],
+    });
+  } else {
+    questions = await Question.findAll({
+      order: [[`${sortType}`]],
+    });
+  }
+    res.json(questions);
   });
-  res.json(questions);
-});
 
 // Get Votes for a Question
 router.get("/:questionId/votes", async (req, res) => {

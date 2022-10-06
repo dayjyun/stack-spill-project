@@ -15,12 +15,19 @@ const getAll = (list) => {
 }
 
 export const getAllQuestions = (sortType) => async (dispatch) => {
-    const allQuestions = await fetch(`/api/questions/sort/${sortType}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    })
+    console.log(sortType)
+    let allQuestions;
+
+    if (sortType) {
+        allQuestions = await fetch(`/api/questions/sort/${sortType}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+    } else {
+        allQuestions = await fetch('/api/questions')
+    }
 
     if (allQuestions.ok) {
         const resAllQuestions = await allQuestions.json()

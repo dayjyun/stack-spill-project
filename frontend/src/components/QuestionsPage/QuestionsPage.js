@@ -10,7 +10,7 @@ function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
-  const [sortType, setSortType] = useState("title");
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     dispatch(getAllQuestions(sortType));
@@ -49,8 +49,8 @@ function QuestionsPage() {
         <div id="questions-page-sort">
           <select onChange={(e) => setSortType(e.target.value)}>
             <option disabled value='sort'>Sort</option>
-            <option value="title">Title</option>
             <option value="createdAt">Most Recent</option>
+            <option value="title">Title</option>
           </select>
           <div id="all-questions-container">
             {allQuestions.map((question) => (

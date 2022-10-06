@@ -41,21 +41,21 @@ export const getUser = (userId) => async (dispatch) => {
 }
 
 // get user questions
-const getQuestions = (list) => {
-  return {
-    type: GET_USER_QUESTIONS,
-    list,
-  };
-}
+// const getQuestions = (list) => {
+//   return {
+//     type: GET_USER_QUESTIONS,
+//     list,
+//   };
+// }
 
-export const getUserQuestions = (userId) => async (dispatch) => {
-  const userQuestions = await fetch(`/api/users/${userId}/questions`)
+// export const getUserQuestions = (userId) => async (dispatch) => {
+//   const userQuestions = await fetch(`/api/users/${userId}/questions`)
 
-  if (userQuestions.ok) {
-    const resUserQuestions = await userQuestions.json()
-    dispatch(getQuestions(resUserQuestions))
-  }
-}
+//   if (userQuestions.ok) {
+//     const resUserQuestions = await userQuestions.json()
+//     dispatch(getQuestions(resUserQuestions))
+//   }
+// }
 
 // get user answers
 const getAnswers = (list) => {
@@ -126,9 +126,9 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, [action.user.id]: action.user };
 
     case GET_USER_QUESTIONS:
-      initialState = { ...state }
+      initialState = {}
       action.list.forEach(question => {
-        initialState[action.question.id] = action.question;
+        initialState[question.id] = question;
       })
       return initialState
 

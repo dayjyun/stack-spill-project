@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllQuestions } from "../../../../store/questionsReducer";
+import { getUserQuestions } from "../../../../store/userQuestionsReducer";
+// import { getUserQuestions } from "../../../../store/usersQuestionsReducer";
 import "./UserQuestions.css";
 
 function UserQuestions() {
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const allQuestions = Object.values(useSelector((state) => state.questions));
+  const allQuestions = Object.values(useSelector((state) => state.userQuestions));
   const userQuestions = allQuestions.filter((questions) => questions.userId == userId);
 
   useEffect(() => {
-    dispatch(getAllQuestions());
+    dispatch(getUserQuestions(+userId));
   }, [dispatch]);
 
   let numQuestion;
