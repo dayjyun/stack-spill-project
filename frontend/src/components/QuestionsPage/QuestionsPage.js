@@ -10,46 +10,11 @@ function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
-
-  const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("questions");
+  const [sortType, setSortType] = useState("title");
 
   useEffect(() => {
-    dispatch(getAllQuestions('title'));
-
-    const sortArray = (type) => {
-      const types = {
-        title: "title",
-        createdAt: "createdAt",
-      };
-      const sortProperty = types[type];
-      const sorted = [...allQuestions]?.sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
-      );
-      setData(sorted);
-    };
-
-    sortArray(sortType);
+    dispatch(getAllQuestions(sortType));
   }, [dispatch, sortType, allQuestions.length]);
-
-  console.log(allQuestions)
-  console.log({data})
-
-  // useEffect(() => {
-  //   const sortArray = (type) => {
-  //     const types = {
-  //       title: "title",
-  //       createdAt: "createdAt",
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...allQuestions]?.sort(
-  //       (a, b) => b[sortProperty] - a[sortProperty]
-  //     );
-  //     setData(sorted);
-  //   };
-
-  //   sortArray(sortType);
-  // }, [sortType]);
 
   let allQuestionsNum;
   allQuestions.length == 1
@@ -87,7 +52,7 @@ function QuestionsPage() {
             <option value="createdAt">createdAt</option>
           </select>
 
-          {data.map((question) => (
+          {allQuestions.map((question) => (
             <NavLink
               key={question?.id}
               id="all-questions-card"
