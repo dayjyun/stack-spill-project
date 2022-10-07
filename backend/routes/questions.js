@@ -124,7 +124,7 @@ router.post(
     if (question) {
       const answer = await Answer.create({
         userId: user.id,
-        questionId,
+        questionId: +questionId,
         body,
       });
       res.status(201);

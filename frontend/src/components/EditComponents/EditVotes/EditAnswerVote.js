@@ -25,13 +25,13 @@ function EditAnswerVote({ answerId }) {
 
   const upVoteAnswer = async () => {
     if (userVote?.vote === true) {
-      await dispatch(deleteAnswerVote(answerId));
+      await dispatch(deleteAnswerVote(+answerId));
     } else {
       await dispatch(
         createAnswerVote({
           userId: userVote?.userId,
           vote: true,
-          answerId,
+          answerId: +answerId
         })
       );
     }
@@ -39,7 +39,7 @@ function EditAnswerVote({ answerId }) {
 
   const downVoteAnswer = async () => {
     if (userVote?.vote === false) {
-      await dispatch(deleteAnswerVote(answerId));
+      await dispatch(deleteAnswerVote(+answerId));
     } else {
       await dispatch(
         createAnswerVote({

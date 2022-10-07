@@ -83,9 +83,7 @@ export const createAnswerVote = (voteData) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            vote
-        })
+        body: JSON.stringify({ vote })
     })
     if(newVote.ok) {
         const resNewVote = await newVote.json()

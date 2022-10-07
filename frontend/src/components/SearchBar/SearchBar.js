@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
+// import { searchGetAllUsers } from "../../store/searchBarReducer";
 import { getAllUsers } from "../../store/usersReducer";
 import "./SearchBar.css";
 
@@ -15,6 +16,7 @@ function QuestionsSearchBarComponent() {
   useEffect(() => {
     dispatch(getAllQuestions())
     dispatch(getAllUsers())
+    // dispatch(searchGetAllUsers())
   }, [dispatch])
 
   let searchArray = []
@@ -23,11 +25,11 @@ function QuestionsSearchBarComponent() {
     return question?.title?.toLowerCase().includes(search.toLowerCase());
   });
 
-  const questionReturns = questionResults.map((question) => {
+  const questionReturns = questionResults.map((question, i) => {
     return (
       <Link
         to={`/questions/${question?.id}`}
-        key={question?.id}
+        key={i}
         onClick={() => setSearch("")}
         className="search-results-link"
       >

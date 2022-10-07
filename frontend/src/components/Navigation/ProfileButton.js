@@ -34,12 +34,11 @@ function ProfileButton({ user }) {
     <>
       <div id="profile-button-component">
         <button id="profile-image-button" onClick={openMenu}>
-          <img id="profile-button-image" src={user?.profileImage} />
+          <img id="profile-button-image" alt='user' src={user?.profileImage} />
         </button>
         {showMenu && (
           <div className="profile-dropdown">
             <div>{user?.username}</div>
-            {/* <li>{user?.email}</li> */}
             <div id='profile-button-links'>
               <Link id="profile-button-profile-link" to={`/users/${user?.id}`}>
                 <div id="profile-button">

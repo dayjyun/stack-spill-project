@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
 import DemoUserButton from "../DemoComponent/DemoUserButton";
-import LoginForm from "../LoginFormModal/LoginForm";
 import "./SignupForm.css";
 
 function SignupForm() {

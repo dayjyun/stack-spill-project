@@ -21,21 +21,34 @@ function EditQuestionVote({ questionId }) {
   );
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
+  const [upVoteStyle, setUpVoteStyle] = useState({});
+  const [downVoteStyle, setDownVoteStyle] = useState({});
 
   useEffect(() => {
     dispatch(getAllVotes());
-    dispatch(getQuestionVote(questionId));
+    // dispatch(getQuestionVote(questionId));
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };
     sessionUserQuestionVote();
   }, [dispatch]);
 
-  // ? ====================================================
+  useEffect(() => {
+    if (userVote) {
+      if (userVote?.vote === true) {
+        setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+      } else if (userVote?.vote === false) {
+        setDownVoteStyle({ color: "red" });
+      } else {
+        setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+      }
+    }
+  }, [userVote]);
 
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
       await dispatch(deleteQuestionVote(+questionId));
+      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createQuestionVote({
@@ -44,32 +57,37 @@ function EditQuestionVote({ questionId }) {
           questionId: +questionId,
         })
       );
+      setUpVoteStyle({ color: "rgb(0, 165, 0)" });
     }
   };
 
   const downVoteQuestion = async () => {
     if (userVote?.vote === false) {
-      await dispatch(deleteQuestionVote(questionId));
+      await dispatch(deleteQuestionVote(+questionId));
+      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createQuestionVote({
           userId: userVote?.userId,
-          vote: downVote,
+          vote: false,
           questionId,
         })
       );
+      setDownVoteStyle({ color: "red" });
     }
   };
-
-  // ? ====================================================
 
   let questionVoteCount = 0;
 
   questionVotes.map((vote) => {
-    vote?.vote === true ? (questionVoteCount += 1) : (questionVoteCount -= 1);
+    return vote?.vote === true
+      ? (questionVoteCount += 1)
+      : (questionVoteCount -= 1);
   });
 
   const handleUpVote = async () => {
+    setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+    setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     if (userVote?.vote === false) {
       await dispatch(
         editQuestionVote({
@@ -86,6 +104,8 @@ function EditQuestionVote({ questionId }) {
   };
 
   const handleDownVote = async () => {
+    setDownVoteStyle({ color: "red" });
+    setUpVoteStyle({ color: "rgb(211, 211, 211)" });
     if (userVote?.vote === true) {
       await dispatch(
         editQuestionVote({
@@ -104,12 +124,20 @@ function EditQuestionVote({ questionId }) {
   return (
     <>
       <div id="edit-question-votes">
-        <button id="edit-question-vote-up" onClick={handleUpVote}>
-          <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
+        <button className="edit-question-vote-up" onClick={handleUpVote}>
+          <i
+            style={upVoteStyle}
+            className="fa fa-arrow-circle-up"
+            aria-hidden="true"
+          ></i>
         </button>
-        <div id="edit-question-vote-count">{questionVoteCount}</div>
-        <button id="edit-question-vote-down" onClick={handleDownVote}>
-          <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
+        <div className="edit-question-vote-count">{questionVoteCount}</div>
+        <button className="edit-question-vote-down" onClick={handleDownVote}>
+          <i
+            style={downVoteStyle}
+            className="fa fa-arrow-circle-down"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
     </>
