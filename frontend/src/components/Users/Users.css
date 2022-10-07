@@ -1,16 +1,40 @@
+#users-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #users-container {
-    margin: 0 10rem;
+    margin: 0 20rem;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: row; */
+}
+
+#users-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    padding: 0;
 }
 
 #users-component-card {
-    padding: 1rem 0;
-    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2rem;
+    min-width: 4rem;
+    min-width: 300px;
+    padding: 1rem 1rem;
+    margin: 1rem 0;
 }
 
 #users-component-card > a{
     display: flex;
+    justify-content: center;
     align-items: center;
-    /* border: 2px solid red; */
 }
 
 #users-component-profileImage {
