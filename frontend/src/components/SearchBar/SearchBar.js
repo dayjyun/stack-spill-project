@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
+// import { searchGetAllUsers } from "../../store/searchBarReducer";
 import { getAllUsers } from "../../store/usersReducer";
 import "./SearchBar.css";
 
@@ -15,6 +16,7 @@ function QuestionsSearchBarComponent() {
   useEffect(() => {
     dispatch(getAllQuestions())
     dispatch(getAllUsers())
+    // dispatch(searchGetAllUsers())
   }, [dispatch])
 
   let searchArray = []
