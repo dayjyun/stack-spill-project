@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 0 5px; */
 }
 
 .search-bar {
@@ -31,7 +30,7 @@
   color: black;
   background-color: white;
   z-index: 1;
-  top: 50px;
+  top: 40px;
   position: absolute;
   border-radius: 6px;
   box-shadow: 0 10px 25px rgb(0 0 0 / 30%), 0 20px 48px rgb(0 0 0 / 16%),
