@@ -16,6 +16,8 @@ function EditUserForm({ setShowModal }) {
   // const [password, setPassword] = useState("");
 
   const handelUserEditForm = (e) => {
+    e.preventDefault()
+    
     dispatch(
       editUser({
         id: +sessionUser?.id,
