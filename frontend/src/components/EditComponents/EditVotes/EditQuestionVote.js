@@ -13,26 +13,42 @@ function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVotes = Object.values(useSelector((state) => state.votes));
-  const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
-  const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
+  const questionVotes = allVotes.filter(
+    (vote) => vote?.questionId == questionId
+  );
+  const userVote = questionVotes.find(
+    (vote) => vote?.userId == sessionUser?.id
+  );
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
-  const [upVoteStyle, setUpVoteStyle] = useState({})
-  const [downVoteStyle, setDownVoteStyle] = useState({})
+  const [upVoteStyle, setUpVoteStyle] = useState({});
+  const [downVoteStyle, setDownVoteStyle] = useState({});
 
   useEffect(() => {
     dispatch(getAllVotes());
-    dispatch(getQuestionVote(questionId));
+    // dispatch(getQuestionVote(questionId));
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };
     sessionUserQuestionVote();
   }, [dispatch]);
 
+  useEffect(() => {
+    if (userVote) {
+      if (userVote?.vote === true) {
+        setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+      } else if (userVote?.vote === false) {
+        setDownVoteStyle({ color: "red" });
+      } else {
+        setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+      }
+    }
+  }, []);
+
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
-      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       await dispatch(deleteQuestionVote(+questionId));
+      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createQuestionVote({
@@ -41,13 +57,15 @@ function EditQuestionVote({ questionId }) {
           questionId: +questionId,
         })
       );
+      // setDownVoteStyle({ color: "rgb(211, 211, 211)" });
+      setUpVoteStyle({ color: "rgb(0, 165, 0)" });
     }
   };
 
   const downVoteQuestion = async () => {
     if (userVote?.vote === false) {
-      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
       await dispatch(deleteQuestionVote(+questionId));
+      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createQuestionVote({
@@ -56,6 +74,8 @@ function EditQuestionVote({ questionId }) {
           questionId,
         })
       );
+      // setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+      setDownVoteStyle({ color: "red" });
     }
   };
 
@@ -69,6 +89,7 @@ function EditQuestionVote({ questionId }) {
 
   const handleUpVote = async () => {
     setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+    setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     if (userVote?.vote === false) {
       await dispatch(
         editQuestionVote({
@@ -87,6 +108,7 @@ function EditQuestionVote({ questionId }) {
 
   const handleDownVote = async () => {
     setDownVoteStyle({ color: "red" });
+    setUpVoteStyle({ color: "rgb(211, 211, 211)" });
     if (userVote?.vote === true) {
       await dispatch(
         editQuestionVote({
@@ -107,7 +129,6 @@ function EditQuestionVote({ questionId }) {
       <div id="edit-question-votes">
         <button className="edit-question-vote-up" onClick={handleUpVote}>
           <i
-            // style={{ color: "rgb(0, 165, 0)" }}
             style={upVoteStyle}
             className="fa fa-arrow-circle-up"
             aria-hidden="true"
@@ -116,7 +137,6 @@ function EditQuestionVote({ questionId }) {
         <div className="edit-question-vote-count">{questionVoteCount}</div>
         <button className="edit-question-vote-down" onClick={handleDownVote}>
           <i
-            // style={{ color: "red" }}
             style={downVoteStyle}
             className="fa fa-arrow-circle-down"
             aria-hidden="true"
