@@ -23,11 +23,11 @@ function QuestionsSearchBarComponent() {
     return question?.title?.toLowerCase().includes(search.toLowerCase());
   });
 
-  const questionReturns = questionResults.map((question) => {
+  const questionReturns = questionResults.map((question, i) => {
     return (
       <Link
         to={`/questions/${question?.id}`}
-        key={question?.id}
+        key={i}
         onClick={() => setSearch("")}
         className="search-results-link"
       >

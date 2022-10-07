@@ -17,6 +17,8 @@ function EditQuestionVote({ questionId }) {
   const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
+  const [upVoteStyle, setUpVoteStyle] = useState({})
+  const [downVoteStyle, setDownVoteStyle] = useState({})
 
   useEffect(() => {
     dispatch(getAllVotes());
@@ -29,6 +31,7 @@ function EditQuestionVote({ questionId }) {
 
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
+      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       await dispatch(deleteQuestionVote(+questionId));
     } else {
       await dispatch(
@@ -43,6 +46,7 @@ function EditQuestionVote({ questionId }) {
 
   const downVoteQuestion = async () => {
     if (userVote?.vote === false) {
+      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
       await dispatch(deleteQuestionVote(+questionId));
     } else {
       await dispatch(
@@ -64,6 +68,7 @@ function EditQuestionVote({ questionId }) {
   });
 
   const handleUpVote = async () => {
+    setUpVoteStyle({ color: "rgb(0, 165, 0)" });
     if (userVote?.vote === false) {
       await dispatch(
         editQuestionVote({
@@ -75,11 +80,13 @@ function EditQuestionVote({ questionId }) {
         setUpVote(!upVote);
       });
     } else {
+      // setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       await upVoteQuestion().then(async () => setUpVote(!upVote));
     }
   };
 
   const handleDownVote = async () => {
+    setDownVoteStyle({ color: "red" });
     if (userVote?.vote === true) {
       await dispatch(
         editQuestionVote({
@@ -98,12 +105,22 @@ function EditQuestionVote({ questionId }) {
   return (
     <>
       <div id="edit-question-votes">
-        <button id="edit-question-vote-up" onClick={handleUpVote}>
-          <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
+        <button className="edit-question-vote-up" onClick={handleUpVote}>
+          <i
+            // style={{ color: "rgb(0, 165, 0)" }}
+            style={upVoteStyle}
+            className="fa fa-arrow-circle-up"
+            aria-hidden="true"
+          ></i>
         </button>
-        <div id="edit-question-vote-count">{questionVoteCount}</div>
-        <button id="edit-question-vote-down" onClick={handleDownVote}>
-          <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
+        <div className="edit-question-vote-count">{questionVoteCount}</div>
+        <button className="edit-question-vote-down" onClick={handleDownVote}>
+          <i
+            // style={{ color: "red" }}
+            style={downVoteStyle}
+            className="fa fa-arrow-circle-down"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
     </>

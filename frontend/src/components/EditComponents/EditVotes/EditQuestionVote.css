@@ -6,13 +6,13 @@
   padding: 0.5rem 0.8rem;
 }
 
-#edit-question-vote-count {
+.edit-question-vote-count {
   font-size: 2rem;
   font-weight: bold;
 }
 
-#edit-question-vote-up,
-#edit-question-vote-down {
+.edit-question-vote-up,
+.edit-question-vote-down {
   border: none;
   background-color: transparent;
   font-size: 4rem;
@@ -23,10 +23,10 @@
   color: lightgray;
 }
 
-.fa-arrow-circle-up.active, #edit-question-vote-up.active {
+.fa-arrow-circle-up::after, .edit-question-vote-up.active {
   color: rgb(0, 165, 0);
 }
 
-.fa-arrow-circle-down.active, #edit-question-vote-down.active {
+.fa-arrow-circle-down.active, .edit-question-vote-down.active {
   color: red;
 }

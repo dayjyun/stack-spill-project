@@ -57,9 +57,9 @@ function QuestionsPage() {
           </div>
         </div>
         <div id="all-questions-container">
-          {allQuestions.map((question) => (
+          {allQuestions.map((question, i) => (
             <NavLink
-              key={question?.id}
+              key={i}
               id="all-questions-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >
