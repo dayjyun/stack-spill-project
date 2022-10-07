@@ -1,6 +1,8 @@
 #questions-page-container {
   margin: 0 10rem;
   padding-bottom: 4rem;
+  min-width: 20rem;
+  min-width: 400px;
 }
 
 #all-questions-text {
@@ -19,13 +21,16 @@
 #all-questions-num-sort {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+#questions-page-select-dropdown {
+  margin: 0 10%;
 }
 
 #all-questions-num {
   margin: 0 10%;
   display: flex;
-  margin-bottom: 1rem;
 }
 
 #all-questions-container {
@@ -56,4 +61,11 @@
 #all-questions-title {
   color: rgb(62, 134, 159);
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #questions-page-container {
+    margin: 0;
+    padding: 0;
+  }
 }
