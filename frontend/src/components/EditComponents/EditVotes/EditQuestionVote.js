@@ -43,7 +43,7 @@ function EditQuestionVote({ questionId }) {
         setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       }
     }
-  }, []);
+  }, [userVote]);
 
   const upVoteQuestion = async () => {
     if (userVote?.vote === true) {
@@ -57,7 +57,6 @@ function EditQuestionVote({ questionId }) {
           questionId: +questionId,
         })
       );
-      // setDownVoteStyle({ color: "rgb(211, 211, 211)" });
       setUpVoteStyle({ color: "rgb(0, 165, 0)" });
     }
   };
@@ -74,7 +73,6 @@ function EditQuestionVote({ questionId }) {
           questionId,
         })
       );
-      // setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       setDownVoteStyle({ color: "red" });
     }
   };
@@ -101,7 +99,6 @@ function EditQuestionVote({ questionId }) {
         setUpVote(!upVote);
       });
     } else {
-      // setUpVoteStyle({ color: "rgb(211, 211, 211)" });
       await upVoteQuestion().then(async () => setUpVote(!upVote));
     }
   };
