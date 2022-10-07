@@ -13,12 +13,8 @@ function EditQuestionVote({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVotes = Object.values(useSelector((state) => state.votes));
-  const questionVotes = allVotes.filter(
-    (vote) => vote?.questionId == questionId
-  );
-  const userVote = questionVotes.find(
-    (vote) => vote?.userId == sessionUser?.id
-  );
+  const questionVotes = allVotes.filter((vote) => vote?.questionId == questionId);
+  const userVote = questionVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
   const [upVoteStyle, setUpVoteStyle] = useState({});

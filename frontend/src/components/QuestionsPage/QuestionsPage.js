@@ -46,11 +46,9 @@ function QuestionsPage() {
         </div>
         <div id="all-questions-num-sort">
           {allQuestionsNum}
-          <div>
+          <div id='questions-page-select-dropdown'>
             <select onChange={(e) => setSortType(e.target.value)}>
-              <option disabled value="sort">
-                Sort
-              </option>
+              <option disabled value="sort">Sort</option>
               <option value="createdAt">Most Recent</option>
               <option value="title">A-Z</option>
             </select>

@@ -15,6 +15,8 @@ function EditAnswerVote({ answerId }) {
   const userVote = answerVotes.find((vote) => vote?.userId == sessionUser?.id);
   const [upVote, setUpVote] = useState(false);
   const [downVote, setDownVote] = useState(false);
+  const [upVoteStyle, setUpVoteStyle] = useState({});
+  const [downVoteStyle, setDownVoteStyle] = useState({});
 
   useEffect(() => {
     const sessionUserAnswerVote = () => {
@@ -23,23 +25,38 @@ function EditAnswerVote({ answerId }) {
     sessionUserAnswerVote();
   }, [dispatch, allVotes]);
 
+  useEffect(() => {
+    if (userVote) {
+      if (userVote?.vote === true) {
+        setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+      } else if (userVote?.vote === false) {
+        setDownVoteStyle({ color: "red" });
+      } else {
+        setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+      }
+    }
+  }, [userVote]);
+
   const upVoteAnswer = async () => {
     if (userVote?.vote === true) {
       await dispatch(deleteAnswerVote(+answerId));
+      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createAnswerVote({
           userId: userVote?.userId,
           vote: true,
-          answerId: +answerId
+          answerId: +answerId,
         })
       );
+      setUpVoteStyle({ color: "rgb(0, 165, 0)" });
     }
   };
 
   const downVoteAnswer = async () => {
     if (userVote?.vote === false) {
       await dispatch(deleteAnswerVote(+answerId));
+      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     } else {
       await dispatch(
         createAnswerVote({
@@ -48,6 +65,7 @@ function EditAnswerVote({ answerId }) {
           answerId,
         })
       );
+      setDownVoteStyle({ color: "red" });
     }
   };
 
@@ -58,6 +76,8 @@ function EditAnswerVote({ answerId }) {
   });
 
   const handleUpVote = async () => {
+    setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+    setDownVoteStyle({ color: "rgb(211, 211, 211)" });
     if (userVote?.vote === false) {
       await dispatch(
         editAnswerVote({
@@ -74,7 +94,9 @@ function EditAnswerVote({ answerId }) {
   };
 
   const handleDownVote = async () => {
-    if (userVote?.vote === true){
+    setDownVoteStyle({ color: "red" });
+    setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+    if (userVote?.vote === true) {
       await dispatch(
         editAnswerVote({
           userId: sessionUser?.id,
@@ -93,11 +115,19 @@ function EditAnswerVote({ answerId }) {
     <>
       <div id="edit-answer-votes">
         <button id="edit-answer-vote-up" onClick={handleUpVote}>
-          <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
+          <i
+            style={upVoteStyle}
+            className="fa fa-arrow-circle-up"
+            aria-hidden="true"
+          ></i>
         </button>
         <div id="edit-answer-vote-count">{answerVoteCount}</div>
         <button id="edit-answer-vote-down" onClick={handleDownVote}>
-          <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
+          <i
+            style={downVoteStyle}
+            className="fa fa-arrow-circle-down"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
     </>
