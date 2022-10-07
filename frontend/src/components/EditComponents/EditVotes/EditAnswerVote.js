@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createAnswerVote,
   deleteAnswerVote,
+  editAnswerVote,
 } from "../../../store/votesReducer";
-import './EditAnswerVote.css'
+import "./EditAnswerVote.css";
 
 function EditAnswerVote({ answerId }) {
   const dispatch = useDispatch();
@@ -24,13 +25,13 @@ function EditAnswerVote({ answerId }) {
 
   const upVoteAnswer = async () => {
     if (userVote?.vote === true) {
-      await dispatch(deleteAnswerVote(answerId));
+      await dispatch(deleteAnswerVote(+answerId));
     } else {
       await dispatch(
         createAnswerVote({
           userId: userVote?.userId,
           vote: true,
-          answerId,
+          answerId: +answerId
         })
       );
     }
@@ -38,7 +39,7 @@ function EditAnswerVote({ answerId }) {
 
   const downVoteAnswer = async () => {
     if (userVote?.vote === false) {
-      await dispatch(deleteAnswerVote(answerId));
+      await dispatch(deleteAnswerVote(+answerId));
     } else {
       await dispatch(
         createAnswerVote({
@@ -46,22 +47,46 @@ function EditAnswerVote({ answerId }) {
           vote: downVote,
           answerId,
         })
-        );
-      }
-    };
+      );
+    }
+  };
 
-    let answerVoteCount = 0;
+  let answerVoteCount = 0;
 
-    answerVotes.map((vote) => {
-      vote?.vote === true ? (answerVoteCount += 1) : (answerVoteCount -= 1);
-    });
+  answerVotes.map((vote) => {
+    vote?.vote === true ? (answerVoteCount += 1) : (answerVoteCount -= 1);
+  });
 
   const handleUpVote = async () => {
-    await upVoteAnswer().then(async () => setUpVote(!upVote));
+    if (userVote?.vote === false) {
+      await dispatch(
+        editAnswerVote({
+          userId: sessionUser?.id,
+          vote: true,
+          answerId: +answerId,
+        })
+      ).then(async () => {
+        setUpVote(!upVote);
+      });
+    } else {
+      await upVoteAnswer().then(async () => setUpVote(!upVote));
+    }
   };
 
   const handleDownVote = async () => {
-    await downVoteAnswer().then(async () => setDownVote(!downVote));
+    if (userVote?.vote === true){
+      await dispatch(
+        editAnswerVote({
+          userId: sessionUser?.id,
+          vote: false,
+          answerId: +answerId,
+        })
+      ).then(async () => {
+        setUpVote(!upVote);
+      });
+    } else {
+      await downVoteAnswer().then(async () => setDownVote(!downVote));
+    }
   };
 
   return (
@@ -70,7 +95,7 @@ function EditAnswerVote({ answerId }) {
         <button id="edit-answer-vote-up" onClick={handleUpVote}>
           <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>
         </button>
-        <div id='edit-answer-vote-count'>{answerVoteCount}</div>
+        <div id="edit-answer-vote-count">{answerVoteCount}</div>
         <button id="edit-answer-vote-down" onClick={handleDownVote}>
           <i className="fa fa-arrow-circle-down" aria-hidden="true"></i>
         </button>

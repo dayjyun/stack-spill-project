@@ -5,7 +5,6 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import SearchBarComponent from "../SearchBar/SearchBar";
-import Footer from "../Footer/Footer";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -42,8 +41,8 @@ function Navigation({ isLoaded }) {
                 />
                 <div id="navigation-navLink-text">Stack Spill</div>
               </NavLink>
-              <NavLink id={"navigation-about"} to="/about">
-                About
+              <NavLink id={"navigation-about"} to="/users">
+                Users
               </NavLink>
             </div>
             {/* <NavLink to="/users">Users</NavLink> */}

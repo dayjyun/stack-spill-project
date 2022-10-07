@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllQuestions } from "../../store/questionsReducer";
@@ -10,18 +10,19 @@ function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allQuestions = Object.values(useSelector((state) => state.questions));
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
-    dispatch(getAllQuestions());
-  }, [dispatch]);
+    dispatch(getAllQuestions(sortType));
+  }, [dispatch, sortType, allQuestions.length]);
 
   let allQuestionsNum;
-  allQuestions.length == 1
+  allQuestions.length === 1
     ? (allQuestionsNum = (
-        <h3 id="all-questions-num">{allQuestions.length} Question</h3>
+        <h3 id="all-questions-num">{allQuestions?.length} Question</h3>
       ))
     : (allQuestionsNum = (
-        <h3 id="all-questions-num">{allQuestions.length} Questions</h3>
+        <h3 id="all-questions-num">{allQuestions?.length} Questions</h3>
       ));
 
   let createQuestionButton;
@@ -43,16 +44,34 @@ function QuestionsPage() {
           <h1>All Questions</h1>
           {createQuestionButton}
         </div>
-        {allQuestionsNum}
+        <div id="all-questions-num-sort">
+          {allQuestionsNum}
+          <div>
+            <select onChange={(e) => setSortType(e.target.value)}>
+              <option disabled value="sort">
+                Sort
+              </option>
+              <option value="createdAt">Most Recent</option>
+              <option value="title">A-Z</option>
+            </select>
+          </div>
+        </div>
         <div id="all-questions-container">
-          {allQuestions.map((question) => (
+          {allQuestions.map((question, i) => (
             <NavLink
-              key={question?.id}
+              key={i}
               id="all-questions-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >
               <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">{question?.body.length > 70 ? question?.body.split('').filter((text, i) => i < 70).join('') + '...' : question?.body}</div>
+              <div id="all-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
             </NavLink>
           ))}
         </div>
@@ -62,3 +81,25 @@ function QuestionsPage() {
 }
 
 export default QuestionsPage;
+
+// {
+  /* <div id="all-questions-container">
+          {allQuestions.map((question) => (
+            <NavLink
+              key={question?.id}
+              id="all-questions-card"
+              to={{ pathname: `/questions/${question?.id}` }}
+            >
+              <h2 id="all-questions-title">{question?.title}</h2>
+              <div id="all-questions-body">
+                {question?.body.length > 70
+                  ? question?.body
+                      .split("")
+                      .filter((text, i) => i < 70)
+                      .join("") + "..."
+                  : question?.body}
+              </div>
+            </NavLink>
+          ))}
+        </div> */
+// }

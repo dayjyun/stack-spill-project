@@ -12,9 +12,7 @@ function AnswersComponent({ questionId }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allAnswers = Object.values(useSelector((state) => state.answers));
-  const answers = allAnswers.filter(
-    (answer) => answer?.questionId == questionId
-  );
+  const answers = allAnswers.filter((answer) => answer?.questionId === +questionId);
   const allUsers = Object.values(useSelector((state) => state.users));
 
   useEffect(() => {
@@ -25,11 +23,12 @@ function AnswersComponent({ questionId }) {
   let userAnswerEdit;
 
   answers.map((answer) => {
-    if (answer?.userId == sessionUser?.id) {
+    if (answer?.userId === +sessionUser?.id) {
       userAnswerEdit = (
         <EditAnswerModal answerId={answer?.id} questionId={questionId} />
       );
     }
+    return userAnswerEdit
   });
 
   let answersNum;
@@ -55,17 +54,18 @@ function AnswersComponent({ questionId }) {
                 >
                   <img
                     id="answer-component-user-profileImage"
+                    alt='user'
                     src={
-                      allUsers?.find((user) => user?.id == answer?.userId)
+                      allUsers?.find((user) => user?.id === +answer?.userId)
                         ?.profileImage
                     }
                   />
                   {
-                    allUsers?.find((user) => user?.id == answer?.userId)
+                    allUsers?.find((user) => user?.id === +answer?.userId)
                       ?.username
                   }
                 </Link>{" "}
-                {answer?.userId == sessionUser?.id && userAnswerEdit}
+                {answer?.userId === +sessionUser?.id && userAnswerEdit}
               </div>
               <div id="answer-page-creation-info">
                 Posted {ConvertTime(answer?.createdAt)}

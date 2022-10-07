@@ -5,13 +5,17 @@ import questionReducer from "./questionsReducer";
 import answerReducer from "./answersReducer";
 import voteReducer from "./votesReducer";
 import usersReducer from "./usersReducer";
+import userQuestionsReducer from "./userQuestionsReducer";
+import searchBarReducer from "./searchBarReducer";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  questions: questionReducer,
   answers: answerReducer,
-  votes: voteReducer,
+  questions: questionReducer,
+  searchBar: searchBarReducer,
+  userQuestions: userQuestionsReducer,
   users: usersReducer,
+  votes: voteReducer,
 });
 
 let enhancer;

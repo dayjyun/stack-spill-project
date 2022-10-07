@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllQuestions } from "../../store/questionsReducer";
+// import { searchGetAllUsers } from "../../store/searchBarReducer";
 import { getAllUsers } from "../../store/usersReducer";
 import "./SearchBar.css";
 
@@ -12,7 +14,9 @@ function QuestionsSearchBarComponent() {
   const [searchResults, setSearchResults] = useState("");
 
   useEffect(() => {
+    dispatch(getAllQuestions())
     dispatch(getAllUsers())
+    // dispatch(searchGetAllUsers())
   }, [dispatch])
 
   let searchArray = []
@@ -21,11 +25,11 @@ function QuestionsSearchBarComponent() {
     return question?.title?.toLowerCase().includes(search.toLowerCase());
   });
 
-  const questionReturns = questionResults.map((question) => {
+  const questionReturns = questionResults.map((question, i) => {
     return (
       <Link
         to={`/questions/${question?.id}`}
-        key={question?.id}
+        key={i}
         onClick={() => setSearch("")}
         className="search-results-link"
       >
@@ -51,6 +55,7 @@ function QuestionsSearchBarComponent() {
         <div className="search-results-text">
           <img
             src={user?.profileImage}
+            alt='profile'
             className='search-bar-profile-pic'
           />
           <div className="search-bar-profile-username">{user?.username}</div>
@@ -72,14 +77,12 @@ function QuestionsSearchBarComponent() {
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              onClick={() => setSearchResults("results-active")}
+              onKeyDown={() => setSearchResults("results-active")}
               onBlur={() => setSearchResults("")}
             />
           </div>
         </form>
         <div className={`search-results-box ${searchResults}`}>
-          {/* {questionReturns} */}
-          {/* {userReturns} */}
           {searchArray}
         </div>
       </div>

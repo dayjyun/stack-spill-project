@@ -9,19 +9,19 @@ import "./UserComponent.css";
 
 function UserComponent() {
   const dispatch = useDispatch();
-  const { userId } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const allUsers = Object.values(useSelector((state) => state.users));
-  const user = allUsers.filter((user) => user.id == userId)[0];
+  let { userId } = useParams();
+  const sessionUser = useSelector((state) => state.session?.user);
+  const allUsers = Object.values(useSelector((state) => state?.users));
+  const user = allUsers.filter((user) => user?.id === +userId)[0];
   const [pageToggle, setPageToggle]= useState(<UserQuestions/>)
 
   useEffect(() => {
-    dispatch(getUser(userId));
+    dispatch(getUser(+userId));
   }, [dispatch, userId]);
 
   let editButton;
 
-  if (sessionUser?.id == user?.id) {
+  if (sessionUser?.id === +user?.id) {
     editButton = <EditUserModal />;
   }
 
@@ -38,7 +38,7 @@ function UserComponent() {
       <div id="user-page">
         <div id="user-component">
           <div id="user-component-info">
-            <img id="user-component-image" src={user?.profileImage} />
+            <img id="user-component-image" alt='profile' src={user?.profileImage} />
             <div id="user-component-details">
               <h1>{user?.username}</h1>
               <div id="user-component-details-name">

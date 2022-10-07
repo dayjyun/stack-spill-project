@@ -11,11 +11,17 @@ function CreateQuestionForm() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const myTextArea = document.getElementsByClassName("cqfi-title");
-  const remainingCharacters = document.getElementById("title-text-count");
-  const maxChars = 250;
+  // const myTextArea = document.querySelector("#cqfi-title");
+  // const remainingCharacters = document.getElementById("title-text-count");
+  // const maxChars = 250;
 
-  // myTextArea.addEventListener('input', () => {
+  // useEffect(() => {
+  //   myTextArea.addEventListener("input", () => {
+  //     console.log("here");
+  //   });
+  // }, [])
+
+  // document.querySelector('#cqfi-title').addEventListener("input", () => {
   //   console.log('here')
   // })
 
@@ -44,7 +50,8 @@ function CreateQuestionForm() {
   };
 
   const handleCancelButton = () => {
-    history.push("/");
+    setTitle('')
+    setBody('')
   };
 
   return (
@@ -99,8 +106,9 @@ function CreateQuestionForm() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <div id='title-text-count'>250 Characters Remaining</div>
+          {/* <div id='title-text-count'>250 Characters Remaining</div> */}
         </label>
+        {}
         <label className="create-question-form-label">
           Body
           <textarea

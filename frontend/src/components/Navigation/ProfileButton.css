@@ -49,7 +49,7 @@
 #profile-button {
   border: none;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin: 0.5rem 0;
 }
 
