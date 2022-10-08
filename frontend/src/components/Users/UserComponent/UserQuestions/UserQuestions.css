@@ -1,5 +1,6 @@
 #user-questions {
   margin: 0 5rem;
+  min-width: 20rem;
 }
 
 #user-questions-text {

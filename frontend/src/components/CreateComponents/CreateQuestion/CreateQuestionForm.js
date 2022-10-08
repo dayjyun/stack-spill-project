@@ -42,7 +42,8 @@ function CreateQuestionForm() {
         body,
       })
     ).then(() => {
-      history.push(`/users/${sessionUser?.id}`);
+      // history.push(`/users/${sessionUser?.id}`);
+      history.push(`/`);
     });
 
     setTitle("");
