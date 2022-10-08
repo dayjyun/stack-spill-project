@@ -45,8 +45,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0 25rem;
-  margin-top: 2.5rem;
+  width: 100%;
 }
 
 #user-component-navLinks div:hover {
@@ -57,8 +56,4 @@
   padding: 1rem;
   background-color: rgb(237, 237, 237);
   border-radius: 6px;
-}
-
-#user-component-page-toggle {
-  border: 2px solid red;
 }
