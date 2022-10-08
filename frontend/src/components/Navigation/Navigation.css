@@ -8,6 +8,7 @@
   --nav-gradient: linear-gradient(45deg, #c99999, #7ba1b5, #504e6d, #7e376a);
   box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.2);
   width: 100%;
+  min-width: 30rem;
 }
 
 @keyframes navigation-bar-color {
@@ -72,6 +73,10 @@
 #search-bar-div {
   position: relative;
   right: 5%;
+}
+
+#navigation-navLinks-right {
+  min-width: 10rem;
 }
 
 @media screen and (max-width: 768px) {
