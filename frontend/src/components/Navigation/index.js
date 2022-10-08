@@ -30,7 +30,6 @@ function Navigation({ isLoaded }) {
     <>
       <div>
         <div id="navigation-bar">
-          {/* Side Menu: Questions, Users */}
           <div id="navigation-navLinks">
             <div id="navigation-navLinks-left">
               <NavLink id={"navigation-home"} exact to="/">

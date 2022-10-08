@@ -14,18 +14,6 @@ module.exports = {
         references: { model: "Users" },
         onDelete: "CASCADE",
       },
-      // upVote: {
-      //   type: Sequelize.INTEGER,
-      // },
-      // downVote: {
-      //   type: Sequelize.INTEGER,
-      // },
-      // upVote: {
-      //   type: Sequelize.BOOLEAN,
-      // },
-      // downVote: {
-      //   type: Sequelize.BOOLEAN,
-      // },
       vote: {
         type: Sequelize.BOOLEAN,
       },

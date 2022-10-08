@@ -2,7 +2,6 @@ import { csrfFetch } from "./csrf";
 
 const GET_ALL_USERS = "users/getAllUsers";
 const GET_USER = "users/getUser";
-// const GET_USER_QUESTIONS = 'users/getUserQuestions'
 const GET_USER_ANSWERS = "users/getUserAnswers";
 const EDIT_USER = "users/editUser";
 
@@ -39,23 +38,6 @@ export const getUser = (userId) => async (dispatch) => {
     dispatch(getSpecificUser(resSpecificUser));
   }
 };
-
-// get user questions
-// const getQuestions = (list) => {
-//   return {
-//     type: GET_USER_QUESTIONS,
-//     list,
-//   };
-// }
-
-// export const getUserQuestions = (userId) => async (dispatch) => {
-//   const userQuestions = await fetch(`/api/users/${userId}/questions`)
-
-//   if (userQuestions.ok) {
-//     const resUserQuestions = await userQuestions.json()
-//     dispatch(getQuestions(resUserQuestions))
-//   }
-// }
 
 // get user answers
 const getAnswers = (list) => {
@@ -123,13 +105,6 @@ const usersReducer = (state = initialState, action) => {
 
     case EDIT_USER:
       return { ...state, [action.user.id]: action.user };
-
-    // case GET_USER_QUESTIONS:
-    //   initialState = {}
-    //   action.list.forEach(question => {
-    //     initialState[question.id] = question;
-    //   })
-    //   return initialState
 
     case GET_USER_ANSWERS:
       initialState = { ...state };

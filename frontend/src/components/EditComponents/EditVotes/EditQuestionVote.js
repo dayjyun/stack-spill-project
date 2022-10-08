@@ -4,7 +4,6 @@ import {
   createQuestionVote,
   deleteQuestionVote,
   getAllVotes,
-  getQuestionVote,
   editQuestionVote,
 } from "../../../store/votesReducer";
 import "./EditQuestionVote.css";
@@ -22,7 +21,6 @@ function EditQuestionVote({ questionId }) {
 
   useEffect(() => {
     dispatch(getAllVotes());
-    // dispatch(getQuestionVote(questionId));
     const sessionUserQuestionVote = () => {
       setUpVote(questionVotes?.includes(userVote?.vote));
     };

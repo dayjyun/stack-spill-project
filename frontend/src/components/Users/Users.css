@@ -1,43 +1,42 @@
 #users-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #users-container {
-    margin: 0 20rem;
-    display: flex;
-    justify-content: center;
-    /* flex-direction: row; */
+  margin: 0 20rem;
+  display: flex;
+  justify-content: center;
 }
 
 #users-list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 90%;
-    padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  padding: 0;
 }
 
 #users-component-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 2rem;
-    min-width: 4rem;
-    min-width: 300px;
-    padding: 1rem 1rem;
-    margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2rem;
+  min-width: 4rem;
+  min-width: 300px;
+  padding: 1rem 1rem;
+  margin: 1rem 0;
 }
 
-#users-component-card > a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#users-component-card > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #users-component-profileImage {
-    max-height: 2rem;
-    max-width: 2rem;
+  max-height: 2rem;
+  max-width: 2rem;
 }

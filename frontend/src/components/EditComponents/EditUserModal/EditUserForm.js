@@ -13,11 +13,10 @@ function EditUserForm({ setShowModal }) {
   const [email, setEmail] = useState(sessionUser?.email);
   const [username, setUsername] = useState(sessionUser?.username);
   const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
-  // const [password, setPassword] = useState("");
 
   const handelUserEditForm = (e) => {
     e.preventDefault()
-    
+
     dispatch(
       editUser({
         id: +sessionUser?.id,
@@ -26,7 +25,6 @@ function EditUserForm({ setShowModal }) {
         email,
         username,
         profileImage: profileImage || defaultImage,
-        // password,
       })
     ).then(() => {
       setShowModal(false);
@@ -84,14 +82,6 @@ function EditUserForm({ setShowModal }) {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          {/* <div className="edit-user-form-div">
-        Password
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div> */}
           <div className="edit-user-form-div">
             Profile Image
             <input

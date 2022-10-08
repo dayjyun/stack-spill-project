@@ -51,7 +51,6 @@ router.put('/:userId', requireAuth, singleMulterUpload("profileImage"), async (r
         username,
         email,
         profileImage,
-        // password,
       });
       res.json(updatedUser)
     } else {

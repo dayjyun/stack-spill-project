@@ -7,23 +7,8 @@ import "./CreateQuestionForm.css";
 function CreateQuestionForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
-  // const myTextArea = document.querySelector("#cqfi-title");
-  // const remainingCharacters = document.getElementById("title-text-count");
-  // const maxChars = 250;
-
-  // useEffect(() => {
-  //   myTextArea.addEventListener("input", () => {
-  //     console.log("here");
-  //   });
-  // }, [])
-
-  // document.querySelector('#cqfi-title').addEventListener("input", () => {
-  //   console.log('here')
-  // })
 
   const wordCaps = (str) => {
     let strArr = str.split(" ").map((word) => {
@@ -106,7 +91,6 @@ function CreateQuestionForm() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          {/* <div id='title-text-count'>250 Characters Remaining</div> */}
         </label>
         {}
         <label className="create-question-form-label">

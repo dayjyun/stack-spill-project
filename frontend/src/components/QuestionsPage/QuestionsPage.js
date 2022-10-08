@@ -79,25 +79,3 @@ function QuestionsPage() {
 }
 
 export default QuestionsPage;
-
-// {
-  /* <div id="all-questions-container">
-          {allQuestions.map((question) => (
-            <NavLink
-              key={question?.id}
-              id="all-questions-card"
-              to={{ pathname: `/questions/${question?.id}` }}
-            >
-              <h2 id="all-questions-title">{question?.title}</h2>
-              <div id="all-questions-body">
-                {question?.body.length > 70
-                  ? question?.body
-                      .split("")
-                      .filter((text, i) => i < 70)
-                      .join("") + "..."
-                  : question?.body}
-              </div>
-            </NavLink>
-          ))}
-        </div> */
-// }

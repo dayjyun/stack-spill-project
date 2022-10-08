@@ -13,7 +13,6 @@ function UserAnswers() {
   const allQuestions = Object.values(useSelector((state) => state?.questions));
 
   useEffect(() => {
-    // dispatch(getAllQuestions());
     dispatch(getAllAnswers());
     dispatch(getUserAnswers(+userId))
   }, [dispatch, userId]);

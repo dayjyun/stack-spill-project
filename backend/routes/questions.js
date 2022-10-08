@@ -66,6 +66,7 @@ router.get("/:questionId", async (req, res) => {
   res.json(question);
 });
 
+// Get All Questions
 router.get("/", async (req, res) => {
   const questions = await Question.findAll({
     order: [["createdAt", "DESC"]],
