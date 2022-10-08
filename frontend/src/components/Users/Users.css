@@ -8,6 +8,7 @@
   margin: 0 20rem;
   display: flex;
   justify-content: center;
+
 }
 
 #users-list {
@@ -39,4 +40,5 @@
 #users-component-profileImage {
   max-height: 2rem;
   max-width: 2rem;
+  padding-right: .5rem;
 }
