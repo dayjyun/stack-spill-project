@@ -7,6 +7,8 @@ import "./UserQuestions.css";
 function UserQuestions() {
   const dispatch = useDispatch();
   const { userId } = useParams();
+  const allUsers = Object.values(useSelector(state => state.users))
+  const userInfo = allUsers.find(user => user?.id === +userId)
   const allQuestions = Object.values(useSelector((state) => state?.userQuestions));
   const userQuestions = allQuestions.filter((questions) => questions?.userId === +userId);
 
@@ -26,7 +28,7 @@ function UserQuestions() {
     <>
       <div id="user-questions">
         <div id="user-questions-text">
-          <h1>Your Questions</h1>
+          <h1>{userInfo?.username}'s Questions</h1>
         </div>
         {numQuestion}
         <div id="user-questions-container">

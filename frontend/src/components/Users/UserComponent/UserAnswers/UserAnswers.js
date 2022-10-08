@@ -8,6 +8,8 @@ import "./UserAnswers.css";
 function UserAnswers() {
   const dispatch = useDispatch();
   const { userId } = useParams();
+  const allUsers = Object.values(useSelector(state => state.users))
+  const userInfo = allUsers.find(user => user?.id === +userId)
   const allAnswers = Object.values(useSelector((state) => state?.answers));
   const userAnswers = allAnswers.filter((answer) => answer?.userId === +userId);
   const allQuestions = Object.values(useSelector((state) => state?.questions));
@@ -41,7 +43,7 @@ function UserAnswers() {
     <>
       <div id="user-answers">
         <div id="user-answers-text">
-          <h1>Your Answers</h1>
+          <h1>{userInfo?.username}'s' Answers</h1>
         </div>
         {numAnswer}
         <div id="user-answers-container">

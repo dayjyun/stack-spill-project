@@ -30,7 +30,7 @@ function UserComponent() {
   }
 
   const handleAnswersClick = () => {
-    setPageToggle(<UserAnswers />)
+    setPageToggle(<UserAnswers />);
   }
 
   return (
