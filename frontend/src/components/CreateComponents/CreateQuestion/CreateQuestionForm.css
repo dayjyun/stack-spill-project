@@ -65,9 +65,10 @@
 
 .cqfi-body {
     height: 15rem;
+    min-height: 240px;
     width: 48rem;
     padding: 1rem;
-    width: 100%
+    min-width: 91.5%;
 }
 
 #create-question-buttons {
