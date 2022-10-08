@@ -5,17 +5,16 @@
    align-items: flex-start;
    height: 100%;
    margin-top: 4rem;
+   min-width: 22rem;
 }
 
 #footer-info-left {
-    /* border: 2px solid lightgreen; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #footer-logo-home {
-    /* border: 2px solid cyan; */
     padding: 0 1rem;
     text-align: center;
 }
