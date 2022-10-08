@@ -39,7 +39,6 @@ function AnswersComponent({ questionId }) {
   return (
     <>
       <div id="answer-page-component">
-        {/* <h2 id="answer-number-text">{answers?.length} Answers</h2> */}
         {answersNum}
         {answers?.map((answer) => (
           <div key={answer?.id} id="answer-card">

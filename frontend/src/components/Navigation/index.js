@@ -49,7 +49,6 @@ function Navigation({ isLoaded }) {
             </div>
             <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
           </div>
-          {/* Dark Mode Button */}
         </div>
       </div>
     </>
