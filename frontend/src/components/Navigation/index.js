@@ -30,7 +30,6 @@ function Navigation({ isLoaded }) {
     <>
       <div>
         <div id="navigation-bar">
-          {/* Side Menu: Questions, Users */}
           <div id="navigation-navLinks">
             <div id="navigation-navLinks-left">
               <NavLink id={"navigation-home"} exact to="/">
@@ -45,7 +44,7 @@ function Navigation({ isLoaded }) {
                 Users
               </NavLink>
             </div>
-            <div id='search-bar-div'>
+            <div id="search-bar-div">
               <SearchBarComponent />
             </div>
             <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>

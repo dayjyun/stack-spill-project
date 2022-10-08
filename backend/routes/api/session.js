@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
 const { validateLogin, validateSignup } = require("../../utils/validation");
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 const router = express.Router();
 
 // Log in
@@ -31,10 +32,44 @@ router.delete("/logout", (_req, res) => {
   return res.json({ message: "Logout successful" });
 });
 
+// // Sign up with Profile Image
+// router.post("/signup/profileImage", validateSignup,
+//   singleMulterUpload("profileImage"), async (req, res) => {
+//   const { firstName, lastName, email, password, username } = req.body;
+//   const profileImage = await singlePublicFileUpload(req.file);
+//   const checkEmail = await User.findOne({ where: { email } });
+//   const checkUsername = await User.findOne({ where: { username } });
+
+//   if (checkEmail) {
+//     let error = new Error("User already exists");
+//     error.status = 403;
+//     error.errors = ["Email already exists"];
+//     throw error;
+//   }
+
+//   if (checkUsername) {
+//     let error = new Error("User already exists");
+//     error.status = 403;
+//     error.errors = ["Username already exists"];
+//     throw error;
+//   }
+
+//   const user = await User.signup({
+//     firstName,
+//     lastName,
+//     email,
+//     username,
+//     password,
+//     profileImage,
+//   });
+
+//   let token = await setTokenCookie(res, user);
+//   return res.json({ ...user.toSafeObject(), token });
+// });
 
 // Sign up
 router.post("/signup", validateSignup, async (req, res) => {
-  const { firstName, lastName, email, password, username } = req.body;
+  const { firstName, lastName, email, password, username, profileImage } = req.body;
   const checkEmail = await User.findOne({ where: { email }})
   const checkUsername = await User.findOne({ where: { username } })
 
@@ -58,60 +93,11 @@ router.post("/signup", validateSignup, async (req, res) => {
     email,
     username,
     password,
+    profileImage
   })
 
   let token = await setTokenCookie(res, user);
   return res.json({ ...user.toSafeObject(), token });
 });
-
-
-// ==================== Fetch Requests ================== //
-
-// LOGIN
-// fetch("/api/login", {
-//   method: "post",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
-//   },
-//   body: JSON.stringify({
-//     password: "password",
-//     credential: "demo",
-//   }),
-// })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data));
-
-
-// LOGOUT
-// fetch("/api/logout", {
-//   method: "delete",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
-//   },
-// })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data));
-
-
-// SIGNUP
-// fetch("/api/signup", {
-//   method: "post",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": "SbSJ3GDo-sEc4iCeDytJrgKIGh94SNczD6Ko",
-//   },
-//   body: JSON.stringify({
-//     firstName: "testF",
-//     lastName: "testL",
-//     username: "test",
-//     email: "test@user.io",
-//     password: "password",
-//     // credential: "demo",
-//   }),
-// })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data));
 
 module.exports = router;

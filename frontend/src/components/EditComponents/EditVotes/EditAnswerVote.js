@@ -23,7 +23,7 @@ function EditAnswerVote({ answerId }) {
       setUpVote(answerVotes?.includes(userVote?.vote));
     };
     sessionUserAnswerVote();
-  }, [dispatch, allVotes]);
+  }, [dispatch, allVotes, userVote]);
 
   useEffect(() => {
     if (userVote) {
@@ -76,38 +76,42 @@ function EditAnswerVote({ answerId }) {
   });
 
   const handleUpVote = async () => {
-    setUpVoteStyle({ color: "rgb(0, 165, 0)" });
-    setDownVoteStyle({ color: "rgb(211, 211, 211)" });
-    if (userVote?.vote === false) {
-      await dispatch(
-        editAnswerVote({
-          userId: sessionUser?.id,
-          vote: true,
-          answerId: +answerId,
-        })
-      ).then(async () => {
-        setUpVote(!upVote);
-      });
-    } else {
-      await upVoteAnswer().then(async () => setUpVote(!upVote));
+    if (sessionUser) {
+      setUpVoteStyle({ color: "rgb(0, 165, 0)" });
+      setDownVoteStyle({ color: "rgb(211, 211, 211)" });
+      if (userVote?.vote === false) {
+        await dispatch(
+          editAnswerVote({
+            userId: sessionUser?.id,
+            vote: true,
+            answerId: +answerId,
+          })
+        ).then(async () => {
+          setUpVote(!upVote);
+        });
+      } else {
+        await upVoteAnswer().then(async () => setUpVote(!upVote));
+      }
     }
   };
 
   const handleDownVote = async () => {
-    setDownVoteStyle({ color: "red" });
-    setUpVoteStyle({ color: "rgb(211, 211, 211)" });
-    if (userVote?.vote === true) {
-      await dispatch(
-        editAnswerVote({
-          userId: sessionUser?.id,
-          vote: false,
-          answerId: +answerId,
-        })
-      ).then(async () => {
-        setUpVote(!upVote);
-      });
-    } else {
-      await downVoteAnswer().then(async () => setDownVote(!downVote));
+    if (sessionUser) {
+      setDownVoteStyle({ color: "red" });
+      setUpVoteStyle({ color: "rgb(211, 211, 211)" });
+      if (userVote?.vote === true) {
+        await dispatch(
+          editAnswerVote({
+            userId: sessionUser?.id,
+            vote: false,
+            answerId: +answerId,
+          })
+        ).then(async () => {
+          setUpVote(!upVote);
+        });
+      } else {
+        await downVoteAnswer().then(async () => setDownVote(!downVote));
+      }
     }
   };
 

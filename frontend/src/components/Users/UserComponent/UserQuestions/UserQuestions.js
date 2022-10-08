@@ -41,7 +41,7 @@ function UserQuestions() {
                 {question?.body.length > 70
                   ? question?.body
                       .split("")
-                      .filter((text, i) => i < 70)
+                      .filter((text, i) => i < 90)
                       .join("") + "..."
                   : question?.body}
               </div>

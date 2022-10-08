@@ -9,47 +9,37 @@
 }
 
 #edit-user-form-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    margin-top: 1.8rem;
-    padding: 0 1rem;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 1.8rem;
+  padding: 0 1rem;
+  position: relative;
 }
 
 #edit-user-form {
-  /* display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem; */
-
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-style: none;
-    outline: none;
-    padding: 0 2rem;
+  border-style: none;
+  outline: none;
+  padding: 0 2rem;
 }
 
 .edit-user-form-div {
-  padding:  .6rem 2rem;
+  padding: 0.6rem 2rem;
 }
 
 .edit-user-form-input {
-    outline: none;
-    padding: .5rem .2rem;
-    width: 20rem;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px rgb(51 51 51 / 35%);
+  outline: none;
+  padding: 0.5rem 0.2rem;
+  width: 20rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(51 51 51 / 35%);
 }
-
-/* #edit-user-form-buttons > button {
-  margin: 0 2rem;
-} */
 
 #edit-user-form-buttons {
   display: flex;

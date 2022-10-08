@@ -1,23 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../../store/usersReducer";
+import { editUser } from "../../../store/sessionReducer";
+import { getUser } from "../../../store/usersReducer";
 import "./EditUserForm.css";
 
 function EditUserForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const defaultImage =
-    "https://stack-spill-project.s3.us-east-2.amazonaws.com/stack-spill-default-profile-image.png";
   const [firstName, setFirstName] = useState(sessionUser?.firstName);
   const [lastName, setLastName] = useState(sessionUser?.lastName);
   const [email, setEmail] = useState(sessionUser?.email);
   const [username, setUsername] = useState(sessionUser?.username);
-  const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
-  // const [password, setPassword] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
+
+  useEffect(() => {
+    dispatch(getUser(sessionUser.id))
+  }, [dispatch, sessionUser])
 
   const handelUserEditForm = (e) => {
     e.preventDefault()
-    
     dispatch(
       editUser({
         id: +sessionUser?.id,
@@ -25,8 +26,7 @@ function EditUserForm({ setShowModal }) {
         lastName,
         email,
         username,
-        profileImage: profileImage || defaultImage,
-        // password,
+        profileImage,
       })
     ).then(() => {
       setShowModal(false);
@@ -84,14 +84,6 @@ function EditUserForm({ setShowModal }) {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          {/* <div className="edit-user-form-div">
-        Password
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div> */}
           <div className="edit-user-form-div">
             Profile Image
             <input

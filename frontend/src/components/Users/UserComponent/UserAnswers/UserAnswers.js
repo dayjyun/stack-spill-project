@@ -13,7 +13,6 @@ function UserAnswers() {
   const allQuestions = Object.values(useSelector((state) => state?.questions));
 
   useEffect(() => {
-    // dispatch(getAllQuestions());
     dispatch(getAllAnswers());
     dispatch(getUserAnswers(+userId))
   }, [dispatch, userId]);
@@ -46,9 +45,9 @@ function UserAnswers() {
         </div>
         {numAnswer}
         <div id="user-answers-container">
-          {answeredQuestions.map((question) => (
+          {answeredQuestions.map((question, i) => (
             <NavLink
-              key={question?.id}
+              key={i}
               id="user-answers-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >
@@ -57,7 +56,7 @@ function UserAnswers() {
                 {question?.body.length > 70
                   ? question?.body
                       .split("")
-                      .filter((text, i) => i < 70)
+                      .filter((text, i) => i < 90)
                       .join("") + "..."
                   : question?.body}
               </div>

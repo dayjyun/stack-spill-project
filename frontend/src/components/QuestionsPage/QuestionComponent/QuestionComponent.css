@@ -11,6 +11,7 @@
 
 #question-card-container {
     width: 100%;
+    min-width: 20rem;
 }
 
 #question-card-text-top {

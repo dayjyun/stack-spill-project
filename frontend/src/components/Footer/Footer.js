@@ -19,14 +19,16 @@ function Footer() {
           <div id="footer-logo-left-navLinks">
             <NavLink to="/">Questions</NavLink>
             <NavLink to="/users">Users</NavLink>
-            <NavLink to="/about">About</NavLink>
           </div>
         </div>
         <div id="footer-info-right">
-          <div id="footer-my-info">
-            <div id='footer-info-right-link'>
-              By <a href="https://github.com/dayjyun">Kevin Barrios</a>
-            </div>
+          <div id="footer-info-right-links">
+            <a href="https://github.com/dayjyun">
+              <i className="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/kevinbarrios12/">
+              <i className="fa-brands fa-linkedin"></i>
+            </a>
           </div>
         </div>
       </div>

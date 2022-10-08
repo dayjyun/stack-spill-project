@@ -1,19 +1,20 @@
 #user-questions {
   margin: 0 5rem;
+  min-width: 20rem;
 }
 
 #user-questions-text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10%;
 }
 
 #user-questions-num {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: .025% 10%;
+  margin: 0.025% 10%;
 }
 
 #user-questions-container {
@@ -38,10 +39,10 @@
 }
 
 #user-questions-card:hover {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #user-questions-title {
-    color: rgb(62, 134, 159);
-    margin: 0;
+  color: rgb(62, 134, 159);
+  margin: 0;
 }

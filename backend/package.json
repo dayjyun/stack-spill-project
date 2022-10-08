@@ -34,6 +34,7 @@
     "sqlite3": "^5.0.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "dotenv-cli": "^5.1.0",
     "nodemon": "^2.0.16"
   }
