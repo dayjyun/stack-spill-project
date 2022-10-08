@@ -32,40 +32,6 @@ router.delete("/logout", (_req, res) => {
   return res.json({ message: "Logout successful" });
 });
 
-// // Sign up with Profile Image
-// router.post("/signup/profileImage", validateSignup,
-//   singleMulterUpload("profileImage"), async (req, res) => {
-//   const { firstName, lastName, email, password, username } = req.body;
-//   const profileImage = await singlePublicFileUpload(req.file);
-//   const checkEmail = await User.findOne({ where: { email } });
-//   const checkUsername = await User.findOne({ where: { username } });
-
-//   if (checkEmail) {
-//     let error = new Error("User already exists");
-//     error.status = 403;
-//     error.errors = ["Email already exists"];
-//     throw error;
-//   }
-
-//   if (checkUsername) {
-//     let error = new Error("User already exists");
-//     error.status = 403;
-//     error.errors = ["Username already exists"];
-//     throw error;
-//   }
-
-//   const user = await User.signup({
-//     firstName,
-//     lastName,
-//     email,
-//     username,
-//     password,
-//     profileImage,
-//   });
-
-//   let token = await setTokenCookie(res, user);
-//   return res.json({ ...user.toSafeObject(), token });
-// });
 
 // Sign up
 router.post("/signup", validateSignup, async (req, res) => {
