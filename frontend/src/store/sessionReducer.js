@@ -3,7 +3,6 @@ import { csrfFetch } from "./csrf";
 // types
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
-const EDIT_USER = 'session/editUser'
 
 // actions
 const setUser = (user) => {
@@ -35,51 +34,47 @@ export const restoreUser = () => async (dispatch) => {
   return response;
 };
 
-
-// log out
-const removeUser = () => {
-  return {
-    type: REMOVE_USER,
-  };
-};
-
-export const logout = () => async (dispatch) => {
-  const response = await csrfFetch("/api/logout", {
-    method: "DELETE",
-  });
-  dispatch(removeUser());
-  return response;
-};
-
+// sign up user
 export const signup = (user) => async (dispatch) => {
   const { firstName, lastName, username, email, password, profileImage } = user;
-  const response = await csrfFetch("/api/signup", {
-    method: "POST",
-    body: JSON.stringify({
-      firstName,
-      lastName,
-      username,
-      email,
-      password,
-      profileImage
-    }),
-  });
-  const data = await response.json();
-  dispatch(setUser(data));
-  return response;
+  let response;
+
+  // if (profileImage) {
+  //   const formData = new FormData();
+
+  //   formData.append("firstName", firstName);
+  //   formData.append("lastName", lastName);
+  //   formData.append("username", username);
+  //   formData.append("email", email);
+  //   formData.append("password", password);
+  //   formData.append("profileImage", profileImage);
+
+  //   response = await csrfFetch(`/api/signup/profileImage`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "multipart/form-data",
+  //     },
+  //     body: formData,
+  //   });
+  // } else {
+    response = await csrfFetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    if(response.ok) {
+      const data = await response.json();
+      dispatch(setUser(data));
+      return response;
+    }
+  // }
 };
 
 // edit user
-const updateUser = (user) => {
-  return {
-    type: EDIT_USER,
-    user,
-  };
-};
-
 export const editUser = (userData) => async (dispatch) => {
   const { firstName, lastName, email, username, profileImage } = userData;
-
   let userEdit;
 
   if (profileImage) {
@@ -97,7 +92,7 @@ export const editUser = (userData) => async (dispatch) => {
         "Content-Type": "multipart/form-data",
       },
       body: formData,
-    })
+    });
   } else {
     userEdit = await csrfFetch(`/api/users/${userData.id}`, {
       method: "PUT",
@@ -112,6 +107,21 @@ export const editUser = (userData) => async (dispatch) => {
     const resUserEdit = await userEdit.json();
     dispatch(setUser(resUserEdit));
   }
+};
+
+// log out
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  };
+};
+
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch("/api/logout", {
+    method: "DELETE",
+  });
+  dispatch(removeUser());
+  return response;
 };
 
 // reducers

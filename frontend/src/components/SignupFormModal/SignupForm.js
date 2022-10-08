@@ -32,7 +32,7 @@ function SignupForm() {
           email,
           username,
           password,
-          profileImage: profileImage || defaultImage,
+          profileImage: defaultImage,
         })
       ).catch(async (res) => {
         const data = await res.json();
@@ -112,14 +112,14 @@ function SignupForm() {
               required
             />
           </div>
-          <div className="edit-user-form-div">
+          {/* <div className="edit-user-form-div">
             Profile Image
             <input
               type="file"
               className="edit-user-form-input"
               onChange={(e) => setProfileImage(e.target.files[0])}
             />
-          </div>
+          </div> */}
           <button id="sf-buttons" type="submit">
             Sign Up
           </button>
