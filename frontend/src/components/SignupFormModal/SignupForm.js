@@ -16,7 +16,6 @@ function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [profileImage, setProfileImage] = useState('');
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -112,14 +111,6 @@ function SignupForm() {
               required
             />
           </div>
-          {/* <div className="edit-user-form-div">
-            Profile Image
-            <input
-              type="file"
-              className="edit-user-form-input"
-              onChange={(e) => setProfileImage(e.target.files[0])}
-            />
-          </div> */}
           <button id="sf-buttons" type="submit">
             Sign Up
           </button>
