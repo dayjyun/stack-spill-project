@@ -22,10 +22,13 @@ function Footer() {
           </div>
         </div>
         <div id="footer-info-right">
-          <div id="footer-my-info">
-            <div id='footer-info-right-link'>
-              By <a href="https://github.com/dayjyun">Kevin Barrios</a>
-            </div>
+          <div id="footer-info-right-links">
+            <a href="https://github.com/dayjyun">
+              <i className="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/kevinbarrios12/">
+              <i className="fa-brands fa-linkedin"></i>
+            </a>
           </div>
         </div>
       </div>
