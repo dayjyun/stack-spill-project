@@ -10,6 +10,7 @@ import UserComponent from "./components/Users/UserComponent/UserComponent";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
 import Footer from "./components/Footer/Footer";
 import './App.css'
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function App() {
               <Users />
             </Route>
             <Route>
-              <h1>404 Page</h1>
+              <ErrorPage />
             </Route>
           </Switch>
         )}
