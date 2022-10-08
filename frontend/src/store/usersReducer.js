@@ -66,6 +66,9 @@ const updateUser = (user) => {
 
 export const editUser = (userData) => async (dispatch) => {
   const { firstName, lastName, email, username, profileImage } = userData;
+
+  console.log("---------", 1)
+
   const formData = new FormData();
 
   formData.append("firstName", firstName);
@@ -73,7 +76,11 @@ export const editUser = (userData) => async (dispatch) => {
   formData.append("email", email);
   formData.append("username", username);
 
+  console.log("---------", 2);
+
   if (profileImage) formData.append("profileImage", profileImage);
+
+  console.log("---------", 3);
 
   const userEdit = await csrfFetch(`/api/users/${userData.id}`, {
     method: "PUT",
@@ -81,9 +88,15 @@ export const editUser = (userData) => async (dispatch) => {
       "Content-Type": "multipart/form-data",
     },
     body: formData,
-  });
+  }).catch(err => {
+    console.log(err.message)
+  })
+
+  console.log("---------", 4);
 
   if (userEdit.ok) {
+
+    console.log("---------", 5);
     const resUserEdit = await userEdit.json();
     dispatch(updateUser(resUserEdit));
   }
