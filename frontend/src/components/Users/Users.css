@@ -28,6 +28,11 @@
   min-width: 250px;
   padding: 1rem 1rem;
   margin: 1rem 0;
+  border: 1px solid lightgray
+}
+
+#users-component-card:hover {
+  background-color: aliceblue;
 }
 
 #users-component-card > a {
