@@ -21,10 +21,10 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-        return setErrors(["Login Failed. Try Again"])
+        return setErrors(["Login Failed. Try Again"]);
       }
-      );
-    };
+    );
+  };
 
   return (
     <>
@@ -63,7 +63,7 @@ function LoginForm() {
           </div>
         </form>
         <div id="login-form-demo">
-          <div id='login-form-demo-text'>Try out the Demo User?</div>
+          <div id="login-form-demo-text">Try out the Demo User?</div>
           <div id="demo-user-button-login-form">
             <DemoUserButton
               credential={credential}
