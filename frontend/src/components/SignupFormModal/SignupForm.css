@@ -26,22 +26,7 @@
   border-style: none;
   outline: none;
   padding: 0 2rem;
-
-  /* min-height: 10vh; */
-  /* box-shadow: 3px 5px 3px 3px rgb(51 51 51 /
-    35%); */
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    width: 18rem; */
 }
-
-/* .signup-form-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    padding: 0 1rem;
-} */
 
 .signup-form-div {
   padding: 0.6rem 2rem;

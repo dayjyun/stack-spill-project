@@ -14,22 +14,22 @@ function Users() {
 
   return (
     <>
-        <h1 id='users-text'>Users</h1>
+      <h1 id="users-text">Users</h1>
       <div id="users-container">
-          <ul id="users-list">
-            {allUsers.map((user) => (
-              <div key={user?.id} id="users-component-card">
-                <Link to={`/users/${user?.id}`}>
-                  <img
-                    id="users-component-profileImage"
-                    alt="user"
-                    src={user?.profileImage}
-                  />
-                  <div>{user?.username}</div>
-                </Link>
-              </div>
-            ))}
-          </ul>
+        <ul id="users-list">
+          {allUsers.map((user) => (
+            <div key={user?.id} id="users-component-card">
+              <Link to={`/users/${user?.id}`}>
+                <img
+                  id="users-component-profileImage"
+                  alt="user"
+                  src={user?.profileImage}
+                />
+                <div>{user?.username}</div>
+              </Link>
+            </div>
+          ))}
+        </ul>
       </div>
     </>
   );

@@ -64,7 +64,9 @@ module.exports = {
           "https://stack-spill-project.s3.us-east-2.amazonaws.com/user+images/Walter+White.webp",
         hashedPassword: bcrypt.hashSync("password"),
       },
-    ]);
+    ],
+
+    );
   },
 
   async down(queryInterface, Sequelize) {

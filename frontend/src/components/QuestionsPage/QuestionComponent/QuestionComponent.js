@@ -13,7 +13,6 @@ import "./QuestionComponent.css";
 function QuestionComponent() {
   const dispatch = useDispatch();
   let { questionId } = useParams();
-  // questionId = parseInt(questionId)
   const sessionUser = useSelector((state) => state.session?.user);
   const allQuestions = Object.values(useSelector((state) => state?.questions));
   const question = allQuestions.find((question) => question?.id === +questionId);

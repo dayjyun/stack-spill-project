@@ -7,7 +7,6 @@
   justify-content: center;
   align-items: center;
   margin: 1.5rem 20rem;
-  /* background-color: rgb(140, 246, 249, 0.2); */
   border-radius: 6px;
 }
 
@@ -37,15 +36,16 @@
 #user-component-details-name {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem 0;
+  min-width: 5rem;
 }
 
 #user-component-navLinks {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0 25rem;
-  margin-top: 2.5rem;
+  width: 100%;
 }
 
 #user-component-navLinks div:hover {
@@ -56,9 +56,4 @@
   padding: 1rem;
   background-color: rgb(237, 237, 237);
   border-radius: 6px;
-}
-
-
-#user-component-page-toggle {
-  border: 2px solid red;
 }

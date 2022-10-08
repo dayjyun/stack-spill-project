@@ -5,14 +5,12 @@ import * as sessionActions from "./store/sessionReducer";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
-import AboutPage from "./components/AboutPage/AboutPage";
 import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import UserComponent from "./components/Users/UserComponent/UserComponent";
-// import UserQuestions from "./components/Users/UserComponent/UserQuestions/UserQuestions";
-// import UserAnswers from "./components/Users/UserComponent/UserAnswers/UserAnswers";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
 import Footer from "./components/Footer/Footer";
 import './App.css'
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,15 +35,6 @@ function App() {
             <Route exact path="/">
               <QuestionsPage />
             </Route>
-            <Route path="/about">
-              <AboutPage />
-            </Route>
-            {/* <Route path="/users/:userId/questions">
-              <UserQuestions />
-            </Route>
-            <Route path="/users/:userId/answers">
-              <UserAnswers />
-            </Route> */}
             <Route path="/users/:userId">
               <UserComponent />
             </Route>
@@ -53,7 +42,7 @@ function App() {
               <Users />
             </Route>
             <Route>
-              <h1>404 Page</h1>
+              <ErrorPage />
             </Route>
           </Switch>
         )}
