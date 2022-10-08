@@ -44,7 +44,7 @@ function Navigation({ isLoaded }) {
                 Users
               </NavLink>
             </div>
-            <div id='search-bar-div'>
+            <div id="search-bar-div">
               <SearchBarComponent />
             </div>
             <div id="navigation-navLinks-right">{isLoaded && sessionLinks}</div>
