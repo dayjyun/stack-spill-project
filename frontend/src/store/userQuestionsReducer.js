@@ -23,10 +23,14 @@ const userQuestionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_QUESTIONS:
       initialState = {};
-      action.list.forEach((question) => {
-        initialState[question.id] = question;
-      });
-      return initialState;
+      if (action?.list?.length > 0) {
+
+        action?.list.forEach((question) => {
+          initialState[question?.id] = question;
+        });
+      } else {
+        return initialState;  
+      }
 
     default:
       return state;

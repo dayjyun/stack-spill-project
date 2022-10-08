@@ -55,7 +55,6 @@ export const getUserAnswers = (userId) => async (dispatch) => {
   }
 };
 
-
 let initialState = {};
 
 const usersReducer = (state = initialState, action) => {
@@ -72,10 +71,13 @@ const usersReducer = (state = initialState, action) => {
 
     case GET_USER_ANSWERS:
       initialState = { ...state };
-      action.list.forEach((answer) => {
-        initialState[answer.id] = answer;
-      });
-      return initialState;
+      if (action?.list?.length > 0) {
+        action?.list?.forEach((answer) => {
+          initialState[answer.id] = answer;
+        });
+      } else {
+        return initialState;
+      }
 
     default:
       return state;
