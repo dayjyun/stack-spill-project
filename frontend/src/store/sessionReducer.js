@@ -36,27 +36,9 @@ export const restoreUser = () => async (dispatch) => {
 
 // sign up user
 export const signup = (user) => async (dispatch) => {
-  const { firstName, lastName, username, email, password, profileImage } = user;
+  // const { firstName, lastName, username, email, password, profileImage } = user;
+
   let response;
-
-  // if (profileImage) {
-  //   const formData = new FormData();
-
-  //   formData.append("firstName", firstName);
-  //   formData.append("lastName", lastName);
-  //   formData.append("username", username);
-  //   formData.append("email", email);
-  //   formData.append("password", password);
-  //   formData.append("profileImage", profileImage);
-
-  //   response = await csrfFetch(`/api/signup/profileImage`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //     body: formData,
-  //   });
-  // } else {
     response = await csrfFetch("/api/signup", {
       method: "POST",
       headers: {
@@ -69,7 +51,6 @@ export const signup = (user) => async (dispatch) => {
       dispatch(setUser(data));
       return response;
     }
-  // }
 };
 
 // edit user
