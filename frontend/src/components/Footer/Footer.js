@@ -19,7 +19,6 @@ function Footer() {
           <div id="footer-logo-left-navLinks">
             <NavLink to="/">Questions</NavLink>
             <NavLink to="/users">Users</NavLink>
-            <NavLink to="/about">About</NavLink>
           </div>
         </div>
         <div id="footer-info-right">

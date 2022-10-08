@@ -5,7 +5,6 @@ import * as sessionActions from "./store/sessionReducer";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage";
-import AboutPage from "./components/AboutPage/AboutPage";
 import QuestionComponent from "./components/QuestionsPage/QuestionComponent/QuestionComponent";
 import UserComponent from "./components/Users/UserComponent/UserComponent";
 import CreateQuestionForm from "./components/CreateComponents/CreateQuestion/CreateQuestionForm";
@@ -34,9 +33,6 @@ function App() {
             </Route>
             <Route exact path="/">
               <QuestionsPage />
-            </Route>
-            <Route path="/about">
-              <AboutPage />
             </Route>
             <Route path="/users/:userId">
               <UserComponent />
