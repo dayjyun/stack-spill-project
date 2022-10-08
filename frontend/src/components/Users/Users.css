@@ -38,7 +38,7 @@
 }
 
 #users-component-profileImage {
-  max-height: 2rem;
-  max-width: 2rem;
+  max-height: 4rem;
+  max-width: 4rem;
   padding-right: .5rem;
 }
