@@ -17,8 +17,8 @@ function Users() {
       <h1 id="users-text">Users</h1>
       <div id="users-container">
         <ul id="users-list">
-          {allUsers.map((user) => (
-            <div key={user?.id} id="users-component-card">
+          {allUsers.map((user, i) => (
+            <div key={i} id="users-component-card">
               <Link to={`/users/${user?.id}`}>
                 <img
                   id="users-component-profileImage"

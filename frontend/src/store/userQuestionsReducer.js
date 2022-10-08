@@ -22,16 +22,14 @@ let initialState = {};
 const userQuestionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_QUESTIONS:
-      initialState = {};
+      initialState = { ...state };
       if (action?.list?.length > 0) {
-
-        action?.list.forEach((question) => {
+        action?.list?.forEach((question) => {
           initialState[question?.id] = question;
         });
       } else {
-        return initialState;  
+        return initialState;
       }
-
     default:
       return state;
   }

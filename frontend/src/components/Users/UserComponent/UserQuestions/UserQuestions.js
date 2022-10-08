@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getUserQuestions } from "../../../../store/userQuestionsReducer";
+// import { getUserQuestions } from "../../../../store/usersReducer";
 import "./UserQuestions.css";
 
 function UserQuestions() {
@@ -9,19 +10,20 @@ function UserQuestions() {
   const { userId } = useParams();
   const allUsers = Object.values(useSelector(state => state.users))
   const userInfo = allUsers.find(user => user?.id === +userId)
-  const allQuestions = Object.values(useSelector((state) => state?.userQuestions));
+  const allQuestions = Object.values(useSelector((state) => state?.questions));
   const userQuestions = allQuestions.filter((questions) => questions?.userId === +userId);
 
   useEffect(() => {
+    // dispatch(getUserQuestions(+userId));
     dispatch(getUserQuestions(+userId));
-  }, [dispatch, userId]);
+  }, [dispatch]);
 
   let numQuestion;
 
   if (userQuestions?.length === 1) {
-    numQuestion = (<h3 id="user-questions-num">{userQuestions.length} Question</h3>);
+    numQuestion = (<h3 id="user-questions-num">{userQuestions?.length} Question</h3>);
   } else {
-    numQuestion = (<h3 id="user-questions-num">{userQuestions.length} Questions</h3>);
+    numQuestion = (<h3 id="user-questions-num">{userQuestions?.length} Questions</h3>);
   }
 
   return (
@@ -32,9 +34,9 @@ function UserQuestions() {
         </div>
         {numQuestion}
         <div id="user-questions-container">
-          {userQuestions.map((question) => (
+          {userQuestions?.map((question, i) => (
             <NavLink
-              key={question?.id}
+              key={i}
               id="user-questions-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >

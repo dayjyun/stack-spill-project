@@ -127,7 +127,7 @@ export default function questionReducer(state = initialState, action) {
         case GET_ALL_QUESTIONS:
             initialState = {  }
             action?.list?.forEach((question, i) => {
-                initialState[i] = question
+                initialState[question.id] = question
             })
             return initialState
 

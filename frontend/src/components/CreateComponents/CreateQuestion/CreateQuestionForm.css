@@ -66,6 +66,7 @@
 .cqfi-body {
     height: 15rem;
     min-height: 240px;
+    max-height: 240px;
     width: 48rem;
     padding: 1rem;
     min-width: 91.5%;

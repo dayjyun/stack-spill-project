@@ -40,8 +40,8 @@ function AnswersComponent({ questionId }) {
     <>
       <div id="answer-page-component">
         {answersNum}
-        {answers?.map((answer) => (
-          <div key={answer?.id} id="answer-card">
+        {answers?.map((answer, i) => (
+          <div key={i} id="answer-card">
             <EditAnswerVote answerId={answer?.id} />
             <div id="answer-card-container">
               <div id="answer-body">{answer?.body}</div>
