@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 // types
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const EDIT_USER = 'session/editUser'
 
 // actions
 const setUser = (user) => {
@@ -68,6 +69,51 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+// edit user
+const updateUser = (user) => {
+  return {
+    type: EDIT_USER,
+    user,
+  };
+};
+
+export const editUser = (userData) => async (dispatch) => {
+  const { firstName, lastName, email, username, profileImage } = userData;
+
+  let userEdit;
+
+  if (profileImage) {
+    const formData = new FormData();
+
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("username", username);
+    formData.append("profileImage", profileImage);
+
+    userEdit = await csrfFetch(`/api/users/${userData.id}/profileImage`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+    })
+  } else {
+    userEdit = await csrfFetch(`/api/users/${userData.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+  }
+
+  if (userEdit.ok) {
+    const resUserEdit = await userEdit.json();
+    dispatch(setUser(resUserEdit));
+  }
+};
+
 // reducers
 // let initialState = { user: null };
 let initialState = {};
@@ -81,7 +127,7 @@ const sessionReducer = (state = initialState, action) => {
         newState.user = action.payload;
         return newState;
       } else {
-        return state
+        return state;
       }
 
     case REMOVE_USER:

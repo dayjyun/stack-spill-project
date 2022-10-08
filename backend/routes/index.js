@@ -44,19 +44,19 @@ if (process.env.NODE_ENV === 'production') {
 //   });
 // }
 
-// router.get("/api/csrf/restore", (req, res) => {
-//   const csrfToken = req.csrfToken();
-//   res.cookie("XSRF-TOKEN", csrfToken);
-//   res.status(200).json({
-//     "XSRF-Token": csrfToken
-//   });
-// });
-
-if (process.env.NODE_ENV !== "production") {
-  router.get("/api/csrf/restore", (req, res) => {
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    res.status(201).json({});
+router.get("/api/csrf/restore", (req, res) => {
+  const csrfToken = req.csrfToken();
+  res.cookie("XSRF-TOKEN", csrfToken);
+  res.status(200).json({
+    "XSRF-Token": csrfToken
   });
-}
+});
+
+// if (process.env.NODE_ENV !== "production") {
+//   router.get("/api/csrf/restore", (req, res) => {
+//     res.cookie("XSRF-TOKEN", req.csrfToken());
+//     res.status(201).json({});
+//   });
+// }
 
 module.exports = router;

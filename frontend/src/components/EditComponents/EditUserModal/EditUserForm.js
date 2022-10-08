@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../../store/usersReducer";
+import { editUser } from "../../../store/sessionReducer";
+import { getUser } from "../../../store/usersReducer";
 import "./EditUserForm.css";
 
 function EditUserForm({ setShowModal }) {
@@ -10,11 +11,14 @@ function EditUserForm({ setShowModal }) {
   const [lastName, setLastName] = useState(sessionUser?.lastName);
   const [email, setEmail] = useState(sessionUser?.email);
   const [username, setUsername] = useState(sessionUser?.username);
-  const [profileImage, setProfileImage] = useState(sessionUser?.profileImage);
+  const [profileImage, setProfileImage] = useState(null);
+
+  useEffect(() => {
+    dispatch(getUser(sessionUser.id))
+  }, [dispatch, sessionUser])
 
   const handelUserEditForm = (e) => {
     e.preventDefault()
-
     dispatch(
       editUser({
         id: +sessionUser?.id,

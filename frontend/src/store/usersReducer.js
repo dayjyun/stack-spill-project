@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_ALL_USERS = "users/getAllUsers";
 const GET_USER = "users/getUser";
 const GET_USER_ANSWERS = "users/getUserAnswers";
-const EDIT_USER = "users/editUser";
+// const EDIT_USER = "users/editUser";
 
 // get all users
 const getAll = (list) => {
@@ -56,45 +56,50 @@ export const getUserAnswers = (userId) => async (dispatch) => {
   }
 };
 
-// edit user
-const updateUser = (user) => {
-  return {
-    type: EDIT_USER,
-    user,
-  };
-};
+// // edit user
+// const updateUser = (user) => {
+//   return {
+//     type: EDIT_USER,
+//     user,
+//   };
+// };
 
-export const editUser = (userData) => async (dispatch) => {
-  const { firstName, lastName, email, username, profileImage } = userData;
-  const formData = new FormData();
+// export const editUser = (userData) => async (dispatch) => {
+//   const { firstName, lastName, email, username, profileImage } = userData;
 
-  formData.append("firstName", firstName);
-  formData.append("lastName", lastName);
-  formData.append("email", email);
-  formData.append("username", username);
+//   let userEdit;
 
-  if (profileImage) formData.append("profileImage", profileImage);
+//   if (profileImage) {
+//     const formData = new FormData();
 
-  console.log(1, "---------");
+//     formData.append("firstName", firstName);
+//     formData.append("lastName", lastName);
+//     formData.append("email", email);
+//     formData.append("username", username);
+//     formData.append("profileImage", profileImage);
 
-  const userEdit = await csrfFetch(`/api/users/${userData.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    body: formData,
-  }).catch(err => {
-    console.log(err.message)
-  })
+//     userEdit = await csrfFetch(`/api/users/${userData.id}/profileImage`, {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//       body: formData,
+//     })
+//   } else {
+//     userEdit = await csrfFetch(`/api/users/${userData.id}`, {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(userData),
+//     });
+//   }
 
-  console.log(2, "---------");
-
-  if (userEdit.ok) {
-    console.log(3, "---------");
-    const resUserEdit = await userEdit.json();
-    dispatch(updateUser(resUserEdit));
-  }
-};
+//   if (userEdit.ok) {
+//     const resUserEdit = await userEdit.json();
+//     dispatch(updateUser(resUserEdit));
+//   }
+// };
 
 let initialState = {};
 
@@ -110,15 +115,15 @@ const usersReducer = (state = initialState, action) => {
     case GET_USER:
       return { ...state, [action.user.id]: action.user };
 
-    case EDIT_USER:
-      return { ...state, [action.user.id]: action.user };
+    // case EDIT_USER:
+    //   return { ...state, [action.user.id]: action.user };
 
     case GET_USER_ANSWERS:
       initialState = { ...state };
       action.list.forEach((answer) => {
         initialState[answer.id] = answer;
       });
-    return initialState;
+      return initialState;
 
     default:
       return state;
