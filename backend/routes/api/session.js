@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
 const { validateLogin, validateSignup } = require("../../utils/validation");
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
 const router = express.Router();
 
 // Log in
@@ -33,8 +34,9 @@ router.delete("/logout", (_req, res) => {
 
 
 // Sign up
-router.post("/signup", validateSignup, async (req, res) => {
+router.post("/signup", validateSignup, singleMulterUpload('profileImage'), async (req, res) => {
   const { firstName, lastName, email, password, username } = req.body;
+  const profileImage = await singlePublicFileUpload(req.file)
   const checkEmail = await User.findOne({ where: { email }})
   const checkUsername = await User.findOne({ where: { username } })
 
@@ -58,6 +60,7 @@ router.post("/signup", validateSignup, async (req, res) => {
     email,
     username,
     password,
+    profileImage,
   })
 
   let token = await setTokenCookie(res, user);

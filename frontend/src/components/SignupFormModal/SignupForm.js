@@ -8,12 +8,15 @@ import "./SignupForm.css";
 function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+   const defaultImage =
+     "https://stack-spill-project.s3.us-east-2.amazonaws.com/stack-spill-default-profile-image.png";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [profileImage, setProfileImage] = useState('');
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -29,6 +32,7 @@ function SignupForm() {
           email,
           username,
           password,
+          profileImage: profileImage || defaultImage,
         })
       ).catch(async (res) => {
         const data = await res.json();
@@ -108,12 +112,20 @@ function SignupForm() {
               required
             />
           </div>
+          <div className="edit-user-form-div">
+            Profile Image
+            <input
+              type="file"
+              className="edit-user-form-input"
+              onChange={(e) => setProfileImage(e.target.files[0])}
+            />
+          </div>
           <button id="sf-buttons" type="submit">
             Sign Up
           </button>
         </form>
         <div id="signup-form-demo">
-          <div id='signup-form-demo-text'>Try out the Demo User?</div>
+          <div id="signup-form-demo-text">Try out the Demo User?</div>
           <div id="demo-user-button-signup-form">
             <DemoUserButton />
           </div>
