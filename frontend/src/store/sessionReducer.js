@@ -69,7 +69,8 @@ export const signup = (user) => async (dispatch) => {
 };
 
 // reducers
-let initialState = { user: null };
+// let initialState = { user: null };
+let initialState = {};
 
 const sessionReducer = (state = initialState, action) => {
   let newState;

@@ -6,8 +6,6 @@ import "./EditUserForm.css";
 function EditUserForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const defaultImage =
-    "https://stack-spill-project.s3.us-east-2.amazonaws.com/stack-spill-default-profile-image.png";
   const [firstName, setFirstName] = useState(sessionUser?.firstName);
   const [lastName, setLastName] = useState(sessionUser?.lastName);
   const [email, setEmail] = useState(sessionUser?.email);
@@ -24,7 +22,7 @@ function EditUserForm({ setShowModal }) {
         lastName,
         email,
         username,
-        profileImage: profileImage || defaultImage,
+        profileImage,
       })
     ).then(() => {
       setShowModal(false);
