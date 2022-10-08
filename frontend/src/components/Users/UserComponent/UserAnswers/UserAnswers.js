@@ -45,9 +45,9 @@ function UserAnswers() {
         </div>
         {numAnswer}
         <div id="user-answers-container">
-          {answeredQuestions.map((question) => (
+          {answeredQuestions.map((question, i) => (
             <NavLink
-              key={question?.id}
+              key={i}
               id="user-answers-card"
               to={{ pathname: `/questions/${question?.id}` }}
             >
