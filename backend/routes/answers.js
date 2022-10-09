@@ -61,7 +61,7 @@ router.post("/:answerId/votes", requireAuth, validateVote, async (req, res) => {
       const newVote = await Vote.create({
         userId: user.id,
         vote,
-        answerId,
+        answerId: +answerId,
       });
       res.status(201);
       res.json(newVote);

@@ -93,7 +93,7 @@ router.post(
         const newVote = await Vote.create({
           userId: user.id,
           vote,
-          questionId,
+          questionId: +questionId,
         });
         res.status(201);
         res.json(newVote);
