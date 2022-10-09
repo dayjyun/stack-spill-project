@@ -43,7 +43,7 @@ function UserAnswers() {
     <>
       <div id="user-answers">
         <div id="user-answers-text">
-          <h1>{userInfo?.username}'s' Answers</h1>
+          <h1>{userInfo?.username}'s Answers</h1>
         </div>
         {numAnswer}
         <div id="user-answers-container">
