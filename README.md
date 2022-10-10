@@ -33,16 +33,13 @@ Great achievements take time and a strong foundation to construct an operating w
 
 ## **Snapshots**
 ## Home Page
-<img width="800" alt="login" src="">
+<img width="800" alt="login" src="../images/Home_Page.png>
 
 ## Question Page
-<img width="800" alt="feed" src="">
-
-## Votes
-<img width="800" alt="explore" src="">
+<img width="800" alt="feed" src="./images/Question_Page.png">
 
 ## Profile
-<img width="800" alt="profile" src="">
+<img width="800" alt="profile" src="./images/User_Profile.png">
 
 # Features
 
