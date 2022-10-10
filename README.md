@@ -33,7 +33,7 @@ Great achievements take time and a strong foundation to construct an operating w
 
 ## **Snapshots**
 ## Home Page
-<img width="800" alt="login" src="./images/Home_Page.png>
+<img width="800" alt="login" src="./images/Home_Page.png">
 
 ## Question Page
 <img width="800" alt="feed" src="./images/Question_Page.png">
