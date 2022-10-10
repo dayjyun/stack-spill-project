@@ -33,7 +33,7 @@ Great achievements take time and a strong foundation to construct an operating w
 
 ## **Snapshots**
 ## Home Page
-<img width="800" alt="login" src="../images/Home_Page.png>
+<img width="800" alt="login" src="./images/Home_Page.png>
 
 ## Question Page
 <img width="800" alt="feed" src="./images/Question_Page.png">
@@ -49,7 +49,7 @@ Here are the things you can do:
    - Ask Questions
    - Update your Question's Title and Body
    - Delete your Question
-   - Sort through Questions by most recent or by title
+   - Sort through Questions by most recent or by alphabetical order
 
 - Answers
    - Answer existing Questions
