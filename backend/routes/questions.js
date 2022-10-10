@@ -153,11 +153,7 @@ router.post("/", requireAuth, validateQuestion, async (req, res) => {
 });
 
 // Edit a vote
-router.put(
-  "/:questionId/votes",
-  requireAuth,
-  validateVote,
-  async (req, res) => {
+router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => {
     const { user } = req;
     const { questionId } = req.params;
     const { vote } = req.body;

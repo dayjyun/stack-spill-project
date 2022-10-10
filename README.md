@@ -78,7 +78,38 @@ Here are the things you can do:
 
 
 # Behind The Scenes
+The backend does a lot of the heavy lifting to provide the desired outcome.
+In the example shown below, in order to edit a vote the signed in user owns on a question, the route undergoes a verification process. First, the backend makes sure a signed in user is present, next it finds the question in mind, continuing with searching for vote that belongs to the user, followed by more steps: checks that the question exists, checks that the vote exists, and finally, creates the desired output for the update. All while establishing error messages if any of those verifications fail. Ultimately solidifying a well crafted solution for the desired route.
 
+```
+router.put("/:questionId/votes", requireAuth, validateVote, async (req, res) => {
+    const { user } = req;
+    const { questionId } = req.params;
+    const { vote } = req.body;
+    const question = await Question.findByPk(questionId);
+    const currentVote = await Vote.findOne({
+      where: { userId: user.id, questionId },
+    });
+
+    if (question) {
+      if (currentVote) {
+        await currentVote.update({
+          vote,
+        });
+        res.json(currentVote);
+      } else {
+        const error = new Error("Vote not found");
+        error.status = 404;
+        throw error;
+      }
+    } else {
+      const error = new Error("Question not found");
+      error.status = 404;
+      throw error;
+    }
+  }
+);
+```
 
 # Future Features
 
