@@ -15,8 +15,7 @@ Checkout the website!
     - AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY
 
-### Live Site
-## [Stack Spill](https://stack-spill.herokuapp.com/)
+### Live Site [Stack Spill](https://stack-spill.herokuapp.com/)
 
 
 # Tech
