@@ -74,6 +74,7 @@ Here are the things you can do:
 
 - Search
    - Look up Questions and Users to interact with other users and their Questions
+      - The search bar begins to render results that match the key pressed
 
 
 # Behind The Scenes
