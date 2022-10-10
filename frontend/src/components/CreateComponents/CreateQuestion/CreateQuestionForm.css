@@ -35,7 +35,7 @@
   align-items: center;
   flex-direction: column;
   margin: 0 15rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
   box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
   border: 2px solid white;
@@ -61,12 +61,16 @@
   width: 49rem;
   padding: 0 0.5rem;
   width: 100%;
+  max-width: 91rem;
+  min-width: 91%
 }
 
 .cqfi-body {
   max-height: 15rem;
   min-height: 15rem;
-  min-width: 10rem;
+  width: 91rem;
+  max-width: 91rem;
+  min-width: 91%;
   padding: .5rem;
 }
 
