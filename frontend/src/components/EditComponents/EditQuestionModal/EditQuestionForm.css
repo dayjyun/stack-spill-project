@@ -34,6 +34,10 @@
 
 .eqfi-body {
   height: 10rem;
+  min-height: 10rem;
+  min-width: 30rem;
+  max-height: 10rem;
+  max-width: 30rem;
 }
 
 #edit-question-buttons {

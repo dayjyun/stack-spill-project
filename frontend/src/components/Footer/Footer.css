@@ -1,67 +1,70 @@
 #footer-container {
-   background-color: #232629;
-   display: flex;
-   justify-content: space-around;
-   align-items: flex-start;
-   height: 100%;
-   min-width: 22rem;
+  background-color: #232629;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100%;
+  min-width: 22rem;
 }
 
-#footer-info-left a:hover, #footer-info-right-links > a:hover {
-    color: white
+#footer-info-left a:hover,
+#footer-info-right-links > a:hover {
+  color: white;
 }
 
 #footer-info-left a {
-    color: rgb(176, 176, 176);
-    text-decoration: none;
+  color: rgb(176, 176, 176);
+  text-decoration: none;
 }
 
 #footer-info-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 #footer-logo-home {
-    padding: 0 1rem;
-    text-align: center;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 #footer-logo-image {
-    width: 3rem;
+  width: 3rem;
 }
 
 #footer-logo-text {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
 
 #footer-logo-left-navLinks {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    line-height: 1.3rem;
-    padding-left: .5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.3rem;
+  padding-left: 0.5rem;
 }
 
 #footer-info-right {
-    height: 100%;display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #footer-info-right-links {
-    min-width: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  min-width: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
- #footer-info-right-links > a  {
-    color: rgb(176, 176, 176);
+#footer-info-right-links > a {
+  color: rgb(176, 176, 176);
 }
 
-.fa-github, .fa-linkedin {
-    font-size: 2rem;
+.fa-github,
+.fa-linkedin {
+  font-size: 2rem;
 }

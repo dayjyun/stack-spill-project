@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getAllQuestions } from "../../store/questionsReducer";
+import { getAllQuestionsSorted } from "../../store/sortedQuestionsReducer";
 import CreateQuestionButton from "../CreateComponents/CreateQuestion/CreateQuestionButton";
 import LoginTextModal from "../LoginFormModal/LoginTextModal";
 import "./QuestionsPage.css";
@@ -9,11 +9,11 @@ import "./QuestionsPage.css";
 function QuestionsPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const allQuestions = Object.values(useSelector((state) => state.questions));
+  const allQuestions = Object.values(useSelector((state) => state.sortedQuestions));
   const [sortType, setSortType] = useState("");
 
   useEffect(() => {
-    dispatch(getAllQuestions(sortType));
+    dispatch(getAllQuestionsSorted(sortType));
   }, [dispatch, sortType, allQuestions.length]);
 
   let allQuestionsNum;

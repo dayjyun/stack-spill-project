@@ -61,7 +61,7 @@ function EditAnswerVote({ answerId }) {
       await dispatch(
         createAnswerVote({
           userId: userVote?.userId,
-          vote: downVote,
+          vote: false,
           answerId,
         })
       );

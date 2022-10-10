@@ -1,28 +1,28 @@
 #error-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 4rem;
 }
 
 .error-page-text {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 #error-page-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
 }
 
 #error-page-home-link {
-    color: blue;
-    font-weight: 600;
+  color: blue;
+  font-weight: 600;
 }
 
 #error-page-home-link:hover {
-    color: rgb(99, 138, 255)
+  color: rgb(99, 138, 255);
 }

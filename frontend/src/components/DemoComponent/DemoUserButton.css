@@ -1,38 +1,38 @@
 #demo-user-button {
-    background-color: lightgray;
-    border-radius: 5px;
-    border: none;
-    margin: 1rem;
-    padding: 1rem 2rem;
-    position: relative;
-    transition: color 200ms ease-in-out;
-    z-index: 1;
+  background-color: lightgray;
+  border-radius: 5px;
+  border: none;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  position: relative;
+  transition: color 200ms ease-in-out;
+  z-index: 1;
 }
 
 #demo-user-button::before {
-    background-color: rgb(0, 173, 43);
-    border-radius: 5px;
-    box-sizing: border-box;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    transition: transform 200ms ease-in-out;
-    transform: scaleX(0);
-    transform-origin: left;
-    z-index: -1;
+  background-color: rgb(0, 173, 43);
+  border-radius: 5px;
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: transform 200ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1;
 }
 
 #demo-user-button:hover::before,
 #demo-user-button:focus::before {
-    border-radius: 5px;
-    transform: scale(1);
+  border-radius: 5px;
+  transform: scale(1);
 }
 
 #demo-user-button:hover,
 #demo-user-button:focus {
-    border-radius: 5px;
-    color: white;
+  border-radius: 5px;
+  color: white;
 }
