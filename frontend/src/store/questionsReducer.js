@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const GET_ALL_QUESTIONS = 'questions/getAllQuestions'
-// const GET_ALL_QUESTIONS_SORT = 'questions/getAllQuestionsSort'
 const GET_QUESTION = 'questions/getQuestion'
 const CREATE_QUESTION = 'questions/createQuestion'
 const EDIT_QUESTION = 'questions/editQuestion'
@@ -34,35 +33,6 @@ export const getAllQuestions = (sortType) => async (dispatch) => {
         dispatch(getAll(resAllQuestions));
     }
 }
-
-// // get all questions sort
-// const getQuestionSort = (list) => {
-//   return {
-//     type: GET_ALL_QUESTIONS_SORT,
-//     list,
-//   };
-// };
-
-// export const getAllQuestionsSort = (sortType) => async (dispatch) => {
-//   let allQuestions;
-
-//   if (sortType) {
-//     allQuestions = await fetch(`/api/questions/sort/${sortType}`, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//   } else {
-//     allQuestions = await fetch("/api/questions");
-//   }
-
-//   if (allQuestions.ok) {
-//     const resAllQuestions = await allQuestions.json();
-//     dispatch(getQuestionSort(resAllQuestions));
-//   }
-// };
-
 
 // get question
 const getCurrentQuestion = (question) => {
@@ -160,14 +130,7 @@ export default function questionReducer(state = initialState, action) {
           initialState[question.id] = question;
         });
         return initialState;
-
-    //   case GET_ALL_QUESTIONS_SORT:
-    //     initialState = {};
-    //     action?.list?.forEach((question, i) => {
-    //       initialState[i] = question;
-    //     });
-    //     return initialState;
-
+        
       case GET_QUESTION:
         return { ...state, [action.question.id]: action.question };
 
