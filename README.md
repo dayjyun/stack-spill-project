@@ -10,7 +10,7 @@
 
 The Stack Spill is a web application designed to replicate some functionalities found in [StackOverflow](https://stackoverflow.com/).
 
-With Stack Spill, you can sign-up, login, or sign in as a guest to try out all the features. Once inside, you'll be able to ask Questions and submit Answers to Questions submitted other users. Express your creativity, share with your connections, and discover more ways to be connected around the world. The repo is your adventure!
+With Stack Spill, you can sign-up, login, or sign in as a guest to try out all the features. Once inside, you'll be able to ask Questions and submit Answers to Questions submitted by other users. Be curious and share your knowledge!
 
 Checkout the website!
 
@@ -52,11 +52,11 @@ Here are the things you can do:
    - Ask Questions
    - Update your Question's Title and Body
    - Delete your Question
-   - Sort through Questions by most recents or by title
+   - Sort through Questions by most recent or by title
 
 - Answers
    - Answer existing Questions
-   - Update your Answer's Body
+   - Update your existing Answer
    - Delete your Answer
 
 - Votes
@@ -64,6 +64,7 @@ Here are the things you can do:
    - UpVote/DownVote exisitng Answers
 
 - Users
+   - Sign Up, Login, and Demo User
    - View a User's profile
    - View the Questions a User asked
    - View the Questions a User answered
