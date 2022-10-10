@@ -7,13 +7,13 @@ With Stack Spill, you can sign-up, login, or sign in as a guest to try out all t
 Checkout the website!
 
 ### Locally
-Create an .env file and generate values for each of the following:
-    - PORT
-    - DB_FILE
-    - JWT_SECRET
-    - JWT_EXPIRES_IN
-    - AWS_ACCESS_KEY_ID
-    - AWS_SECRET_ACCESS_KEY
+   Create an .env file and generate values for each of the following:
+      - PORT
+      - DB_FILE
+      - JWT_SECRET
+      - JWT_EXPIRES_IN
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
 
 ### Live Site
 ## [Stack Spill](https://stack-spill.herokuapp.com/)
