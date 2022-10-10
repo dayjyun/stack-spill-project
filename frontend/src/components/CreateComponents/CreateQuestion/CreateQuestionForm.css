@@ -36,7 +36,7 @@
   flex-direction: column;
   margin: 0 15rem;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
   border: 2px solid white;
   border-radius: 6px;
@@ -64,12 +64,10 @@
 }
 
 .cqfi-body {
-  height: 15rem;
-  min-height: 240px;
-  max-height: 240px;
-  width: 48rem;
-  padding: 1rem;
-  min-width: 91.5%;
+  max-height: 15rem;
+  min-height: 15rem;
+  min-width: 10rem;
+  padding: .5rem;
 }
 
 #create-question-buttons {
