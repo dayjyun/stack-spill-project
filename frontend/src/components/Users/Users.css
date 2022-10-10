@@ -5,10 +5,9 @@
 }
 
 #users-container {
-  margin: 0 20rem;
   display: flex;
   justify-content: center;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 
 #users-list {
