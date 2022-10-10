@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getUserQuestions } from "../../../../store/userQuestionsReducer";
-// import { getUserQuestions } from "../../../../store/usersReducer";
 import "./UserQuestions.css";
 
 function UserQuestions() {
@@ -14,7 +13,6 @@ function UserQuestions() {
   const userQuestions = allQuestions.filter((questions) => questions?.userId === +userId);
 
   useEffect(() => {
-    // dispatch(getUserQuestions(+userId));
     dispatch(getUserQuestions(+userId));
   }, [dispatch]);
 
