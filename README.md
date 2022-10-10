@@ -69,7 +69,7 @@ Here are the things you can do:
    - View the Questions a User answered
 
 - Search
-   - Look up Users or Questions to interact with other users and their posts
+   - Look up Questions and Users to interact with other users and their Questions
 
 
 # Future Features
