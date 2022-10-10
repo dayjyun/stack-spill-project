@@ -38,11 +38,18 @@ function UserComponent() {
       <div id="user-page">
         <div id="user-component">
           <div id="user-component-info">
-            <img id="user-component-image" alt='profile' src={user?.profileImage} />
+            <img
+              id="user-component-image"
+              alt="profile"
+              src={user?.profileImage}
+            />
             <div id="user-component-details">
               <h1>{user?.username}</h1>
               <div id="user-component-details-name">
-                {user?.firstName} {user?.lastName}
+                <div>
+                  {user?.firstName} {user?.lastName}
+                </div>
+                <div>{user?.email}</div>
               </div>
               {editButton}
             </div>

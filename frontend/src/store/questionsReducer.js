@@ -151,8 +151,8 @@ export default function questionReducer(state = initialState, action) {
 
       case GET_ALL_QUESTIONS_SORT:
         initialState = {};
-        action?.list?.forEach((question) => {
-          initialState[question.id] = question;
+        action?.list?.forEach((question, i) => {
+          initialState[i] = question;
         });
         return initialState;
 
