@@ -8,6 +8,7 @@ import EditQuestionModal from "../../EditComponents/EditQuestionModal/EditQuesti
 import EditQuestionVote from "../../EditComponents/EditVotes/EditQuestionVote";
 import LoginTextModal from "../../LoginFormModal/LoginTextModal";
 import AnswersComponent from "../AnswersComponent/AnswersComponent";
+import parse from 'html-react-parser'
 import "./QuestionComponent.css";
 
 function QuestionComponent() {
@@ -50,7 +51,7 @@ function QuestionComponent() {
             <div id="question-card-text-top">
               <h1 id="question-title">{question?.title}</h1> {userQuestionEdit}
             </div>
-            <div id="question-body">{question?.body}</div>
+            <div id="question-body">{parse(question?.body)}</div>
             <div id="question-user-info">
               By{" "}
               <Link

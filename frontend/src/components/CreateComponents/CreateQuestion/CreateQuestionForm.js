@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createQuestion } from "../../../store/questionsReducer";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import "./CreateQuestionForm.css";
 
 function CreateQuestionForm() {
@@ -95,14 +97,24 @@ function CreateQuestionForm() {
         {}
         <label className="create-question-form-label">
           Body
-          <textarea
+          {/* <textarea
             type="text"
             className="create-question-form-input cqfi-body"
             value={body}
             placeholder="This is where the story gets interesting..."
             onChange={(e) => setBody(e.target.value)}
             required
-          />
+          /> */}
+          <div>
+            <CKEditor
+              editor={ClassicEditor}
+              data={body}
+              onChange={(e, editor) => {
+                setBody(editor.getData());
+              }}
+              placeholder="This is where the story gets interesting..."
+            />
+          </div>
         </label>
         <div id="create-question-buttons">
           <button id="cqb-submit" type="submit">

@@ -8,7 +8,7 @@
   padding: 1rem;
   border: 10px ridge #d3d3d3;
   box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
-  min-width: 20rem;
+  min-width: 57rem;
 }
 
 #create-question-form-text p {
@@ -40,7 +40,7 @@
   box-shadow: 1px 1px 1px 1px rgb(51 51 51 / 50%);
   border: 2px solid white;
   border-radius: 6px;
-  min-width: 23rem;
+  min-width: 60rem;
 }
 
 .create-question-form-label {
@@ -60,9 +60,11 @@
   height: 2rem;
   width: 49rem;
   padding: 0 0.5rem;
-  width: 100%;
-  max-width: 91rem;
-  min-width: 91%
+  width: 50rem;
+  border: 1px solid lightgrey;
+  /* width: 100%; */
+  /* max-width: 91rem; */
+  /* min-width: 91% */
 }
 
 .cqfi-body {
