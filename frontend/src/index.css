@@ -20,3 +20,11 @@ body {
 button {
     cursor: pointer;
 }
+
+.ck-editor__editable_inline {
+  width: 50rem;
+  height: 20rem;
+}
+.ck-heading-dropdown {
+  visibility: hidden;
+}

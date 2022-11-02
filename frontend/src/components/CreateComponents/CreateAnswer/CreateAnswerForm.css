@@ -32,11 +32,6 @@
   padding: 1rem;
 }
 
-.ck-editor__editable_inline {
-  width: 50rem;
-  height: 20rem;
-}
-
 #create-answer-form-buttons {
   display: flex;
   justify-content: space-around;
