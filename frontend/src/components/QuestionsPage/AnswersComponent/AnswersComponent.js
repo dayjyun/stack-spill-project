@@ -6,6 +6,7 @@ import { getAllUsers } from "../../../store/usersReducer";
 import ConvertTime from "../../ConvertTime/ConvertTime";
 import EditAnswerModal from "../../EditComponents/EditAnswerModal/EditAnswerModal";
 import EditAnswerVote from "../../EditComponents/EditVotes/EditAnswerVote";
+import parse from 'html-react-parser'
 import "./AnswersComponent.css";
 
 function AnswersComponent({ questionId }) {
@@ -44,7 +45,7 @@ function AnswersComponent({ questionId }) {
           <div key={i} id="answer-card">
             <EditAnswerVote answerId={answer?.id} />
             <div id="answer-card-container">
-              <div id="answer-body">{answer?.body}</div>
+              <div id="answer-body">{parse(answer?.body)}</div>
               <div id="answer-user-info">
                 By{" "}
                 <Link

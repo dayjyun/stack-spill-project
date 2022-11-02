@@ -34,7 +34,7 @@
 
 .ck-editor__editable_inline {
   width: 50rem;
-  min-height: 20rem;
+  height: 20rem;
 }
 
 #create-answer-form-buttons {
