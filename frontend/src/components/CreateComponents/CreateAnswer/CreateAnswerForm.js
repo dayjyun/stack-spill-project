@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { createAnswer } from "../../../store/answersReducer";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import parse from "html-react-parser";
 import "./CreateAnswerForm.css";
 
 function CreateAnswerForm({ questionId }) {
@@ -15,7 +16,7 @@ function CreateAnswerForm({ questionId }) {
     await dispatch(
       createAnswer({
         questionId: +questionId,
-        body,
+        body: parse(body).props.children,
       })
     ).then(() => {
       e.preventDefault();
@@ -46,7 +47,10 @@ function CreateAnswerForm({ questionId }) {
             <CKEditor
               editor={ClassicEditor}
               data={body}
-              onChange={(e, editor) => setBody(editor.getData())}
+              onChange={(e, editor) => {
+                let data = editor.getData();
+                setBody(data);
+              }}
             />
           </div>
           <div id="create-answer-form-buttons">
