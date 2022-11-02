@@ -32,7 +32,7 @@ function CreateAnswerForm({ questionId }) {
     <>
       <div id="create-answer-form-container">
         <form onSubmit={handleAnswerSubmit} id="create-answer-form">
-          <h3 className="create-answer-form-h3">
+          <h3>
             Your Answer
             {/* <textarea
               className="create-answer-form-input"
@@ -42,7 +42,7 @@ function CreateAnswerForm({ questionId }) {
               required
             /> */}
           </h3>
-          <div id="body-editor">
+          <div>
             <CKEditor
               editor={ClassicEditor}
               data={body}
