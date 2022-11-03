@@ -24,7 +24,6 @@ function QuestionsSearchBarComponent() {
   });
 
   const questionReturns = questionResults.map((question, i) => {
-    console.log("question", question)
     return (
       <Link
         to={`/questions/${question?.id}`}
@@ -44,12 +43,10 @@ function QuestionsSearchBarComponent() {
   })
 
   const userReturns = userResults.map((user) => {
-    console.log("user", user)
     return (
-      <>
+      <div key={user?.username}>
         <Link
           to={`/users/${user?.id}`}
-          key={user?.username}
           onClick={() => setSearch("")}
           className="search-results-link"
         >
@@ -62,7 +59,7 @@ function QuestionsSearchBarComponent() {
             <div className="search-bar-profile-username">{user?.username}</div>
           </div>
         </Link>
-      </>
+      </div>
     );
   })
 
