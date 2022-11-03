@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getUserQuestions } from "../../../../store/userQuestionsReducer";
+import parse from 'html-react-parser'
 import "./UserQuestions.css";
 
 function UserQuestions() {
@@ -41,11 +42,11 @@ function UserQuestions() {
               <h2 id="user-questions-title">{question?.title}</h2>
               <div id="user-questions-body">
                 {question?.body.length > 70
-                  ? question?.body
+                  ? parse(question?.body
                       .split("")
                       .filter((text, i) => i < 90)
-                      .join("") + "..."
-                  : question?.body}
+                      .join("") + "...")
+                  : parse(question?.body)}
               </div>
             </NavLink>
           ))}
