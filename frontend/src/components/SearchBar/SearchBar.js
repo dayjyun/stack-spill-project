@@ -24,6 +24,7 @@ function QuestionsSearchBarComponent() {
   });
 
   const questionReturns = questionResults.map((question, i) => {
+    console.log("question", question)
     return (
       <Link
         to={`/questions/${question?.id}`}
@@ -43,13 +44,14 @@ function QuestionsSearchBarComponent() {
   })
 
   const userReturns = userResults.map((user) => {
+    console.log("user", user)
     return (
       <>
         <Link
           to={`/users/${user?.id}`}
+          key={user?.username}
           onClick={() => setSearch("")}
           className="search-results-link"
-          key={user?.username}
         >
           <div className="search-results-text">
             <img

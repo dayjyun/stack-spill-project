@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteQuestion, editQuestion } from "../../../store/questionsReducer";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import "./EditQuestionForm.css";
 
 function EditQuestionForm({ setShowModal, questionId }) {
@@ -49,7 +51,7 @@ function EditQuestionForm({ setShowModal, questionId }) {
 
   return (
     <>
-    <h2 id='edit-question-form-text'>Edit Your Question</h2>
+      <h2 id="edit-question-form-text">Edit Your Question</h2>
       <form onSubmit={handelQuestionEdit} id="edit-question-form">
         <label className="edit-question-form-label">
           Title
@@ -62,16 +64,30 @@ function EditQuestionForm({ setShowModal, questionId }) {
         </label>
         <label className="edit-question-form-label">
           Body
-          <textarea
+          {/* <textarea
             type="text"
             className="edit-question-form-input eqfi-body"
             value={body}
             onChange={(e) => setBody(e.target.value)}
-          />
+          /> */}
+          <div>
+            <CKEditor
+              className="eaf-text-editor"
+              editor={ClassicEditor}
+              data={body}
+              onChange={(event, editor) => {
+                setBody(editor.getData());
+              }}
+            />
+          </div>
         </label>
         <div id="edit-question-buttons">
-          <button id='eqb-save' type="submit">Save</button>
-          <button id='eqb-cancel' onClick={handleCancelButton}>Cancel</button>
+          <button id="eqb-save" type="submit">
+            Save
+          </button>
+          <button id="eqb-cancel" onClick={handleCancelButton}>
+            Cancel
+          </button>
         </div>
         <div>
           <button onClick={handleDeleteButton} id="eqb-delete">
