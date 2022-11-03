@@ -44,25 +44,26 @@ function QuestionsSearchBarComponent() {
 
   const userReturns = userResults.map((user) => {
     return (
-      <Link
-        to={`/users/${user?.id}`}
-        onClick={() => setSearch('')}
-        className='search-results-link'
-        key={user?.username}
-      >
-        <div className="search-results-text">
-          <img
-            src={user?.profileImage}
-            alt='profile'
-            className='search-bar-profile-pic'
-          />
-          <div className="search-bar-profile-username">{user?.username}</div>
-        </div>
-      </Link>
-    )
+      <div key={user?.username}>
+        <Link
+          to={`/users/${user?.id}`}
+          onClick={() => setSearch("")}
+          className="search-results-link"
+        >
+          <div className="search-results-text">
+            <img
+              src={user?.profileImage}
+              alt="profile"
+              className="search-bar-profile-pic"
+            />
+            <div className="search-bar-profile-username">{user?.username}</div>
+          </div>
+        </Link>
+      </div>
+    );
   })
 
-  searchArray = [...questionReturns, ...userReturns];
+  searchArray = ["Questions", ...questionReturns, "Users", ...userReturns];
 
   return (
     <>

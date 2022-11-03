@@ -55,6 +55,7 @@ function EditUserForm({ setShowModal }) {
               className="edit-user-form-input"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              required
             />
           </div>
           <div className="edit-user-form-div">
@@ -64,6 +65,7 @@ function EditUserForm({ setShowModal }) {
               className="edit-user-form-input"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              required
             />
           </div>
           <div className="edit-user-form-div">
@@ -73,6 +75,7 @@ function EditUserForm({ setShowModal }) {
               className="edit-user-form-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="edit-user-form-div">
@@ -82,6 +85,7 @@ function EditUserForm({ setShowModal }) {
               className="edit-user-form-input"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
           <div className="edit-user-form-div">
@@ -96,7 +100,9 @@ function EditUserForm({ setShowModal }) {
             <button id="eufb-save" type="submit">
               Save
             </button>
-            <button id='eufb-cancel' onClick={handleCancelButton}>Cancel</button>
+            <button id="eufb-cancel" onClick={handleCancelButton}>
+              Cancel
+            </button>
           </div>
         </form>
       </div>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getAllQuestionsSorted } from "../../store/sortedQuestionsReducer";
 import CreateQuestionButton from "../CreateComponents/CreateQuestion/CreateQuestionButton";
 import LoginTextModal from "../LoginFormModal/LoginTextModal";
+import parse from 'html-react-parser'
 import "./QuestionsPage.css";
 
 function QuestionsPage() {
@@ -64,11 +65,11 @@ function QuestionsPage() {
               <h2 id="all-questions-title">{question?.title}</h2>
               <div id="all-questions-body">
                 {question?.body.length > 70
-                  ? question?.body
+                  ? parse(question?.body
                       .split("")
                       .filter((text, i) => i < 90)
-                      .join("") + "..."
-                  : question?.body}
+                      .join("") + "...")
+                  : parse(question?.body)}
               </div>
             </NavLink>
           ))}

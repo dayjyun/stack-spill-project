@@ -75,3 +75,7 @@
   border-radius: 50px;
   cursor: pointer;
 }
+
+.search-bar-profile-username {
+  padding: 0 10px;
+}
