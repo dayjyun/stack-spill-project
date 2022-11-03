@@ -56,6 +56,10 @@
   width: 100%;
 }
 
+.cqfi-title:focus {
+  border: 1px solid #2b7bd7;
+}
+
 .cqfi-title {
   height: 2rem;
   width: 49rem;
