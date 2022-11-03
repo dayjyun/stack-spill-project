@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllAnswers } from "../../../../store/answersReducer";
 import { getUserAnswers } from "../../../../store/usersReducer";
+import parse from 'html-react-parser'
 import "./UserAnswers.css";
 
 function UserAnswers() {
@@ -56,11 +57,11 @@ function UserAnswers() {
               <h2 id="user-questions-title">{question?.title}</h2>
               <div id="user-questions-body">
                 {question?.body.length > 70
-                  ? question?.body
+                  ? parse(question?.body
                       .split("")
                       .filter((text, i) => i < 90)
-                      .join("") + "..."
-                  : question?.body}
+                      .join("") + "...")
+                  : parse(question?.body)}
               </div>
             </NavLink>
           ))}
